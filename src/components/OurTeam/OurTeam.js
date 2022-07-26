@@ -5,10 +5,11 @@ const OurTeam = () => {
     return (
         <div className='my-20'>
            <div className='text-center'>
-           <h1 className='text-5xl'>Experience Team Members</h1>
-            <h2 className='my-10 text-2xl'>Professional Recruit Agency to provide solutions</h2>
+            <h1 className='text-xl text-primary my-10'>Meet Our Team</h1>
+           <h1 className='text-5xl font-bold'>Experience Team Members</h1>
+            <h2 className='my-10 text-2xl text-gray-400'>Professional Recruit Agency to provide solutions</h2>
            </div>
-
+        {/* experience team members  */}
             <div className='grid sm:grid-cols-2 lg:grid-cols-4'>
 
             <div class="card w-80 bg-base-100 shadow-xl">
@@ -56,19 +57,31 @@ const OurTeam = () => {
 </div>
             </div>
 
+            {/* Contact us section */}
             <div>
-            <div class="hero min-h-screen bg-base-100">
+            <div class="hero min-h-screen bg-base-100 my-20">
   <div class="hero-content flex-col lg:flex-row-reverse">
     <img src="https://i.ibb.co/17y5Fxd/contact-1.jpg" class="max-w-sm rounded-full shadow-2xl" />
     <div>
-      <h1 class="text-7xl font-bold">Have Any on Project Mind! Contact Us</h1>
+      <h1 class="text-7xl font-bold">Have Any on <span className='text-slate-400'>Project</span>  Mind! <span className='text-slate-400'>Contact</span>  Us</h1>
       <p class="py-6">Sed ut perspiciatis unde omnis iste natus error voluptatem accusantium doloremque laudan tium, totam rem aperiam, eaque ipsa quae abillo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem</p>
 
-      <h3>Email Us</h3>
-      <p>support@gmail.com</p>
+        {/* email and phone for contact */}
+      <div className='grid grid-cols-2 mx-4 my-10'>
+        <div>
+      <h3 className='text-primary text-xl'>Email Us</h3>
+      <p className='text-2xl font-bold'>support@gmail.com</p>
+      </div>
 
+      <div>
+        <h3 className='text-primary text-xl'>Phone Us</h3>
+      <p className='text-2xl font-bold'>+88012 (345) 67 89</p>
+      </div>
+
+      </div>
+        {/* input fields */}
       <input type="text" placeholder="Full Name" class="input input-bordered w-full max-w-xs mx-5" />
-      <input type="text" placeholder="Email Address" class="input input-bordered w-full max-w-xs" />
+      <input type="text" placeholder="Email Address" class="input input-bordered w-full max-w-xs mx-5" />
       <br />
       <textarea class="textarea textarea-bordered w-full max-w-2xl mx-5 my-5" placeholder="Write message"></textarea>
       <br />

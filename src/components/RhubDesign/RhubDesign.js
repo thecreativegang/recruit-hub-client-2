@@ -5,7 +5,7 @@ const RhubDesign = () => {
         <div className='my-20'>
             <div class="flex flex-col w-full lg:flex-row">
   <div class="grid flex-grow h-32 card bg-base-100 rounded-box place-items-center">
-    <h1 className='text-6xl font-bold'>Recruit Hub</h1>
+    <h1 className='text-7xl font-bold'>Recruit Hub</h1>
     </div> 
   <div class="divider lg:divider-horizontal"></div> 
   <div class="grid flex-grow h-32 card bg-base-100 rounded-box place-items-center">

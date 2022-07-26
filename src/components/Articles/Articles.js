@@ -5,8 +5,9 @@ const Articles = () => {
     return (
         <div>
            <div className='text-center'>
+           <h1 className='text-xl text-primary my-10'>Articles News</h1>
            <h1 className=' text-5xl'>Latest News & Blogs</h1>
-            <p className='my-10 text-2xl'>Professional Recruit Agency to provide solutions</p>
+            <p className='my-10 text-2xl text-gray-400'>Professional Recruit Agency to provide solutions</p>
            </div>
 
         <div className='grid sm:grid-cols-1 lg:grid-cols-3'>

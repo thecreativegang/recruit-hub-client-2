@@ -27,7 +27,8 @@ const Footer = () => {
     <a class="link link-hover">Need a Career?</a>
   </div> 
   <div>
-    <span class="footer-title text-2xl">Subscribe Our Newsletter</span> 
+    <span class="text-black text-5xl font-bold">Subscribe Our <br /> Newsletter</span> 
+    <p>Natus errorsit voluptatem accusa dolore <br /> mque quae abillo inventore verita achitec <br /> beatae vitae dicta sunt explicabo.</p>
     <div class="form-control w-80">
       
       <div class="relative">

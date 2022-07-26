@@ -7,7 +7,7 @@ module.exports = {
     themes: [
       {
         doctortheme: {
-          primary: "#37cdbe", // add your own color
+          primary: "#5956e9", // add your own color
           secondary: "#FFA100", // add your own color
           accent: "#FF8C00", // add your own color
           neutral: "#3d4451", // add your own color

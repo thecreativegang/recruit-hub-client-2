@@ -18,9 +18,9 @@ const About = () => {
                         desire that they cannot</p>
 
                     <ul className='heading-color font-semibold text-[20px]'>
-                        <li className='mb-[15px]'><i class="fa-solid mr-[12px] text-[22px] fa-circle-check color-blue-dark "></i>Digital Creative Agency</li>
-                        <li className='mb-[15px]'><i class="fa-solid mr-[12px] text-[22px] fa-circle-check color-blue-dark "></i>Professional Problem Solutions</li>
-                        <li className='mb-[15px]'><i class="fa-solid mr-[12px] text-[22px] fa-circle-check color-blue-dark "></i>Web Design & Development</li>
+                        <li className='mb-[15px]'><i className="fa-solid mr-[12px] text-[22px] fa-circle-check color-blue-dark "></i>Digital Creative Agency</li>
+                        <li className='mb-[15px]'><i className="fa-solid mr-[12px] text-[22px] fa-circle-check color-blue-dark "></i>Professional Problem Solutions</li>
+                        <li className='mb-[15px]'><i className="fa-solid mr-[12px] text-[22px] fa-circle-check color-blue-dark "></i>Web Design & Development</li>
                     </ul>
                 </div>
             </div>

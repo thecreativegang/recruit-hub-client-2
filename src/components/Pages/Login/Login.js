@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useSignInWithEmailAndPassword, useSignInWithGoogle, useAuthState } from 'react-firebase-hooks/auth';
-import auth from '../../firebase.init';
 import { useForm } from "react-hook-form";
-import Loading from '../Shared/Loading';
-import useToken from '../../hooks/useToken';
-import Navbar from './../Shared/Navbar';
+import auth from './../../../firebase.init';
+import Loading from './../../Shared/Loading';
+import useToken from './../../../hooks/useToken';
 const Login = () => {
     const [globalUser] = useAuthState(auth);
     const [forgetPass, setForgetPass] = useState(false);

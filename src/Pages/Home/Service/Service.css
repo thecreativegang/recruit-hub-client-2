@@ -1,0 +1,18 @@
+.service-item {
+  border: 1px solid rgba(88, 86, 233, 0.2);
+  padding: 50px 55px 40px;
+  border-radius: 7px;
+}
+
+.service-item ul li {
+  margin-bottom: 10px;
+  font-weight: 500;
+  color: #808285;
+}
+
+.service-item:hover {
+  background-color: #fff;
+  border-color: transparent;
+
+  box-shadow: 0 10px 60px 0 rgb(89 86 233 / 10%);
+}

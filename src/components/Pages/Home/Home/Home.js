@@ -1,13 +1,16 @@
 import React from 'react';
+import OurTeam from './OurTeam/OurTeam';
 import Articles from '../Articles/Articles';
-import Footer from '../Footer/Footer';
-import OurTeam from '../OurTeam/OurTeam';
-import RhubDesign from '../RhubDesign/RhubDesign';
+import RhubDesign from '../../../RhubDesign/RhubDesign';
+import Footer from '../../../Shared/Footer/Footer';
+import About from '../About/About';
+import Service from '../Service/Service';
 
 const Home = () => {
     return (
         <div>
-            <h1 className='text-3xl'>Home</h1>
+            <About></About>
+            <Service></Service>
             <OurTeam></OurTeam>
             <Articles></Articles>
             <RhubDesign></RhubDesign>
@@ -15,5 +18,4 @@ const Home = () => {
         </div>
     );
 };
-
 export default Home;

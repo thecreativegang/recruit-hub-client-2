@@ -9,7 +9,7 @@ const useToken = async (currentUser) => {
     };
     useEffect(() => {
         if (email) {
-            const targetUrl = 'https://team-muslim-forum-26437.herokuapp.com/user'
+            const targetUrl = 'http://localhost:3001/user'
             axios.post(targetUrl, user)
                 .then(data => {
                     setToken(data.data.accessToken);

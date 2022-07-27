@@ -25,8 +25,10 @@ const Navbar = () => {
                         <li><a>Item 3</a></li>
                     </ul>
                 </div>
-                <button className='flex font-bold text-2xl'><img src={navLogo} alt="" />
-                    <span className='self-center px-1'>RicrutHub</span> </button>
+                <button className='flex font-bold text-2xl'>
+                    <img src={navLogo} alt="" />
+                    <span className='self-center px-1'>RecruitHub</span>
+                </button>
             </div>
 
 

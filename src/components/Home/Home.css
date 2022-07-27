@@ -10,12 +10,13 @@
     z-index: -1;
 }
 
+
 .my-banner-img {
     content: '';
     width: 100%;
     position: absolute;
-    left: 100px;
-    top: 50px;
+    left: 85px;
+    top: 95px;
     height: 100%;
     background-image: url('../../Image/shape-1.png');
     background-repeat: no-repeat;

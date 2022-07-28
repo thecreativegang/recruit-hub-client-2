@@ -1,9 +1,10 @@
 import React from 'react';
 import './Service.css'
+import { Link } from 'react-router-dom';
 
 const Service = () => {
     return (
-        <div className='pb-16'>
+        <div className='pb-16  '>
             <div className='flex justify-center '>
                 <div className='text-center'>
                     <h1 className='section-tittle relative color-blue-dark font-semibold inline-block'>Service</h1>
@@ -19,11 +20,11 @@ const Service = () => {
                         <div>
                             <h1 className='text-[24px] heading-color font-semibold mb-[15px]'>Strategy</h1>
                             <ul className='text-[18px] mb-4'>
-                                <li><i className="fa-solid mr-[12px] fa-arrow-right"></i>Product Management</li>
-                                <li><i className="fa-solid mr-[12px] fa-arrow-right"></i>MVP Definition</li>
-                                <li><i className="fa-solid mr-[12px] fa-arrow-right"></i>Product Strategy</li>
+                                <li><Link to="/" className="fa-solid mr-[12px] fa-arrow-right"></Link>Product Management</li>
+                                <li><Link to="/" className="fa-solid mr-[12px] fa-arrow-right"></Link>MVP Definition</li>
+                                <li><Link to="/" className="fa-solid mr-[12px] fa-arrow-right"></Link>Product Strategy</li>
                             </ul>
-                            <a className='color-blue-dark font-bold text-[18px] underline' href="#">Read More <i className="fa-solid ml-[6px] fa-arrow-right-long"></i></a>
+                            <Link to="/" className='color-blue-dark font-bold text-[18px] underline' href="#">Read More <i className="fa-solid ml-[6px] fa-arrow-right-long"></i></Link>
                         </div>
                     </div>
                     <div className='service-item'>
@@ -35,7 +36,7 @@ const Service = () => {
                                 <li><i className="fa-solid mr-[12px] fa-arrow-right"></i>MVP Definition</li>
                                 <li><i className="fa-solid mr-[12px] fa-arrow-right"></i>Product Strategy</li>
                             </ul>
-                            <a className='color-blue-dark font-bold text-[18px] underline' href="#">Read More <i className="fa-solid ml-[6px] fa-arrow-right-long"></i></a>
+                            <Link to="/" className='color-blue-dark font-bold text-[18px] underline' href="#">Read More <i className="fa-solid ml-[6px] fa-arrow-right-long"></i></Link>
                         </div>
                     </div>
                     <div className='service-item'>
@@ -47,7 +48,7 @@ const Service = () => {
                                 <li><i className="fa-solid mr-[12px] fa-arrow-right"></i>MVP Definition</li>
                                 <li><i className="fa-solid mr-[12px] fa-arrow-right"></i>Product Strategy</li>
                             </ul>
-                            <a className='color-blue-dark font-bold text-[18px] underline' href="#">Read More <i className="fa-solid ml-[6px] fa-arrow-right-long"></i></a>
+                            <Link to="/" className='color-blue-dark font-bold text-[18px] underline' href="#">Read More <i className="fa-solid ml-[6px] fa-arrow-right-long"></i></Link>
                         </div>
                     </div>
                 </div>

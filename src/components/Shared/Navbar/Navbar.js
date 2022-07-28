@@ -1,28 +1,29 @@
 import React from 'react';
 import navLogo from '../../../images/logo.png';
 import './Navbar.css'
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     return (
-        <div className="navbar   my-container page-banner my-border-bottom ">
+        <div className="navbar  my-container page-banner my-border-bottom ">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabindex="0" className="btn btn-ghost lg:hidden">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                     </label>
                     <ul tabindex="0" className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-                        <li><a>Item 1</a></li>
+                        <li><>Item 1</></li>
                         <li tabindex="0">
-                            <a className="justify-between">
+                            <Link to="/" className="justify-between">
                                 Parent
                                 <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
-                            </a>
+                            </Link>
                             <ul className="p-2">
-                                <li><a>Submenu 1</a></li>
-                                <li><a>Submenu 2</a></li>
+                                <li><Link to="/">Submenu 1</Link></li>
+                                <li><Link to="/">Submenu 2</Link></li>
                             </ul>
                         </li>
-                        <li><a>Item 3</a></li>
+                        <li><Link to="/">Item 3</Link></li>
                     </ul>
                 </div>
                 <button className='flex font-bold text-2xl'>
@@ -42,10 +43,10 @@ const Navbar = () => {
                             </svg>
                         </button>
                         <ul className="p-0 bg-white">
-                            <li><a className='pb-2'>Talent Pool</a></li>
-                            <li><a className='pt-0'>Employer Events</a></li>
-                            <li><a className='pt-0'>Client Success Case</a></li>
-                            <li><a className='pt-0'>Salary guide</a></li>
+                            <li><Link to="/" className='pb-2'>Talent Pool</Link></li>
+                            <li><Link to="/" className='pt-0'>Employer Events</Link></li>
+                            <li><Link to="/" className='pt-0'>Client Success Case</Link></li>
+                            <li><Link to="/" className='pt-0'>Salary guide</Link></li>
                         </ul>
                     </li>
 
@@ -58,10 +59,10 @@ const Navbar = () => {
                         </button>
 
                         <ul className="p-0 bg-white">
-                            <li><a className='pb-2'>Talent Pool</a></li>
-                            <li><a className='pt-0'>Employer Events</a></li>
-                            <li><a className='pt-0'>Client Success Case</a></li>
-                            <li><a className='pt-0'>Salary guide</a></li>
+                            <li><Link to="/" className='pb-2'>Talent Pool</Link></li>
+                            <li><Link to="/" className='pt-0'>Employer Events</Link></li>
+                            <li><Link to="/" className='pt-0'>Client Success Case</Link></li>
+                            <li><Link to="/" className='pt-0'>Salary guide</Link></li>
                         </ul>
                     </li>
                     <li tabindex="2">
@@ -73,10 +74,10 @@ const Navbar = () => {
                         </button>
 
                         <ul className="p-0 bg-white">
-                            <li><a className='pb-2'>Talent Pool</a></li>
-                            <li><a className='pt-0'>Employer Events</a></li>
-                            <li><a className='pt-0'>Client Success Case</a></li>
-                            <li><a className='pt-0'>Salary guide</a></li>
+                            <li><Link to="/" className='pb-2'>Talent Pool</Link></li>
+                            <li><Link to="/" className='pt-0'>Employer Events</Link></li>
+                            <li><Link to="/" className='pt-0'>Client Success Case</Link></li>
+                            <li><Link to="/" className='pt-0'>Salary guide</Link></li>
                         </ul>
                     </li>
                 </ul>

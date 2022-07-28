@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 
 const Articles = () => {
@@ -21,7 +22,7 @@ const Articles = () => {
               <h2 className="card-title">Everything You Want To Know About</h2>
               <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iure qui facere labore soluta dolorum veniam minima minus suscipit autem inventore.</p>
 
-              <a className="link link-primary">Read More </a>
+              <Link to="/" className="link link-primary">Read More </Link>
             </div>
           </div>
 
@@ -35,7 +36,7 @@ const Articles = () => {
               <h2 className="card-title">Everything You Want To Know About</h2>
               <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iure qui facere labore soluta dolorum veniam minima minus suscipit autem inventore.</p>
 
-              <a className="link link-primary">Read More </a>
+              <Link to="/" className="link link-primary">Read More </Link>
             </div>
           </div>
           <div className="card w-96 bg-base-100 shadow-xl">
@@ -46,7 +47,7 @@ const Articles = () => {
               <h2 className="card-title">Everything You Want To Know About</h2>
               <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iure qui facere labore soluta dolorum veniam minima minus suscipit autem inventore.</p>
 
-              <a className="link link-primary">Read More </a>
+              <Link to="/" className="link link-primary">Read More </Link>
             </div>
           </div>
         </div>

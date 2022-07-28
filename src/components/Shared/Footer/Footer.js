@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -7,23 +8,23 @@ const Footer = () => {
       <footer className="footer py-10 flex justify-between  bg-white-200 text-info-content">
         <div>
           <span className="footer-title text-xl">Services</span>
-          <a className="link link-hover">Web Development</a>
-          <a className="link link-hover">Design</a>
-          <a className="link link-hover">Marketing</a>
-          <a className="link link-hover">Advertisement</a>
+          <Link to="/" className="link link-hover">Web Development</Link>
+          <Link to="/" className="link link-hover">Design</Link>
+          <Link to="/" className="link link-hover">Marketing</Link>
+          <Link to="/" className="link link-hover">Advertisement</Link>
         </div>
         <div>
           <span className="footer-title text-xl">Company</span>
-          <a className="link link-hover">About us</a>
-          <a className="link link-hover">Contact</a>
-          <a className="link link-hover">Jobs</a>
+          <Link to="/" className="link link-hover">About us</Link>
+          <Link to="/" className="link link-hover">Contact</Link>
+          <Link to="/" className="link link-hover">Jobs</Link>
 
         </div>
         <div>
           <span className="footer-title text-xl">Links</span>
-          <a className="link link-hover">Latest News & Blog</a>
-          <a className="link link-hover">Popular Services</a>
-          <a className="link link-hover">Need a Career?</a>
+          <Link to="/" className="link link-hover">Latest News & Blog</Link>
+          <Link to="/" className="link link-hover">Popular Services</Link>
+          <Link to="/" className="link link-hover">Need a Career?</Link>
         </div>
         <div>
           <span className="text-black text-5xl font-bold">Subscribe Our <br /> Newsletter</span>

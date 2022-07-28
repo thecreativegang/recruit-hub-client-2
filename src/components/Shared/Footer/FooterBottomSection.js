@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const FooterBottomSection = () => {
     const today = new Date();
@@ -12,9 +13,9 @@ const FooterBottomSection = () => {
                 </div>
                 <div className="md:place-self-center md:justify-self-end">
                     <div className="grid grid-flow-col gap-4">
-                        <a className="link link-hover">Terms of use</a>
-                        <a className="link link-hover">Privacy policy</a>
-                        <a className="link link-hover">Cookie policy</a>
+                        <Link to="/" className="link link-hover">Terms of use</Link>
+                        <Link to="/" className="link link-hover">Privacy policy</Link>
+                        <Link to="/" className="link link-hover">Cookie policy</Link>
                     </div>
                 </div>
             </footer>

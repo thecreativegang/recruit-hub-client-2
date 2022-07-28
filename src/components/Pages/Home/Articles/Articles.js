@@ -12,9 +12,9 @@ const Articles = () => {
           <p className='my-10 text-2xl text-gray-400'>Professional Recruit Agency to provide solutions</p>
         </div>
 
-        <div className='grid sm:grid-cols-1 lg:grid-cols-3 gap-y-10 justify-items-center'>
+        <div className='grid sm:grid-cols-1 lg:grid-cols-3 gap-y-10 gap-x-10 justify-items-center'>
           {/* card-1 */}
-          <div className="card w-96 bg-base-100 shadow-xl">
+          <div className="card w-full bg-base-100 shadow-xl">
             <div className="card-body">
               <div className="card-actions justify-start">
                 <button className="  btn btn-primary text-white">Click Now</button>
@@ -28,7 +28,7 @@ const Articles = () => {
 
 
           {/* card-2 */}
-          <div className="card w-96 bg-base-100 shadow-xl">
+          <div className="card w-full bg-base-100 shadow-xl">
             <div className="card-body">
               <div className="card-actions justify-start">
                 <button className="  btn btn-primary text-white">Click Now</button>
@@ -39,7 +39,7 @@ const Articles = () => {
               <Link to="/" className="link link-primary">Read More </Link>
             </div>
           </div>
-          <div className="card w-96 bg-base-100 shadow-xl">
+          <div className="card w-full bg-base-100 shadow-xl">
             <div className="card-body">
               <div className="card-actions justify-start">
                 <button className="  btn btn-primary text-white">Click Now</button>

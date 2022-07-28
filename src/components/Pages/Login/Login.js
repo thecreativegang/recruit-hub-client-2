@@ -123,9 +123,9 @@ const Login = () => {
                                     {
                                         loading
                                             ?
-                                            <button type="submit" className="btn btn-primary font-bold text-lg loading text-white">Login</button>
+                                            <button type="submit" className="  btn btn-primary text-white font-bold text-lg loading text-white">Login</button>
                                             :
-                                            <button type="submit" className="btn btn-primary font-bold text-lg text-white">Login</button>
+                                            <button type="submit" className="  btn btn-primary text-white font-bold text-lg text-white">Login</button>
                                     }
                                 </div>
 

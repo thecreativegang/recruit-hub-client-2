@@ -3,7 +3,7 @@ import './Service.css'
 
 const Service = () => {
     return (
-        <div className='pb-16'>
+        <div className='pb-16  '>
             <div className='flex justify-center '>
                 <div className='text-center'>
                     <h1 className='section-tittle relative color-blue-dark font-semibold inline-block'>Service</h1>

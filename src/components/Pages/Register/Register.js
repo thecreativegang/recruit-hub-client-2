@@ -208,9 +208,9 @@ const Register = () => {
                                         {
                                             loading
                                                 ?
-                                                <button className="btn btn-primary font-bold text-lg text-white loading uppercase">Register</button>
+                                                <button className="  btn btn-primary text-white font-bold text-lg text-white loading uppercase">Register</button>
                                                 :
-                                                <button className="btn btn-primary font-bold text-lg text-white uppercase">Register</button>
+                                                <button className="  btn btn-primary text-white font-bold text-lg text-white uppercase">Register</button>
 
                                         }
                                     </div>

@@ -15,8 +15,8 @@ const Banner = () => {
                     <h1 className="lg:text-6xl text-4xl font-bold">Brand, Design & Development Agency</h1>
                     <p className="py-[2rem] lg:text-xl lg:pr-[7rem]">Sit amet consectetur adipiscing elit sed do eiusmod tem porincididunt ut labore et dolore magna aliqua. Quis psum suspendisse ultrices gravida commodo viverra</p>
                     <div>
-                        <button className='btn btn-primary mx-2'>Start Hiring</button>
-                        <button className='btn btn-primary'>Get a job</button>
+                        <button className='  btn btn-primary text-white mx-2'>Start Hiring</button>
+                        <button className='  btn btn-primary text-white'>Get a job</button>
                     </div>
                 </div>
                 <div className='justify-center hidden lg:block'>

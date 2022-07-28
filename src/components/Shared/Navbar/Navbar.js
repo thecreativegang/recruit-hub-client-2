@@ -4,7 +4,7 @@ import './Navbar.css'
 
 const Navbar = () => {
     return (
-        <div className="navbar mx-5 my-container page-banner my-border-bottom ">
+        <div className="navbar   my-container page-banner my-border-bottom ">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabindex="0" className="btn btn-ghost lg:hidden">

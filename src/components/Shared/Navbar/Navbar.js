@@ -82,7 +82,7 @@ const Navbar = () => {
                     </li>
                 </ul>
             </div>
-
+            {/*  */}
             <div className="navbar-end mr-5">
                 <div className='bg-primary px-3 py-2 rounded flex space-x-1 '>
                     <div className='space-y-1'>

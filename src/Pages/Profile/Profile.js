@@ -70,7 +70,24 @@ const Profile = () => {
                 </div>
                 <div className="main-content col-span-4 bg-[#F7F7F7]">
                     <div className='w-[732px] mx-auto bg-white'>
-
+                        <div className='mt-12 p-[24px] grid grid-cols-2'>
+                            <div className="english-verify">
+                                <div className="code-test flex justify-center">
+                                    <div className='text-center'>
+                                        <img className='w-[45px] mb-[10px] mx-auto' src="https://vanhack.com/static-desktop/1b30c8bf558ff2f6ca321e62b4f1f100.svg" alt="" />
+                                        <h1 className='font-bold mb-[10px] test'>English Verification</h1>
+                                        <a href="#" className='color-blue-dark'>Start now</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className=" flex justify-center">
+                                <div className='text-center'>
+                                    <img className='w-[45px] mx-auto' src="https://vanhack.com/static-desktop/ecb8fa162c6ca3693c69b34b22ffc82d.svg" alt="" />
+                                    <h1 className='font-bold test my-[10px]'>Code Test</h1>
+                                    <a href="#" className='color-blue-dark'>See Details</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

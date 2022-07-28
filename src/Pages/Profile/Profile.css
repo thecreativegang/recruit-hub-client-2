@@ -7,3 +7,11 @@
   font-size: 14px;
   font-weight: 500;
 }
+
+.code-test {
+  border-right: 1px solid black;
+}
+
+.test {
+  color: rgb(41, 46, 51);
+}

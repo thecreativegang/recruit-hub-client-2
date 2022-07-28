@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const FooterBottomSection = () => {
     const today = new Date();
-    // 
+    // abc
     return (
         <div className='flex justify-center'>
             <footer className="footer justify-center  px-10 py-4 border-t bg-base-200 text-base-content border-base-300">

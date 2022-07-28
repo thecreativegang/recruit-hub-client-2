@@ -14,7 +14,8 @@ const Service = () => {
 
             <div className='md:w-[80%] w-[95%] mx-auto mt-8'>
                 <div className='grid grid-cols-1 gap-8 md:grid-cols-3'>
-                    <div className='service-item'>
+                    <div className='service-item'
+                    >
                         <i class="fa-solid mb-[15px] fa-code-compare text-[75px] color-blue-dark"></i>
                         <div>
                             <h1 className='text-[24px] heading-color font-semibold mb-[15px]'>Strategy</h1>

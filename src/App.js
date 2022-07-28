@@ -4,6 +4,7 @@ import './App.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Home from './Pages/Home/Home/Home';
+import Profile from './Pages/Profile/Profile';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home></Home>} />
         <Route path='/home' element={<Home />} />
+        <Route path='/profile' element={<Profile></Profile>} />
       </Routes>
       <ToastContainer
         autoClose={1500}
@@ -21,3 +23,6 @@ function App() {
 }
 
 export default App;
+
+
+// for aos library 

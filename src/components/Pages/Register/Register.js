@@ -100,7 +100,7 @@ const Register = () => {
                 :
                 setUsernameAvailable(null)
         }
-
+        // 
         return (
             <div>
                 <div className=" flex justify-center items-center pt-20">
@@ -109,7 +109,10 @@ const Register = () => {
                             <form onSubmit={handleSubmit(onSubmit)}>
                                 <div className="card-body">
                                     <h1 className='text-5xl font-bold text-center mb-10'>Register</h1>
-
+                                    <select name="" id="">
+                                        <option value="Abc">Abc</option>
+                                        <option value="Abc">Def</option>
+                                    </select>
                                     {/* userName of user  */}
                                     <div className="form-control mb-">
                                         <label className="label">

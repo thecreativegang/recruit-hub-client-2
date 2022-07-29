@@ -7,6 +7,8 @@ import Register from './components/Pages/Register/Register';
 import Home from './components/Pages/Home/Home/Home';
 import Navbar from './components/Shared/Navbar/Navbar';
 import FooterBottomSection from './components/Shared/Footer/FooterBottomSection';
+import LogIns from './components/Pages/Login/LogIns';
+import SignUp from './components/Pages/Register/SignUp';
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
         <Route path='/home' element={<Home />} />
         <Route path='/login' element={<Login />} />
         <Route path='/Register' element={<Register />} />
+        <Route path='/LogIns' element={<LogIns/>}></Route>
+        <Route path='/signup' element={<SignUp/>}></Route>
       </Routes>
       <FooterBottomSection />
       <ToastContainer

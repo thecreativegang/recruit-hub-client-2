@@ -42,7 +42,7 @@ const Navbar = () => {
                                 <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
                             </svg>
                         </button>
-                        <ul className="p-0 bg-white">
+                        <ul className="p-0 bg-white z-100">
                             <li><Link to="/" className='pb-2'>Talent Pool</Link></li>
                             <li><Link to="/" className='pt-0'>Employer Events</Link></li>
                             <li><Link to="/" className='pt-0'>Client Success Case</Link></li>
@@ -58,7 +58,7 @@ const Navbar = () => {
                             </svg>
                         </button>
 
-                        <ul className="p-0 bg-white">
+                        <ul className="p-0 bg-white z-100">
                             <li><Link to="/" className='pb-2'>Talent Pool</Link></li>
                             <li><Link to="/" className='pt-0'>Employer Events</Link></li>
                             <li><Link to="/" className='pt-0'>Client Success Case</Link></li>
@@ -73,7 +73,7 @@ const Navbar = () => {
                             </svg>
                         </button>
 
-                        <ul className="p-0 bg-white">
+                        <ul className="p-0 bg-white z-100">
                             <li><Link to="/" className='pb-2'>Talent Pool</Link></li>
                             <li><Link to="/" className='pt-0'>Employer Events</Link></li>
                             <li><Link to="/" className='pt-0'>Client Success Case</Link></li>

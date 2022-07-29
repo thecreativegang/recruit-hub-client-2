@@ -9,8 +9,9 @@ const Profile = () => {
     const onSubmit = data => console.log(data);
     return (
         <div>
-            <div className='grid grid-cols-5'>
-                <div className="side-bar pl-8 pt-8 bg-[#F2F2F2] h-screen">
+            <div className=' flex relative z-[2]'>
+                
+                <div className="w-[20%] px-8 pt-20 bg-[#F2F2F2] h-screen side-bar fixed top-0 left-0">
                     <ul>
                         <li>
                             <div className='flex py-[12px]'>
@@ -74,7 +75,7 @@ const Profile = () => {
                 </div>
 
 
-                <div className="main-content col-span-4 bg-[#F7F7F7]">
+                <div className="main-content w-[100%] pl-[20%] bg-[#F7F7F7]">
                     <div className='w-[732px] mx-auto bg-white'>
                         <div className='mt-12 p-[24px] grid grid-cols-2'>
                             <div className="english-verify">
@@ -113,20 +114,6 @@ const Profile = () => {
                             </form>
                         </div>
                     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -171,10 +158,6 @@ const Profile = () => {
                         </div>
                     </div>
 
-
-
-
-
                     {/* Languages */}
                     <div className='my-10'>
 
@@ -188,7 +171,7 @@ const Profile = () => {
                             <div className='w-full flex items-center justify-between pb-4'>
                                 <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-[65%]" >
                                     <select {...register("gender")} className='border-2 rounded-md mt-1 px-2 py-1 text-base w-full'>
-                                        <option value="#">Select your Languages</option>
+                                        <option selected="selected" value="#">Select your Languages</option>
                                         <option value="hsc">English</option>
                                         <option value="u-bs">Bangla</option>
                                     </select>
@@ -197,6 +180,7 @@ const Profile = () => {
                                 {/* Select option -2  */}
                                 <form onSubmit={handleSubmit(onSubmit)} className="min-w-[12.5rem] w-full max-w-[33%]"  >
                                     <select {...register("gender")} className='border-2 rounded-md mt-1 px-2 py-1 text-base w-full'>
+                                        <option selected="selected" value="">Select an option</option>
                                         <option value="#">Basic</option>
                                         <option value="hsc">Intermediate</option>
                                         <option value="u-bs">Upper Intermediate</option>
@@ -243,7 +227,8 @@ const Profile = () => {
 
                                 <form onSubmit={handleSubmit(onSubmit)}>
                                     <select {...register("gender")} className='border-2 rounded-md mt-1 px-2 py-1 text-base'>
-                                        <option value="#">Select your education level</option>
+                                    {/* <option selected="selected" value="">Select an option</option> */}
+                                        <option selected value="Select your education level">Select your education level</option>
                                         <option value="hsc">High School</option>
                                         <option value="u-bs">Unfinished Bachelor's degree</option>
                                     </select>
@@ -267,11 +252,7 @@ const Profile = () => {
                         </div>
                     </div>
 
-
                 </div>{/*  END  */}
-
-
-
 
 
             </div>

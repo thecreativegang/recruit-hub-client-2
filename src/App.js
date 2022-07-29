@@ -18,10 +18,10 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/home' element={<Home />} />
-        <Route path='/login' element={<Login />} />
+        <Route path='/login' element={<LogIns />} />
         <Route path='/Register' element={<Register />} />
-        <Route path='/LogIns' element={<LogIns/>}></Route>
-        <Route path='/signup' element={<SignUp/>}></Route>
+        <Route path='/LogIns' element={<LogIns />}></Route>
+        <Route path='/signup' element={<SignUp />}></Route>
       </Routes>
       <FooterBottomSection />
       <ToastContainer

@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import auth from './../../../firebase.init';
 import Loading from './../../Shared/Loading';
 import useToken from './../../../hooks/useToken';
+import googleLogo from '../../../images/google.png';
 const Login = () => {
     const [globalUser] = useAuthState(auth);
     const [forgetPass, setForgetPass] = useState(false);
@@ -47,7 +48,7 @@ const Login = () => {
         signInWithEmailAndPassword(email, password);
     };
     return (
-        <div >
+        <div className='my-10'>
             <div className=" flex justify-center items-center pt-20">
                 <div className=" md:w-1/4 flex-col lg:flex-row-reverse">
                     <div className="card flex-shrink-0 w-full  shadow-2xl bg-base-100">
@@ -133,7 +134,7 @@ const Login = () => {
                                     <div className="divider">OR</div>
                                 </div>
                                 <div className="form-control ">
-                                    <button onClick={() => signInWithGoogle()} className="btn   hover:text-white  font-bold text-lg bg-zinc-600 text-white">Continue With Google</button>
+                                    <button onClick={() => signInWithGoogle()} className="btn bg-white text-black  hover:text-white  font-bold text-lg hover:bg-zinc-600"> <img src={googleLogo} alt="" /> &nbsp; Continue With Google</button>
                                 </div>
                             </div>
                         </form>

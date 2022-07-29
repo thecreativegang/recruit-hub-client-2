@@ -15,7 +15,7 @@ const Navbar = () => {
         signOut(auth)
     }
     return (
-        <div className="navbar  my-container page-banner my-border-bottom ">
+        <div className="navbar  page-banner my-border-bottom ">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabindex="0" className="btn btn-ghost lg:hidden">

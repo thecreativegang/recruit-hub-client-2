@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate, useParams } from 'react-router-dom';
 import { useCreateUserWithEmailAndPassword, useSendEmailVerification, useSignInWithGoogle, useUpdateProfile, useAuthState } from 'react-firebase-hooks/auth';
 import PasswordStrengthBar from 'react-password-strength-bar';
 import makeId from './SuggestPass';
@@ -13,6 +13,9 @@ import { useRef } from 'react';
 import { toast } from 'react-toastify';
 
 const Register = () => {
+
+    const { accType } = useParams();
+    console.log(accType)
     const [globalUser] = useAuthState(auth);
     const navigate = useNavigate();
     const [
@@ -110,8 +113,7 @@ const Register = () => {
                     <div className="card flex-shrink-0 w-full  shadow-2xl bg-base-100">
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <div className="card-body">
-                                <h1 className='text-5xl font-bold text-center mb-10'>Register</h1>
-
+                                <h1 className='text-4xl font-bold text-center mb-10 '><span className='capitalize'>{accType}</span> Registration</h1>
 
                                 {/* userName of user  */}
                                 <div className="form-control mb-">

@@ -12,7 +12,7 @@ const Navbar = () => {
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                     </label>
                     <ul tabindex="0" className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-                        <li><>Item 1</></li>
+                        <li><Link to="/">Item 1</Link></li>
                         <li tabindex="0">
                             <Link to="/" className="justify-between">
                                 Parent
@@ -47,6 +47,8 @@ const Navbar = () => {
                             <li><Link to="/" className='pt-0'>Employer Events</Link></li>
                             <li><Link to="/" className='pt-0'>Client Success Case</Link></li>
                             <li><Link to="/" className='pt-0'>Salary guide</Link></li>
+                            <li><Link to="/LogIns" className='pt-0'>LogIns</Link></li>
+                            
                         </ul>
                     </li>
 

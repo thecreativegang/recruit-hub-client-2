@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <div>
 
-      <footer className="footer py-10 flex justify-between  bg-white-200 text-info-content">
+      <footer className="footer py-10 flex justify-between flex-wrap bg-white-200 text-info-content">
         <div>
           <span className="footer-title text-xl">Services</span>
           <Link to="/" className="link link-hover">Web Development</Link>

@@ -93,12 +93,12 @@ const Login = () => {
                                         <div className='flex flex-col md:flex-row-reverse xs:gap-3 xs:my-0 justify-between'>
                                             <div >
                                                 <label className="my-2">
-                                                    <button onClick={() => setForgetPass(!forgetPass)} className=" hover:text-accent font-semibold text-lg"><span >Forgot password?</span></button>
+                                                    <button onClick={() => setForgetPass(!forgetPass)} className=" hover:text-primary font-semibold text-lg"><span >Forgot password?</span></button>
                                                 </label>
                                             </div>
                                             <div>
                                                 <label className="">
-                                                    <Link to="/register" className=" pointer hover:text-accent font-semibold  text-lg">New here? Sign Up
+                                                    <Link to="/register" className=" pointer hover:text-primary font-semibold  text-lg">New here? Sign Up
                                                     </Link>
                                                 </label>
                                             </div>
@@ -124,9 +124,9 @@ const Login = () => {
                                     {
                                         loading
                                             ?
-                                            <button type="submit" className="  btn btn-primary text-white font-bold text-lg loading text-white">Login</button>
+                                            <button type="submit" className="  btn btn-primary font-bold text-lg loading text-white">Login</button>
                                             :
-                                            <button type="submit" className="  btn btn-primary text-white font-bold text-lg text-white">Login</button>
+                                            <button type="submit" className="  btn btn-primary  font-bold text-lg text-white">Login</button>
                                     }
                                 </div>
 

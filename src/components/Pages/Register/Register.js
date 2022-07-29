@@ -207,7 +207,7 @@ const Register = () => {
                                     </label>
 
                                     <label>
-                                        <Link to="/login" className=" pointer hover:text-accent font-semibold text-xl">Already have an account? Login
+                                        <Link to="/login" className=" pointer hover:text-primary font-semibold text-xl">Already have an account? Login
                                         </Link>
                                     </label>
                                 </div>
@@ -215,9 +215,9 @@ const Register = () => {
                                     {
                                         loading
                                             ?
-                                            <button className="  btn btn-primary text-white font-bold text-lg text-white loading uppercase">Register</button>
+                                            <button className="  btn btn-primary  font-bold text-lg text-white loading uppercase">Register</button>
                                             :
-                                            <button className="  btn btn-primary text-white font-bold text-lg text-white uppercase">Register</button>
+                                            <button className="  btn btn-primary  font-bold text-lg text-white uppercase">Register</button>
 
                                     }
                                 </div>

@@ -7,6 +7,8 @@ import Register from './components/Pages/Register/Register';
 import Home from './components/Pages/Home/Home/Home';
 import Navbar from './components/Shared/Navbar/Navbar';
 import FooterBottomSection from './components/Shared/Footer/FooterBottomSection';
+import SignUp from './components/Pages/Register/SignUp';
+import AccountTypePage from './components/Pages/Register/AccountTypePage';
 import Profile from './components/Pages/Profile/Profile';
 
 function App() {
@@ -19,7 +21,9 @@ function App() {
         <Route path='/home' element={<Home />} />
         <Route path='/profile' element={<Profile></Profile>} />
         <Route path='/login' element={<Login />} />
-        <Route path='/Register' element={<Register />} />
+        <Route path='/register' element={<AccountTypePage />} />
+        <Route path='/register/:accType' element={<Register />} />
+        <Route path='/signup' element={<SignUp />}></Route>
       </Routes>
       <FooterBottomSection />
       <ToastContainer

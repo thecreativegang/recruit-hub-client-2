@@ -47,7 +47,7 @@ const Login = () => {
         signInWithEmailAndPassword(email, password);
     };
     return (
-        <div >
+        <div className='my-10'>
             <div className=" flex justify-center items-center pt-20">
                 <div className=" md:w-1/4 flex-col lg:flex-row-reverse">
                     <div className="card flex-shrink-0 w-full  shadow-2xl bg-base-100">

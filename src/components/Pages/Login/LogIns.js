@@ -41,7 +41,18 @@ const LogIns = () => {
           <label for="login-modal" class="btn btn-primary">Login</label>
         </div>
 
-       
+        <div className="flex flex-col w-full border-opacity-50">
+        
+        <p>New to Recruit Hub? <Link className='text-primary' to="/signup"> Create New Account</Link></p>
+                                    <div className="divider">OR</div>
+                                </div>
+                                <div className="form-control ">
+                                <button className="btn btn-outline btn-primary"> <img src={google} className='mx-2' alt="" /> Continue With Google</button>
+                                </div>
+
+                                <div className="form-control ">
+                                <button className="btn btn-outline btn-primary"> <img src={linkedin} className='mx-2' alt="" /> Continue With LinkedIn</button>
+                                </div>
       </div>
     </div>                    
     </div>

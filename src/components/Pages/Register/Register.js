@@ -11,6 +11,8 @@ import { sendEmailVerification } from 'firebase/auth';
 import axios from 'axios';
 import { useRef } from 'react';
 import { toast } from 'react-toastify';
+import googleLogo from '../../../images/google.png';
+
 
 const Register = () => {
 
@@ -97,35 +99,6 @@ const Register = () => {
                     else {
                         setUsernameAvailable(false)
 
-<<<<<<< HEAD
-                        }
-                    })
-                    .then(function (error) {
-                        toast.error((error?.message))
-                    })
-                :
-                setUsernameAvailable(null)
-        }
-        // 
-        return (
-            <div>
-                <div className=" flex justify-center items-center pt-20">
-                    <div className=" md:w-1/4 flex-col lg:flex-row-reverse">
-                        <div className="card flex-shrink-0 w-full  shadow-2xl bg-base-100">
-                            <form onSubmit={handleSubmit(onSubmit)}>
-                                <div className="card-body">
-                                    <h1 className='text-5xl font-bold text-center mb-10'>Register</h1>
-                                    <select name="" id="">
-                                        <option value="Abc">Abc</option>
-                                        <option value="Abc">Def</option>
-                                    </select>
-                                    {/* userName of user  */}
-                                    <div className="form-control mb-">
-                                        <label className="label">
-                                            <span className="label-text text-xl">Choose a username</span>
-                                        </label>
-                                        <input onBlur={(e) => handleUserNameValidation(e.target.value)} onKeyUp={(e) => handleUserNameValidation(e.target.value)} ref={usernameRef} type="text" placeholder="Your Name" className="input input-bordered text-xl" {...register("username",
-=======
                     }
                 })
                 .then(function (error) {
@@ -137,7 +110,7 @@ const Register = () => {
 
     return (
         <div>
-            <div className=" flex justify-center items-center pt-20">
+            <div className=" flex justify-center items-center pt-20 my-10">
                 <div className=" md:w-1/4 flex-col lg:flex-row-reverse">
                     <div className="card flex-shrink-0 w-full  shadow-2xl bg-base-100">
                         <form onSubmit={handleSubmit(onSubmit)}>
@@ -178,7 +151,6 @@ const Register = () => {
                                     </label>
                                     <input type="text" placeholder="Email" className="input input-bordered text-xl"
                                         {...register("email",
->>>>>>> a14537fe8523189b82afdb3bb1042fecbfad6426
                                             { required: true })} />
                                 </div>
 
@@ -253,7 +225,7 @@ const Register = () => {
                                     <div className="divider">OR</div>
                                 </div>
                                 <div className="form-control ">
-                                    <button onClick={() => signInWithGoogle()} className="btn   hover:text-white  font-bold text-lg bg-zinc-600 text-white">Continue With Google</button>
+                                    <button onClick={() => signInWithGoogle()} className="btn bg-white text-black  hover:text-white  font-bold text-lg hover:bg-zinc-600"> <img src={googleLogo} alt="" /> &nbsp; Continue With Google</button>
                                 </div>
                             </div>
                         </form>

@@ -21,7 +21,14 @@ const SignUp = () => {
             
                 <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                   <div class="card-body">
+                  <div className="form-control ">
+                                            <button className="btn btn-outline btn-primary"> <img src={google} className='mx-2' alt="" /> Continue With Google</button>
+                                            </div>
             
+                                            <div className="form-control ">
+                                            <button className="btn btn-outline btn-primary"> <img src={linkedin} className='mx-2' alt="" /> Continue With LinkedIn</button>
+                                            </div>
+                  <div className="divider">OR</div>
                  
                     <div class="form-control">
                       <label class="label">
@@ -59,12 +66,10 @@ const SignUp = () => {
                     <div class="form-control mt-6 modal-action">
                       <label for="signup-modal" class="btn btn-primary">Sign up</label>
                     </div>
-            
+                    
                     <div className="flex flex-col w-full border-opacity-50">
                     <p>Already have an account? <Link className='text-primary' to="/logins">login here</Link></p>
-                    </div>
-            
-                                         
+                    </div>                     
                   </div>
                 </div>                    
                 </div>

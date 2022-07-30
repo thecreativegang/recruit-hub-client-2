@@ -12,6 +12,7 @@ import axios from 'axios';
 import { useRef } from 'react';
 import { toast } from 'react-toastify';
 import googleLogo from '../../../images/google.png';
+import { data } from 'autoprefixer';
 
 
 const Register = () => {
@@ -33,30 +34,33 @@ const Register = () => {
     const [sendEmailVerification, sending, verificationerror] = useSendEmailVerification(auth);
     const [usernameAvailable, setUsernameAvailable] = useState(null);
     let currentUser;
-    const usernameRef = useRef();
+    let username = '';
     //Token
     const onSubmit = async (data) => {
-
-        // check if username is available or not
-        // 
-        await sendEmailVerification(); // Send Verification Email
-        // const displayName = data.name;
-        // const email = data.email;
-        // const password = data.password;
-        // await createUserWithEmailAndPassword(email, password);  // create user
-        // await updateProfile({ displayName }) //Update Display Name
-    };
-    // const [token] = useToken(user || gUser)
-    // if (gUser || user) {
-    //     console.log(gUser || user);
-
-    // }
-    if (user) {
-        currentUser = {
-            email: user.email,
+        if (data.password === data.confirmPassword) {
+            username = data.username
+            await sendEmailVerification(); // Send Verification Email
+            const displayName = data.name;
+            const email = data.email;
+            const password = data.password;
+            await createUserWithEmailAndPassword(email, password);  // create user
+            await updateProfile({ displayName }) //Update Display Name
+        }
+        else {
 
         }
+    };
+
+    useEffect(() => {
+        console.log(globalUser)
+    }, [globalUser])
+    if (globalUser) {
+        currentUser = {
+            email: globalUser?.email,
+            username: username
+        }
     }
+
     const token = useToken(currentUser)
     useEffect(() => {
         if (token) {
@@ -115,8 +119,14 @@ const Register = () => {
                                     <label className="label">
                                         <span className="label-text text-xl">Choose a username</span>
                                     </label>
-                                    <input onBlur={(e) => handleUserNameValidation(e.target.value)} onKeyUp={(e) => handleUserNameValidation(e.target.value)} ref={usernameRef} type="text" placeholder="Your Name" className="input input-bordered text-xl lowercase" {...register("username",
-                                        { required: true })} />
+                                    <input
+                                        onBlur={(e) => handleUserNameValidation(e.target.value)}
+                                        onKeyUp={(e) => handleUserNameValidation(e.target.value)}
+                                        type="text"
+                                        placeholder="Your Name"
+                                        className="input input-bordered text-xl lowercase"
+                                        {...register("username",
+                                            { required: true })} />
                                     {
                                         usernameAvailable === true
                                         &&
@@ -134,14 +144,21 @@ const Register = () => {
                                     <label className="label">
                                         <span className="label-text text-xl">Name</span>
                                     </label>
-                                    <input type="text" placeholder="Your Name" className="input input-bordered text-xl" {...register("name",
-                                        { required: true })} />
+                                    <input
+                                        type="text"
+                                        placeholder="Your Name"
+                                        className="input input-bordered text-xl"
+                                        {...register("name",
+                                            { required: true })} />
                                 </div>
                                 <div className="form-control mb-">
                                     <label className="label">
                                         <span className="label-text text-xl">Email</span>
                                     </label>
-                                    <input type="text" placeholder="Email" className="input input-bordered text-xl"
+                                    <input
+                                        type="text"
+                                        placeholder="Email"
+                                        className="input input-bordered text-xl"
                                         {...register("email",
                                             { required: true })} />
                                 </div>
@@ -153,11 +170,16 @@ const Register = () => {
                                     </label>
                                     <input type="text" placeholder="Email" className="hidden input input-bordered text-xl"
                                     />
-                                    <input value={passwordBar} type={showPassword ? "text" : "password"} placeholder="Input Password" name='password' className="  input input-bordered text-xl" {...register("password",
-                                        {
-                                            required: true,
-                                            // pattern: /^(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9!@#$%^&*]{6,16}$/,
-                                        })}
+                                    <input
+                                        value={passwordBar}
+                                        type={showPassword ? "text" : "password"} placeholder="Input Password"
+                                        name='password'
+                                        className="  input input-bordered text-xl"
+                                        {...register("password",
+                                            {
+                                                required: true,
+                                                // pattern: /^(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9!@#$%^&*]{6,16}$/,
+                                            })}
                                         onChange={(e) => setPasswordBar(e.target.value)}
                                     />
 
@@ -167,11 +189,15 @@ const Register = () => {
                                     </label>
                                     <input type="text" placeholder="Email" className="hidden input input-bordered text-xl"
                                     />
-                                    <input type={showPassword ? "text" : "password"} placeholder="Confirm Password" name='password' className="  input input-bordered text-xl" {...register("confirm-password",
-                                        {
-                                            required: true,
-                                            // pattern: /^(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9!@#$%^&*]{6,16}$/,
-                                        })}
+                                    <input
+                                        type={showPassword ? "text" : "password"}
+                                        placeholder="Confirm Password" name='password'
+                                        className="  input input-bordered text-xl"
+                                        {...register("confirmPassword",
+                                            {
+                                                required: true,
+                                                // pattern: /^(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9!@#$%^&*]{6,16}$/,
+                                            })}
                                         onChange={(e) => setPasswordBar(e.target.value)}
                                     />
 

@@ -109,16 +109,18 @@ const Navbar = () => {
                     {/*  */}
                     <div hidden={navbarIconDropdown} className="absolute bg-white top-10 border border-zinc-300 rounded-lg right-0">
                         <ul className='child:px-5 child:py-1 child:text-xl  '>
-                            <li className='hover:bg-primary hover:text-white'><Link to='/'>Profile</Link></li>
+                            <li className='hover:bg-primary hover:text-white '><Link to='/' className='text-base'>Profile</Link></li>
                             {
                                 user
                                     ?
-                                    <li className='hover:bg-primary hover:text-white'><button onClick={() => handleSignOut()}>SignOut</button></li>
+                                    <li className='hover:bg-primary hover:text-white '><button onClick={() => handleSignOut()} className="text-base">Signout</button></li>
                                     :
-                                    <li className='hover:bg-primary hover:text-white'><Link to='/login'>Login</Link></li>
+                                    <>
+                                        <li className='hover:bg-primary hover:text-white '><Link to='/login' className='text-base'>Login</Link></li>
+                                        <li className='hover:bg-primary hover:text-white '><Link to='/register ' className='text-base'>Register</Link></li>
 
+                                    </>
                             }
-                            <li className='hover:bg-primary hover:text-white'><Link to='/register'>Register</Link></li>
                         </ul>
                     </div>
 

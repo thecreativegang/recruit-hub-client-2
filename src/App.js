@@ -10,6 +10,7 @@ import FooterBottomSection from './components/Shared/Footer/FooterBottomSection'
 import SignUp from './components/Pages/Register/SignUp';
 import AccountTypePage from './components/Pages/Register/AccountTypePage';
 import Profile from './components/Pages/Profile/Profile';
+import RequireUsername from './components/Shared/RequireUsername';
 
 function App() {
   return (
@@ -17,8 +18,14 @@ function App() {
       {/*  */}
       <Navbar />
       <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/home' element={<Home />} />
+
+        <Route path='/' element={
+          <RequireUsername>
+            <Home />
+          </RequireUsername>
+        } />
+
+        {/* <Route path='/home' element={<Home />} /> */}
         <Route path='/profile' element={<Profile></Profile>} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<AccountTypePage />} />

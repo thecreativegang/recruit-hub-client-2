@@ -5,18 +5,24 @@ const useToken = async (currentUser) => {
     const [token, setToken] = useState('');
     const email = currentUser?.email;
     const user = {
-        email: currentUser?.email
+        email: currentUser?.email,
+        username: currentUser?.username
     };
+    console.log(user)
     useEffect(() => {
         if (email) {
-            const targetUrl = 'http://localhost:3001/user'
+            console.log('Inside uef')
+            const targetUrl = 'http://localhost:3001/user/create'
             axios.post(targetUrl, user)
                 .then(data => {
+                    console.log(data)
                     setToken(data.data.accessToken);
                     localStorage.setItem('accessToken', data.data.accessToken);
                 })
-                .then(function (error) {
-                    toast.error((error?.message))
+                .then(function (err) {
+                    if (err) {
+                        console.log(err)
+                    }
                 })
         }
 

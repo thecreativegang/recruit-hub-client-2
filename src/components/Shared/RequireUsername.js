@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
+import AskForUsername from './AskForUsername';
 
 const RequireUsername = ({ children }) => {
     const [hasUsername, setHasUsername] = useState(false);
@@ -38,6 +39,9 @@ const RequireUsername = ({ children }) => {
     if (user) {
         if (hasUsername) {
             return children
+        }
+        else {
+            return <AskForUsername />
         }
     }
     else {

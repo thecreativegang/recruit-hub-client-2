@@ -17,7 +17,6 @@ import googleLogo from '../../../images/google.png';
 const Register = () => {
 
     const { accType } = useParams();
-    console.log(accType)
     const [globalUser] = useAuthState(auth);
     const navigate = useNavigate();
     const [
@@ -39,11 +38,7 @@ const Register = () => {
     const onSubmit = async (data) => {
 
         // check if username is available or not
-        axios.post(`http://localhost:3001/check-username`)
-            .then(data => console.log(data))
-            .then(function (error) {
-                toast.error((error?.message))
-            })
+        // 
         await sendEmailVerification(); // Send Verification Email
         // const displayName = data.name;
         // const email = data.email;
@@ -87,12 +82,10 @@ const Register = () => {
         return <Loading />
     }
     const handleUserNameValidation = async (username) => {
-        console.log(username)
         username !== ''
             ?
-            await axios.post(`http://localhost:3001/check-username/${username || ''}`)
+            await axios.post(`http://localhost:3001/user/check-username/${username || ''}`)
                 .then(data => {
-                    console.log(data)
                     if ((data.data.isAvailable)) {
                         setUsernameAvailable(true)
                     }
@@ -122,7 +115,7 @@ const Register = () => {
                                     <label className="label">
                                         <span className="label-text text-xl">Choose a username</span>
                                     </label>
-                                    <input onBlur={(e) => handleUserNameValidation(e.target.value)} onKeyUp={(e) => handleUserNameValidation(e.target.value)} ref={usernameRef} type="text" placeholder="Your Name" className="input input-bordered text-xl" {...register("username",
+                                    <input onBlur={(e) => handleUserNameValidation(e.target.value)} onKeyUp={(e) => handleUserNameValidation(e.target.value)} ref={usernameRef} type="text" placeholder="Your Name" className="input input-bordered text-xl lowercase" {...register("username",
                                         { required: true })} />
                                     {
                                         usernameAvailable === true
@@ -130,7 +123,6 @@ const Register = () => {
                                         <p className='text-green-500'>Username is available</p>
                                     }
                                     {
-
                                         usernameAvailable === false
                                         &&
                                         <p className='text-red-500'>Username is taken! Try another</p>

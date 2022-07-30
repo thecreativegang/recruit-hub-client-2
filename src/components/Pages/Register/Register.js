@@ -16,7 +16,7 @@ import googleLogo from '../../../images/google.png';
 
 const Register = () => {
 
-    const { accType } = useParams();
+    const accType = localStorage.getItem('accountType')
     const [globalUser] = useAuthState(auth);
     const navigate = useNavigate();
     const [

@@ -12,7 +12,7 @@ const useToken = async (currentUser) => {
     useEffect(() => {
         if (email) {
             console.log('Inside uef')
-            const targetUrl = 'http://localhost:3001/user/create'
+            const targetUrl = 'https://safe-oasis-01130.herokuapp.com/user/create'
             axios.post(targetUrl, user)
                 .then(data => {
                     console.log(data)

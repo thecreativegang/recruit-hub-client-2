@@ -10,7 +10,7 @@ const RequireUsername = ({ children }) => {
     const [user] = useAuthState(auth)
     useEffect(() => {
         if (user?.email) {
-            axios.get(`http://localhost:3001/user/${user?.email}`, {
+            axios.get(`https://safe-oasis-01130.herokuapp.com/user/${user?.email}`, {
                 headers: {
                     authorization: `Bearer ${localStorage.getItem('accessToken')}`,
                 }

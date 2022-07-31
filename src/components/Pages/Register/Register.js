@@ -88,7 +88,7 @@ const Register = () => {
     const handleUserNameValidation = async (username) => {
         username !== ''
             ?
-            await axios.post(`http://localhost:3001/user/check-username/${username || ''}`)
+            await axios.post(`https://safe-oasis-01130.herokuapp.com/user/check-username/${username}`)
                 .then(data => {
                     if ((data.data.isAvailable)) {
                         setUsernameAvailable(true)

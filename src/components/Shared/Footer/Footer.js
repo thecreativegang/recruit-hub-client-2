@@ -1,11 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import "./Footer.css"
 
 const Footer = () => {
   return (
-    <div>
+    <div className=''>
 
-      <footer className="footer py-10 flex justify-between  bg-white-200 text-info-content">
+      <footer className="footer py-10 flex justify-between flex-wrap bg-white-200 text-info-content dex ">
         <div>
           <span className="footer-title text-xl">Services</span>
           <Link to="/" className="link link-hover">Web Development</Link>

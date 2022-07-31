@@ -1,0 +1,32 @@
+.side-bar ul li:hover .sidebar-link {
+  color: #5956e9;
+  transition: all 0.1s;
+}
+
+.sidebar-link {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.code-test {
+  border-right: 1px solid black;
+}
+
+.test {
+  color: rgb(41, 46, 51);
+}
+
+
+
+/* button style  */
+.btn {
+  margin-top: 6px;
+  color: rgb(255, 255, 255);
+  padding: 12px;
+  border-radius: 3px;
+  font-size: 14px;
+  text-align: center;
+  cursor: pointer;
+  background-color: rgb(6, 117, 206);
+  border: 1px solid rgb(6, 117, 206);
+}

@@ -2,15 +2,23 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import './Profile.css'
 import { AiOutlineCloudUpload } from "react-icons/ai";
+import { useState } from 'react';
 
 
 const Profile = () => {
     const { register, handleSubmit } = useForm();
     const onSubmit = data => console.log(data);
+
+
+    const [checkboxValue, setCheckboxValue] = useState(false)
+
+
+
+
     return (
         <div>
             <div className=' flex relative z-[2]'>
-                
+
                 <div className="w-[20%] px-8 pt-20 bg-[#F2F2F2] h-screen side-bar fixed top-0 left-0">
                     <ul>
                         <li>
@@ -117,6 +125,235 @@ const Profile = () => {
 
 
 
+
+
+
+
+                    {/* Professional Overview */}
+                    <div className='my-10'>
+
+                        <div className='w-[732px] mx-auto '>
+                            <h2 className='text-4xl text-[#788894]'>Professional Overview</h2>
+                        </div>
+
+                        <div className='w-[732px] p-6 rounded-lg mt-4 mx-auto bg-white'>
+
+                            <div>
+                                {/* Select option  */}
+                                <div className='w-full pt-2 pr-4  mb-5'>
+                                    <label htmlFor="#">Which role best applies to your experience?</label>
+
+                                    <form onSubmit={handleSubmit(onSubmit)}>
+                                        <select {...register("gender")} className='border-2 rounded-md mt-1 px-2 py-2 text-base w-full'>
+                                            {/* <option selected="selected" value="">Select an option</option> */}
+                                            <option selected value="Select your education level">Select your education level</option>
+                                            <option value="hsc">High School</option>
+                                            <option value="u-bs">Unfinished Bachelor's degree</option>
+                                        </select>
+                                    </form>
+                                </div>
+
+                                {/* Select option  */}
+                                <div className='w-full pt-2 pr-4 mb-5'>
+                                    <label htmlFor="#">For how many years have you been working as an IT professional?</label>
+
+                                    <form onSubmit={handleSubmit(onSubmit)}>
+                                        <select {...register("gender")} className='border-2 rounded-md mt-1 px-2 py-2 text-base w-full'>
+                                            {/* <option selected="selected" value="">Select an option</option> */}
+                                            <option selected value="Select your education level">Select your education level</option>
+                                            <option value="hsc">High School</option>
+                                            <option value="u-bs">Unfinished Bachelor's degree</option>
+                                        </select>
+                                    </form>
+                                </div>
+
+                                <div className='flex items-center'>
+                                    <input className='w-5 h-5 mr-2' onChange={e => setCheckboxValue(e.target.checked)} type="checkbox" name="#" id="#" />
+                                    <span>I have leadership experience</span>
+                                </div>
+
+                                {/* Select option  */}
+                                {checkboxValue && <div className='pt-2 pr-4 mb-5 w-2/4 min-w-[300px] mt-3'>
+                                    <label className='font-semibold' htmlFor="#">Years of leadership</label>
+
+                                    <form onSubmit={handleSubmit(onSubmit)}>
+                                        <select {...register("gender")} className='border-2 rounded-md mt-1 px-2 py-2 text-base w-full'>
+                                            {/* <option selected="selected" value="">Select an option</option> */}
+                                            <option selected value="Select your education level">Select your education level</option>
+                                            <option value="hsc">High School</option>
+                                            <option value="u-bs">Unfinished Bachelor's degree</option>
+                                        </select>
+                                    </form>
+                                </div>}
+                            </div>
+
+
+                            {/* rank your top  */}
+                            <div className='my-6'>
+                                <h3 className='text-xl mb-1 '>Rank your top 3 skills</h3>
+                                <p className='text-gray-400'>1st = Highest proficiency level; 3rd = Lowest proficiency level</p>
+
+                                <div>
+
+                                    <div className='flex items-center mt-4'>
+                                        <p className='text-lg w-12'>1st</p>
+                                        <form className='flex items-center w-full' onSubmit={handleSubmit(onSubmit)}>
+                                            <select {...register("gender")} className='border-2 rounded-md mt-1 px-2 py-2 text-base w-full mr-3'>
+
+                                                <option selected value="Select your education level">Select your education level</option>
+                                                <option value="hsc">High School</option>
+                                                <option value="u-bs">Unfinished Bachelor's degree</option>
+                                            </select>
+
+                                            <select {...register("gender")} className='border-2 rounded-md mt-1 px-2 py-2 text-base w-full max-w-[200px]'>
+                                                <option selected value="Select your education level">Select your education level</option>
+                                                <option value="hsc">High School</option>
+                                                <option value="u-bs">Unfinished Bachelor's degree</option>
+                                            </select>
+                                        </form>
+                                    </div>
+
+                                    <div className='flex items-center mt-4'>
+                                        <p className='text-lg w-12'>2nd</p>
+                                        <form className='flex items-center w-full' onSubmit={handleSubmit(onSubmit)}>
+                                            <select {...register("gender")} className='border-2 rounded-md mt-1 px-2 py-2 text-base w-full mr-3'>
+
+                                                <option selected value="Select your education level">Select your education level</option>
+                                                <option value="hsc">High School</option>
+                                                <option value="u-bs">Unfinished Bachelor's degree</option>
+                                            </select>
+
+                                            <select {...register("gender")} className='border-2 rounded-md mt-1 px-2 py-2 text-base w-full max-w-[200px]'>
+                                                <option selected value="Select your education level">Select your education level</option>
+                                                <option value="hsc">High School</option>
+                                                <option value="u-bs">Unfinished Bachelor's degree</option>
+                                            </select>
+                                        </form>
+                                    </div>
+
+                                    <div className='flex items-center mt-4'>
+                                        <p className='text-lg w-12'>3rd</p>
+                                        <form className='flex items-center w-full' onSubmit={handleSubmit(onSubmit)}>
+                                            <select {...register("gender")} className='border-2 rounded-md mt-1 px-2 py-2 text-base w-full mr-3'>
+
+                                                <option selected value="Select your education level">Select your education level</option>
+                                                <option value="hsc">High School</option>
+                                                <option value="u-bs">Unfinished Bachelor's degree</option>
+                                            </select>
+
+                                            <select {...register("gender")} className='border-2 rounded-md mt-1 px-2 py-2 text-base w-full max-w-[200px]'>
+                                                <option selected value="Select your education level">Select your education level</option>
+                                                <option value="hsc">High School</option>
+                                                <option value="u-bs">Unfinished Bachelor's degree</option>
+                                            </select>
+                                        </form>
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+
+                            <div className='mt-10'>
+                                <h2 className='text-2xl text-gray-500'>Add 5 secondary skills</h2>
+
+                                <div>
+
+                                    <div className='flex items-center mt-4 border-b-2 border-gray-200'>
+                                        <form className='flex items-center w-full pb-2' onSubmit={handleSubmit(onSubmit)}>
+                                            <select {...register("gender")} className='border-2 rounded-md mt-1 px-2 py-2 text-base w-full mr-3'>
+
+                                                <option selected value="Select your education level">Select your education level</option>
+                                                <option value="hsc">High School</option>
+                                                <option value="u-bs">Unfinished Bachelor's degree</option>
+                                            </select>
+
+                                            <select {...register("gender")} className='border-2 rounded-md mt-1 px-2 py-2 text-base w-full max-w-[200px]'>
+                                                <option selected value="Select your education level">Select your education level</option>
+                                                <option value="hsc">High School</option>
+                                                <option value="u-bs">Unfinished Bachelor's degree</option>
+                                            </select>
+                                        </form>
+                                    </div>
+
+                                    <div className='flex items-center mt-4 border-b-2 border-gray-200'>
+                                        <form className='flex items-center w-full pb-2' onSubmit={handleSubmit(onSubmit)}>
+                                            <select {...register("gender")} className='border-2 rounded-md mt-1 px-2 py-2 text-base w-full mr-3'>
+
+                                                <option selected value="Select your education level">Select your education level</option>
+                                                <option value="hsc">High School</option>
+                                                <option value="u-bs">Unfinished Bachelor's degree</option>
+                                            </select>
+
+                                            <select {...register("gender")} className='border-2 rounded-md mt-1 px-2 py-2 text-base w-full max-w-[200px]'>
+                                                <option selected value="Select your education level">Select your education level</option>
+                                                <option value="hsc">High School</option>
+                                                <option value="u-bs">Unfinished Bachelor's degree</option>
+                                            </select>
+                                        </form>
+                                    </div>
+
+                                    <div className='flex items-center mt-4 border-b-2 border-gray-200'>
+                                        <form className='flex items-center w-full pb-2' onSubmit={handleSubmit(onSubmit)}>
+                                            <select {...register("gender")} className='border-2 rounded-md mt-1 px-2 py-2 text-base w-full mr-3'>
+
+                                                <option selected value="Select your education level">Select your education level</option>
+                                                <option value="hsc">High School</option>
+                                                <option value="u-bs">Unfinished Bachelor's degree</option>
+                                            </select>
+
+                                            <select {...register("gender")} className='border-2 rounded-md mt-1 px-2 py-2 text-base w-full max-w-[200px]'>
+                                                <option selected value="Select your education level">Select your education level</option>
+                                                <option value="hsc">High School</option>
+                                                <option value="u-bs">Unfinished Bachelor's degree</option>
+                                            </select>
+                                        </form>
+                                    </div>
+
+                                    <div className='flex items-center mt-4 border-b-2 border-gray-200'>
+                                        <form className='flex items-center w-full pb-2' onSubmit={handleSubmit(onSubmit)}>
+                                            <select {...register("gender")} className='border-2 rounded-md mt-1 px-2 py-2 text-base w-full mr-3'>
+
+                                                <option selected value="Select your education level">Select your education level</option>
+                                                <option value="hsc">High School</option>
+                                                <option value="u-bs">Unfinished Bachelor's degree</option>
+                                            </select>
+
+                                            <select {...register("gender")} className='border-2 rounded-md mt-1 px-2 py-2 text-base w-full max-w-[200px]'>
+                                                <option selected value="Select your education level">Select your education level</option>
+                                                <option value="hsc">High School</option>
+                                                <option value="u-bs">Unfinished Bachelor's degree</option>
+                                            </select>
+                                        </form>
+                                    </div>
+
+                                    <div className='flex items-center mt-4 border-b-2 border-gray-200'>
+                                        <form className='flex items-center w-full pb-2' onSubmit={handleSubmit(onSubmit)}>
+                                            <select {...register("gender")} className='border-2 rounded-md mt-1 px-2 py-2 text-base w-full mr-3'>
+
+                                                <option selected value="Select your education level">Select your education level</option>
+                                                <option value="hsc">High School</option>
+                                                <option value="u-bs">Unfinished Bachelor's degree</option>
+                                            </select>
+
+                                            <select {...register("gender")} className='border-2 rounded-md mt-1 px-2 py-2 text-base w-full max-w-[200px]'>
+                                                <option selected value="Select your education level">Select your education level</option>
+                                                <option value="hsc">High School</option>
+                                                <option value="u-bs">Unfinished Bachelor's degree</option>
+                                            </select>
+                                        </form>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+
                     {/* Resume & Social Profile */}
                     <div className='my-10'>
 
@@ -132,7 +369,7 @@ const Profile = () => {
                                 <div className='w-full'>
 
                                     <div className='flex justify-end'>
-                                        <button className='btn font-semibold text-right flex items-center'> <AiOutlineCloudUpload className='mr-1 text-2xl'/> UPLOAD RESUME</button>
+                                        <button className='btn font-semibold text-right flex items-center'> <AiOutlineCloudUpload className='mr-1 text-2xl' /> UPLOAD RESUME</button>
                                     </div>
 
                                     {/* Social link  */}
@@ -170,7 +407,7 @@ const Profile = () => {
                             {/* Select option -1  */}
                             <div className='w-full flex items-center justify-between pb-4'>
                                 <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-[65%]" >
-                                    <select {...register("gender")} className='border-2 rounded-md mt-1 px-2 py-1 text-base w-full'>
+                                    <select {...register("gender")} className='border-2 rounded-md mt-1 px-2 py-2 text-base w-full'>
                                         <option selected="selected" value="#">Select your Languages</option>
                                         <option value="hsc">English</option>
                                         <option value="u-bs">Bangla</option>
@@ -179,7 +416,7 @@ const Profile = () => {
 
                                 {/* Select option -2  */}
                                 <form onSubmit={handleSubmit(onSubmit)} className="min-w-[12.5rem] w-full max-w-[33%]"  >
-                                    <select {...register("gender")} className='border-2 rounded-md mt-1 px-2 py-1 text-base w-full'>
+                                    <select {...register("gender")} className='border-2 rounded-md mt-1 px-2 py-2 text-base w-full'>
                                         <option selected="selected" value="">Select an option</option>
                                         <option value="#">Basic</option>
                                         <option value="hsc">Intermediate</option>
@@ -222,12 +459,12 @@ const Profile = () => {
                             <p className='text-lg font-[500]'>Formal Education</p>
 
                             {/* Select option  */}
-                            <div className='w-full pt-2 pr-4  w-full max-w-[340px]'>
+                            <div className='w-full pt-2 pr-4 max-w-[340px]'>
                                 <label htmlFor="#">What is your educational level?</label>
 
                                 <form onSubmit={handleSubmit(onSubmit)}>
-                                    <select {...register("gender")} className='border-2 rounded-md mt-1 px-2 py-1 text-base'>
-                                    {/* <option selected="selected" value="">Select an option</option> */}
+                                    <select {...register("gender")} className='border-2 rounded-md mt-1 px-2 py-2 text-base'>
+                                        {/* <option selected="selected" value="">Select an option</option> */}
                                         <option selected value="Select your education level">Select your education level</option>
                                         <option value="hsc">High School</option>
                                         <option value="u-bs">Unfinished Bachelor's degree</option>

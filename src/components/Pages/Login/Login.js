@@ -124,12 +124,11 @@ const Login = () => {
                                     {
                                         loading
                                             ?
-                                            <button type="submit" className="  btn btn-primary font-bold text-lg loading text-white">Login</button>
+                                            <button className="btn btn-primary font-bold text-lg text-white loading uppercase">Login</button>
                                             :
-                                            <button type="submit" className="  btn btn-primary  font-bold text-lg text-white">Login</button>
+                                            <button className="btn btn-primary font-bold text-lg text-white  uppercase">Login</button>
                                     }
                                 </div>
-
                                 <div className="flex flex-col w-full border-opacity-50">
                                     <div className="divider">OR</div>
                                 </div>

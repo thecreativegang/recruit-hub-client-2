@@ -50,7 +50,6 @@ const Register = () => {
 
         }
     };
-
     useEffect(() => {
         console.log(globalUser)
     }, [globalUser])
@@ -60,13 +59,11 @@ const Register = () => {
             username: username
         }
     }
-
     const token = useToken(currentUser)
     useEffect(() => {
         if (token) {
 
             // navigate('/');
-
             //Uncomment Below Section to send email on new user creation
 
             // <SendEmail
@@ -74,13 +71,11 @@ const Register = () => {
             //     subject={"Account Registration"}
             //     text={"You account has been successfully registered in Nissan Parts. Thank you."}
             // ></SendEmail>
-
         }
     }, [token, navigate])
 
     if (error) {
         console.log(error);
-
     }
     if (updating || loading || sending || gLoading) {
         return <Loading />
@@ -95,7 +90,6 @@ const Register = () => {
                     }
                     else {
                         setUsernameAvailable(false)
-
                     }
                 })
                 .then(function (error) {
@@ -104,7 +98,6 @@ const Register = () => {
             :
             setUsernameAvailable(null)
     }
-
     return (
         <div>
             <div className=" flex justify-center items-center pt-20 my-10">

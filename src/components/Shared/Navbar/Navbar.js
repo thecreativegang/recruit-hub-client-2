@@ -37,8 +37,7 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <button className='flex font-bold text-2xl'>
-                    <img src={navLogo} alt="" />
-                    <span className='self-center px-1'>RecruitHub</span>
+                    <Link to='/'> <img src={`https://i.ibb.co/tcZBcsM/Recruit-hub-logo.jpg`} className="w-1/2" alt="" /></Link>
                 </button>
             </div>
 

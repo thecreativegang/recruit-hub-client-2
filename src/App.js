@@ -11,6 +11,7 @@ import SignUp from './components/Pages/Register/SignUp';
 import AccountTypePage from './components/Pages/Register/AccountTypePage';
 import Profile from './components/Pages/Profile/Profile';
 import RequireUsername from './components/Shared/RequireUsername';
+import Loading from './components/Shared/Loading';
 
 function App() {
   return (
@@ -25,12 +26,15 @@ function App() {
           </RequireUsername>
         } />
 
-        {/* <Route path='/home' element={<Home />} /> */}
+        <Route path='/home' element={<RequireUsername>
+          <Home />
+        </RequireUsername>} />
         <Route path='/profile' element={<Profile></Profile>} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<AccountTypePage />} />
         <Route path='/register/:accType' element={<Register />} />
         <Route path='/signup' element={<SignUp />}></Route>
+        <Route path='/lod' element={<Loading />}></Route>
       </Routes>
       <FooterBottomSection />
       <ToastContainer

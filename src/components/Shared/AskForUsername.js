@@ -21,7 +21,6 @@ const AskForUsername = () => {
                     }
                     else {
                         setUsernameAvailable(false)
-
                     }
                 })
                 .then(function (error) {
@@ -47,7 +46,6 @@ const AskForUsername = () => {
                         username: ''
                     })
                     setUsernameAvailable(null);
-
                 }
 
             })
@@ -88,10 +86,9 @@ const AskForUsername = () => {
                                 &&
                                 <p className='text-red-500'>Username is taken! Try another</p>
                             }
-
                         </div>
                         <div>
-                            <button type='submit' className='uppercase btn btn-primary text-white text-xl w-full mt-10'>Submit</button>
+                            <button className='uppercase btn btn-primary text-white text-xl w-full mt-10'>Submit</button>
                         </div>
                     </div>
                 </div>

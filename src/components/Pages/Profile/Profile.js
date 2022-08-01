@@ -28,8 +28,8 @@ const Profile = () => {
 
     return (
         <div>
-            <div className='grid grid-cols-5'>
-                <div className="side-bar pl-8 pt-8 bg-[#F2F2F2] h-screen">
+            <div className='grid grid-cols-5 relative;'>
+                <div className="side-bar pl-8 pt-8 sticky top-0 left-0 bg-[#F2F2F2] h-screen">
                     <ul>
                         <li>
                             <div className='flex py-[12px]'>
@@ -152,46 +152,8 @@ const Profile = () => {
 
                     </div>
 
-                    {/* professional */}
-                    <div className='w-[732px] mx-auto mt-12'>
-                        <div>
-                            <h1 className='text-[34px]  color-blue-dark mb-2'>General</h1>
-                        </div>
-                        <div className=' bg-white  p-6'>
-                            <form onSubmit={handleSubmit(onSubmit)}>
-                                <div>
-                                    <p className='label'>Country</p>
 
-                                    <select className='block w-full profile-form-border p-2 rounded-md' {...register("country")}>
-                                        <option selected="selected" value="">Select an option</option>
-                                        {
-                                            country?.map(c => <option value={c?.name}>{c?.name}</option>)
-                                        }
-                                    </select>
-                                </div>
-                                <div>
-                                    <p className='label'>Gender</p>
-                                    <select className='block w-full profile-form-border p-2 rounded-md' {...register("gender")}>
-                                        <option value="female">female</option>
-                                        <option value="male">male</option>
-                                        <option value="other">other</option>
-                                    </select>
-                                </div>
 
-                                <div>
-                                    <p className='label'>Phone number</p>
-                                    <input type='number' placeholder='Enter Your Phone Number' className='block w-full profile-form-border p-2 rounded-md' {...register("number")} />
-
-                                    <input className='block w-full profile-form-border p-2 rounded-md'
-                                        type="number"
-                                        {...register("number")}
-                                    />
-
-                                </div>
-                                <button type='submit' className='btn-primary-vlue mt-4'>Submit</button>
-                            </form>
-                        </div>
-                    </div>
                 </div>
 
 

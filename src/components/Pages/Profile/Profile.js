@@ -1,16 +1,36 @@
+
 import React from 'react';
+import { useState } from 'react';
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import './Profile.css'
 import { AiOutlineCloudUpload } from "react-icons/ai";
 
 
 const Profile = () => {
+    const [country, setCoutry] = useState([])
+
+
+    useEffect(() => {
+        fetch('country.json')
+            .then(res => res.json())
+            .then(data => setCoutry(data?.countries))
+    }, [])
+
+
+
+    country?.map(c => console.log(c?.name))
+
+
     const { register, handleSubmit } = useForm();
-    const onSubmit = data => console.log(data);
+    const onSubmit = async data => {
+        await console.log(data)
+    };
+
     return (
         <div>
             <div className=' flex relative z-[2]'>
-                
+
                 <div className="w-[20%] px-8 pt-20 bg-[#F2F2F2] h-screen side-bar fixed top-0 left-0">
                     <ul>
                         <li>
@@ -98,21 +118,42 @@ const Profile = () => {
                     </div>
 
                     {/* General */}
+
                     <div className='w-[732px] mx-auto mt-12'>
                         <div>
-                            <h1 className='text-[34px]  color-blue-dark'>General</h1>
+                            <h1 className='text-[34px]  color-blue-dark mb-2'>General</h1>
                         </div>
-                        <div className=' bg-white '>
+                        <div className=' bg-white  p-6'>
                             <form onSubmit={handleSubmit(onSubmit)}>
-                                <input {...register("firstName")} />
-                                <select {...register("gender")}>
-                                    <option value="female">female</option>
-                                    <option value="male">male</option>
-                                    <option value="other">other</option>
-                                </select>
-                                <input type="submit" />
+                                <div>
+                                    <p className='label'>Country</p>
+
+                                    <select className='block w-full profile-form-border p-2 rounded-md' {...register("country")}>
+                                        <option selected="selected" value="">Select an option</option>
+                                        {
+                                            country?.map(c => <option value={c?.name}>{c?.name}</option>)
+                                        }
+                                    </select>
+                                </div>
+                                <div>
+                                    <p className='label'>Gender</p>
+                                    <select className='block w-full profile-form-border p-2 rounded-md' {...register("gender")}>
+                                        <option value="female">female</option>
+                                        <option value="male">male</option>
+                                        <option value="other">other</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <p className='label'>Phone number</p>
+                                    <input placeholder='Enter Your Phone Number' className='block w-full profile-form-border p-2 rounded-md' {...register("number")} />
+
+                                </div>
+                                <button type='submit' className='btn-primary-vlue mt-4'>Submit</button>
                             </form>
                         </div>
+
+
                     </div>
 
 
@@ -132,7 +173,7 @@ const Profile = () => {
                                 <div className='w-full'>
 
                                     <div className='flex justify-end'>
-                                        <button className='btn font-semibold text-right flex items-center'> <AiOutlineCloudUpload className='mr-1 text-2xl'/> UPLOAD RESUME</button>
+                                        <button className='btn font-semibold text-right flex items-center'> <AiOutlineCloudUpload className='mr-1 text-2xl' /> UPLOAD RESUME</button>
                                     </div>
 
                                     {/* Social link  */}
@@ -227,7 +268,7 @@ const Profile = () => {
 
                                 <form onSubmit={handleSubmit(onSubmit)}>
                                     <select {...register("gender")} className='border-2 rounded-md mt-1 px-2 py-1 text-base'>
-                                    {/* <option selected="selected" value="">Select an option</option> */}
+                                        {/* <option selected="selected" value="">Select an option</option> */}
                                         <option selected value="Select your education level">Select your education level</option>
                                         <option value="hsc">High School</option>
                                         <option value="u-bs">Unfinished Bachelor's degree</option>

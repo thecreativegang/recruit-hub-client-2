@@ -53,7 +53,8 @@ const Register = () => {
     if (globalUser) {
         currentUser = {
             email: globalUser?.email,
-            username: username
+            username: username,
+            accountType: localStorage.getItem('accountType')
         }
     }
     const token = useToken(currentUser)

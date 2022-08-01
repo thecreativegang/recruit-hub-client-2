@@ -11,7 +11,6 @@ const Navbar = () => {
     const [navbarIconDropdown, setNavbarIconDropdown] = useState(true);
     const [user] = useAuthState(auth);
     const handleSignOut = () => {
-        toast.success('Logged out successfully')
         localStorage.removeItem('accessToken')
         signOut(auth);
     }

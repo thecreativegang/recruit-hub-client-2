@@ -20,14 +20,14 @@ const AccountTypePage = () => {
         if (type === 'developer') {
             setSelectedOptionDev('bg-primary text-white')
             setSelectedOptionRecruiter('border-2');
-            localStorage.setItem('accountType', 'Developer')
+            localStorage.setItem('accountType', 'developer')
             setError('');
             setErrorStyle('')
         }
         else if (type === 'recruiter') {
             setSelectedOptionDev('border-2')
             setSelectedOptionRecruiter('bg-primary text-white')
-            localStorage.setItem('accountType', 'Recruiter')
+            localStorage.setItem('accountType', 'recruiter')
             setError('');
             setErrorStyle('')
         }

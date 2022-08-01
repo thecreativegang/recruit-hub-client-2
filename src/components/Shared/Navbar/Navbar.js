@@ -15,11 +15,7 @@ const Navbar = () => {
         signOut(auth)
     }
     return (
-<<<<<<< HEAD
-        <div className="navbar  page-banner my-border-bottom ">
-=======
         <div className="navbar page-banner my-border-bottom my-container z-10 sticky top-0 bg-white  ">
->>>>>>> c04648fc16dcd498d73357335272d2382531025b
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabindex="0" className="btn btn-ghost lg:hidden">

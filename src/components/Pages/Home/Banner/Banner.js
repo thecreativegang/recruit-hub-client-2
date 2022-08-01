@@ -2,10 +2,11 @@ import React from 'react';
 import '../Home/Home.css';
 import heroImg from '../../../../images/hero-one-img-2.jpg'
 import bannerDot from '../../../../images/shape-1.png'
+import './Banner.css'
 
 const Banner = () => {
     return (
-        <div className='hero-banner-v1  my-container'>
+        <div className='hero-banner-v1  my-container page-banner'>
             <section className='grid lg:grid-cols-2 justify-items-center content-end lg:px-[5rem] mx-auto pt-[3rem]'>
 
                 <div className='lg:py-[4rem] '>

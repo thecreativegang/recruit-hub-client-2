@@ -10,6 +10,7 @@ import FooterBottomSection from './components/Shared/Footer/FooterBottomSection'
 import SignUp from './components/Pages/Register/SignUp';
 import AccountTypePage from './components/Pages/Register/AccountTypePage';
 import Profile from './components/Pages/Profile/Profile';
+import ChatPage from './components/Pages/ChatPage/ChatPage';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path='/register' element={<AccountTypePage />} />
         <Route path='/register/:accType' element={<Register />} />
         <Route path='/signup' element={<SignUp />}></Route>
+        <Route path='/chat' element={<ChatPage />}></Route>
       </Routes>
       <FooterBottomSection />
       <ToastContainer

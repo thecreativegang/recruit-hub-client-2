@@ -15,7 +15,7 @@ import ChatPage from './components/Pages/ChatPage/ChatPage';
 function App() {
   return (
     <div >
-      {/*  */}
+
       <Navbar />
       <Routes>
         <Route path='/' element={<Home />} />

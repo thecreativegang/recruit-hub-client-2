@@ -31,12 +31,7 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<AccountTypePage />} />
         <Route path='/register/:accType' element={<Register />} />
-<<<<<<< HEAD
-  <Route path='/lod' element={<Loading />}></Route>
-=======
-        <Route path='/signup' element={<SignUp />}></Route>
-        <Route path='/chat' element={<ChatPage />}></Route>
->>>>>>> 709aac5b414733eed8bd246f58579d5a322a7009
+        <Route path='/lod' element={<Loading />}></Route>
       </Routes >
       <FooterBottomSection />
       <ToastContainer

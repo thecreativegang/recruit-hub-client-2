@@ -2,7 +2,6 @@ import React from 'react';
 import navLogo from '../../../images/logo.png';
 import './Navbar.css'
 import { Link } from 'react-router-dom';
-<<<<<<< HEAD
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import { signOut } from 'firebase/auth';
@@ -15,10 +14,6 @@ const Navbar = () => {
         localStorage.removeItem('accessToken')
         signOut(auth);
     }
-=======
-
-const Navbar = () => {
->>>>>>> 709aac5b414733eed8bd246f58579d5a322a7009
     return (
 
         <div className="navbar page-banner my-border-bottom my-container z-10 sticky top-0 bg-white  ">
@@ -110,7 +105,6 @@ const Navbar = () => {
                         <div className='w-2 h-2  bg-white rounded'></div>
                     </div>
 
-<<<<<<< HEAD
                     {/*  */}
                     <div hidden={navbarIconDropdown} className="absolute bg-white top-10 border border-zinc-300 rounded-lg right-0">
                         <ul className='child:px-5 child:py-1 child:text-xl  '>
@@ -128,9 +122,6 @@ const Navbar = () => {
                             }
                         </ul>
                     </div>
-=======
-
->>>>>>> 709aac5b414733eed8bd246f58579d5a322a7009
 
 
 

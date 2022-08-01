@@ -9,12 +9,8 @@ import Navbar from './components/Shared/Navbar/Navbar';
 import FooterBottomSection from './components/Shared/Footer/FooterBottomSection';
 import AccountTypePage from './components/Pages/Register/AccountTypePage';
 import Profile from './components/Pages/Profile/Profile';
-<<<<<<< HEAD
 import RequireUsername from './components/Shared/RequireUsername';
 import Loading from './components/Shared/Loading';
-=======
-import ChatPage from './components/Pages/ChatPage/ChatPage';
->>>>>>> 709aac5b414733eed8bd246f58579d5a322a7009
 
 function App() {
   return (
@@ -36,17 +32,17 @@ function App() {
         <Route path='/register' element={<AccountTypePage />} />
         <Route path='/register/:accType' element={<Register />} />
 <<<<<<< HEAD
-        <Route path='/lod' element={<Loading />}></Route>
+  <Route path='/lod' element={<Loading />}></Route>
 =======
         <Route path='/signup' element={<SignUp />}></Route>
         <Route path='/chat' element={<ChatPage />}></Route>
 >>>>>>> 709aac5b414733eed8bd246f58579d5a322a7009
-      </Routes>
+      </Routes >
       <FooterBottomSection />
       <ToastContainer
         autoClose={1500}
       />
-    </div>
+    </div >
   );
 }
 

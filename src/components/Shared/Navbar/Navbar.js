@@ -5,7 +5,9 @@ import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     return (
-        <div className="navbar  my-container  my-border-bottom ">
+
+        <div className="navbar page-banner my-border-bottom my-container z-10 sticky top-0 bg-white  ">
+
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabindex="0" className="btn btn-ghost lg:hidden">

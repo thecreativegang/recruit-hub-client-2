@@ -7,7 +7,6 @@ import Register from './components/Pages/Register/Register';
 import Home from './components/Pages/Home/Home/Home';
 import Navbar from './components/Shared/Navbar/Navbar';
 import FooterBottomSection from './components/Shared/Footer/FooterBottomSection';
-import SignUp from './components/Pages/Register/SignUp';
 import AccountTypePage from './components/Pages/Register/AccountTypePage';
 import Profile from './components/Pages/Profile/Profile';
 import RequireUsername from './components/Shared/RequireUsername';
@@ -16,7 +15,6 @@ import Loading from './components/Shared/Loading';
 function App() {
   return (
     <div >
-      {/*  */}
       <Navbar />
       <Routes>
 
@@ -33,7 +31,6 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<AccountTypePage />} />
         <Route path='/register/:accType' element={<Register />} />
-        <Route path='/signup' element={<SignUp />}></Route>
         <Route path='/lod' element={<Loading />}></Route>
       </Routes>
       <FooterBottomSection />

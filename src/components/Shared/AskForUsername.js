@@ -5,33 +5,44 @@ import { toast } from 'react-toastify';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from './../../firebase.init';
 import { useNavigate } from 'react-router-dom';
+import Loading from './Loading';
 
 const AskForUsername = () => {
     const [user] = useAuthState(auth)
     const navigate = useNavigate();
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const [usernameAvailable, setUsernameAvailable] = useState(null);
+    const [loading, setLoading] = useState(false);
     const handleUserNameValidation = async (username) => {
         username !== ''
             ?
-            await axios.post(`https://safe-oasis-01130.herokuapp.com/user/check-username/${username || ''}`)
-                .then(data => {
-                    if ((data.data.isAvailable)) {
-                        setUsernameAvailable(true)
-                    }
-                    else {
-                        setUsernameAvailable(false)
-                    }
-                })
-                .then(function (error) {
-                    toast.error((error?.message))
-                })
+            <>
+                {setLoading(true)}
+                {
+                    axios.post(`https://safe-oasis-01130.herokuapp.com/user/check-username/${username || ''}`)
+                        .then(data => {
+                            if ((data.data.isAvailable)) {
+                                setUsernameAvailable(true)
+                            }
+                            else {
+                                setUsernameAvailable(false)
+                            }
+                        })
+                        .then(function (error) {
+                            toast.error((error?.message))
+                        })
+
+                }
+                {
+                    setLoading(false)
+                }
+            </>
             :
             setUsernameAvailable(null)
     }
 
     const onSubmit = async (data) => {
-        console.log(data)
+
         axios.post(`https://safe-oasis-01130.herokuapp.com/user/username`, data, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`,
@@ -54,6 +65,9 @@ const AskForUsername = () => {
                     console.log(err)
                 }
             })
+    }
+    if (loading) {
+        return <Loading />
     }
     return (
         <div className="h-[100vh] ">

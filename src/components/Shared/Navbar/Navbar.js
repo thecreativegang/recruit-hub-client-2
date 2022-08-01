@@ -5,14 +5,15 @@ import { Link } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import { signOut } from 'firebase/auth';
+import { toast } from 'react-toastify';
 
 const Navbar = () => {
     const [navbarIconDropdown, setNavbarIconDropdown] = useState(true);
     const [user] = useAuthState(auth);
-
     const handleSignOut = () => {
+        toast.success('Logged out successfully')
         localStorage.removeItem('accessToken')
-        signOut(auth)
+        signOut(auth);
     }
     return (
         <div className="navbar  page-banner my-border-bottom ">

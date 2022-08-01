@@ -50,9 +50,6 @@ const Register = () => {
 
         }
     };
-    useEffect(() => {
-        console.log(globalUser)
-    }, [globalUser])
     if (globalUser) {
         currentUser = {
             email: globalUser?.email,
@@ -60,19 +57,19 @@ const Register = () => {
         }
     }
     const token = useToken(currentUser)
-    useEffect(() => {
-        if (token) {
+    // useEffect(() => {
+    //     if (token) {
 
-            // navigate('/');
-            //Uncomment Below Section to send email on new user creation
+    //         // navigate('/');
+    //         //Uncomment Below Section to send email on new user creation
 
-            // <SendEmail
-            //     user={primaryUser}
-            //     subject={"Account Registration"}
-            //     text={"You account has been successfully registered in Nissan Parts. Thank you."}
-            // ></SendEmail>
-        }
-    }, [token, navigate])
+    //         // <SendEmail
+    //         //     user={primaryUser}
+    //         //     subject={"Account Registration"}
+    //         //     text={"You account has been successfully registered in Nissan Parts. Thank you."}
+    //         // ></SendEmail>
+    //     }
+    // }, [token, navigate])
 
     if (error) {
         console.log(error);

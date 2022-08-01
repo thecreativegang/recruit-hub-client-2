@@ -5,7 +5,7 @@ import auth from '../../firebase.init';
 import AskForUsername from './AskForUsername';
 
 const RequireUsername = ({ children }) => {
-    const [hasUsername, setHasUsername] = useState(false);
+    const [hasUsername, setHasUsername] = useState(true);
     console.log(children)
     const [user] = useAuthState(auth)
     useEffect(() => {
@@ -18,12 +18,12 @@ const RequireUsername = ({ children }) => {
                 .then(function (res) {
                     console.log(res.data.status)
                     if (res.status === 200) {
-                        if (res?.data?.userInfo[0]?.username !== '') {
-                            setHasUsername(true);
+                        if (res?.data?.userInfo[0]?.username === '') {
+                            setHasUsername(false)
                         }
                     }
                     else {
-                        setHasUsername(false)
+                        setHasUsername(true);
                     }
                 })
                 .then(function (error) {

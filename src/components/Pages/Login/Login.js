@@ -13,25 +13,35 @@ const Login = () => {
     const [passwordError, setPasswordError] = useState('');
     const location = useLocation();
     const from = location?.state?.from?.pathname || '/';
-    const [currentUser, setCurrentUser] = useState({});
+    let currentUser;
+    let username = '';
+
     // React hook forms element
     const { register, formState: { errors }, handleSubmit } = useForm();
-
     // Error State
     const navigate = useNavigate();
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
     const [
         signInWithEmailAndPassword,
-        user,
         loading,
         error,
     ] = useSignInWithEmailAndPassword(auth);
 
-
     // globalUser is [user]= useAuthState(auth)
     const [showPassword, setShowPassword] = useState(false);
-    const token = useToken(globalUser);
     const tokenInLStorage = localStorage.getItem('accessToken');
+
+
+
+    if (globalUser) {
+        currentUser = {
+            email: globalUser?.email,
+            username: username
+        }
+    }
+
+    console.log('token before const token', currentUser)
+    const token = useToken(currentUser)
     useEffect(() => {
         if ((tokenInLStorage + "").length > 4) {
             navigate(from, { replace: true });
@@ -41,7 +51,6 @@ const Login = () => {
     if (loading || gLoading) {
         return <Loading></Loading>
     }
-
     const onSubmit = data => {
         const email = data.email;
         const password = data.password;
@@ -106,7 +115,6 @@ const Login = () => {
 
                                     </div>
                                 </div>
-
                                 {/* Error Shows here */}
                                 <div>
                                     {
@@ -117,7 +125,7 @@ const Login = () => {
 
                                     }
                                     {
-                                        error && <p className='text-red-500 font-bold'>{error.message.slice(9)}</p>
+                                        error && <p className='text-red-500 font-bold'>{error?.message?.slice(9)}</p>
                                     }
                                 </div>
                                 <div className="form-control mt-6">

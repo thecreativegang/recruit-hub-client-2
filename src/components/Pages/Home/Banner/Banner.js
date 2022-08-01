@@ -6,14 +6,8 @@ import './Banner.css'
 
 const Banner = () => {
     return (
-<<<<<<< HEAD
         <div className='hero-banner-v1  my-container'>
             <section className='grid lg:grid-cols-2 justify-items-center content-end lg:px-[5rem] mx-auto pt-[3rem] items-center'>
-=======
-        <div className='hero-banner-v1  my-container page-banner'>
-            <section className='grid lg:grid-cols-2 justify-items-center content-end lg:px-[5rem] mx-auto pt-[3rem]'>
-
->>>>>>> 709aac5b414733eed8bd246f58579d5a322a7009
                 <div className='lg:py-[4rem] '>
                     {/* <img src={bannerDot} alt="" /> */}
                     <h1 className="lg:text-6xl text-4xl font-bold">Brand, Design & Development Agency</h1>

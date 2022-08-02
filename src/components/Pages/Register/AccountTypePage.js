@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import Register from './Register';
 import { useNavigate } from 'react-router-dom';
 
-const AccountTypePage = () => {
+const AccountTypePage = ({ type }) => {
     const [selectedOptionDev, setSelectedOptionDev] = useState('border-2');
     const [selectedOptionRecruiter, setSelectedOptionRecruiter] = useState('border-2');
 
@@ -35,6 +35,17 @@ const AccountTypePage = () => {
     }
     const handleNavigateLogin = () => {
         if (localStorage.getItem('accountType') !== '') {
+            if (type !== 'googleSignIn') {
+                navigate(`/register/${localStorage.getItem('accountType')}`)
+            }
+        }
+        else {
+            setError('Select an Option');
+            setErrorStyle('border-2 border-red-500 p-2  rounded-lg')
+        }
+    }
+    const handleNavigateToRegister = () => {
+        if (localStorage.getItem('accountType') !== '') {
             navigate(`/register/${localStorage.getItem('accountType')}`)
         }
         else {
@@ -45,7 +56,7 @@ const AccountTypePage = () => {
     return (
         <div className='h-[100vh] '>
             <div className='flex justify-center  justify-items-center mt-20'>
-                <div class="card md:w-1/5 w-full bg-base-100 shadow-xl h-fit">
+                <div class="card  md:w-1/5 w-full bg-base-100 shadow-xl h-fit">
 
                     <div class="card-body ">
                         <h2 class="card-title text-2xl text-center font-bold">Are you a Developer? or Recruiter</h2>
@@ -60,9 +71,17 @@ const AccountTypePage = () => {
                                 error && <p className='text-red-500 text-xl'>{error}</p>
                             }
                         </div>
-                        <div className='mt-10'>
-                            <button onClick={() => handleNavigateLogin()} className=' btn w-full text-white'>Next <FontAwesomeIcon icon={faArrowRight} /></button>
-                        </div>
+                        {
+                            type !== 'googleSignIn'
+                                ?
+                                <div className='mt-10'>
+                                    <button onClick={() => handleNavigateLogin()} className=' btn w-full text-white'>Next <FontAwesomeIcon icon={faArrowRight} /></button>
+                                </div>
+                                :
+                                <div className='mt-10'>
+                                    <button onClick={() => handleNavigateToRegister()} className=' btn w-full text-white'>Next <FontAwesomeIcon icon={faArrowRight} /></button>
+                                </div>
+                        }
 
                     </div>
                 </div>

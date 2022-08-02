@@ -16,6 +16,7 @@ const useToken = async (currentUser) => {
                 .then(function (res) {
                     setToken(res?.data?.accessToken);
                     localStorage.setItem('accessToken', token);
+                    localStorage.removeItem('accountType')
                 })
                 .then(function (err) {
                     if (err) {

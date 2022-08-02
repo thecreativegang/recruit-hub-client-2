@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Login from './components/Pages/Login/Login';
 import Register from './components/Pages/Register/Register';
@@ -11,7 +11,7 @@ import AccountTypePage from './components/Pages/Register/AccountTypePage';
 import Profile from './components/Pages/Profile/Profile';
 import RequireUsername from './components/Shared/RequireUsername';
 import Loading from './components/Shared/Loading';
-import ChatBox from './components/Pages/ChatPage/ChatBox';
+import ChatPage from './components/Pages/ChatPage/ChatPage';
 
 function App() {
   return (
@@ -34,7 +34,7 @@ function App() {
         <Route path='/register/:accType' element={<Register />} />
         <Route path='/lod' element={<Loading />}></Route>
         <Route path='/profile' element={<Profile />}></Route>
-        <Route path='/chat' element={<ChatBox />}></Route>
+        <Route path='/chat' element={<ChatPage />}></Route>
       </Routes >
       <FooterBottomSection />
       <ToastContainer

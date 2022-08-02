@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.1.2",
+    "@fortawesome/free-brands-svg-icons": "^6.1.2",
     "@fortawesome/free-regular-svg-icons": "^6.1.2",
     "@fortawesome/free-solid-svg-icons": "^6.1.2",
     "@fortawesome/react-fontawesome": "^0.2.0",
@@ -16,7 +17,7 @@
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-firebase-hooks": "^5.0.3",
-    "react-hook-form": "^7.31.3",
+    "react-icons": "^4.4.0",
     "react-password-strength-bar": "^0.4.1",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
@@ -30,7 +31,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "push": "git add . && node ../../gitpush/gitpush.js && git push",
-    "git-deploy": "git add . && node ../../gitpush/gitpush.js && git push && react-scripts build && firebase deploy",
+    "gd": "git add . && node ../../gitpush/gitpush.js && git push && react-scripts build && firebase deploy",
     "git-init": "git init && git add . && git commit -m \"first commit\" && git branch -M main && node ../../gitpush/gitInit.js && git push -u origin main"
   },
   "eslintConfig": {

@@ -6,17 +6,23 @@ import Footer from '../../../Shared/Footer/Footer';
 import About from '../About/About';
 import Service from '../Service/Service';
 import Banner from './../Banner/Banner';
+import Experience from '../Experience/Experience';
+import Agency from '../Agency/Agency';
+import Testimonials from '../Testimonials/Testimonials';
 
 const Home = () => {
     return (
         <div className='mx-[10%]'>
             <Banner />
-            <About></About>
-            <Service></Service>
-            <OurTeam></OurTeam>
-            <Articles></Articles>
-            <RhubDesign></RhubDesign>
-            <Footer></Footer>
+            <About />
+            <Service />
+            <Experience />
+            <Agency />
+            <Testimonials />
+            <OurTeam />
+            <Articles />
+            <RhubDesign />
+            <Footer />
         </div>
     );
 };

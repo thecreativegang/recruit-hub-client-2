@@ -3,24 +3,28 @@ import { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 const useToken = async (currentUser) => {
     const [token, setToken] = useState('');
-    const email = currentUser?.email;
     const user = {
-        email: currentUser?.email
+        email: currentUser?.email,
+        username: currentUser?.username,
+        accountType: currentUser?.accountType
     };
     useEffect(() => {
-        if (email) {
-            const targetUrl = 'http://localhost:3001/user'
+        if (user.email) {
+            // https://safe-oasis-01130.herokuapp.com/
+            const targetUrl = 'https://safe-oasis-01130.herokuapp.com/user/create'
             axios.post(targetUrl, user)
-                .then(data => {
-                    setToken(data.data.accessToken);
-                    localStorage.setItem('accessToken', data.data.accessToken);
+                .then(function (res) {
+                    setToken(res?.data?.accessToken);
+                    localStorage.setItem('accessToken', token);
+                    localStorage.removeItem('accountType')
                 })
-                .then(function (error) {
-                    toast.error((error?.message))
+                .then(function (err) {
+                    if (err) {
+                        console.log(err)
+                    }
                 })
         }
-
-    }, [email])
+    }, [user.email])
     return [token];
 }
 

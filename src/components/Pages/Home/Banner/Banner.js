@@ -6,7 +6,7 @@ import './Banner.css'
 
 const Banner = () => {
     return (
-        <div className='hero-banner-v1  my-container'>
+        <div className='hero-banner-v1 page-banner  my-container'>
             <section className='grid lg:grid-cols-2 justify-items-center content-end lg:px-[5rem] mx-auto pt-[3rem] items-center'>
                 <div className='lg:py-[4rem] '>
                     {/* <img src={bannerDot} alt="" /> */}

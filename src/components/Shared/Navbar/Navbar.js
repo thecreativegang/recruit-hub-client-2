@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import navLogo from '../../../images/logo.png';
 import './Navbar.css'
 import { Link } from 'react-router-dom';
@@ -104,9 +104,6 @@ const Navbar = () => {
                         <div className='w-2 h-2  bg-white rounded'></div>
                         <div className='w-2 h-2  bg-white rounded'></div>
                     </div>
-<<<<<<< HEAD
-                    {/*  */}
-=======
 
                     {/*  */}
                     <div hidden={navbarIconDropdown} className="absolute bg-white top-10 border border-zinc-300 rounded-lg right-0">
@@ -127,7 +124,6 @@ const Navbar = () => {
                     </div>
 
 
->>>>>>> b2a66b28ddc1517e8c68087413bb3be88eae65d9
 
                 </div>
                 {/* <span className='bg-primary px-3 py-2 text-white'>

@@ -32,6 +32,7 @@ function App() {
         <Route path='/register' element={<AccountTypePage />} />
         <Route path='/register/:accType' element={<Register />} />
         <Route path='/lod' element={<Loading />}></Route>
+        <Route path='/profile' element={<Profile />}></Route>
       </Routes >
       <FooterBottomSection />
       <ToastContainer

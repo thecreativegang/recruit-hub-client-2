@@ -1,39 +1,41 @@
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Register from './Register';
 import { useNavigate } from 'react-router-dom';
 
 const AccountTypePage = () => {
-    const [callLoginCompo, setCallLoginCompo] = useState(false);
     const [selectedOptionDev, setSelectedOptionDev] = useState('border-2');
     const [selectedOptionRecruiter, setSelectedOptionRecruiter] = useState('border-2');
-    const [accType, setAccType] = useState('');
+
     const [error, setError] = useState('');
     const navigate = useNavigate();
     const [errorStyle, setErrorStyle] = useState('');
+    useEffect(() => {
+        localStorage.setItem('accountType', '')
+    }, [])
+
 
     const handleBgColor = (type) => {
         if (type === 'developer') {
             setSelectedOptionDev('bg-primary text-white')
             setSelectedOptionRecruiter('border-2');
-            setAccType('Developer');
+            localStorage.setItem('accountType', 'developer')
             setError('');
             setErrorStyle('')
         }
         else if (type === 'recruiter') {
             setSelectedOptionDev('border-2')
             setSelectedOptionRecruiter('bg-primary text-white')
-            setAccType('Recruiter');
+            localStorage.setItem('accountType', 'recruiter')
             setError('');
             setErrorStyle('')
         }
 
     }
     const handleNavigateLogin = () => {
-        console.log(accType)
-        if (accType !== '') {
-            navigate(`/register/${accType}`)
+        if (localStorage.getItem('accountType') !== '') {
+            navigate(`/register/${localStorage.getItem('accountType')}`)
         }
         else {
             setError('Select an Option');

@@ -12,12 +12,12 @@ import axios from 'axios';
 import { useRef } from 'react';
 import { toast } from 'react-toastify';
 import googleLogo from '../../../images/google.png';
+import { data } from 'autoprefixer';
 
 
 const Register = () => {
 
-    const { accType } = useParams();
-    console.log(accType)
+    const accType = localStorage.getItem('accountType')
     const [globalUser] = useAuthState(auth);
     const navigate = useNavigate();
     const [
@@ -34,71 +34,60 @@ const Register = () => {
     const [sendEmailVerification, sending, verificationerror] = useSendEmailVerification(auth);
     const [usernameAvailable, setUsernameAvailable] = useState(null);
     let currentUser;
-    const usernameRef = useRef();
+    let username = '';
     //Token
     const onSubmit = async (data) => {
+        if (data.password === data.confirmPassword) {
+            username = data.username
+            await sendEmailVerification(); // Send Verification Email
+            const displayName = data.name;
+            const email = data.email;
+            const password = data.password;
+            await createUserWithEmailAndPassword(email, password);  // create user
+            await updateProfile({ displayName }) //Update Display Name
+        }
+        else {
 
-        // check if username is available or not
-        axios.post(`http://localhost:3001/check-username`)
-            .then(data => console.log(data))
-            .then(function (error) {
-                toast.error((error?.message))
-            })
-        await sendEmailVerification(); // Send Verification Email
-        // const displayName = data.name;
-        // const email = data.email;
-        // const password = data.password;
-        // await createUserWithEmailAndPassword(email, password);  // create user
-        // await updateProfile({ displayName }) //Update Display Name
+        }
     };
-    // const [token] = useToken(user || gUser)
-    // if (gUser || user) {
-    //     console.log(gUser || user);
-
-    // }
-    if (user) {
+    if (globalUser) {
         currentUser = {
-            email: user.email,
-
+            email: globalUser?.email,
+            username: username,
+            accountType: localStorage.getItem('accountType')
         }
     }
     const token = useToken(currentUser)
-    useEffect(() => {
-        if (token) {
+    // useEffect(() => {
+    //     if (token) {
 
-            // navigate('/');
+    //         // navigate('/');
+    //         //Uncomment Below Section to send email on new user creation
 
-            //Uncomment Below Section to send email on new user creation
-
-            // <SendEmail
-            //     user={primaryUser}
-            //     subject={"Account Registration"}
-            //     text={"You account has been successfully registered in Nissan Parts. Thank you."}
-            // ></SendEmail>
-
-        }
-    }, [token, navigate])
+    //         // <SendEmail
+    //         //     user={primaryUser}
+    //         //     subject={"Account Registration"}
+    //         //     text={"You account has been successfully registered in Nissan Parts. Thank you."}
+    //         // ></SendEmail>
+    //     }
+    // }, [token, navigate])
 
     if (error) {
         console.log(error);
-
     }
     if (updating || loading || sending || gLoading) {
         return <Loading />
     }
     const handleUserNameValidation = async (username) => {
-        console.log(username)
         username !== ''
             ?
-            await axios.post(`http://localhost:3001/check-username/${username || ''}`)
+            await axios.post(`https://safe-oasis-01130.herokuapp.com/user/check-username/${username}`)
                 .then(data => {
-                    console.log(data)
                     if ((data.data.isAvailable)) {
                         setUsernameAvailable(true)
                     }
                     else {
                         setUsernameAvailable(false)
-
                     }
                 })
                 .then(function (error) {
@@ -107,7 +96,6 @@ const Register = () => {
             :
             setUsernameAvailable(null)
     }
-
     return (
         <div>
             <div className=" flex justify-center items-center pt-20 my-10">
@@ -122,15 +110,20 @@ const Register = () => {
                                     <label className="label">
                                         <span className="label-text text-xl">Choose a username</span>
                                     </label>
-                                    <input onBlur={(e) => handleUserNameValidation(e.target.value)} onKeyUp={(e) => handleUserNameValidation(e.target.value)} ref={usernameRef} type="text" placeholder="Your Name" className="input input-bordered text-xl" {...register("username",
-                                        { required: true })} />
+                                    <input
+                                        onBlur={(e) => handleUserNameValidation(e.target.value)}
+                                        onKeyUp={(e) => handleUserNameValidation(e.target.value)}
+                                        type="text"
+                                        placeholder="Your Name"
+                                        className="input input-bordered text-xl lowercase"
+                                        {...register("username",
+                                            { required: true })} />
                                     {
                                         usernameAvailable === true
                                         &&
                                         <p className='text-green-500'>Username is available</p>
                                     }
                                     {
-
                                         usernameAvailable === false
                                         &&
                                         <p className='text-red-500'>Username is taken! Try another</p>
@@ -142,14 +135,21 @@ const Register = () => {
                                     <label className="label">
                                         <span className="label-text text-xl">Name</span>
                                     </label>
-                                    <input type="text" placeholder="Your Name" className="input input-bordered text-xl" {...register("name",
-                                        { required: true })} />
+                                    <input
+                                        type="text"
+                                        placeholder="Your Name"
+                                        className="input input-bordered text-xl"
+                                        {...register("name",
+                                            { required: true })} />
                                 </div>
                                 <div className="form-control mb-">
                                     <label className="label">
                                         <span className="label-text text-xl">Email</span>
                                     </label>
-                                    <input type="text" placeholder="Email" className="input input-bordered text-xl"
+                                    <input
+                                        type="text"
+                                        placeholder="Email"
+                                        className="input input-bordered text-xl"
                                         {...register("email",
                                             { required: true })} />
                                 </div>
@@ -161,11 +161,16 @@ const Register = () => {
                                     </label>
                                     <input type="text" placeholder="Email" className="hidden input input-bordered text-xl"
                                     />
-                                    <input value={passwordBar} type={showPassword ? "text" : "password"} placeholder="Input Password" name='password' className="  input input-bordered text-xl" {...register("password",
-                                        {
-                                            required: true,
-                                            // pattern: /^(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9!@#$%^&*]{6,16}$/,
-                                        })}
+                                    <input
+                                        value={passwordBar}
+                                        type={showPassword ? "text" : "password"} placeholder="Input Password"
+                                        name='password'
+                                        className="  input input-bordered text-xl"
+                                        {...register("password",
+                                            {
+                                                required: true,
+                                                // pattern: /^(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9!@#$%^&*]{6,16}$/,
+                                            })}
                                         onChange={(e) => setPasswordBar(e.target.value)}
                                     />
 
@@ -175,11 +180,15 @@ const Register = () => {
                                     </label>
                                     <input type="text" placeholder="Email" className="hidden input input-bordered text-xl"
                                     />
-                                    <input type={showPassword ? "text" : "password"} placeholder="Confirm Password" name='password' className="  input input-bordered text-xl" {...register("confirm-password",
-                                        {
-                                            required: true,
-                                            // pattern: /^(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9!@#$%^&*]{6,16}$/,
-                                        })}
+                                    <input
+                                        type={showPassword ? "text" : "password"}
+                                        placeholder="Confirm Password" name='password'
+                                        className="  input input-bordered text-xl"
+                                        {...register("confirmPassword",
+                                            {
+                                                required: true,
+                                                // pattern: /^(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9!@#$%^&*]{6,16}$/,
+                                            })}
                                         onChange={(e) => setPasswordBar(e.target.value)}
                                     />
 
@@ -207,7 +216,7 @@ const Register = () => {
                                     </label>
 
                                     <label>
-                                        <Link to="/login" className=" pointer hover:text-accent font-semibold text-xl">Already have an account? Login
+                                        <Link to="/login" className=" pointer hover:text-primary font-semibold text-xl">Already have an account? Login
                                         </Link>
                                     </label>
                                 </div>
@@ -215,9 +224,9 @@ const Register = () => {
                                     {
                                         loading
                                             ?
-                                            <button className="  btn btn-primary text-white font-bold text-lg text-white loading uppercase">Register</button>
+                                            <button className="  btn btn-primary  font-bold text-lg text-white loading uppercase">Register</button>
                                             :
-                                            <button className="  btn btn-primary text-white font-bold text-lg text-white uppercase">Register</button>
+                                            <button className="  btn btn-primary  font-bold text-lg text-white uppercase">Register</button>
 
                                     }
                                 </div>

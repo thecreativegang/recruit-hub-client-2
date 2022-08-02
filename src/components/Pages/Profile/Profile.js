@@ -3,7 +3,7 @@ import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import './Profile.css'
+import './Profile.module.css'
 import { AiOutlineCloudUpload } from "react-icons/ai";
 
 

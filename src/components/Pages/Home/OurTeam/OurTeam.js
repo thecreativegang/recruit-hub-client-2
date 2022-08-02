@@ -10,7 +10,7 @@ const OurTeam = () => {
         <h2 className='my-10 text-2xl text-gray-400'>Professional Recruit Agency to provide solutions</h2>
       </div>
       {/* experience team members  */}
-      <div className='grid sm:grid-cols-2 lg:grid-cols-4 justify-center justify-items-center'>
+      <div className='grid sm:grid-cols-2 lg:grid-cols-4 justify-center justify-items-center gap-5'>
 
         <div className="card w-full bg-base-100 shadow-xl mt-10">
           <figure className="px-10 pt-10">

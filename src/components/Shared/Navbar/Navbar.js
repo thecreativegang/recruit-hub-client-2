@@ -2,8 +2,18 @@ import React from 'react';
 import navLogo from '../../../images/logo.png';
 import './Navbar.css'
 import { Link } from 'react-router-dom';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../../firebase.init';
+import { signOut } from 'firebase/auth';
+import { toast } from 'react-toastify';
 
 const Navbar = () => {
+    const [navbarIconDropdown, setNavbarIconDropdown] = useState(true);
+    const [user] = useAuthState(auth);
+    const handleSignOut = () => {
+        localStorage.removeItem('accessToken')
+        signOut(auth);
+    }
     return (
 
         <div className="navbar page-banner my-border-bottom  z-10 sticky top-0 bg-white  ">
@@ -29,8 +39,7 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <button className='flex font-bold text-2xl'>
-                    <img src={navLogo} alt="" />
-                    <span className='self-center px-1'>RecruitHub</span>
+                    <Link to='/'> <img src={`https://i.ibb.co/tcZBcsM/Recruit-hub-logo.jpg`} className="w-1/2" alt="" /></Link>
                 </button>
             </div>
 
@@ -95,7 +104,30 @@ const Navbar = () => {
                         <div className='w-2 h-2  bg-white rounded'></div>
                         <div className='w-2 h-2  bg-white rounded'></div>
                     </div>
+<<<<<<< HEAD
                     {/*  */}
+=======
+
+                    {/*  */}
+                    <div hidden={navbarIconDropdown} className="absolute bg-white top-10 border border-zinc-300 rounded-lg right-0">
+                        <ul className='child:px-5 child:py-1 child:text-xl  '>
+                            <li className='hover:bg-primary hover:text-white '><Link to='/' className='text-base'>Profile</Link></li>
+                            {
+                                user
+                                    ?
+                                    <li className='hover:bg-primary hover:text-white '><button onClick={() => handleSignOut()} className="text-base">Signout</button></li>
+                                    :
+                                    <>
+                                        <li className='hover:bg-primary hover:text-white '><Link to='/login' className='text-base'>Login</Link></li>
+                                        <li className='hover:bg-primary hover:text-white '><Link to='/register ' className='text-base'>Register</Link></li>
+
+                                    </>
+                            }
+                        </ul>
+                    </div>
+
+
+>>>>>>> b2a66b28ddc1517e8c68087413bb3be88eae65d9
 
                 </div>
                 {/* <span className='bg-primary px-3 py-2 text-white'>

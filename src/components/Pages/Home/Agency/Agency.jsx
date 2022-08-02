@@ -7,7 +7,7 @@ const Agency = () => {
     <section>
       <div className="px-8">
         {/* Agency header  */}
-        <div className="flex justify-center">
+        <div className="flex justify-center ">
           <div className="text-center mb-10">
             <h3 className="section-title font-semibold text-[#5956e9] st-one relative">
               Agency Statistics
@@ -21,8 +21,8 @@ const Agency = () => {
           </div>
         </div>
 
-        <div className="flex justify-around mt-10 pb-10">
-          <div className="px-6 py-6 text-center inline-block shadow-2xl">
+        <div className="md:flex justify-evenly mt-10 pb-10">
+          <div className="px-6 py-6 text-center shadow-2xl mb-8 md:mb-0 rounded-2xl">
             <div className="flex justify-center mb-4">
               <FaRocket className="text-5xl text-[#5956e9]" />
             </div>
@@ -32,7 +32,7 @@ const Agency = () => {
             </p>
           </div>
 
-          <div className="px-6 py-6 text-center inline-block shadow-2xl">
+          <div className="px-6 py-6 text-center shadow-2xl mb-8 md:mb-0 rounded-2xl">
             <div className="flex justify-center mb-4">
               <FaRocket className="text-5xl text-[#5956e9]" />
             </div>
@@ -42,7 +42,7 @@ const Agency = () => {
             </p>
           </div>
 
-          <div className="px-6 py-6 text-center inline-block shadow-2xl">
+          <div className="px-6 py-6 text-center shadow-2xl mb-8 md:mb-0 rounded-2xl">
             <div className="flex justify-center mb-4">
               <FaRocket className="text-5xl text-[#5956e9]" />
             </div>
@@ -52,7 +52,7 @@ const Agency = () => {
             </p>
           </div>
 
-          <div className="px-6 py-6 text-center inline-block shadow-2xl">
+          <div className="px-6 py-6 text-center shadow-2xl mb-8 md:mb-0 rounded-2xl">
             <div className="flex justify-center mb-4">
               <FaRocket className="text-5xl text-[#5956e9]" />
             </div>
@@ -62,7 +62,6 @@ const Agency = () => {
             </p>
           </div>
         </div>
-        
       </div>
     </section>
   );

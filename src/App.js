@@ -15,6 +15,10 @@ import Loading from './components/Shared/Loading';
 function App() {
   return (
     <div >
+<<<<<<< HEAD
+
+=======
+>>>>>>> 9e189fcc78d2a4b46760ffe8b26ef6b35313e5da
       <Navbar />
       <Routes>
 

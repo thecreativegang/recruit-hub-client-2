@@ -2,12 +2,12 @@ import React from 'react';
 
 const Loading = ({ imgWidth }) => {
     return (
-        <div className='mt-10'>
-            <div className=" flex justify-center items-center">
-                <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-gray-900">
-                </div>
+        <div className='h-[100vh] flex justify-center items-center '>
+            <div>
+                <div style={{ borderTopColor: 'transparent' }}
+                    class="w-16 h-16 border-8 border-blue-400 border-solid rounded-full animate-spin"></div>
             </div>
-        </div>
+        </div >
     );
 };
 

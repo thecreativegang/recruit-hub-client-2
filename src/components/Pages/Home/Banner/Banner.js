@@ -9,7 +9,7 @@ import './Banner.css'
 const Banner = () => {
     return (
         <div className='page-banner relative'>
-            <div className=' h-full w-[75%] mx-auto  '>
+            <div className=' h-full w-[75%] mx-auto '>
                 <section className='grid grid-cols-2 gap-2  h-full mx-auto '>
                     <div className=' flex justify-center items-center'>
                         <div>

@@ -13,25 +13,36 @@ const Login = () => {
     const [passwordError, setPasswordError] = useState('');
     const location = useLocation();
     const from = location?.state?.from?.pathname || '/';
-    const [currentUser, setCurrentUser] = useState({});
+    let currentUser;
+    let username = '';
+
     // React hook forms element
     const { register, formState: { errors }, handleSubmit } = useForm();
-
     // Error State
     const navigate = useNavigate();
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
     const [
         signInWithEmailAndPassword,
-        user,
         loading,
         error,
     ] = useSignInWithEmailAndPassword(auth);
 
-
     // globalUser is [user]= useAuthState(auth)
     const [showPassword, setShowPassword] = useState(false);
-    const token = useToken(globalUser);
     const tokenInLStorage = localStorage.getItem('accessToken');
+
+
+
+    if (globalUser) {
+        currentUser = {
+            email: globalUser?.email,
+            username: username,
+            accountType: tokenInLStorage
+        }
+    }
+
+    console.log('token before const token', currentUser)
+    const token = useToken(currentUser)
     useEffect(() => {
         if ((tokenInLStorage + "").length > 4) {
             navigate(from, { replace: true });
@@ -41,7 +52,6 @@ const Login = () => {
     if (loading || gLoading) {
         return <Loading></Loading>
     }
-
     const onSubmit = data => {
         const email = data.email;
         const password = data.password;
@@ -93,12 +103,12 @@ const Login = () => {
                                         <div className='flex flex-col md:flex-row-reverse xs:gap-3 xs:my-0 justify-between'>
                                             <div >
                                                 <label className="my-2">
-                                                    <button onClick={() => setForgetPass(!forgetPass)} className=" hover:text-accent font-semibold text-lg"><span >Forgot password?</span></button>
+                                                    <button onClick={() => setForgetPass(!forgetPass)} className=" hover:text-primary font-semibold text-lg"><span >Forgot password?</span></button>
                                                 </label>
                                             </div>
                                             <div>
                                                 <label className="">
-                                                    <Link to="/register" className=" pointer hover:text-accent font-semibold  text-lg">New here? Sign Up
+                                                    <Link to="/register" className=" pointer hover:text-primary font-semibold  text-lg">New here? Sign Up
                                                     </Link>
                                                 </label>
                                             </div>
@@ -106,7 +116,6 @@ const Login = () => {
 
                                     </div>
                                 </div>
-
                                 {/* Error Shows here */}
                                 <div>
                                     {
@@ -117,19 +126,18 @@ const Login = () => {
 
                                     }
                                     {
-                                        error && <p className='text-red-500 font-bold'>{error.message.slice(9)}</p>
+                                        error && <p className='text-red-500 font-bold'>{error?.message?.slice(9)}</p>
                                     }
                                 </div>
                                 <div className="form-control mt-6">
                                     {
                                         loading
                                             ?
-                                            <button type="submit" className="  btn btn-primary text-white font-bold text-lg loading text-white">Login</button>
+                                            <button className="btn btn-primary font-bold text-lg text-white loading uppercase">Login</button>
                                             :
-                                            <button type="submit" className="  btn btn-primary text-white font-bold text-lg text-white">Login</button>
+                                            <button className="btn btn-primary font-bold text-lg text-white  uppercase">Login</button>
                                     }
                                 </div>
-
                                 <div className="flex flex-col w-full border-opacity-50">
                                     <div className="divider">OR</div>
                                 </div>

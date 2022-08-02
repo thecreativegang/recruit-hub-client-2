@@ -7,31 +7,41 @@ import Register from './components/Pages/Register/Register';
 import Home from './components/Pages/Home/Home/Home';
 import Navbar from './components/Shared/Navbar/Navbar';
 import FooterBottomSection from './components/Shared/Footer/FooterBottomSection';
-import SignUp from './components/Pages/Register/SignUp';
 import AccountTypePage from './components/Pages/Register/AccountTypePage';
 import Profile from './components/Pages/Profile/Profile';
-import ChatPage from './components/Pages/ChatPage/ChatPage';
+import RequireUsername from './components/Shared/RequireUsername';
+import Loading from './components/Shared/Loading';
 
 function App() {
   return (
     <div >
+<<<<<<< HEAD
 
+=======
+>>>>>>> 9e189fcc78d2a4b46760ffe8b26ef6b35313e5da
       <Navbar />
       <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/home' element={<Home />} />
+
+        <Route path='/' element={
+          <RequireUsername>
+            <Home />
+          </RequireUsername>
+        } />
+
+        <Route path='/home' element={<RequireUsername>
+          <Home />
+        </RequireUsername>} />
         <Route path='/profile' element={<Profile></Profile>} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<AccountTypePage />} />
         <Route path='/register/:accType' element={<Register />} />
-        <Route path='/signup' element={<SignUp />}></Route>
-        <Route path='/chat' element={<ChatPage />}></Route>
-      </Routes>
+        <Route path='/lod' element={<Loading />}></Route>
+      </Routes >
       <FooterBottomSection />
       <ToastContainer
         autoClose={1500}
       />
-    </div>
+    </div >
   );
 }
 

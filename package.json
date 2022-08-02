@@ -31,7 +31,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "push": "git add . && node ../../gitpush/gitpush.js && git push",
-    "git-deploy": "git add . && node ../../gitpush/gitpush.js && git push && react-scripts build && firebase deploy",
+    "gd": "git add . && node ../../gitpush/gitpush.js && git push && react-scripts build && firebase deploy",
     "git-init": "git init && git add . && git commit -m \"first commit\" && git branch -M main && node ../../gitpush/gitInit.js && git push -u origin main"
   },
   "eslintConfig": {

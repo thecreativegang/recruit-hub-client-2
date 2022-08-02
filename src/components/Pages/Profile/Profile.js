@@ -100,7 +100,7 @@ const Profile = () => {
                 </div>
 
 
-                <div className="main-content w-[100%] md:pl-[20%] bg-[#F7F7F7] mx-4">
+                <div className="main-content w-[100%] md:pl-[20%] bg-[#F7F7F7] md:mx-4">
                     <div className='w-full md:w-[732px] mx-4 md:mx-auto  bg-white'>
                         <div className='mt-12 p-[24px] grid grid-cols-2'>
                             <div className="english-verify">
@@ -125,7 +125,7 @@ const Profile = () => {
                     {/* General */}
                     <div className=' w-full  md:w-[732px] mx-auto mt-12'>
                         <div>
-                            <h1 className='text-[34px]  color-blue-dark mb-2'>General</h1>
+                            <h1 className=' text-2xl md:text-4xl text-[#788894] ml-4 mb-4'>General</h1>
                         </div>
                         <div className=' bg-white  p-6'>
                             <form onSubmit={handleSubmit(onSubmit)}>

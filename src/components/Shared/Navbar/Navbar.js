@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const Navbar = () => {
     return (
 
-        <div className="navbar page-banner my-border-bottom my-container z-10 sticky top-0 bg-white  ">
+        <div className="navbar page-banner my-border-bottom  z-10 sticky top-0 bg-white  ">
 
             <div className="navbar-start">
                 <div className="dropdown">
@@ -95,11 +95,6 @@ const Navbar = () => {
                         <div className='w-2 h-2  bg-white rounded'></div>
                         <div className='w-2 h-2  bg-white rounded'></div>
                     </div>
-
-
-
-
-
                 </div>
                 {/* <span className='bg-primary px-3 py-2 text-white'>
                     <FontAwesomeIcon icon={faGrip} />

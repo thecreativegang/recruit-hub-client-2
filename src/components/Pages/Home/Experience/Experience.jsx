@@ -7,11 +7,11 @@ const Experience = () => {
       <section className="mt-20 mb-40">
         <div className="">
           <div className=" w-full bg-[#5956e9] relative experienceWrap">
-            <div className="w-[50%] text-white py-4 px-8">
+            <div className="w-full md:w-[50%] text-white py-4 px-8">
               <h3 className="letsWork text-2xl mt-10 mb-6 inline-block relative z-10 py-4 px-11">
                 Let’s Work
               </h3>
-              <h1 className="text-[2rem] font-bold mb-12 leading-[3.3rem]">
+              <h1 className="text-[1.5rem] md:text-[2rem] font-bold mb-12 leading-[2.3rem] md:leading-[3.3rem] tracking-wide">
                 Experience & innovative{" "}
                 <span className="fill-text"> solutions</span> for
                 <span className="fill-text"> creative</span> design &

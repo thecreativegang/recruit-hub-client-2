@@ -1,6 +1,8 @@
 import React from 'react';
 import '../Home/Home.css';
-import heroImg from '../../../../images/hero-one-img-2.jpg'
+import heroImg from '../../../../images/hero-one-img-2.jpg';
+import heroImgLogo from '../../../../images/circle-logo-1.png';
+
 
 import './Banner.css'
 
@@ -21,7 +23,9 @@ const Banner = () => {
                         </div>
                     </div>
                     <div className='flex justify-center items-center'>
-                        <img src={heroImg} className="rounded-[250px] pl-[4rem]" />
+                        <img src={heroImg} className="rounded-[250px] pl-[6rem] relative" />
+                        <img src={heroImgLogo} className="absolute bottom-[12rem] right-[37.1rem]" alt="" />
+
                     </div>
                 </section>
 

@@ -36,7 +36,8 @@ const Login = () => {
     if (globalUser) {
         currentUser = {
             email: globalUser?.email,
-            username: username
+            username: username,
+            accountType: tokenInLStorage
         }
     }
 

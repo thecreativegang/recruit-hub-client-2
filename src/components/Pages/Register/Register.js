@@ -13,6 +13,7 @@ import { useRef } from 'react';
 import { toast } from 'react-toastify';
 import googleLogo from '../../../images/google.png';
 import { data } from 'autoprefixer';
+import AccountTypePage from './AccountTypePage';
 
 
 const Register = () => {
@@ -33,6 +34,7 @@ const Register = () => {
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
     const [sendEmailVerification, sending, verificationerror] = useSendEmailVerification(auth);
     const [usernameAvailable, setUsernameAvailable] = useState(null);
+    const [showAccType, setShowAccType] = useState(false);
     let currentUser;
     let username = '';
     //Token
@@ -95,6 +97,14 @@ const Register = () => {
                 })
             :
             setUsernameAvailable(null)
+    }
+    const handleGoogleSignIn = () => {
+        setShowAccType(true)
+
+        const accountType = localStorage.getItem('accountType')
+        if (accountType.length > 0) {
+            signInWithGoogle()
+        }
     }
     return (
         <div>
@@ -234,10 +244,20 @@ const Register = () => {
                                     <div className="divider">OR</div>
                                 </div>
                                 <div className="form-control ">
-                                    <button onClick={() => signInWithGoogle()} className="btn bg-white text-black  hover:text-white  font-bold text-lg hover:bg-zinc-600"> <img src={googleLogo} alt="" /> &nbsp; Continue With Google</button>
+                                    <button onClick={() => handleGoogleSignIn()} className="btn bg-white text-black  hover:text-white  font-bold text-lg hover:bg-zinc-600"> <img src={googleLogo} alt="" /> &nbsp; Continue With Google</button>
                                 </div>
                             </div>
                         </form>
+                    </div>
+                    <div id='accType'>
+                        {
+                            showAccType &&
+                            <>
+                                {navigate(`/register/#accType`)}
+                                <AccountTypePage showAccType={showAccType} setShowAccType={setShowAccType} type={"googleSignIn"} />
+                            </>
+
+                        }
                     </div>
                 </div>
             </div >

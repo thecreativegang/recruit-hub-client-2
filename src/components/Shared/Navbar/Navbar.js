@@ -5,24 +5,26 @@ import { Link } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import { signOut } from 'firebase/auth';
+import { toast } from 'react-toastify';
 
 const Navbar = () => {
     const [navbarIconDropdown, setNavbarIconDropdown] = useState(true);
     const [user] = useAuthState(auth);
-
     const handleSignOut = () => {
         localStorage.removeItem('accessToken')
-        signOut(auth)
+        signOut(auth);
     }
     return (
-        <div className="navbar  page-banner my-border-bottom ">
+
+        <div className="navbar page-banner my-border-bottom  z-10 sticky top-0 bg-white  ">
+
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabindex="0" className="btn btn-ghost lg:hidden">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                     </label>
                     <ul tabindex="0" className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-                        <li><Link to="/">Item 1</Link></li>
+                        <li><>Item 1</></li>
                         <li tabindex="0">
                             <Link to="/" className="justify-between">
                                 Parent
@@ -37,8 +39,7 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <button className='flex font-bold text-2xl'>
-                    <img src={navLogo} alt="" />
-                    <span className='self-center px-1'>RecruitHub</span>
+                    <Link to='/'> <img src={`https://i.ibb.co/tcZBcsM/Recruit-hub-logo.jpg`} className="w-1/2" alt="" /></Link>
                 </button>
             </div>
 
@@ -52,13 +53,11 @@ const Navbar = () => {
                                 <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
                             </svg>
                         </button>
-                        <ul className="p-0 bg-white">
+                        <ul className="p-0 bg-white z-100">
                             <li><Link to="/" className='pb-2'>Talent Pool</Link></li>
                             <li><Link to="/" className='pt-0'>Employer Events</Link></li>
                             <li><Link to="/" className='pt-0'>Client Success Case</Link></li>
                             <li><Link to="/" className='pt-0'>Salary guide</Link></li>
-                            <li><Link to="/LogIns" className='pt-0'>LogIns</Link></li>
-
                         </ul>
                     </li>
 
@@ -70,7 +69,7 @@ const Navbar = () => {
                             </svg>
                         </button>
 
-                        <ul className="p-0 bg-white">
+                        <ul className="p-0 bg-white z-100">
                             <li><Link to="/" className='pb-2'>Talent Pool</Link></li>
                             <li><Link to="/" className='pt-0'>Employer Events</Link></li>
                             <li><Link to="/" className='pt-0'>Client Success Case</Link></li>
@@ -85,7 +84,7 @@ const Navbar = () => {
                             </svg>
                         </button>
 
-                        <ul className="p-0 bg-white">
+                        <ul className="p-0 bg-white z-100">
                             <li><Link to="/" className='pb-2'>Talent Pool</Link></li>
                             <li><Link to="/" className='pt-0'>Employer Events</Link></li>
                             <li><Link to="/" className='pt-0'>Client Success Case</Link></li>
@@ -95,8 +94,8 @@ const Navbar = () => {
                 </ul>
             </div>
             {/*  */}
-            <div onClick={() => setNavbarIconDropdown(!navbarIconDropdown)} className="navbar-end mr-5">
-                <div className='bg-primary px-3 py-2 rounded flex space-x-1 relative'>
+            <div onClick={() => setNavbarIconDropdown(!navbarIconDropdown)} className="navbar-end mr-5 relative">
+                <div className='bg-primary px-3 py-2 rounded flex space-x-1 '>
                     <div className='space-y-1'>
                         <div className='w-2 h-2  bg-white rounded'></div>
                         <div className='w-2 h-2  bg-white rounded'></div>
@@ -109,16 +108,18 @@ const Navbar = () => {
                     {/*  */}
                     <div hidden={navbarIconDropdown} className="absolute bg-white top-10 border border-zinc-300 rounded-lg right-0">
                         <ul className='child:px-5 child:py-1 child:text-xl  '>
-                            <li className='hover:bg-primary hover:text-white'><Link to='/'>Profile</Link></li>
+                            <li className='hover:bg-primary hover:text-white '><Link to='/' className='text-base'>Profile</Link></li>
                             {
                                 user
                                     ?
-                                    <li className='hover:bg-primary hover:text-white'><button onClick={() => handleSignOut()}>SignOut</button></li>
+                                    <li className='hover:bg-primary hover:text-white '><button onClick={() => handleSignOut()} className="text-base">Signout</button></li>
                                     :
-                                    <li className='hover:bg-primary hover:text-white'><Link to='/login'>Login</Link></li>
+                                    <>
+                                        <li className='hover:bg-primary hover:text-white '><Link to='/login' className='text-base'>Login</Link></li>
+                                        <li className='hover:bg-primary hover:text-white '><Link to='/register ' className='text-base'>Register</Link></li>
 
+                                    </>
                             }
-                            <li className='hover:bg-primary hover:text-white'><Link to='/register'>Register</Link></li>
                         </ul>
                     </div>
 

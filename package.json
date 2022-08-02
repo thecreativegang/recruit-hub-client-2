@@ -17,8 +17,6 @@
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-firebase-hooks": "^5.0.3",
-    "react-hook-form": "^7.31.3",
-    "react-icon": "^1.0.0",
     "react-icons": "^4.4.0",
     "react-password-strength-bar": "^0.4.1",
     "react-router-dom": "^6.3.0",
@@ -33,7 +31,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "push": "git add . && node ../../gitpush/gitpush.js && git push",
-    "git-deploy": "git add . && node ../../gitpush/gitpush.js && git push && react-scripts build && firebase deploy",
+    "gd": "git add . && node ../../gitpush/gitpush.js && git push && react-scripts build && firebase deploy",
     "git-init": "git init && git add . && git commit -m \"first commit\" && git branch -M main && node ../../gitpush/gitInit.js && git push -u origin main"
   },
   "eslintConfig": {

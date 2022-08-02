@@ -11,6 +11,7 @@ import AccountTypePage from './components/Pages/Register/AccountTypePage';
 import Profile from './components/Pages/Profile/Profile';
 import RequireUsername from './components/Shared/RequireUsername';
 import Loading from './components/Shared/Loading';
+import ChatBox from './components/Pages/ChatPage/ChatBox';
 
 function App() {
   return (
@@ -32,6 +33,8 @@ function App() {
         <Route path='/register' element={<AccountTypePage />} />
         <Route path='/register/:accType' element={<Register />} />
         <Route path='/lod' element={<Loading />}></Route>
+        <Route path='/profile' element={<Profile />}></Route>
+        <Route path='/chat' element={<ChatBox />}></Route>
       </Routes >
       <FooterBottomSection />
       <ToastContainer
@@ -40,5 +43,5 @@ function App() {
     </div >
   );
 }
-
+// 
 export default App;

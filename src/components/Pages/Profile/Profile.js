@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import './Profile.module.css'
 import { AiOutlineCloudUpload } from "react-icons/ai";
+import { Link } from 'react-router-dom';
 
 
 const Profile = () => {
@@ -107,7 +108,7 @@ const Profile = () => {
                                     <div className='text-center'>
                                         <img className='w-[45px] mb-[10px] mx-auto' src="https://vanhack.com/static-desktop/1b30c8bf558ff2f6ca321e62b4f1f100.svg" alt="" />
                                         <h1 className='font-bold mb-[10px] test'>English Verification</h1>
-                                        <a href="#" className='color-blue-dark'>Start now</a>
+                                        <Link to='/' className='color-blue-dark'>Start now</Link>
                                     </div>
                                 </div>
                             </div>
@@ -115,7 +116,7 @@ const Profile = () => {
                                 <div className='text-center'>
                                     <img className='w-[45px] mx-auto' src="https://vanhack.com/static-desktop/ecb8fa162c6ca3693c69b34b22ffc82d.svg" alt="" />
                                     <h1 className='font-bold test my-[10px]'>Code Test</h1>
-                                    <a href="#" className='color-blue-dark'>See Details</a>
+                                    <Link to={'/'} className='color-blue-dark'>See Details</Link>
                                 </div>
                             </div>
                         </div>
@@ -141,8 +142,9 @@ const Profile = () => {
                                 <div>
                                     <p className='label'>Gender</p>
                                     <select className='block w-full profile-form-border p-2 rounded-md' {...register("gender")}>
-                                        <option value="female">female</option>
+                                        <option value="Select an option">Select an option</option>
                                         <option value="male">male</option>
+                                        <option value="female">female</option>
                                         <option value="other">other</option>
                                     </select>
                                 </div>

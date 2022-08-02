@@ -15,9 +15,7 @@ const Navbar = () => {
         signOut(auth);
     }
     return (
-
         <div className="navbar page-banner my-border-bottom  z-10 sticky top-0 bg-white  ">
-
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabindex="0" className="btn btn-ghost lg:hidden">
@@ -47,6 +45,10 @@ const Navbar = () => {
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal my-ul p-0">
                     <li tabindex="0" >
+
+                        {
+
+                        }
                         <button className=''>
                             For Employers
                             <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
@@ -108,7 +110,7 @@ const Navbar = () => {
                     {/*  */}
                     <div hidden={navbarIconDropdown} className="absolute bg-white top-10 border border-zinc-300 rounded-lg right-0">
                         <ul className='child:px-5 child:py-1 child:text-xl  '>
-                            <li className='hover:bg-primary hover:text-white '><Link to='/' className='text-base'>Profile</Link></li>
+                            <li className='hover:bg-primary hover:text-white '><Link to='/profile' className='text-base'>Profile</Link></li>
                             {
                                 user
                                     ?

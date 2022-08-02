@@ -12,7 +12,7 @@ const Agency = () => {
             <h3 className="section-title font-semibold text-[#5956e9] st-one relative">
               Agency Statistics
             </h3>
-            <h1 className="text-[2.6rem] leading-[3.2rem] font-semibold mb-2">
+            <h1 className=" text-3xl md:text-[2.6rem] leading-[3.2rem] font-semibold mb-2">
               Why People’s Like Us
             </h1>
             <p className="text-lg font-semibold text-gray-600">

@@ -1,18 +1,23 @@
-.my-container {
-    max-width: 1536px;
-    /* max-width: 1280px; */
-    margin: auto;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-}
-
 .my-border-bottom {
-    border-bottom: 1px solid rgba(25, 25, 25, .1);
-
+  border-bottom: 1px solid rgba(25, 25, 25, 0.1);
 }
 
 .menu :where(li:not(.menu-title):not(:empty))> :where(*:not(ul):focus),
 .menu :where(li:not(.menu-title):not(:empty))> :where(*:not(ul):hover) {
-    color: #5956e9;
-    background-color: transparent;
+  color: #5956e9;
+  background-color: transparent;
+}
+
+.my-nav {
+  background-image: linear-gradient(90deg,
+      rgba(88, 86, 233, 0.11) 0%,
+      rgba(0, 208, 156, 0.146) 100%);
+}
+
+.nav-link {
+  font-size: 17px;
+  color: #162542;
+
+  text-transform: capitalize;
+  font-weight: 700;
 }

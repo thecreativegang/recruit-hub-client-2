@@ -6,13 +6,19 @@ import 'react-day-picker/dist/style.css';
 import { format } from 'date-fns';
 
 const PostAJob = () => {
-
-    const [selected, setSelected] = useState(new Date());
+    const generateDigit = (start, limit) => {
+        const digits = []
+        for (let i = start; i <= limit; i++) {
+            digits.push(i)
+        }
+        return digits;
+    }
+    // const [selected, setSelected] = useState(format(new Date(), 'PP'));
     const { register, formState: { errors }, handleSubmit } = useForm();
     const onSubmit = data => {
     }
     const userInfo = useSelector((state) => state);
-    let footer = <p className='font-semibold'>You've picked:  {format(selected, 'PP')}</p>
+    // let footer = <p className='font-semibold'>You've picked:  {format(selected, 'PP')}</p>
     return (
         <div className='flex justify-center mt-10 mb-16'>
             <div class="card md:w-1/3 w-full bg-base-100 shadow-xl">
@@ -70,7 +76,7 @@ const PostAJob = () => {
                                         <label class="label">
                                             <span class="label-text">Vacancies</span>
                                         </label>
-                                        <input type="text" placeholder="Vacancies for this post" class="input border border-zinc-400 w-full " {...register('vacancies',
+                                        <input type="number" placeholder="Vacancies for this post" class="input border border-zinc-400 w-full " {...register('vacancies',
                                             {
                                                 required: true
                                             })} />
@@ -128,13 +134,46 @@ const PostAJob = () => {
                                     <label class="label">
                                         <span class="label-text">What's the Deadline to Apply?</span>
                                     </label>
-                                    <div className='flex justify-center border border-zinc-400 rounded-lg'>
-                                        <DayPicker
+                                    <div className='grid grid-cols-3 gap-3 '>
+                                        {/* <DayPicker
                                             mode="single"
                                             selected={selected}
                                             onSelect={setSelected}
                                             footer={footer}
-                                        />
+                                        /> */}
+                                        <div>
+                                            <select name="date" id="selectDate" className='border border-zinc-400 p-3 rounded-lg w-full '{...register('deadlineDay', {
+                                                required: true
+                                            })}>
+                                                <option value="Select Date">Select Date</option>
+                                                {
+
+                                                    generateDigit(1, 31)?.map(digit => <option value={digit}>{digit}</option>)
+                                                }
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <select name="date" id="selectDate" className='border border-zinc-400 p-3 rounded-lg w-full'{...register('deadlineMonth', {
+                                                required: true
+                                            })}>
+                                                <option value="Select Month">Select Month</option>
+                                                {
+
+                                                    generateDigit(1, 12)?.map(digit => <option value={digit}>{digit}</option>)
+                                                }
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <select name="date" id="selectDate" className='border border-zinc-400 p-3 rounded-lg w-full'{...register('deadlineYear', {
+                                                required: true
+                                            })}>
+                                                <option value="Select Year">Select Year</option>
+                                                {
+
+                                                    generateDigit(2022, 2025)?.map(digit => <option value={digit}>{digit}</option>)
+                                                }
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -155,7 +194,7 @@ const PostAJob = () => {
                             </div>
                         </div>
                         <div class="card-actions justify-end mt-6">
-                            <button class="btn btn-primary w-full text-white">Buy Now</button>
+                            <button class="btn btn-primary w-full text-white">POST JOB</button>
                         </div>
                     </form>
                 </div>

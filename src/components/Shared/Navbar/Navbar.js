@@ -1,39 +1,50 @@
 import React, { useState } from 'react';
 import navLogo from '../../../images/logo.png';
 import './Navbar.css'
-import { Link } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import { signOut } from 'firebase/auth';
-import { toast } from 'react-toastify';
 import { FaUserCircle } from "react-icons/fa";
-import { FcEngineering } from "react-icons/fc";
+import { GiHamburgerMenu } from "react-icons/gi";
+import { BsPlusLg, BsTools, BsInfoCircleFill } from "react-icons/bs";
+import { MdDeveloperMode, MdOutlineConnectWithoutContact } from "react-icons/md";
 
 const Navbar = () => {
-    const [navbarIconDropdown, setNavbarIconDropdown] = useState(true);
+    const [navSwitch, setNavSwitch] = useState(false);
     const [user] = useAuthState(auth);
     const handleSignOut = () => {
         localStorage.removeItem('accessToken')
         signOut(auth);
     }
+
+
+
     return (
-        <nav>
-            <div className='container max-w-[1280px] mx-auto'>
-                <div className='flex justify-between items-center'>
-                    {/* logo */}
+        <nav className='sticky top-0 left-0 z-50 shadow-2xl bg-[#ffff]'>
+            <div className='container max-w-[1280px] mx-auto relative z-50 bg-[#ffff]'>
+                <div className='flex justify-between items-center relative'>
+                    {/* logo and navbar menu */}
                     <div className='logo flex items-center text-2xl font-bold py-3 ml-3'>
-                        <FcEngineering className='text-3xl' />
+                        {/* navbar menu  */}
+                        <div onClick={() => setNavSwitch(!navSwitch)} className='mr-2 text-2xl md:hidden ease-out duration-200 '>
+                            {
+                                !navSwitch ? <GiHamburgerMenu /> : <BsPlusLg className='rotate-45' />
+                            }
+
+
+                        </div>
+                        <img className='w-10 h-10' src={navLogo} alt="Logo" />
                         <span className='ml-1'>RecruitHub</span>
                     </div>
 
                     {/* routes  */}
-                    <div className='routes'>
+                    <div className={`routes absolute md:static left-0 z-10 w-full md:w-auto ease-out duration-300 shadow-lg md:shadow-none ${navSwitch ? "navOpen" : "navClosed"}`}>
 
-                        <ul className='flex items-center'>
-                            <li className='mr-8 text-lg font-semibold'>Services</li>
-                            <li className='mr-8 text-lg font-semibold'>Developer</li>
-                            <li className='mr-8 text-lg font-semibold'>Contact US</li>
-                            <li className='mr-8 text-lg font-semibold'>About uS</li>
+                        <ul className='md:flex md:items-center bg-[#ffffff] pl-3 md:pl-0 py-5 md:py-0 w-full md:w-auto'>
+                            <li className='mr-8 mb-4 md:mb-0 text-lg font-semibold flex items-center'> <BsTools className='md:hidden text-base mr-2 text-purple-700' /> Services</li>
+                            <li className='mr-8 mb-4 md:mb-0 text-lg font-semibold flex items-center'><MdDeveloperMode className='md:hidden text-base mr-2 text-purple-700' /> Developer</li>
+                            <li className='mr-8 mb-4 md:mb-0 text-lg font-semibold flex items-center'> <MdOutlineConnectWithoutContact className='md:hidden text-base mr-2 text-purple-700' /> Contact US</li>
+                            <li className='mr-8 mb-4 md:mb-0 text-lg font-semibold flex items-center'> <BsInfoCircleFill className='md:hidden text-base mr-2 text-purple-700' /> About US</li>
                         </ul>
 
                     </div>

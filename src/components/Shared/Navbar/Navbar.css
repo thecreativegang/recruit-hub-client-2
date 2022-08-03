@@ -2,10 +2,9 @@
   border-bottom: 1px solid rgba(25, 25, 25, 0.1);
 }
 
-.menu :where(li:not(.menu-title):not(:empty))> :where(*:not(ul):focus),
-.menu :where(li:not(.menu-title):not(:empty))> :where(*:not(ul):hover) {
-  color: #5956e9;
-  background-color: transparent;
+.navClosed {
+  top: -17rem;
+  left: 0rem;
 }
 
 .my-nav {

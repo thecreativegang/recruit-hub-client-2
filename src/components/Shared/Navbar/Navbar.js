@@ -9,9 +9,11 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { BsPlusLg, BsTools, BsInfoCircleFill } from "react-icons/bs";
 import { MdDeveloperMode, MdOutlineConnectWithoutContact } from "react-icons/md";
 import { NavLink } from "react-router-dom";
+import { AiFillHome } from "react-icons/ai";
 
 const Navbar = () => {
     const [navSwitch, setNavSwitch] = useState(false);
+
     const [user] = useAuthState(auth);
     const handleSignOut = () => {
         localStorage.removeItem('accessToken')
@@ -19,7 +21,7 @@ const Navbar = () => {
     }
 
     //navbar active or deActive color style 
-    const active = " font-semibold text-violet-800 text-lg flex items-center underline"
+    const active = " font-semibold text-violet-700 text-lg flex items-center md:underline"
     const deActive = " font-semibold text-lg flex items-center"
 
     return (
@@ -34,9 +36,8 @@ const Navbar = () => {
                                 !navSwitch ? <GiHamburgerMenu /> : <BsPlusLg className='rotate-45' />
                             }
 
-
                         </div>
-                        <img className='w-10 h-10' src={navLogo} alt="Logo" />
+                        <img className='w-8 md:w-10 h-8 md:h-10' src={navLogo} alt="Logo" />
                         <span className='ml-1'>RecruitHub</span>
                     </div>
 
@@ -45,16 +46,16 @@ const Navbar = () => {
 
                         <ul className='md:flex md:items-center  bg-gradient-to-r from-[#eaeaff] to-[#e4fff9] md:bg-gradient-to-r md:from-[#eaeaff00] md:to-[#e4fff900] pl-3 md:pl-0 py-5 md:py-0 w-full md:w-auto'>
 
-                            <li className='mr-8 mb-4 md:mb-0'> <NavLink to="/" className={({ isActive }) => (isActive ? active : deActive)} ><BsTools className='md:hidden text-base mr-2 text-purple-700' />Home</NavLink> </li>
+                            <li className='mr-8 mb-4 md:mb-0'> <NavLink to="/" className={({ isActive }) => (isActive ? active : deActive)} ><AiFillHome className='md:hidden text-base mr-2' />Home</NavLink> </li>
 
-                            <li className='mr-8 mb-4 md:mb-0'> <NavLink to="/service" className={({ isActive }) => (isActive ? active : deActive)} ><BsTools className='md:hidden text-base mr-2 text-purple-700' /> Services</NavLink> </li>
+                            <li className='mr-8 mb-4 md:mb-0'> <NavLink to="/service" className={({ isActive }) => (isActive ? active : deActive)} ><BsTools className='md:hidden text-base mr-2' /> Services</NavLink> </li>
 
-                            <li className='mr-8 mb-4 md:mb-0'> <NavLink to="/developer" className={({ isActive }) => (isActive ? active : deActive)} > <MdDeveloperMode className='md:hidden text-base mr-2 text-purple-700' /> Developer</NavLink> </li>
+                            <li className='mr-8 mb-4 md:mb-0'> <NavLink to="/developer" className={({ isActive }) => (isActive ? active : deActive)} > <MdDeveloperMode className='md:hidden text-base mr-2' /> Developer</NavLink> </li>
 
 
-                            <li className='mr-8 mb-4 md:mb-0'> <NavLink to="/contactUs" className={({ isActive }) => (isActive ? active : deActive)} > <MdOutlineConnectWithoutContact className='md:hidden text-base mr-2 text-purple-700' /> Contact US</NavLink> </li>
+                            <li className='mr-8 mb-4 md:mb-0'> <NavLink to="/contactUs" className={({ isActive }) => (isActive ? active : deActive)} > <MdOutlineConnectWithoutContact className='md:hidden text-base mr-2' /> Contact US</NavLink> </li>
 
-                            <li className='mr-8 mb-4 md:mb-0'> <NavLink to="/aboutUs" className={({ isActive }) => (isActive ? active : deActive)} > <BsInfoCircleFill className='md:hidden text-base mr-2 text-purple-700' /> About US</NavLink> </li>
+                            <li className='mr-8 mb-4 md:mb-0'> <NavLink to="/aboutUs" className={({ isActive }) => (isActive ? active : deActive)} > <BsInfoCircleFill className='md:hidden text-base mr-2' /> About US</NavLink> </li>
                         </ul>
 
                     </div>

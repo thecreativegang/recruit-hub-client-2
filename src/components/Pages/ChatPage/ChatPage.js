@@ -4,22 +4,21 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import ChatBox from './ChatBox';
 import MyChat from './MyChat';
-import SideDrawer from './SideDrawer';
 
 
 const ChatPage = () => {
 
     const [chats, setChats] = useState([]);
     const fetchChats = async () => {
-        const data = await axios.get(`http://localhost:3001/api/chat`);
-        setChats(data.data);
+        const data = await axios.get(`http://localhost:3001/user`);
+        setChats(data.data.users);
     }
     useEffect(() => {
         fetchChats();
     }, [])
+
     return (
         <div>
-
             <div class="drawer">
                 <input id="my-drawer" type="checkbox" class="drawer-toggle" />
                 <div class="drawer-content">
@@ -29,9 +28,11 @@ const ChatPage = () => {
                             <MyChat chats={chats}></MyChat>
                         </div>
                         <div className='col-span-2'>
-                            <ChatBox></ChatBox>
+                            <ChatBox chats={chats} ></ChatBox>
                         </div>
                     </div>
+
+
                 </div>
                 <div class="drawer-side">
                     <label for="my-drawer" class="drawer-overlay"></label>

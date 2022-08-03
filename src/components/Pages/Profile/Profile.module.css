@@ -20,11 +20,19 @@
 .btn {
   margin-top: 6px;
   color: rgb(255, 255, 255);
-  padding: 12px;
-  border-radius: 3px;
-  font-size: 14px;
+  padding: 7px;
+  border-radius: 4px;
+  font-size: 12px;
   text-align: center;
   cursor: pointer;
   background-color: rgb(6, 117, 206);
   border: 1px solid rgb(6, 117, 206);
+}
+
+@media screen and (min-width: 768px) {
+  .btn {
+    padding: 10px;
+    border-radius: 3px;
+    font-size: 14px;
+  }
 }

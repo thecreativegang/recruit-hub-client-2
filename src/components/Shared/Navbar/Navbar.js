@@ -8,6 +8,7 @@ import { FaUserCircle } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { BsPlusLg, BsTools, BsInfoCircleFill } from "react-icons/bs";
 import { MdDeveloperMode, MdOutlineConnectWithoutContact } from "react-icons/md";
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
     const [navSwitch, setNavSwitch] = useState(false);
@@ -17,11 +18,13 @@ const Navbar = () => {
         signOut(auth);
     }
 
-
+    //navbar active or deActive color style 
+    const active = " font-semibold text-violet-800 text-lg flex items-center underline"
+    const deActive = " font-semibold text-lg flex items-center"
 
     return (
-        <nav className='sticky top-0 left-0 z-50 shadow-2xl bg-[#ffff]'>
-            <div className='container max-w-[1280px] mx-auto relative z-50 bg-[#ffff]'>
+        <nav className='sticky top-0 left-0 z-50 shadow-2xl bg-gradient-to-r from-[#e6e6ff] to-[#d6fff5] '>
+            <div className='container max-w-[1280px] mx-auto relative z-50 '>
                 <div className='flex justify-between items-center relative'>
                     {/* logo and navbar menu */}
                     <div className='logo flex items-center text-2xl font-bold py-3 ml-3'>
@@ -40,11 +43,18 @@ const Navbar = () => {
                     {/* routes  */}
                     <div className={`routes absolute md:static left-0 z-10 w-full md:w-auto ease-out duration-300 shadow-lg md:shadow-none ${navSwitch ? "navOpen" : "navClosed"}`}>
 
-                        <ul className='md:flex md:items-center bg-[#ffffff] pl-3 md:pl-0 py-5 md:py-0 w-full md:w-auto'>
-                            <li className='mr-8 mb-4 md:mb-0 text-lg font-semibold flex items-center'> <BsTools className='md:hidden text-base mr-2 text-purple-700' /> Services</li>
-                            <li className='mr-8 mb-4 md:mb-0 text-lg font-semibold flex items-center'><MdDeveloperMode className='md:hidden text-base mr-2 text-purple-700' /> Developer</li>
-                            <li className='mr-8 mb-4 md:mb-0 text-lg font-semibold flex items-center'> <MdOutlineConnectWithoutContact className='md:hidden text-base mr-2 text-purple-700' /> Contact US</li>
-                            <li className='mr-8 mb-4 md:mb-0 text-lg font-semibold flex items-center'> <BsInfoCircleFill className='md:hidden text-base mr-2 text-purple-700' /> About US</li>
+                        <ul className='md:flex md:items-center  bg-gradient-to-r from-[#eaeaff] to-[#e4fff9] md:bg-gradient-to-r md:from-[#eaeaff00] md:to-[#e4fff900] pl-3 md:pl-0 py-5 md:py-0 w-full md:w-auto'>
+
+                            <li className='mr-8 mb-4 md:mb-0'> <NavLink to="/" className={({ isActive }) => (isActive ? active : deActive)} ><BsTools className='md:hidden text-base mr-2 text-purple-700' />Home</NavLink> </li>
+
+                            <li className='mr-8 mb-4 md:mb-0'> <NavLink to="/service" className={({ isActive }) => (isActive ? active : deActive)} ><BsTools className='md:hidden text-base mr-2 text-purple-700' /> Services</NavLink> </li>
+
+                            <li className='mr-8 mb-4 md:mb-0'> <NavLink to="/developer" className={({ isActive }) => (isActive ? active : deActive)} > <MdDeveloperMode className='md:hidden text-base mr-2 text-purple-700' /> Developer</NavLink> </li>
+
+
+                            <li className='mr-8 mb-4 md:mb-0'> <NavLink to="/contactUs" className={({ isActive }) => (isActive ? active : deActive)} > <MdOutlineConnectWithoutContact className='md:hidden text-base mr-2 text-purple-700' /> Contact US</NavLink> </li>
+
+                            <li className='mr-8 mb-4 md:mb-0'> <NavLink to="/aboutUs" className={({ isActive }) => (isActive ? active : deActive)} > <BsInfoCircleFill className='md:hidden text-base mr-2 text-purple-700' /> About US</NavLink> </li>
                         </ul>
 
                     </div>
@@ -58,6 +68,9 @@ const Navbar = () => {
                         </ul>
                     </div>
 
+
+
+                    {/* merge */}
                 </div>
             </div>
         </nav>

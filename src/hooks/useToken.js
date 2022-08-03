@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 const useToken = async (currentUser) => {
     const [token, setToken] = useState('');
-    const [userInfo, setUserInfo] = useState([]);
     const user = {
         email: currentUser?.email,
         username: currentUser?.username,
@@ -18,15 +17,6 @@ const useToken = async (currentUser) => {
                     setToken(res?.data?.accessToken);
                     localStorage.setItem('accessToken', token);
                     localStorage.removeItem('accountType')
-                    axios.get(`http://localhost:3001/user/get`, token)
-                        .then(function (res) {
-                            console.log(res)
-                        })
-                        .then(function (err) {
-                            if (err) {
-                                console.log(err)
-                            }
-                        })
                 })
                 .then(function (err) {
                     if (err) {
@@ -37,4 +27,5 @@ const useToken = async (currentUser) => {
     }, [user.email])
     return [token];
 }
+
 export default useToken;

@@ -33,6 +33,7 @@ const Navbar = () => {
 
 
                         </div>
+<<<<<<< HEAD
                         <img className='w-10 h-10' src={navLogo} alt="Logo" />
                         <span className='ml-1'>RecruitHub</span>
                     </div>
@@ -55,6 +56,85 @@ const Navbar = () => {
                             <li className='mr-5 text-lg font-semibold'>Login</li>
                             <li className='mr-5 text-lg font-semibold'>Sing In</li>
                             <FaUserCircle className='text-4xl mr-3 hidden' />
+=======
+                        <Link to="/">
+                            <button className='flex font-bold text-2xl'>
+                                <img src={navLogo} alt="" />
+                                <span className='self-center px-1'>RecruitHub</span>
+                            </button>
+                        </Link>
+                    </div>
+
+                    <div className="navbar-center hidden lg:flex">
+                        <ul className="menu menu-horizontal my-ul p-0">
+                            <li tabindex="0" >
+                                <button className='nav-link'>
+                                    Services
+                                    <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+                                        <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
+                                    </svg>
+                                </button>
+                                <ul className="p-0 bg-white z-100">
+                                    <li><Link to="/" className='pb-2'>Talent Pool</Link></li>
+                                    <li><Link to="/" className='pt-0'>Employer Events</Link></li>
+                                    <li><Link to="/" className='pt-0'>Client Success Case</Link></li>
+                                    <li><Link to="/" className='pt-0'>Salary guide</Link></li>
+                                </ul>
+                            </li>
+
+                            <li tabindex="1">
+                                <button className='nav-link'>
+
+                                    Developer
+                                    <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+                                        <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
+                                    </svg>
+                                </button>
+
+                                <ul className="p-0 bg-white z-100">
+                                    <li><Link to="/" className='pb-2'>Talent Pool</Link></li>
+                                    <li><Link to="/" className='pt-0'>Employer Events</Link></li>
+                                    <li><Link to="/" className='pt-0'>Client Success Case</Link></li>
+                                    <li><Link to="/" className='pt-0'>Salary guide</Link></li>
+                                </ul>
+                            </li>
+                            <li tabindex="2">
+                                <button className='nav-link'>
+                                    Contact US
+                                    <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+                                        <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
+                                    </svg>
+                                </button>
+
+                                <ul className="p-0 bg-white z-100">
+                                    <li><Link to="/" className='pb-2'>Talent Pool</Link></li>
+                                    <li><Link to="/" className='pt-0'>Employer Events</Link></li>
+                                    <li><Link to="/" className='pt-0'>Client Success Case</Link></li>
+                                    <li><Link to="/" className='pt-0'>Salary guide</Link></li>
+                                </ul>
+                            </li>
+
+                            <li tabindex="3">
+                                <button className='nav-link'>
+                                    About us
+                                    <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+                                        <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
+                                    </svg>
+                                </button>
+
+                                <ul className="p-0 bg-white z-100">
+                                    <li><Link to="/" className='pb-2'>Talent Pool</Link></li>
+                                    <li><Link to="/" className='pt-0'>Employer Events</Link></li>
+                                    <li><Link to="/" className='pt-0'>Client Success Case</Link></li>
+                                    <li><Link to="/" className='pt-0'>Salary guide</Link></li>
+                                </ul>
+                            </li>
+
+                            {/* Route for recruiters only */}
+                            <li tabindex="4">
+                                <Link to="/postJob" className='nav-link' >Post a Job</Link>
+                            </li>
+>>>>>>> 58ad7406ea8429c47f4c7321cfa322eee0f070bc
                         </ul>
                     </div>
 

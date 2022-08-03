@@ -9,11 +9,11 @@ import { FaUserCircle } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { BsPlusLg, BsTools, BsInfoCircleFill } from "react-icons/bs";
 import { MdDeveloperMode, MdOutlineConnectWithoutContact } from "react-icons/md";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
     const [navSwitch, setNavSwitch] = useState(false);
-
+    const [navbarIconDropdown, setNavbarIconDropdown] = useState(true);
     const [user] = useAuthState(auth);
     const handleSignOut = () => {
         localStorage.removeItem('accessToken')
@@ -42,7 +42,7 @@ const Navbar = () => {
                     </div>
 
                     {/* routes  */}
-                    <div className={`routes absolute md:static left-0 z-10 w-full md:w-auto ease-out duration-300 shadow-lg md:shadow-none ${navSwitch ? "navOpen" : "navClosed"}`}>
+                    <div className={`routes absolute md:static left-0  z-10 w-full md:w-auto ease-out duration-300 shadow-lg md:shadow-none ${navSwitch ? "navOpen" : "navClosed"}`}>
 
                         <ul className='md:flex md:items-center  bg-gradient-to-r from-[#eaeaff] to-[#e4fff9] md:bg-gradient-to-r md:from-[#eaeaff00] md:to-[#e4fff900] pl-3 md:pl-0 py-5 md:py-0 w-full md:w-auto'>
 
@@ -61,13 +61,36 @@ const Navbar = () => {
                     </div>
 
                     {/* profile  */}
-                    <div className='profile'>
-                        <ul className='flex items-center'>
-                            <li className='mr-5 text-lg font-semibold'>Login</li>
-                            <li className='mr-5 text-lg font-semibold'>Sing In</li>
-                            <FaUserCircle className='text-4xl mr-3 hidden' />
-                        </ul>
+                    <div >
+                        <div onClick={() => setNavbarIconDropdown(!navbarIconDropdown)} className="navbar-end w-fit  relative">
+                            <div className='bg-primary px-3 py-2 rounded flex space-x-1 '>
+                                <div className='space-y-1'>
+                                    <div className='w-2 h-2  bg-white rounded'></div>
+                                    <div className='w-2 h-2  bg-white rounded'></div>
+                                </div>
+                                <div className='space-y-1'>
+                                    <div className='w-2 h-2  bg-white rounded'></div>
+                                    <div className='w-2 h-2  bg-white rounded'></div>
+                                </div>
+                            </div>
+                            <div hidden={navbarIconDropdown} className="absolute bg-white top-10 border border-zinc-300 rounded-lg right-0">
+                                <ul className='child:px-5 child:py-1 child:text-xl  '>
+                                    <li className='hover:bg-primary hover:text-white '><Link to='/profile' className='text-base'>Profile</Link></li>
+                                    {
+                                        user
+                                            ?
+                                            <li className='hover:bg-primary hover:text-white '><button onClick={() => handleSignOut()} className="text-base">Signout</button></li>
+                                            :
+                                            <>
+
+                                                <li className='hover:bg-primary hover:text-white '><Link to='/login' className='text-base'>Login</Link></li>
+                                                <li className='hover:bg-primary hover:text-white '><Link to='/register ' className='text-base'>Register</Link></li>
+                                            </>}
+                                </ul>
+                            </div>
+                        </div>
                     </div>
+
 
 
 

@@ -12,6 +12,7 @@ import Profile from './components/Pages/Profile/Profile';
 import RequireUsername from './components/Shared/RequireUsername';
 import Loading from './components/Shared/Loading';
 import ChatPage from './components/Pages/ChatPage/ChatPage';
+import PostAJob from './components/Pages/PostAJob.js/PostAJob';
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
         <Route path='/lod' element={<Loading />}></Route>
         <Route path='/profile' element={<Profile />}></Route>
         <Route path='/chat' element={<ChatPage />}></Route>
+        <Route path='/postJob' element={<PostAJob />}></Route>
       </Routes >
       <FooterBottomSection />
       <ToastContainer

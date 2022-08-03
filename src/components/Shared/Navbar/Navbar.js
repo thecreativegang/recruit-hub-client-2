@@ -38,13 +38,13 @@ const Navbar = () => {
                                 <li><Link to="/">Item 3</Link></li>
                             </ul>
                         </div>
-                        <button className='flex font-bold text-2xl'>
-                            <img src={navLogo} alt="" />
-                            <span className='self-center px-1'>RecruitHub</span>
-                        </button>
+                        <Link to="/">
+                            <button className='flex font-bold text-2xl'>
+                                <img src={navLogo} alt="" />
+                                <span className='self-center px-1'>RecruitHub</span>
+                            </button>
+                        </Link>
                     </div>
-
-
 
                     <div className="navbar-center hidden lg:flex">
                         <ul className="menu menu-horizontal my-ul p-0">
@@ -109,6 +109,11 @@ const Navbar = () => {
                                     <li><Link to="/" className='pt-0'>Client Success Case</Link></li>
                                     <li><Link to="/" className='pt-0'>Salary guide</Link></li>
                                 </ul>
+                            </li>
+
+                            {/* Route for recruiters only */}
+                            <li tabindex="4">
+                                <Link to="/postJob" className='nav-link' >Post a Job</Link>
                             </li>
                         </ul>
                     </div>

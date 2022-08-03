@@ -37,5 +37,4 @@ const useToken = async (currentUser) => {
     }, [user.email])
     return [token];
 }
-// 
 export default useToken;

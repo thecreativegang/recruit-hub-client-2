@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Login from './components/Pages/Login/Login';
 import Register from './components/Pages/Register/Register';
@@ -15,33 +15,38 @@ import ChatBox from './components/Pages/ChatPage/ChatBox';
 
 function App() {
   return (
-    <div >
+    <div>
       <Navbar />
       <Routes>
+        <Route
+          path="/"
+          element={
+            <RequireUsername>
+              <Home />
+            </RequireUsername>
+          }
+        />
 
-        <Route path='/' element={
-          <RequireUsername>
-            <Home />
-          </RequireUsername>
-        } />
-
-        <Route path='/home' element={<RequireUsername>
-          <Home />
-        </RequireUsername>} />
-        <Route path='/profile' element={<Profile></Profile>} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/register' element={<AccountTypePage />} />
-        <Route path='/register/:accType' element={<Register />} />
-        <Route path='/lod' element={<Loading />}></Route>
-        <Route path='/profile' element={<Profile />}></Route>
-        <Route path='/chat' element={<ChatBox />}></Route>
-      </Routes >
+        <Route
+          path="/home"
+          element={
+            <RequireUsername>
+              <Home />
+            </RequireUsername>
+          }
+        />
+        <Route path="/profile" element={<Profile></Profile>} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<AccountTypePage />} />
+        <Route path="/register/:accType" element={<Register />} />
+        <Route path="/lod" element={<Loading />}></Route>
+        <Route path="/profile" element={<Profile />}></Route>
+        <Route path="/chat" element={<ChatBox />}></Route>
+      </Routes>
       <FooterBottomSection />
-      <ToastContainer
-        autoClose={1500}
-      />
-    </div >
+      <ToastContainer autoClose={1500} />
+    </div>
   );
 }
-// 
+//
 export default App;

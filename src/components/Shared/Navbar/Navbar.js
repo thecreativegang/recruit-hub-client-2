@@ -15,15 +15,24 @@ import { NavLink } from "react-router-dom";
 import { AiFillHome } from "react-icons/ai";
 import { RiLoginBoxLine } from "react-icons/ri";
 import { ImExit } from "react-icons/im";
+import { CgProfile } from "react-icons/cg";
 
 const Navbar = () => {
     const [navSwitch, setNavSwitch] = useState(false);
+    const [userSwitch, setUserSwitch] = useState(false);
 
     const [user] = useAuthState(auth);
 
     const handleSignOut = () => {
         localStorage.removeItem('accessToken')
         signOut(auth);
+        // closed user information menu bar
+        setUserSwitch(false)
+    }
+
+    const closedNavbarAll = () => {
+        setUserSwitch(false) //main navbar
+        setNavSwitch(false)  // user information navbar
     }
 
     //navbar active or deActive color style 
@@ -53,32 +62,27 @@ const Navbar = () => {
 
                         <ul className='md:flex md:items-center  bg-gradient-to-r from-[#eaeaff] to-[#e4fff9] md:bg-gradient-to-r md:from-[#eaeaff00] md:to-[#e4fff900] pl-3 md:pl-0 py-5 md:py-0 w-full md:w-auto'>
 
-                            <li onClick={() => { setNavSwitch(false) }} className='mr-5 mb-4 md:mb-0'> <NavLink to="/" className={({ isActive }) => (isActive ? active : deActive)} ><AiFillHome className='md:hidden text-base mr-2' />Home</NavLink> </li>
+                            <li onClick={closedNavbarAll} className='mr-5 mb-4 md:mb-0'> <NavLink to="/" className={({ isActive }) => (isActive ? active : deActive)} ><AiFillHome className='md:hidden text-base mr-2' />Home</NavLink> </li>
 
-                            <li onClick={() => { setNavSwitch(false) }} className='mr-5 mb-4 md:mb-0'> <NavLink to="/service" className={({ isActive }) => (isActive ? active : deActive)} ><BsTools className='md:hidden text-base mr-2' /> Services</NavLink> </li>
+                            <li onClick={closedNavbarAll} className='mr-5 mb-4 md:mb-0'> <NavLink to="/service" className={({ isActive }) => (isActive ? active : deActive)} ><BsTools className='md:hidden text-base mr-2' /> Services</NavLink> </li>
 
-                            <li onClick={() => { setNavSwitch(false) }} className='mr-5 mb-4 md:mb-0'> <NavLink to="/developer" className={({ isActive }) => (isActive ? active : deActive)} > <MdDeveloperMode className='md:hidden text-base mr-2' /> Developer</NavLink> </li>
+                            <li onClick={closedNavbarAll} className='mr-5 mb-4 md:mb-0'> <NavLink to="/developer" className={({ isActive }) => (isActive ? active : deActive)} > <MdDeveloperMode className='md:hidden text-base mr-2' /> Developer</NavLink> </li>
 
+                            <li onClick={closedNavbarAll} className='mr-5 mb-4 md:mb-0'> <NavLink to="/contactUs" className={({ isActive }) => (isActive ? active : deActive)} > <MdOutlineConnectWithoutContact className='md:hidden text-base mr-2' /> Contact US</NavLink> </li>
 
-                            <li onClick={() => { setNavSwitch(false) }} className='mr-5 mb-4 md:mb-0'> <NavLink to="/contactUs" className={({ isActive }) => (isActive ? active : deActive)} > <MdOutlineConnectWithoutContact className='md:hidden text-base mr-2' /> Contact US</NavLink> </li>
-
-                            <li onClick={() => { setNavSwitch(false) }} className='mb-4 md:mb-0'> <NavLink to="/aboutUs" className={({ isActive }) => (isActive ? active : deActive)} > <BsInfoCircleFill className='md:hidden text-base mr-2' /> About US</NavLink> </li>
-
+                            <li onClick={closedNavbarAll} className='mb-4 md:mb-0'> <NavLink to="/aboutUs" className={({ isActive }) => (isActive ? active : deActive)} > <BsInfoCircleFill className='md:hidden text-base mr-2' /> About US</NavLink> </li>
 
                             {/* profile routes show only mobile and tablet  */}
-                            {
-                                !user ?
-                                    <>
-                                        <li className='mb-4 md:mb-0 md:hidden'> <NavLink to="/login" className={({ isActive }) => (isActive ? active : deActive)} > <RiLoginBoxLine className='md:hidden text-base mr-2' />Login</NavLink> </li>
+                            {!user ?
+                                <>
+                                    <li onClick={closedNavbarAll} className='mb-4 md:mb-0 md:hidden'> <NavLink to="/login" className={({ isActive }) => (isActive ? active : deActive)} > <RiLoginBoxLine className='md:hidden text-base mr-2' />Login</NavLink> </li>
 
-                                        <li className='mb-4 md:mb-0 md:hidden'> <NavLink to="/register" className={({ isActive }) => (isActive ? active : deActive)} > <BsFillFileEarmarkMedicalFill className='md:hidden text-base mr-2' />Register</NavLink> </li>
-                                    </> :
+                                    <li onClick={closedNavbarAll} className='mb-4 md:mb-0 md:hidden'> <NavLink to="/register" className={({ isActive }) => (isActive ? active : deActive)} > <BsFillFileEarmarkMedicalFill className='md:hidden text-base mr-2' />Register</NavLink> </li>
+                                </> :
 
-                                    <li onClick={() => handleSignOut()} className='mb-4 md:mb-0 md:hidden cursor-pointer font-semibold text-lg flex items-center'>  <ImExit className='md:hidden text-base mr-2' />Logout</li>
+                                <li onClick={() => handleSignOut()} className='mb-4 md:mb-0 md:hidden cursor-pointer font-semibold text-lg flex items-center'>  <ImExit className='md:hidden text-base mr-2' />Logout</li>
                             }
-
                         </ul>
-
                     </div>
 
                     {/* profile  */}
@@ -86,18 +90,42 @@ const Navbar = () => {
                         <ul className='flex items-center '>
 
                             {!user ? <>
-                                <li onClick={() => { setNavSwitch(false) }} className='mr-4 mb-4 md:mb-0 hidden md:block'> <NavLink to="/login" className={({ isActive }) => (isActive ? active : deActive)} >Login</NavLink> </li>
+                                <li onClick={closedNavbarAll} className='mr-4 mb-4 md:mb-0 hidden md:block'> <NavLink to="/login" className={({ isActive }) => (isActive ? active : deActive)} >Login</NavLink> </li>
 
-                                <li onClick={() => { setNavSwitch(false) }} className='mr-4 mb-4 md:mb-0 hidden md:block'> <NavLink to="/register" className={({ isActive }) => (isActive ? active : deActive)} >Register</NavLink> </li></> :
+                                <li onClick={closedNavbarAll} className='mr-4 mb-4 md:mb-0 hidden md:block'> <NavLink to="/register" className={({ isActive }) => (isActive ? active : deActive)} >Register</NavLink> </li></> :
+
+                                // user
+                                <>
+                                    {/* user photo  */}
+                                    <div className='relative'>
+                                        <FaUserCircle onClick={() => setUserSwitch(!userSwitch)} className='text-4xl mr-3 cursor-pointer' />
+                                    </div>
+
+                                    {/* user details  */}
+                                    <div className={`${userSwitch ? "top-[3.5rem]" : "top-[-20rem]"} z-20 absolute right-0 min-w-[22rem]  bg-gradient-to-t from-[#e6e6ff] to-[#d7fbf1]  p-5 rounded-b-xl duration-300 ease-out `}>
+                                        <div className='text-center'>
+                                            <h6 className='text-lg md:text-xl font-[600] mb-1 md:mb-1'>Tanvir Ahmed</h6>
+                                            <h6 className='text-xs md:text-base font-[500] mb-1 md:mb-1'>@tanvir123</h6>
+                                            <h6 className='text-xs md:text-base font-[500] mb-1 md:mb-1'>DE-4562415</h6>
+                                        </div>
 
 
-                                <FaUserCircle className='text-4xl mr-3' />
+                                        {/* routes  */}
+                                        <ul>
+                                            <li onClick={closedNavbarAll} className='mb-4'> <NavLink to="/profile" className={({ isActive }) => (isActive ? active : deActive)} > <CgProfile className=' text-base md:text-xl mr-2' />Profile</NavLink> </li>
+
+                                            <li onClick={() => handleSignOut()} className='mb-4 cursor-pointer font-semibold text-lg flex items-center'> <ImExit className=' text-base md:text-xl mr-2' />Logout</li>
+
+                                        </ul>
+
+                                    </div>
+
+
+                                </>
                             }
-
                         </ul>
                     </div>
 
-                    {/* merge */}
                 </div>
             </div>
         </nav>

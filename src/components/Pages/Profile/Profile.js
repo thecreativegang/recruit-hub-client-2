@@ -34,9 +34,9 @@ const Profile = () => {
 
     return (
         <div>
-            <div className=' flex relative z-[2] max-w-[1536px] mx-auto '>
+            <div className=' flex relative z-[2] max-w-[1536px] mx-auto overflow-hidden '>
 
-                <div className="w-[20%] px-8 pt-20 bg-[#F2F2F2] h-screen side-bar fixed top-0 left-0">
+                <div className="hidden md:block w-[20%] px-8 pt-20 bg-[#F2F2F2] h-screen side-bar fixed top-0 left-0">
                     <ul>
                         <li>
                             <div className='flex py-[12px]'>
@@ -100,32 +100,32 @@ const Profile = () => {
                 </div>
 
 
-                <div className="main-content w-[100%] pl-[20%] bg-[#F7F7F7]">
-                    <div className='w-[732px] mx-auto bg-white'>
+                <div className="main-content w-[100%] md:pl-[20%] bg-[#F7F7F7] md:mx-4">
+                    <div className='w-full md:w-[732px] mx-4 md:mx-auto  bg-white'>
                         <div className='mt-12 p-[24px] grid grid-cols-2'>
                             <div className="english-verify">
                                 <div className="code-test flex justify-center">
                                     <div className='text-center'>
-                                        <img className='w-[45px] mb-[10px] mx-auto' src="https://vanhack.com/static-desktop/1b30c8bf558ff2f6ca321e62b4f1f100.svg" alt="" />
-                                        <h1 className='font-bold mb-[10px] test'>English Verification</h1>
-                                        <Link to='/' className='color-blue-dark'>Start now</Link>
+                                        <img className='w-[30px] md:w-[45px] mb-[10px] mx-auto' src="https://vanhack.com/static-desktop/1b30c8bf558ff2f6ca321e62b4f1f100.svg" alt="" />
+                                        <h1 className='text-sm md:text-xl font-bold mb-[10px] test'>English Verification</h1>
+                                        <Link to='/' className='text-xs md:text-sm color-blue-dark'>Start now</Link>
                                     </div>
                                 </div>
                             </div>
                             <div className=" flex justify-center">
                                 <div className='text-center'>
-                                    <img className='w-[45px] mx-auto' src="https://vanhack.com/static-desktop/ecb8fa162c6ca3693c69b34b22ffc82d.svg" alt="" />
-                                    <h1 className='font-bold test my-[10px]'>Code Test</h1>
-                                    <Link to={'/'} className='color-blue-dark'>See Details</Link>
+                                    <img className='w-[30px] md:w-[45px] mx-auto' src="https://vanhack.com/static-desktop/ecb8fa162c6ca3693c69b34b22ffc82d.svg" alt="" />
+                                    <h1 className='text-sm md:text-xl font-bold test my-[10px]'>Code Test</h1>
+                                    <Link to={'/'} className='text-xs md:text-sm color-blue-dark'>See Details</Link>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     {/* General */}
-                    <div className='w-[732px] mx-auto mt-12'>
+                    <div className=' w-full  md:w-[732px] mx-auto mt-12'>
                         <div>
-                            <h1 className='text-[34px]  color-blue-dark mb-2'>General</h1>
+                            <h1 className=' text-2xl md:text-4xl text-[#788894] ml-4 mb-4'>General</h1>
                         </div>
                         <div className=' bg-white  p-6'>
                             <form onSubmit={handleSubmit(onSubmit)}>
@@ -167,11 +167,11 @@ const Profile = () => {
                     {/* Professional Overview */}
                     <div className='my-10'>
 
-                        <div className='w-[732px] mx-auto '>
-                            <h2 className='text-4xl text-[#788894]'>Professional Overview</h2>
+                        <div className='w-full md:w-[732px] mx-4 md:mx-auto '>
+                            <h2 className=' text-2xl md:text-4xl text-[#788894]'>Professional Overview</h2>
                         </div>
 
-                        <div className='w-[732px] p-6 rounded-lg mt-4 mx-auto bg-white'>
+                        <div className='w-full md:w-[732px] p-6 rounded-lg mt-4 mx-auto bg-white'>
 
                             <div>
                                 {/* Select option  */}
@@ -391,11 +391,11 @@ const Profile = () => {
                     {/* Relocation */}
                     <div className='my-10'>
 
-                        <div className='w-[732px] mx-auto '>
-                            <h2 className='text-4xl text-[#788894]'>Relocation</h2>
+                        <div className='w-full md:w-[732px] mx-4 md:mx-auto '>
+                            <h2 className=' text-2xl md:text-4xl text-[#788894]'>Relocation</h2>
                         </div>
 
-                        <div className='w-[732px] p-6 rounded-lg mt-4 mx-auto bg-white'>
+                        <div className='w-full md:w-[732px] p-6 rounded-lg mt-4 mx-auto bg-white'>
 
 
                             {/* Select option  */}
@@ -429,7 +429,7 @@ const Profile = () => {
 
 
 
-                            <div className='grid grid-cols-2 gap-2 pt-8'>
+                            <div className='grid grid-cols-1 md:grid-cols-2 md:gap-2 pt-8'>
 
                                 {/* Select option  */}
                                 <div className='w-full pt-2 pr-4  mb-5'>
@@ -539,7 +539,7 @@ const Profile = () => {
                             </div>
 
 
-                            <div className='grid grid-cols-2 gap-8'>
+                            <div className='grid grid-cols-1 md:grid-cols-2 gap-8'>
 
                                 <div>
                                     {/* passport  */}
@@ -643,11 +643,11 @@ const Profile = () => {
                     {/* Resume & Social Profile */}
                     <div className='my-10'>
 
-                        <div className='w-[732px] mx-auto '>
-                            <h2 className='text-4xl text-[#788894]'>Resume & Social Profile</h2>
+                        <div className='w-full md:w-[732px] mx-4 md:mx-auto '>
+                            <h2 className=' text-2xl md:text-4xl text-[#788894]'>Resume & Social Profile</h2>
                         </div>
 
-                        <div className='w-[732px] p-6 rounded-lg mt-4 mx-auto bg-white'>
+                        <div className='w-full md:w-[732px] p-6 rounded-lg mt-4 mx-auto bg-white'>
 
 
                             <div className='w-full flex items-center justify-between pb-4'>
@@ -655,21 +655,21 @@ const Profile = () => {
                                 <div className='w-full'>
 
                                     <div className='flex justify-end'>
-                                        <button className='btn font-semibold text-right flex items-center'> <AiOutlineCloudUpload className='mr-1 text-2xl' /> UPLOAD RESUME</button>
+                                        <button className='btn text-xs md:text-xl font-semibold text-right flex items-center'> <AiOutlineCloudUpload className='mr-1 text-xl' /> UPLOAD RESUME</button>
                                     </div>
 
                                     {/* Social link  */}
                                     <div className='py-4'>
                                         <div className='py-2 border-y-2 border-gray-200'>
-                                            <p className='text-[#2C9BF5] font-[500]'>https://www.linkedin.com/in/tanvirahmed6174/</p>
+                                            <p className='text-base text-[#2C9BF5] font-[500]'>https://www.linkedin.com/in/tanvirahmed6174/</p>
                                         </div>
 
                                         <div className='py-2 border-b-2 border-gray-200'>
-                                            <p className='text-[#2C9BF5] font-[500]'>https://github.com/tanvirgithub21</p>
+                                            <p className='text-base text-[#2C9BF5] font-[500]'>https://github.com/tanvirgithub21</p>
                                         </div>
 
                                         <div className='py-2 border-b-2 border-gray-200'>
-                                            <p className='text-[#2C9BF5] font-[500]'>http://localhost:3000/profile</p>
+                                            <p className='text-base text-[#2C9BF5] font-[500]'>http://localhost:3000/profile</p>
                                         </div>
                                     </div>
 
@@ -684,15 +684,15 @@ const Profile = () => {
                     {/* Languages */}
                     <div className='my-10'>
 
-                        <div className='w-[732px] mx-auto '>
-                            <h2 className='text-4xl text-[#788894]'>Languages</h2>
+                        <div className='w-full md:w-[732px] mx-4 md:mx-auto '>
+                            <h2 className=' text-2xl md:text-4xl text-[#788894]'>Languages</h2>
                         </div>
 
-                        <div className='w-[732px] p-6 rounded-lg mt-4 mx-auto bg-white'>
+                        <div className='w-full md:w-[732px] p-6 rounded-lg mt-4 mx-auto bg-white'>
 
                             {/* Select option -1  */}
-                            <div className='w-full flex items-center justify-between pb-4'>
-                                <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-[65%]" >
+                            <div className='w-full md:flex items-center justify-between pb-4'>
+                                <form onSubmit={handleSubmit(onSubmit)} className="md:max-w-[65%] w-full mb-2" >
                                     <select {...register("gender")} className='border-2 rounded-md mt-1 px-2 py-2 text-base w-full'>
                                         <option selected="selected" value="#">Select your Languages</option>
                                         <option value="hsc">English</option>
@@ -701,7 +701,7 @@ const Profile = () => {
                                 </form>
 
                                 {/* Select option -2  */}
-                                <form onSubmit={handleSubmit(onSubmit)} className="min-w-[12.5rem] w-full max-w-[33%]"  >
+                                <form onSubmit={handleSubmit(onSubmit)} className="min-w-[12.5rem] md:max-w-[33%] w-full mb-2"  >
                                     <select {...register("gender")} className='border-2 rounded-md mt-1 px-2 py-2 text-base w-full'>
                                         <option selected="selected" value="">Select an option</option>
                                         <option value="#">Basic</option>
@@ -725,8 +725,8 @@ const Profile = () => {
                     {/* Experience */}
                     <div className='my-10'>
 
-                        <div className='w-[732px] mx-auto '>
-                            <h2 className='text-4xl text-[#788894]'>Experience</h2>
+                        <div className='w-full md:w-[732px] mx-4 md:mx-auto '>
+                            <h2 className=' text-2xl md:text-4xl text-[#788894]'>Experience</h2>
                         </div>
 
                         <div className='w-[732px] p-6 rounded-lg mt-4 mx-auto bg-white'>
@@ -737,11 +737,11 @@ const Profile = () => {
                     {/* Education */}
                     <div className='my-10'>
 
-                        <div className='w-[732px] mx-auto '>
-                            <h2 className='text-4xl text-[#788894]'>Education</h2>
+                        <div className='w-full md:w-[732px] mx-4 md:mx-auto '>
+                            <h2 className=' text-2xl md:text-4xl text-[#788894]'>Education</h2>
                         </div>
 
-                        <div className='w-[732px] p-6 rounded-lg mt-4 mx-auto bg-white'>
+                        <div className='w-full md:w-[732px] p-6 rounded-lg mt-4 mx-auto bg-white'>
                             <p className='text-lg font-[500]'>Formal Education</p>
 
                             {/* Select option  */}

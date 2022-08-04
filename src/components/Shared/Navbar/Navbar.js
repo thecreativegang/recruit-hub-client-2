@@ -14,6 +14,7 @@ import { MdDeveloperMode, MdOutlineConnectWithoutContact } from "react-icons/md"
 import { NavLink } from "react-router-dom";
 import { AiFillHome } from "react-icons/ai";
 import { RiLoginBoxLine } from "react-icons/ri";
+import { ImExit } from "react-icons/im";
 
 const Navbar = () => {
     const [navSwitch, setNavSwitch] = useState(false);
@@ -65,12 +66,15 @@ const Navbar = () => {
 
                             {/* profile routes show only mobile and tablet  */}
                             {
-                                !user &&
-                                <>
-                                    <li className='mb-4 md:mb-0 md:hidden'> <NavLink to="/login" className={({ isActive }) => (isActive ? active : deActive)} > <RiLoginBoxLine className='md:hidden text-base mr-2' />Login</NavLink> </li>
+                                !user ?
+                                    <>
+                                        <li className='mb-4 md:mb-0 md:hidden'> <NavLink to="/login" className={({ isActive }) => (isActive ? active : deActive)} > <RiLoginBoxLine className='md:hidden text-base mr-2' />Login</NavLink> </li>
 
-                                    <li className='mb-4 md:mb-0 md:hidden'> <NavLink to="/register" className={({ isActive }) => (isActive ? active : deActive)} > <BsFillFileEarmarkMedicalFill className='md:hidden text-base mr-2' />Register</NavLink> </li>
-                                </>
+                                        <li className='mb-4 md:mb-0 md:hidden'> <NavLink to="/register" className={({ isActive }) => (isActive ? active : deActive)} > <BsFillFileEarmarkMedicalFill className='md:hidden text-base mr-2' />Register</NavLink> </li>
+                                    </> :
+
+                                    <li onClick={() => handleSignOut()} className='mb-4 md:mb-0 md:hidden cursor-pointer font-semibold text-lg flex items-center'>  <ImExit className='md:hidden text-base mr-2' />Logout</li>
+
                             }
 
 

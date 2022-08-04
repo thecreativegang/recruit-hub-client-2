@@ -1,7 +1,7 @@
 import React from 'react';
 import SingleChatPage from './SingleChatPage';
 
-const SingleProfile = ({ chat }) => {
+const SingleProfile = ({ chat, handelChatPeople }) => {
     console.log(chat)
     return (
         <div for="my-modal-3" className=' '>
@@ -19,8 +19,10 @@ const SingleProfile = ({ chat }) => {
                 </div>
 
                 <div className='mx-2 my-auto'>
+                    <button onClick={handelChatPeople(chat._id)}>
 
-                    <label for="my-modal-3" class=" btn btn-sm btn-primary modal-button"> Add </label>
+                        <label for="my-modal-3" class=" btn btn-sm btn-primary modal-button"> Add </label>
+                    </button>
 
                 </div>
 
@@ -31,7 +33,7 @@ const SingleProfile = ({ chat }) => {
             <input type="checkbox" id="my-modal-3" class="modal-toggle" />
             <div class="modal">
                 <div class="modal-box relative">
-                    <SingleChatPage></SingleChatPage>
+                    <SingleChatPage chat={chat}></SingleChatPage>
                 </div>
             </div>
         </div >

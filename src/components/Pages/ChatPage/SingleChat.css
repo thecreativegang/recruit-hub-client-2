@@ -25,14 +25,7 @@
 
 
 
-.chat-window {
-    width: 300px;
-    height: 420px;
-}
 
-.chat-window p {
-    margin: 0;
-}
 
 .chat-window .chat-header {
     height: 45px;

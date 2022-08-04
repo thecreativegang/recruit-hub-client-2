@@ -6,7 +6,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusSquare } from '@fortawesome/free-regular-svg-icons';
 
 const MyChat = ({ chats }) => {
-    console.log(chats)
+
+
+
     return (
         <div className='mx-2'>
             <div className='flex justify-between  bg-red-200'>

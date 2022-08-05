@@ -1,17 +1,18 @@
 
-import React from 'react';
+import React, { useContext } from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import './Profile.module.css'
 import { AiOutlineCloudUpload } from "react-icons/ai";
 import { Link } from 'react-router-dom';
+import { UserContext } from '../../../contextApi/userInfo';
 
 
 const Profile = () => {
     const [country, setCoutry] = useState([])
 
-
+    console.log(useContext(UserContext))
     useEffect(() => {
         fetch('country.json')
             .then(res => res.json())
@@ -19,12 +20,13 @@ const Profile = () => {
     }, [])
 
 
-
-    country?.map(c => console.log(c?.name))
+    // country?.map(c => console.log(c?.name))
 
 
     const { register, handleSubmit } = useForm();
-    const onSubmit = data => console.log(data);
+    const onSubmit = data => {
+        // console.log(data)
+    };
 
 
     const [checkboxValue, setCheckboxValue] = useState(false)

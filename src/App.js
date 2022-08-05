@@ -13,16 +13,13 @@ import RequireUsername from './components/Shared/RequireUsername';
 import Loading from './components/Shared/Loading';
 import ChatPage from './components/Pages/ChatPage/ChatPage';
 import PostAJob from './components/Pages/PostAJob/PostAJob';
-import { userInfo } from './stateManagement/userInfo';
 
 
 function App() {
-  console.log('userInfo Inside App',userInfo)
   return (
     <div >
       <Navbar />
       <Routes>
-
         <Route path='/' element={
           <RequireUsername>
             <Home />

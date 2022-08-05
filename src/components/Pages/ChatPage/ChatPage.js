@@ -2,9 +2,7 @@ import axios from 'axios';
 import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { useAuthState } from 'react-firebase-hooks/auth';
 import { io } from 'socket.io-client';
-import auth from '../../../firebase.init';
 import MyChat from './MyChat';
 import SingleChatWIndow from './SingleChatWIndow';
 
@@ -13,17 +11,9 @@ const socket = io.connect("http://localhost:3001");
 
 const ChatPage = () => {
 
-    const [chats, setChats] = useState([]);
-    const [chatId, setChatId] = useState('');
 
-    const fetchChats = async () => {
-        const data = await axios.get(`http://localhost:3001/user`);
-        setChats(data.data.users);
-    }
-    useEffect(() => {
-        fetchChats();
-    }, [])
-    const [globalUser] = useAuthState(auth);
+
+
 
     return (
         <div>
@@ -33,10 +23,10 @@ const ChatPage = () => {
 
                     <div className='grid grid-cols-3'>
                         <div className=''>
-                            <MyChat setChatId={setChatId} chats={chats}></MyChat>
+                            <MyChat ></MyChat>
                         </div>
                         <div className='col-span-2'>
-                            <SingleChatWIndow chatId={chatId} socket={socket}></SingleChatWIndow>
+                            <SingleChatWIndow socket={socket}></SingleChatWIndow>
                         </div>
                     </div>
 

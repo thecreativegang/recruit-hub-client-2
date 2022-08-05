@@ -1,7 +1,7 @@
 import React from 'react';
 import SingleChatPage from './SingleChatPage';
 
-const SingleProfile = ({ chat, handelChatPeople }) => {
+const SingleProfile = ({ chat }) => {
     console.log(chat)
     return (
         <div for="my-modal-3" className=' '>
@@ -19,8 +19,7 @@ const SingleProfile = ({ chat, handelChatPeople }) => {
                 </div>
 
                 <div className='mx-2 my-auto'>
-                    <button onClick={handelChatPeople(chat._id)}>
-
+                    <button>
                         <label for="my-modal-3" class=" btn btn-sm btn-primary modal-button"> Add </label>
                     </button>
 

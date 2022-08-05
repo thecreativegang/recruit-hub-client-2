@@ -179,7 +179,7 @@ const Profile = () => {
                                     <label htmlFor="#">Which role best applies to your experience?</label>
 
                                     <form onSubmit={handleSubmit(onSubmit)}>
-                                        <select {...register("gender")} className='border-2 rounded-md mt-1 px-2 py-2 text-base w-full'>
+                                        <select  {...register("proOverview")} className='border-2 rounded-md mt-1 px-2 py-2 text-base w-full'>
                                             {/* <option selected="selected" value="">Select an option</option> */}
                                             <option selected value="Select your education level">Select your education level</option>
                                             <option value="hsc">High School</option>
@@ -193,7 +193,7 @@ const Profile = () => {
                                     <label htmlFor="#">For how many years have you been working as an IT professional?</label>
 
                                     <form onSubmit={handleSubmit(onSubmit)}>
-                                        <select {...register("gender")} className='border-2 rounded-md mt-1 px-2 py-2 text-base w-full'>
+                                        <select {...register("abc")} className='border-2 rounded-md mt-1 px-2 py-2 text-base w-full'>
                                             {/* <option selected="selected" value="">Select an option</option> */}
                                             <option selected value="Select your education level">Select your education level</option>
                                             <option value="hsc">High School</option>
@@ -212,7 +212,7 @@ const Profile = () => {
                                     <label className='font-semibold' htmlFor="#">Years of leadership</label>
 
                                     <form onSubmit={handleSubmit(onSubmit)}>
-                                        <select {...register("gender")} className='border-2 rounded-md mt-1 px-2 py-2 text-base w-full'>
+                                        <select {...register("efghi")} className='border-2 rounded-md mt-1 px-2 py-2 text-base w-full'>
                                             {/* <option selected="selected" value="">Select an option</option> */}
                                             <option selected value="Select your education level">Select your education level</option>
                                             <option value="hsc">High School</option>

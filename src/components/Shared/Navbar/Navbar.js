@@ -70,7 +70,11 @@ const Navbar = () => {
 
                             <li onClick={closedNavbarAll} className='mr-5 mb-4 md:mb-0'> <NavLink to="/contactUs" className={({ isActive }) => (isActive ? active : deActive)} > <MdOutlineConnectWithoutContact className='md:hidden text-base mr-2' /> Contact US</NavLink> </li>
 
+                            <li onClick={closedNavbarAll} className='mr-5 mb-4 md:mb-0'> <NavLink to="/postJob" className={({ isActive }) => (isActive ? active : deActive)} > <MdOutlineConnectWithoutContact className='md:hidden text-base mr-2' /> Post Job</NavLink> </li>
+
                             <li onClick={closedNavbarAll} className='mb-4 md:mb-0'> <NavLink to="/aboutUs" className={({ isActive }) => (isActive ? active : deActive)} > <BsInfoCircleFill className='md:hidden text-base mr-2' /> About US</NavLink> </li>
+
+                            
 
                             {/* profile routes show only mobile and tablet  */}
                             {!user ?

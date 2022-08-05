@@ -23,7 +23,6 @@ const PostAJob = () => {
                         <h1 className='text-3xl text-center font-semibold'>Post a Job</h1>
                         <div className='w-full'>
                             <div class="form-control w-full ">
-
                                 {/* Info about Job */}
                                 <h3 className='text-md border-b border-zinc-500 mt-10'>Job information</h3>
                                 {/* First row */}
@@ -36,7 +35,6 @@ const PostAJob = () => {
                                             required: true
                                         })} />
                                 </div>
-
                                 {/* second row */}
                                 <div className='w-full grid grid-cols-1 md:grid-cols-2 gap-2 mt-2 lg:mt-0'>
                                     <div>

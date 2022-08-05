@@ -11,7 +11,7 @@ import { FaUserCircle } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { BsPlusLg, BsTools, BsInfoCircleFill, BsFillFileEarmarkMedicalFill } from "react-icons/bs";
 import { MdDeveloperMode, MdOutlineConnectWithoutContact } from "react-icons/md";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { AiFillHome } from "react-icons/ai";
 import { RiLoginBoxLine } from "react-icons/ri";
 import { ImExit } from "react-icons/im";
@@ -52,8 +52,12 @@ const Navbar = () => {
                             }
                         </div>
 
+                        <Link to="/">
                         <img className='w-8 h-8' src={navLogo} alt="Logo" />
+                        </Link>
+                        <Link to="/">
                         <span className='ml-1'>RecruitHub</span>
+                        </Link>
 
                     </div>
 

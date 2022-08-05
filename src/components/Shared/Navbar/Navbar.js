@@ -56,6 +56,8 @@ const Navbar = () => {
                             <li className='mr-8 mb-4 md:mb-0'> <NavLink to="/contactUs" className={({ isActive }) => (isActive ? active : deActive)} > <MdOutlineConnectWithoutContact className='md:hidden text-base mr-2 text-purple-700' /> Contact US</NavLink> </li>
 
                             <li className='mr-8 mb-4 md:mb-0'> <NavLink to="/aboutUs" className={({ isActive }) => (isActive ? active : deActive)} > <BsInfoCircleFill className='md:hidden text-base mr-2 text-purple-700' /> About US</NavLink> </li>
+
+                            <li className='mr-8 mb-4 md:mb-0'> <NavLink to="/postJob" className={({ isActive }) => (isActive ? active : deActive)} > <BsInfoCircleFill className='md:hidden text-base mr-2 text-purple-700' /> Post Job</NavLink> </li>
                         </ul>
 
                     </div>

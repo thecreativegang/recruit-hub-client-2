@@ -18,6 +18,8 @@ import { ImExit } from "react-icons/im";
 import { CgProfile } from "react-icons/cg";
 
 const Navbar = () => {
+
+
     const [navSwitch, setNavSwitch] = useState(false);
     const [userSwitch, setUserSwitch] = useState(false);
 
@@ -74,7 +76,7 @@ const Navbar = () => {
 
                             <li onClick={closedNavbarAll} className='mb-4 md:mb-0'> <NavLink to="/aboutUs" className={({ isActive }) => (isActive ? active : deActive)} > <BsInfoCircleFill className='md:hidden text-base mr-2' /> About US</NavLink> </li>
 
-                            
+
 
                             {/* profile routes show only mobile and tablet  */}
                             {!user ?

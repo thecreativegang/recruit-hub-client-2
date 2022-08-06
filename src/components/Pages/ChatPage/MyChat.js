@@ -4,8 +4,16 @@ import SingleProfile from './SingleProfile';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusSquare } from '@fortawesome/free-regular-svg-icons';
+import ScrollToBottom from 'react-scroll-to-bottom';
+import Loading from '../../Shared/Loading';
 
 const MyChat = ({ chats }) => {
+
+    console.log(chats)
+    if (!chats) {
+        <Loading></Loading>
+    }
+
     return (
         <div className='mx-2'>
             <div className='flex justify-between  bg-red-200'>
@@ -21,12 +29,13 @@ const MyChat = ({ chats }) => {
 
             </div>
 
-            <div className='p-2 my-1  h-[90vh]  rounded bg-slate-300'>
-                <div className='bg-primary rounded p-2 my-2 text-white'>Login user</div>
 
-                {
-                    chats?.map((chat) => <SingleProfile chat={chat}></SingleProfile>)
-                }
+            <div className='p-2 my-1  h-[80vh]  rounded bg-slate-300'>
+                <div className='bg-primary rounded p-2 my-2 text-white'>Login user name here</div>
+                <ScrollToBottom className='profile-container'>
+                    {chats?.map((chat) => <SingleProfile chat={chat} />)
+                    }
+                </ScrollToBottom>
             </div>
 
         </div>

@@ -24,8 +24,8 @@ const Profile = () => {
 
   return (
     <div>
-      <div className=" flex relative z-[2] max-w-[1536px] mx-auto ">
-        <div className="w-[20%] px-8 pt-20 bg-[#F2F2F2] h-screen side-bar fixed top-0 left-0">
+      <div className=" flex relative z-[2] max-w-[1536px] mx-auto overflow-hidden ">
+        <div className="hidden md:block w-[20%] px-8 pt-20 bg-[#F2F2F2] h-screen side-bar fixed top-0 left-0">
           <ul>
             <li>
               <div className="flex py-[12px]">
@@ -33,7 +33,7 @@ const Profile = () => {
                   src="https://vanhack.com/static-desktop/4dcabdcfdda70fbf23396b2acc47a180.svg"
                   alt=""
                 />
-                <a className="pl-[18px] sidebar-link" href="!@">
+                <a className="pl-[18px] sidebar-link" href="#">
                   General
                 </a>
               </div>
@@ -44,7 +44,7 @@ const Profile = () => {
                   src="https://vanhack.com/static-desktop/ecb8fa162c6ca3693c69b34b22ffc82d.svg"
                   alt=""
                 />
-                <a className="pl-[18px] sidebar-link" href="!@">
+                <a className="pl-[18px] sidebar-link" href="#">
                   Personal Overview
                 </a>
               </div>
@@ -55,7 +55,7 @@ const Profile = () => {
                   src="https://vanhack.com/static-desktop/bea44a8645ff996094f8bdc8f7191dc0.svg"
                   alt=""
                 />
-                <a className="pl-[18px] sidebar-link" href="!@">
+                <a className="pl-[18px] sidebar-link" href="#">
                   Relection
                 </a>
               </div>
@@ -66,7 +66,7 @@ const Profile = () => {
                   src="https://vanhack.com/static-desktop/4b6c7d0c78e2f8bece546c233ed9948a.svg"
                   alt=""
                 />
-                <a className="pl-[18px] sidebar-link" href="!@">
+                <a className="pl-[18px] sidebar-link" href="#">
                   Social Profile
                 </a>
               </div>
@@ -77,7 +77,7 @@ const Profile = () => {
                   src="https://vanhack.com/static-desktop/1b30c8bf558ff2f6ca321e62b4f1f100.svg"
                   alt=""
                 />
-                <a className="pl-[18px] sidebar-link" href="!@">
+                <a className="pl-[18px] sidebar-link" href="#">
                   Language
                 </a>
               </div>
@@ -88,7 +88,7 @@ const Profile = () => {
                   src="https://vanhack.com/static-desktop/126218bd37c65e62f709259cf2c74ee3.svg"
                   alt=""
                 />
-                <a className="pl-[18px] sidebar-link" href="!@">
+                <a className="pl-[18px] sidebar-link" href="#">
                   Experience
                 </a>
               </div>
@@ -99,7 +99,7 @@ const Profile = () => {
                   src="https://vanhack.com/static-desktop/db07c0aade0491ef2557bd9cdd5ca817.svg"
                   alt=""
                 />
-                <a className="pl-[18px] sidebar-link" href="!@">
+                <a className="pl-[18px] sidebar-link" href="#">
                   Education
                 </a>
               </div>
@@ -110,7 +110,7 @@ const Profile = () => {
                   src="https://vanhack.com/static-desktop/da6b7c3ba441dd1b6cbe64d5985b9973.svg"
                   alt=""
                 />
-                <a className="pl-[18px] sidebar-link" href="!@">
+                <a className="pl-[18px] sidebar-link" href="#">
                   Project
                 </a>
               </div>
@@ -118,21 +118,21 @@ const Profile = () => {
           </ul>
         </div>
 
-        <div className="main-content w-[100%] pl-[20%] bg-[#F7F7F7]">
-          <div className="w-[732px] mx-auto bg-white">
+        <div className="main-content w-[100%] md:pl-[20%] bg-[#F7F7F7] md:mx-4">
+          <div className="w-full md:w-[732px] mx-4 md:mx-auto  bg-white">
             <div className="mt-12 p-[24px] grid grid-cols-2">
               <div className="english-verify">
                 <div className="code-test flex justify-center">
                   <div className="text-center">
                     <img
-                      className="w-[45px] mb-[10px] mx-auto"
+                      className="w-[30px] md:w-[45px] mb-[10px] mx-auto"
                       src="https://vanhack.com/static-desktop/1b30c8bf558ff2f6ca321e62b4f1f100.svg"
                       alt=""
                     />
-                    <h1 className="font-bold mb-[10px] test">
+                    <h1 className="text-sm md:text-xl font-bold mb-[10px] test">
                       English Verification
                     </h1>
-                    <Link to="/" className="color-blue-dark">
+                    <Link to="/" className="text-xs md:text-sm color-blue-dark">
                       Start now
                     </Link>
                   </div>
@@ -141,12 +141,14 @@ const Profile = () => {
               <div className=" flex justify-center">
                 <div className="text-center">
                   <img
-                    className="w-[45px] mx-auto"
+                    className="w-[30px] md:w-[45px] mx-auto"
                     src="https://vanhack.com/static-desktop/ecb8fa162c6ca3693c69b34b22ffc82d.svg"
                     alt=""
                   />
-                  <h1 className="font-bold test my-[10px]">Code Test</h1>
-                  <Link to={'/'} className="color-blue-dark">
+                  <h1 className="text-sm md:text-xl font-bold test my-[10px]">
+                    Code Test
+                  </h1>
+                  <Link to={'/'} className="text-xs md:text-sm color-blue-dark">
                     See Details
                   </Link>
                 </div>
@@ -155,9 +157,11 @@ const Profile = () => {
           </div>
 
           {/* General */}
-          <div className="w-[732px] mx-auto mt-12">
+          <div className=" w-full  md:w-[732px] mx-auto mt-12">
             <div>
-              <h1 className="text-[34px]  color-blue-dark mb-2">General</h1>
+              <h1 className=" text-2xl md:text-4xl text-[#788894] ml-4 mb-4">
+                General
+              </h1>
             </div>
             <div className=" bg-white  p-6">
               <form onSubmit={handleSubmit(onSubmit)}>
@@ -206,11 +210,13 @@ const Profile = () => {
 
           {/* Professional Overview */}
           <div className="my-10">
-            <div className="w-[732px] mx-auto ">
-              <h2 className="text-4xl text-[#788894]">Professional Overview</h2>
+            <div className="w-full md:w-[732px] mx-4 md:mx-auto ">
+              <h2 className=" text-2xl md:text-4xl text-[#788894]">
+                Professional Overview
+              </h2>
             </div>
 
-            <div className="w-[732px] p-6 rounded-lg mt-4 mx-auto bg-white">
+            <div className="w-full md:w-[732px] p-6 rounded-lg mt-4 mx-auto bg-white">
               <div>
                 {/* Select option  */}
                 <div className="w-full pt-2 pr-4  mb-5">
@@ -220,7 +226,7 @@ const Profile = () => {
 
                   <form onSubmit={handleSubmit(onSubmit)}>
                     <select
-                      {...register('gender')}
+                      {...register('proOverview')}
                       className="border-2 rounded-md mt-1 px-2 py-2 text-base w-full"
                     >
                       {/* <option selected="selected" value="">Select an option</option> */}
@@ -242,7 +248,7 @@ const Profile = () => {
 
                   <form onSubmit={handleSubmit(onSubmit)}>
                     <select
-                      {...register('gender')}
+                      {...register('abc')}
                       className="border-2 rounded-md mt-1 px-2 py-2 text-base w-full"
                     >
                       {/* <option selected="selected" value="">Select an option</option> */}
@@ -275,7 +281,7 @@ const Profile = () => {
 
                     <form onSubmit={handleSubmit(onSubmit)}>
                       <select
-                        {...register('gender')}
+                        {...register('efghi')}
                         className="border-2 rounded-md mt-1 px-2 py-2 text-base w-full"
                       >
                         {/* <option selected="selected" value="">Select an option</option> */}
@@ -582,11 +588,13 @@ const Profile = () => {
 
           {/* Relocation */}
           <div className="my-10">
-            <div className="w-[732px] mx-auto ">
-              <h2 className="text-4xl text-[#788894]">Relocation</h2>
+            <div className="w-full md:w-[732px] mx-4 md:mx-auto ">
+              <h2 className=" text-2xl md:text-4xl text-[#788894]">
+                Relocation
+              </h2>
             </div>
 
-            <div className="w-[732px] p-6 rounded-lg mt-4 mx-auto bg-white">
+            <div className="w-full md:w-[732px] p-6 rounded-lg mt-4 mx-auto bg-white">
               {/* Select option  */}
               <div className="w-full pt-2 pr-4  mb-5">
                 <label htmlFor="#">Are you open to remote jobs?</label>
@@ -629,7 +637,7 @@ const Profile = () => {
                 </form>
               </div>
 
-              <div className="grid grid-cols-2 gap-2 pt-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 md:gap-2 pt-8">
                 {/* Select option  */}
                 <div className="w-full pt-2 pr-4  mb-5">
                   <label htmlFor="#">Where would you like to work?</label>
@@ -763,7 +771,7 @@ const Profile = () => {
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div>
                   {/* passport  */}
                   <div className="mb-4">
@@ -843,7 +851,7 @@ const Profile = () => {
                       <form onSubmit={handleSubmit(onSubmit)}>
                         <select
                           {...register('gender')}
-                          className="border-2 rounded-md px-2 py-2 text-base w-full mt-2"
+                          className="border-2 rounded-md mt-1 px-2 py-2 text-base w-full mt-2"
                         >
                           <option selected value="Select your education level">
                             Select your education level
@@ -863,19 +871,19 @@ const Profile = () => {
 
           {/* Resume & Social Profile */}
           <div className="my-10">
-            <div className="w-[732px] mx-auto ">
-              <h2 className="text-4xl text-[#788894]">
+            <div className="w-full md:w-[732px] mx-4 md:mx-auto ">
+              <h2 className=" text-2xl md:text-4xl text-[#788894]">
                 Resume & Social Profile
               </h2>
             </div>
 
-            <div className="w-[732px] p-6 rounded-lg mt-4 mx-auto bg-white">
+            <div className="w-full md:w-[732px] p-6 rounded-lg mt-4 mx-auto bg-white">
               <div className="w-full flex items-center justify-between pb-4">
                 <div className="w-full">
                   <div className="flex justify-end">
-                    <button className="btn font-semibold text-right flex items-center">
+                    <button className="btn text-xs md:text-xl font-semibold text-right flex items-center">
                       {' '}
-                      <AiOutlineCloudUpload className="mr-1 text-2xl" /> UPLOAD
+                      <AiOutlineCloudUpload className="mr-1 text-xl" /> UPLOAD
                       RESUME
                     </button>
                   </div>
@@ -883,19 +891,19 @@ const Profile = () => {
                   {/* Social link  */}
                   <div className="py-4">
                     <div className="py-2 border-y-2 border-gray-200">
-                      <p className="text-[#2C9BF5] font-[500]">
+                      <p className="text-base text-[#2C9BF5] font-[500]">
                         https://www.linkedin.com/in/tanvirahmed6174/
                       </p>
                     </div>
 
                     <div className="py-2 border-b-2 border-gray-200">
-                      <p className="text-[#2C9BF5] font-[500]">
+                      <p className="text-base text-[#2C9BF5] font-[500]">
                         https://github.com/tanvirgithub21
                       </p>
                     </div>
 
                     <div className="py-2 border-b-2 border-gray-200">
-                      <p className="text-[#2C9BF5] font-[500]">
+                      <p className="text-base text-[#2C9BF5] font-[500]">
                         http://localhost:3000/profile
                       </p>
                     </div>
@@ -907,16 +915,18 @@ const Profile = () => {
 
           {/* Languages */}
           <div className="my-10">
-            <div className="w-[732px] mx-auto ">
-              <h2 className="text-4xl text-[#788894]">Languages</h2>
+            <div className="w-full md:w-[732px] mx-4 md:mx-auto ">
+              <h2 className=" text-2xl md:text-4xl text-[#788894]">
+                Languages
+              </h2>
             </div>
 
-            <div className="w-[732px] p-6 rounded-lg mt-4 mx-auto bg-white">
+            <div className="w-full md:w-[732px] p-6 rounded-lg mt-4 mx-auto bg-white">
               {/* Select option -1  */}
-              <div className="w-full flex items-center justify-between pb-4">
+              <div className="w-full md:flex items-center justify-between pb-4">
                 <form
                   onSubmit={handleSubmit(onSubmit)}
-                  className="w-full max-w-[65%]"
+                  className="md:max-w-[65%] w-full mb-2"
                 >
                   <select
                     {...register('gender')}
@@ -933,7 +943,7 @@ const Profile = () => {
                 {/* Select option -2  */}
                 <form
                   onSubmit={handleSubmit(onSubmit)}
-                  className="min-w-[12.5rem] w-full max-w-[33%]"
+                  className="min-w-[12.5rem] md:max-w-[33%] w-full mb-2"
                 >
                   <select
                     {...register('gender')}
@@ -959,8 +969,10 @@ const Profile = () => {
 
           {/* Experience */}
           <div className="my-10">
-            <div className="w-[732px] mx-auto ">
-              <h2 className="text-4xl text-[#788894]">Experience</h2>
+            <div className="w-full md:w-[732px] mx-4 md:mx-auto ">
+              <h2 className=" text-2xl md:text-4xl text-[#788894]">
+                Experience
+              </h2>
             </div>
 
             <div className="w-[732px] p-6 rounded-lg mt-4 mx-auto bg-white">
@@ -970,11 +982,13 @@ const Profile = () => {
 
           {/* Education */}
           <div className="my-10">
-            <div className="w-[732px] mx-auto ">
-              <h2 className="text-4xl text-[#788894]">Education</h2>
+            <div className="w-full md:w-[732px] mx-4 md:mx-auto ">
+              <h2 className=" text-2xl md:text-4xl text-[#788894]">
+                Education
+              </h2>
             </div>
 
-            <div className="w-[732px] p-6 rounded-lg mt-4 mx-auto bg-white">
+            <div className="w-full md:w-[732px] p-6 rounded-lg mt-4 mx-auto bg-white">
               <p className="text-lg font-[500]">Formal Education</p>
 
               {/* Select option  */}

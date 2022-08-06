@@ -12,7 +12,6 @@ import Profile from './components/Pages/Profile/Profile';
 import RequireUsername from './components/Shared/RequireUsername';
 import Loading from './components/Shared/Loading';
 import ChatBox from './components/Pages/ChatPage/ChatBox';
-import SkillAssessment from './components/Pages/SkillAssessment/SkillAssessment';
 
 function App() {
   return (
@@ -43,7 +42,6 @@ function App() {
         <Route path="/lod" element={<Loading />}></Route>
         <Route path="/profile" element={<Profile />}></Route>
         <Route path="/chat" element={<ChatBox />}></Route>
-        <Route path="/skilltest" element={<SkillAssessment />}></Route>
       </Routes>
       <FooterBottomSection />
       <ToastContainer autoClose={1500} />
@@ -52,3 +50,5 @@ function App() {
 }
 //
 export default App;
+
+//

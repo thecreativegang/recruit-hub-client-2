@@ -13,35 +13,38 @@ import RequireUsername from './components/Shared/RequireUsername';
 import Loading from './components/Shared/Loading';
 import ChatPage from './components/Pages/ChatPage/ChatPage';
 import PostAJob from './components/Pages/PostAJob/PostAJob';
+import { UserStoreProvider } from './stateManagement/UserContext/UserContextStore';
 
 function App() {
   return (
     <div >
-      <Navbar />
-      <Routes>
+      <UserStoreProvider>
+        <Navbar />
+        <Routes>
 
-        <Route path='/' element={
-          <RequireUsername>
+          <Route path='/' element={
+            <RequireUsername>
+              <Home />
+            </RequireUsername>
+          } />
+
+          <Route path='/home' element={<RequireUsername>
             <Home />
-          </RequireUsername>
-        } />
-
-        <Route path='/home' element={<RequireUsername>
-          <Home />
-        </RequireUsername>} />
-        <Route path='/profile' element={<Profile></Profile>} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/register' element={<AccountTypePage />} />
-        <Route path='/register/:accType' element={<Register />} />
-        <Route path='/lod' element={<Loading />}></Route>
-        <Route path='/profile' element={<Profile />}></Route>
-        <Route path='/chat' element={<ChatPage />}></Route>
-        <Route path='/postJob' element={<PostAJob />}></Route>
-      </Routes >
-      <FooterBottomSection />
-      <ToastContainer
-        autoClose={1500}
-      />
+          </RequireUsername>} />
+          <Route path='/profile' element={<Profile></Profile>} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/register' element={<AccountTypePage />} />
+          <Route path='/register/:accType' element={<Register />} />
+          <Route path='/lod' element={<Loading />}></Route>
+          <Route path='/profile' element={<Profile />}></Route>
+          <Route path='/chat' element={<ChatPage />}></Route>
+          <Route path='/postJob' element={<PostAJob />}></Route>
+        </Routes >
+        <FooterBottomSection />
+        <ToastContainer
+          autoClose={1500}
+        />
+      </UserStoreProvider>
     </div >
   );
 }

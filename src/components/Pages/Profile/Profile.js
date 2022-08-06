@@ -851,7 +851,7 @@ const Profile = () => {
                       <form onSubmit={handleSubmit(onSubmit)}>
                         <select
                           {...register('gender')}
-                          className="border-2 rounded-md mt-1 px-2 py-2 text-base w-full mt-2"
+                          className="border-2 rounded-md px-2 py-2 text-base w-full mt-2"
                         >
                           <option selected value="Select your education level">
                             Select your education level

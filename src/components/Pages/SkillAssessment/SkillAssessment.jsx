@@ -6,6 +6,18 @@ import { useState } from 'react';
 const SkillAssessment = () => {
   const [questions, setQuestion] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [score, setScore] = useState(0);
+  const [showScore, setShowScore] = useState(false);
+
+  const handleAnsBtnClick = (isCorrect) => {
+    if (isCorrect) setScore(score + 1);
+    const nextQuestion = currentQuestion + 1;
+    nextQuestion < questions.length
+      ? setCurrentQuestion(nextQuestion)
+      : setShowScore(true);
+  };
+
   useEffect(() => {
     axios
       .get('https://safe-oasis-01130.herokuapp.com/skillassessment/test')
@@ -22,22 +34,31 @@ const SkillAssessment = () => {
       </div>
       <div className="flex flex-col justify-center">
         {loading && <progress class="progress w-56"></progress>}
-        {!loading &&
-          questions.map((question, i) => (
+        {showScore ? (
+          <h1 className="text-4xl font-bold my-6 text-center">
+            Your score is {score}
+          </h1>
+        ) : (
+          !loading && (
             <>
-              <div className="w-3/4 mx-auto mt-4" key={question._id}>
+              <div className="w-3/4 mx-auto mt-4">
                 <h3 className="text-xl text-gray-600">
-                  Question {i + 1}: {question.question}
+                  Question {currentQuestion + 1}:{' '}
+                  {questions[currentQuestion].question}
                 </h3>
-                {console.log(question.options)}
-                {question?.options.map((option, i) => (
-                  <p className="text-lg bg-gray-200 my-4 p-4 cursor-pointer hover:bg-green-200">
+                {console.log(questions[currentQuestion].options)}
+                {questions[currentQuestion]?.options.map((option, i) => (
+                  <button
+                    onClick={() => handleAnsBtnClick(option.isCorrect)}
+                    className="text-lg bg-gray-200 my-4 p-4 cursor-pointer hover:bg-green-200 block w-full text-left"
+                  >
                     {i + 1}) {option.option}
-                  </p>
+                  </button>
                 ))}
               </div>
             </>
-          ))}
+          )
+        )}
       </div>
     </>
   );

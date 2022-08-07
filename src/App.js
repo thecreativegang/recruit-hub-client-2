@@ -11,39 +11,46 @@ import AccountTypePage from './components/Pages/Register/AccountTypePage';
 import Profile from './components/Pages/Profile/Profile';
 import RequireUsername from './components/Shared/RequireUsername';
 import Loading from './components/Shared/Loading';
-import ChatPage from './components/Pages/ChatPage/ChatPage';
+import ChatBox from './components/Pages/ChatPage/ChatBox';
+import SkillAssessment from './components/Pages/SkillAssessment/SkillAssessment';
 
 function App() {
   return (
-    <div >
+    <div>
       <Navbar />
       <Routes>
+        <Route
+          path="/"
+          element={
+            <RequireUsername>
+              <Home />
+            </RequireUsername>
+          }
+        />
 
-        <Route path='/' element={
-          <RequireUsername>
-            <Home />
-          </RequireUsername>
-        } />
-
-        <Route path='/home' element={<RequireUsername>
-          <Home />
-        </RequireUsername>} />
-        <Route path='/profile' element={<Profile></Profile>} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/register' element={<AccountTypePage />} />
-        <Route path='/register/:accType' element={<Register />} />
-        <Route path='/lod' element={<Loading />}></Route>
-        <Route path='/profile' element={<Profile />}></Route>
-        <Route path='/chat' element={<ChatPage />}></Route>
-      </Routes >
+        <Route
+          path="/home"
+          element={
+            <RequireUsername>
+              <Home />
+            </RequireUsername>
+          }
+        />
+        <Route path="/profile" element={<Profile></Profile>} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<AccountTypePage />} />
+        <Route path="/register/:accType" element={<Register />} />
+        <Route path="/lod" element={<Loading />}></Route>
+        <Route path="/profile" element={<Profile />}></Route>
+        <Route path="/chat" element={<ChatBox />}></Route>
+        <Route path="/skilltest" element={<SkillAssessment />}></Route>
+      </Routes>
       <FooterBottomSection />
-      <ToastContainer
-        autoClose={1500}
-      />
-    </div >
+      <ToastContainer autoClose={1500} />
+    </div>
   );
 }
-// 
+//
 export default App;
 
-// 
+//

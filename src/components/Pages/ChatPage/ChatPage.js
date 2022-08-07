@@ -2,36 +2,49 @@ import axios from 'axios';
 import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { io } from 'socket.io-client';
+import auth from '../../../firebase.init';
 import ChatBox from './ChatBox';
 import MyChat from './MyChat';
-import SideDrawer from './SideDrawer';
+import SingleChatWIndow from './SingleChatWIndow';
+
+const socket = io.connect("http://localhost:3001");
 
 
 const ChatPage = () => {
 
     const [chats, setChats] = useState([]);
+    const [chatId, setChatId] = useState('');
+
     const fetchChats = async () => {
-        const data = await axios.get(`http://localhost:3001/api/chat`);
+        const data = await axios.get(`http://localhost:3001/user`);
         setChats(data.data);
     }
     useEffect(() => {
         fetchChats();
     }, [])
+
+    // const [globalUser] = useAuthState(auth);
+
     return (
         <div>
-
             <div class="drawer">
                 <input id="my-drawer" type="checkbox" class="drawer-toggle" />
                 <div class="drawer-content">
 
-                    <div className='grid grid-cols-3'>
+                    <div className='grid lg:grid-cols-3'>
                         <div className=''>
-                            <MyChat chats={chats}></MyChat>
+                            <MyChat setChatId={setChatId} chats={chats}></MyChat>
                         </div>
                         <div className='col-span-2'>
-                            <ChatBox></ChatBox>
+                            <SingleChatWIndow chatId={chatId} socket={socket}></SingleChatWIndow>
+
+                            {/* <ChatBox chatId={chatId} socket={socket} /> */}
                         </div>
                     </div>
+
+
                 </div>
                 <div class="drawer-side">
                     <label for="my-drawer" class="drawer-overlay"></label>

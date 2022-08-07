@@ -10,6 +10,46 @@
 
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,700");
 
+.chat-background {
+    background-image: linear-gradient(90deg, rgba(88, 86, 233, 0.11) 0%, rgba(0, 208, 156, 0.146) 100%);
+}
+
+.my-border {
+    border: 1px solid rgba(88, 86, 233, .2);
+}
+
+.message {
+    display: flex;
+    align-items: center;
+}
+
+.content {
+    max-width: 40%;
+    overflow-wrap: break-word;
+    padding: 1rem;
+    margin: 3px;
+    font-size: 1.1rem;
+    border-radius: 0.4rem;
+    color: #ffffff;
+}
+
+
+.sended {
+    justify-content: flex-end;
+}
+
+.sended .content {
+    background-color: #0358a2dc;
+}
+
+.recieved {
+    justify-content: flex-start;
+}
+
+.recieved .content {
+    background-color: #3700ff99;
+}
+
 .joinChatContainer {
     display: flex;
     flex-direction: column;

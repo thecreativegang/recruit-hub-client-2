@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
 import { createContext } from "react";
@@ -15,23 +16,23 @@ const UserStoreProvider = ({ children }) => {
     const [user, setUser] = useState([])
 
     // Get user data form api
+
     useEffect(() => {
-        fetch('https://jsonplaceholder.typicode.com/users')
-            .then(response => response.json())
-            .then(data => setUser(data))
-            .catch(err => console.error(err));
-    }, [])
+        if (userEmail) {
+            axios.get(`http://localhost:3001/user/email/${userEmail}`, {
+                headers: {
+                    authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+                }
+            })
+                .then(res => setUser(res.data))
 
+                .catch(err => console.error(err))
+        }
 
-
-
-
-
-
-
-
-
-
+        else {
+            console.log('Email not found')
+        }
+    }, [userEmail])
 
 
     //this state stored user data  //==> Don't move this one !
@@ -39,7 +40,6 @@ const UserStoreProvider = ({ children }) => {
         userEmail,
         user,
     }
-
     //user context provider component //==> Don't move this one !
     return (
         <UserStore.Provider value={userData}>
@@ -47,6 +47,7 @@ const UserStoreProvider = ({ children }) => {
         </UserStore.Provider>
     )
 }
+
 
 
 export { UserStore, UserStoreProvider }

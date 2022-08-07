@@ -1,39 +1,46 @@
 import React from 'react';
-
 import SingleProfile from './SingleProfile';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlusSquare } from '@fortawesome/free-regular-svg-icons';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import ScrollToBottom from 'react-scroll-to-bottom';
 import Loading from '../../Shared/Loading';
 
-const MyChat = ({ chats }) => {
+const MyChat = ({ allUser, userStore, setCurrentChat }) => {
+    const { userEmail, user } = userStore;
 
-    console.log(chats)
-    if (!chats) {
+
+    if (!allUser) {
         <Loading></Loading>
     }
 
     return (
         <div className='mx-2'>
-            <div className='flex justify-between  bg-red-200'>
+            <div className='flex justify-between  my-border rounded'>
 
-                <h2 className='text-3xl px-2 my-1'>My chats</h2>
-                <span class="m-2 btn-sm btn lg:btn-primary">
-                    <span className='text-white px-2'> New Group Chat
-                        <span className='mx-1'>
-                            <FontAwesomeIcon icon={faPlusSquare} />
-                        </span>
-                    </span>
-                </span>
+                <h2 className='text-3xl px-2 mt-1 font-bold '>My Chats</h2>
+
+                <div class="drawer-content text-right text-black">
+                    <label for="my-drawer" class="m-2 btn-sm btn my-border hover:bg-sky-400  bg-sky-500 text-white"> <FontAwesomeIcon icon={faSearch} /> <span className=' px-2'> Search Chat</span>
+                    </label>
+                </div>
 
             </div>
 
 
-            <div className='p-2 my-1  h-[80vh]  rounded bg-slate-300'>
-                <div className='bg-primary rounded p-2 my-2 text-white'>Login user name here</div>
-                <ScrollToBottom className='profile-container'>
-                    {chats?.map((chat) => <SingleProfile chat={chat} />)
+            <div className='px-2 mt-1  h-[92vh]  rounded my-border'>
+                <div className='bg-sky-500 rounded p-2 my-2 text-white flex items-center justify-between'>
+                    <h2 className='px-3 text-2xl'>
+                        User Name: {user?.username ? user?.username : user?.email}
+                    </h2>
+                    <div class="avatar">
+                        <div class="w-[50px] rounded-full">
+                            <img src="https://placeimg.com/192/192/people" alt="Tailwind-CSS-Avatar-component" />
+                        </div>
+                    </div>
+                </div>
+
+                <ScrollToBottom className='profile-container pb-2'>
+                    {allUser?.map((chat) => <SingleProfile setCurrentChat={setCurrentChat} chat={chat} />)
                     }
                 </ScrollToBottom>
             </div>

@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import './Profile.module.css';
 import { AiOutlineCloudUpload } from 'react-icons/ai';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-scroll';
 
 const Profile = () => {
   const [country, setCoutry] = useState([]);
@@ -33,9 +33,7 @@ const Profile = () => {
                   src="https://vanhack.com/static-desktop/4dcabdcfdda70fbf23396b2acc47a180.svg"
                   alt=""
                 />
-                <a className="pl-[18px] sidebar-link" href="#">
-                  General
-                </a>
+                <Link className="pl-[18px] cursor-pointer sidebar-link" to="general" activeClass="active" spy={true} smooth={true} offset={-100} duration={500} >General</Link>
               </div>
             </li>
             <li>
@@ -44,9 +42,10 @@ const Profile = () => {
                   src="https://vanhack.com/static-desktop/ecb8fa162c6ca3693c69b34b22ffc82d.svg"
                   alt=""
                 />
-                <a className="pl-[18px] sidebar-link" href="#">
+                {/* <a className="pl-[18px] sidebar-link" href="#">
                   Personal Overview
-                </a>
+                </a> */}
+                <Link className="pl-[18px] cursor-pointer sidebar-link" to="overview" activeClass="active" spy={true} smooth={true} offset={-100} duration={500} >Personal Overview</Link>
               </div>
             </li>
             <li>
@@ -55,9 +54,8 @@ const Profile = () => {
                   src="https://vanhack.com/static-desktop/bea44a8645ff996094f8bdc8f7191dc0.svg"
                   alt=""
                 />
-                <a className="pl-[18px] sidebar-link" href="#">
-                  Relection
-                </a>
+                <Link className="pl-[18px] cursor-pointer sidebar-link" to="relection" activeClass="active" spy={true} smooth={true} offset={-100} duration={500} >Relection</Link>
+
               </div>
             </li>
             <li>
@@ -66,9 +64,8 @@ const Profile = () => {
                   src="https://vanhack.com/static-desktop/4b6c7d0c78e2f8bece546c233ed9948a.svg"
                   alt=""
                 />
-                <a className="pl-[18px] sidebar-link" href="#">
-                  Social Profile
-                </a>
+                <Link className="pl-[18px] cursor-pointer sidebar-link" to="social-profile" activeClass="active" spy={true} smooth={true} offset={-100} duration={500} >Social Profile</Link>
+
               </div>
             </li>
             <li>
@@ -77,9 +74,8 @@ const Profile = () => {
                   src="https://vanhack.com/static-desktop/1b30c8bf558ff2f6ca321e62b4f1f100.svg"
                   alt=""
                 />
-                <a className="pl-[18px] sidebar-link" href="#">
-                  Language
-                </a>
+                <Link className="pl-[18px] cursor-pointer sidebar-link" to="language" activeClass="active" spy={true} smooth={true} offset={-100} duration={500} >Languages</Link>
+
               </div>
             </li>
             <li>
@@ -88,9 +84,8 @@ const Profile = () => {
                   src="https://vanhack.com/static-desktop/126218bd37c65e62f709259cf2c74ee3.svg"
                   alt=""
                 />
-                <a className="pl-[18px] sidebar-link" href="#">
-                  Experience
-                </a>
+                <Link className="pl-[18px] cursor-pointer sidebar-link" to="experience" activeClass="active" spy={true} smooth={true} offset={-100} duration={500} >Experience</Link>
+
               </div>
             </li>
             <li>
@@ -99,9 +94,8 @@ const Profile = () => {
                   src="https://vanhack.com/static-desktop/db07c0aade0491ef2557bd9cdd5ca817.svg"
                   alt=""
                 />
-                <a className="pl-[18px] sidebar-link" href="#">
-                  Education
-                </a>
+                <Link className="pl-[18px] cursor-pointer sidebar-link" to="education" activeClass="active" spy={true} smooth={true} offset={-100} duration={500} >Education</Link>
+
               </div>
             </li>
             <li>
@@ -110,9 +104,8 @@ const Profile = () => {
                   src="https://vanhack.com/static-desktop/da6b7c3ba441dd1b6cbe64d5985b9973.svg"
                   alt=""
                 />
-                <a className="pl-[18px] sidebar-link" href="#">
-                  Project
-                </a>
+                <Link className="pl-[18px] cursor-pointer sidebar-link" to="project" activeClass="active" spy={true} smooth={true} offset={-100} duration={500} >Project</Link>
+
               </div>
             </li>
           </ul>
@@ -157,7 +150,7 @@ const Profile = () => {
           </div>
 
           {/* General */}
-          <div className=" w-full  md:w-[732px] mx-auto mt-12">
+          <div className=" w-full  md:w-[732px] mx-auto mt-12" id='general'>
             <div>
               <h1 className=" text-2xl md:text-4xl text-[#788894] ml-4 mb-4">
                 General
@@ -209,7 +202,7 @@ const Profile = () => {
           </div>
 
           {/* Professional Overview */}
-          <div className="my-10">
+          <div className="my-10" id='overview'>
             <div className="w-full md:w-[732px] mx-4 md:mx-auto ">
               <h2 className=" text-2xl md:text-4xl text-[#788894]">
                 Professional Overview
@@ -587,7 +580,7 @@ const Profile = () => {
           </div>
 
           {/* Relocation */}
-          <div className="my-10">
+          <div className="my-10" id='relection'>
             <div className="w-full md:w-[732px] mx-4 md:mx-auto ">
               <h2 className=" text-2xl md:text-4xl text-[#788894]">
                 Relocation
@@ -870,7 +863,7 @@ const Profile = () => {
           </div>
 
           {/* Resume & Social Profile */}
-          <div className="my-10">
+          <div className="my-10" id='social-profile'>
             <div className="w-full md:w-[732px] mx-4 md:mx-auto ">
               <h2 className=" text-2xl md:text-4xl text-[#788894]">
                 Resume & Social Profile
@@ -914,7 +907,7 @@ const Profile = () => {
           </div>
 
           {/* Languages */}
-          <div className="my-10">
+          <div className="my-10" id='language'>
             <div className="w-full md:w-[732px] mx-4 md:mx-auto ">
               <h2 className=" text-2xl md:text-4xl text-[#788894]">
                 Languages
@@ -968,7 +961,7 @@ const Profile = () => {
           </div>
 
           {/* Experience */}
-          <div className="my-10">
+          <div className="my-10" id='experience'>
             <div className="w-full md:w-[732px] mx-4 md:mx-auto ">
               <h2 className=" text-2xl md:text-4xl text-[#788894]">
                 Experience
@@ -981,7 +974,7 @@ const Profile = () => {
           </div>
 
           {/* Education */}
-          <div className="my-10">
+          <div className="my-10" id='education'>
             <div className="w-full md:w-[732px] mx-4 md:mx-auto ">
               <h2 className=" text-2xl md:text-4xl text-[#788894]">
                 Education

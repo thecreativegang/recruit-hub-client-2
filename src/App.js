@@ -14,6 +14,8 @@ import Loading from './components/Shared/Loading';
 import ChatBox from './components/Pages/ChatPage/ChatBox';
 import SkillAssessment from './components/Pages/SkillAssessment/SkillAssessment';
 import PostAJob from './components/Pages/PostAJob/PostAJob';
+import ChatPage from './components/Pages/ChatPage/ChatPage';
+import Chat from './components/Pages/Massege/Chat';
 
 function App() {
   return (

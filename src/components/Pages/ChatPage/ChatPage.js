@@ -2,7 +2,6 @@ import axios from 'axios';
 import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { useAuthState } from 'react-firebase-hooks/auth';
 import { io } from 'socket.io-client';
 import auth from '../../../firebase.init';
 import ChatBox from './ChatBox';
@@ -14,8 +13,6 @@ const socket = io.connect("http://localhost:3001");
 
 const ChatPage = () => {
 
-    const [chats, setChats] = useState([]);
-    const [chatId, setChatId] = useState('');
 
     const fetchChats = async () => {
         const data = await axios.get(`http://localhost:3001/user`);
@@ -35,17 +32,18 @@ const ChatPage = () => {
 
                     <div className='grid lg:grid-cols-3'>
                         <div className=''>
-                            <MyChat setChatId={setChatId} chats={chats}></MyChat>
+                            <MyChat ></MyChat>
                         </div>
                         <div className='col-span-2'>
                             <SingleChatWIndow chatId={chatId} socket={socket}></SingleChatWIndow>
 
                             {/* <ChatBox chatId={chatId} socket={socket} /> */}
-                        </div>
-                    </div>
+                            <SingleChatWIndow socket={socket}></SingleChatWIndow>
+                        </div >
+                    </div >
 
 
-                </div>
+                </div >
                 <div class="drawer-side">
                     <label for="my-drawer" class="drawer-overlay"></label>
                     <ul class="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
@@ -57,8 +55,8 @@ const ChatPage = () => {
                         </div>
                     </ul>
                 </div>
-            </div>
-        </div>
+            </div >
+        </div >
     );
 };
 

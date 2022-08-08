@@ -1,28 +1,43 @@
 import axios from 'axios';
-import React from 'react';
+import React, { useContext } from 'react';
+import { useRef } from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { io } from 'socket.io-client';
 import auth from '../../../firebase.init';
-import ChatBox from './ChatBox';
+import { UserStore } from '../../../stateManagement/UserContext/UserContextStore';
+import ChatContainer from './ChatContainer';
 import MyChat from './MyChat';
 import SingleChatWIndow from './SingleChatWIndow';
 
-const socket = io.connect("http://localhost:3001");
 
+// /const socket = io.connect("http://localhost:3001");
 
 const ChatPage = () => {
-    const [chats, setChats] = useState([]);
+    const socket = useRef()
+    const userStore = useContext(UserStore);
 
+    const currentUser = userStore.user;
+    const [allUser, setAllUser] = useState([]);
+    const [currentChat, setCurrentChat] = useState('');
+
+    useEffect(() => {
+        if (currentUser) {
+            socket.current = io(`http://localhost:3001`)
+            socket.current.emit("add-user", currentUser._id);
+        }
+    })
+
+
+    // fetch all user data
     const fetchChats = async () => {
         const data = await axios.get(`http://localhost:3001/user`);
-        setChats(data.data);
+        setAllUser(data.data);
     }
     useEffect(() => {
         fetchChats();
     }, [])
 
-    // const [globalUser] = useAuthState(auth);
 
     return (
         <div>
@@ -30,12 +45,16 @@ const ChatPage = () => {
                 <input id="my-drawer" type="checkbox" class="drawer-toggle" />
                 <div class="drawer-content">
 
-                    <div className='grid lg:grid-cols-3'>
+                    <div className='grid lg:grid-cols-3  py-1 chat-background'>
                         <div className=''>
-                            <MyChat ></MyChat>
+                            <MyChat userStore={userStore} setCurrentChat={setCurrentChat} allUser={allUser}></MyChat>
                         </div>
                         <div className='col-span-2'>
-                            <SingleChatWIndow socket={socket}></SingleChatWIndow>
+                            {/* <SingleChatWIndow chatId={chatId} socket={socket}></SingleChatWIndow> */}
+                            <ChatContainer
+                                currentChat={currentChat}
+                                socket={socket}
+                            ></ChatContainer>
                         </div>
                     </div>
 

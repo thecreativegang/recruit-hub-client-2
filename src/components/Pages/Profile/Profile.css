@@ -36,3 +36,20 @@
     font-size: 14px;
   }
 }
+
+.profile-form-border {
+  border: 1px solid rgb(224, 224, 224);
+}
+
+.section-hover:hover {
+  box-shadow: rgb(0 0 0 / 10%) 0px 4px 14px 0px;
+  transition: all 0.2s;
+}
+
+/* form:hover .general {
+  box-shadow: rgb(0 0 0 / 10%) 0px 4px 14px 0px;
+} */
+
+.active {
+  background-color: #c4c3c3;
+}

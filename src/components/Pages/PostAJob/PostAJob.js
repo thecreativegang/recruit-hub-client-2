@@ -31,7 +31,11 @@ const PostAJob = () => {
     const onSubmit = data => {
 
         console.log(data)
-        axios.post(`http://localhost:3001/job/postJob`, data)
+        axios.post(`http://localhost:3001/job/postJob`, data, {
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+            },
+        })
             .then(function (res) {
                 if (res?.data?.status === 200) {
                     toast.success("Job posted successfully!")
@@ -139,7 +143,7 @@ const PostAJob = () => {
                                     <label class="label">
                                         <span class="label-text">Job Requirements</span>
                                     </label>
-                                    <textarea type="text" placeholder="Job Requirements" class="input border border-zinc-400 w-full " {...register('jobRequirements',
+                                    <textarea type="text" placeholder="Job Requirements" className="h-[40vh] input border border-zinc-400 w-full " {...register('jobRequirements',
                                         {
                                             required: true
                                         })} />

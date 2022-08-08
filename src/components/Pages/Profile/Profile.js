@@ -2,9 +2,9 @@ import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import './Profile.module.css';
+import './Profile.css';
 import { AiOutlineCloudUpload } from 'react-icons/ai';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-scroll';
 
 const Profile = () => {
   const [country, setCoutry] = useState([]);
@@ -33,9 +33,7 @@ const Profile = () => {
                   src="https://vanhack.com/static-desktop/4dcabdcfdda70fbf23396b2acc47a180.svg"
                   alt=""
                 />
-                <a className="pl-[18px] sidebar-link" href="#">
-                  General
-                </a>
+                <Link className="pl-[18px] cursor-pointer sidebar-link" to="general" activeClass="active" spy={true} smooth={true} offset={-100} duration={500} >General</Link>
               </div>
             </li>
             <li>
@@ -44,9 +42,10 @@ const Profile = () => {
                   src="https://vanhack.com/static-desktop/ecb8fa162c6ca3693c69b34b22ffc82d.svg"
                   alt=""
                 />
-                <a className="pl-[18px] sidebar-link" href="#">
+                {/* <a className="pl-[18px] sidebar-link" href="#">
                   Personal Overview
-                </a>
+                </a> */}
+                <Link className="pl-[18px] cursor-pointer sidebar-link" to="overview" activeClass="active" spy={true} smooth={true} offset={-100} duration={500} >Personal Overview</Link>
               </div>
             </li>
             <li>
@@ -55,9 +54,8 @@ const Profile = () => {
                   src="https://vanhack.com/static-desktop/bea44a8645ff996094f8bdc8f7191dc0.svg"
                   alt=""
                 />
-                <a className="pl-[18px] sidebar-link" href="#">
-                  Relection
-                </a>
+                <Link className="pl-[18px] cursor-pointer sidebar-link" to="relection" activeClass="active" spy={true} smooth={true} offset={-100} duration={500} >Relection</Link>
+
               </div>
             </li>
             <li>
@@ -66,9 +64,8 @@ const Profile = () => {
                   src="https://vanhack.com/static-desktop/4b6c7d0c78e2f8bece546c233ed9948a.svg"
                   alt=""
                 />
-                <a className="pl-[18px] sidebar-link" href="#">
-                  Social Profile
-                </a>
+                <Link className="pl-[18px] cursor-pointer sidebar-link" to="social-profile" activeClass="active" spy={true} smooth={true} offset={-100} duration={500} >Social Profile</Link>
+
               </div>
             </li>
             <li>
@@ -77,9 +74,8 @@ const Profile = () => {
                   src="https://vanhack.com/static-desktop/1b30c8bf558ff2f6ca321e62b4f1f100.svg"
                   alt=""
                 />
-                <a className="pl-[18px] sidebar-link" href="#">
-                  Language
-                </a>
+                <Link className="pl-[18px] cursor-pointer sidebar-link" to="language" activeClass="active" spy={true} smooth={true} offset={-100} duration={500} >Languages</Link>
+
               </div>
             </li>
             <li>
@@ -88,9 +84,8 @@ const Profile = () => {
                   src="https://vanhack.com/static-desktop/126218bd37c65e62f709259cf2c74ee3.svg"
                   alt=""
                 />
-                <a className="pl-[18px] sidebar-link" href="#">
-                  Experience
-                </a>
+                <Link className="pl-[18px] cursor-pointer sidebar-link" to="experience" activeClass="active" spy={true} smooth={true} offset={-100} duration={500} >Experience</Link>
+
               </div>
             </li>
             <li>
@@ -99,9 +94,8 @@ const Profile = () => {
                   src="https://vanhack.com/static-desktop/db07c0aade0491ef2557bd9cdd5ca817.svg"
                   alt=""
                 />
-                <a className="pl-[18px] sidebar-link" href="#">
-                  Education
-                </a>
+                <Link className="pl-[18px] cursor-pointer sidebar-link" to="education" activeClass="active" spy={true} smooth={true} offset={-100} duration={500} >Education</Link>
+
               </div>
             </li>
             <li>
@@ -110,9 +104,8 @@ const Profile = () => {
                   src="https://vanhack.com/static-desktop/da6b7c3ba441dd1b6cbe64d5985b9973.svg"
                   alt=""
                 />
-                <a className="pl-[18px] sidebar-link" href="#">
-                  Project
-                </a>
+                <Link className="pl-[18px] cursor-pointer sidebar-link" to="project" activeClass="active" spy={true} smooth={true} offset={-100} duration={500} >Project</Link>
+
               </div>
             </li>
           </ul>
@@ -157,66 +150,67 @@ const Profile = () => {
           </div>
 
           {/* General */}
-          <div className=" w-full  md:w-[732px] mx-auto mt-12">
-            <div>
-              <h1 className=" text-2xl md:text-4xl text-[#788894] ml-4 mb-4">
-                General
-              </h1>
-            </div>
-            <div className=" bg-white  p-6">
-              <form onSubmit={handleSubmit(onSubmit)}>
-                <div>
-                  <p className="label">Country</p>
+          <div className=" w-full  md:w-[732px] mx-auto mt-12 " id='general'>
+            <div className=''>
+              <div>
+                <h1 className=" text-2xl md:text-4xl text-[#788894] ml-4 mb-4">
+                  General
+                </h1>
+              </div>
+              <div className=" bg-white  p-6 section-hover">
+                <form onSubmit={handleSubmit(onSubmit)}>
+                  <div>
+                    <p className="label">Country</p>
 
-                  <select
-                    className="block w-full profile-form-border p-2 rounded-md"
-                    {...register('country')}
-                  >
-                    <option selected="selected" value="">
-                      Select an option
-                    </option>
-                    {country?.map((c) => (
-                      <option value={c?.name}>{c?.name}</option>
-                    ))}
-                  </select>
-                </div>
-                <div>
-                  <p className="label">Gender</p>
-                  <select
-                    className="block w-full profile-form-border p-2 rounded-md"
-                    {...register('gender')}
-                  >
-                    <option value="Select an option">Select an option</option>
-                    <option value="male">male</option>
-                    <option value="female">female</option>
-                    <option value="other">other</option>
-                  </select>
-                </div>
+                    <select
+                      className="block w-full profile-form-border p-2 rounded-md"
+                      {...register('country')}
+                    >
+                      <option selected="selected" value="">
+                        Select an option
+                      </option>
+                      {country?.map((c) => (
+                        <option value={c?.name}>{c?.name}</option>
+                      ))}
+                    </select>
+                  </div>
+                  <div>
+                    <p className="label">Gender</p>
+                    <select
+                      className="block w-full profile-form-border p-2 rounded-md"
+                      {...register('gender')}
+                    >
+                      <option value="Select an option">Select an option</option>
+                      <option value="male">male</option>
+                      <option value="female">female</option>
+                      <option value="other">other</option>
+                    </select>
+                  </div>
 
-                <div>
-                  <p className="label">Phone number</p>
-                  <input
-                    placeholder="Enter Your Phone Number"
-                    className="block w-full profile-form-border p-2 rounded-md"
-                    {...register('number')}
-                  />
-                </div>
-                <button type="submit" className="btn-primary-vlue mt-4">
-                  Submit
-                </button>
-              </form>
+                  <div>
+                    <p className="label">Phone number</p>
+                    <input
+                      placeholder="Enter Your Phone Number"
+                      className="block w-full profile-form-border p-2 rounded-md"
+                      {...register('number')}
+                    />
+                  </div>
+                  <button type='submit' className=' mt-5  py-[10px] px-[30px] bg-blue-dark uppercase text-white'>Submit<i class="fa-solid fa-angle-right ml-[6px]"></i></button>
+
+                </form>
+              </div>
             </div>
           </div>
 
           {/* Professional Overview */}
-          <div className="my-10">
+          <div className="my-10" id='overview'>
             <div className="w-full md:w-[732px] mx-4 md:mx-auto ">
               <h2 className=" text-2xl md:text-4xl text-[#788894]">
                 Professional Overview
               </h2>
             </div>
 
-            <div className="w-full md:w-[732px] p-6 rounded-lg mt-4 mx-auto bg-white">
+            <div className="w-full md:w-[732px] p-6 rounded-lg mt-4 mx-auto bg-white section-hover">
               <div>
                 {/* Select option  */}
                 <div className="w-full pt-2 pr-4  mb-5">
@@ -227,10 +221,10 @@ const Profile = () => {
                   <form onSubmit={handleSubmit(onSubmit)}>
                     <select
                       {...register('proOverview')}
-                      className="border-2 rounded-md mt-1 px-2 py-2 text-base w-full"
+                      className="profile-form-border rounded-md mt-1 px-2 py-2 text-base w-full"
                     >
                       {/* <option selected="selected" value="">Select an option</option> */}
-                      <option selected value="Select your education level">
+                      <option selected='selected' value="Select your education level">
                         Select your education level
                       </option>
                       <option value="hsc">High School</option>
@@ -249,10 +243,10 @@ const Profile = () => {
                   <form onSubmit={handleSubmit(onSubmit)}>
                     <select
                       {...register('abc')}
-                      className="border-2 rounded-md mt-1 px-2 py-2 text-base w-full"
+                      className="profile-form-border rounded-md mt-1 px-2 py-2 text-base w-full"
                     >
                       {/* <option selected="selected" value="">Select an option</option> */}
-                      <option selected value="Select your education level">
+                      <option selected='selected' value="Select your education level">
                         Select your education level
                       </option>
                       <option value="hsc">High School</option>
@@ -282,10 +276,10 @@ const Profile = () => {
                     <form onSubmit={handleSubmit(onSubmit)}>
                       <select
                         {...register('efghi')}
-                        className="border-2 rounded-md mt-1 px-2 py-2 text-base w-full"
+                        className="profile-form-border rounded-md mt-1 px-2 py-2 text-base w-full"
                       >
                         {/* <option selected="selected" value="">Select an option</option> */}
-                        <option selected value="Select your education level">
+                        <option selected='selected' value="Select your education level">
                           Select your education level
                         </option>
                         <option value="hsc">High School</option>
@@ -313,11 +307,24 @@ const Profile = () => {
                       className="flex items-center w-full"
                       onSubmit={handleSubmit(onSubmit)}
                     >
-                      <select
+                      {/* <select
                         {...register('gender')}
-                        className="border-2 rounded-md mt-1 px-2 py-2 text-base w-full mr-3"
+                        className="profile-form-border rounded-md mt-1 px-2 py-2 text-base w-full mr-3"
                       >
-                        <option selected value="Select your education level">
+                        <option selected='selected'value="Select your education level">
+                          Select your education level
+                        </option>
+                        <option value="hsc">High School</option>
+                        <option value="u-bs">
+                          Unfinished Bachelor's degree
+                        </option>
+                      </select> */}
+
+                      <select
+                        className="block w-full profile-form-border p-2 rounded-md"
+                        {...register('skill-1')}
+                      >
+                        <option selected="selected" value="">
                           Select your education level
                         </option>
                         <option value="hsc">High School</option>
@@ -327,10 +334,12 @@ const Profile = () => {
                       </select>
 
                       <select
-                        {...register('gender')}
-                        className="border-2 rounded-md mt-1 px-2 py-2 text-base w-full max-w-[200px]"
+                        {...register('tanvir')}
+                        className="profile-form-border block rounded-md mt-1 px-2 py-2 text-base w-full max-w-[200px]"
                       >
-                        <option selected value="Select your education level">
+
+
+                        <option selected="selected" value="">
                           Select your education level
                         </option>
                         <option value="hsc">High School</option>
@@ -348,10 +357,10 @@ const Profile = () => {
                       onSubmit={handleSubmit(onSubmit)}
                     >
                       <select
-                        {...register('gender')}
-                        className="border-2 rounded-md mt-1 px-2 py-2 text-base w-full mr-3"
+                        {...register('tanvir-3')}
+                        className="profile-form-border rounded-md mt-1 px-2 py-2 text-base w-full mr-3"
                       >
-                        <option selected value="Select your education level">
+                        <option selected='selected' value="">
                           Select your education level
                         </option>
                         <option value="hsc">High School</option>
@@ -361,10 +370,10 @@ const Profile = () => {
                       </select>
 
                       <select
-                        {...register('gender')}
-                        className="border-2 rounded-md mt-1 px-2 py-2 text-base w-full max-w-[200px]"
+                        {...register('tanvir044')}
+                        className="profile-form-border rounded-md mt-1 px-2 py-2 text-base w-full max-w-[200px]"
                       >
-                        <option selected value="Select your education level">
+                        <option selected='selected' value="Select your education level">
                           Select your education level
                         </option>
                         <option value="hsc">High School</option>
@@ -382,10 +391,10 @@ const Profile = () => {
                       onSubmit={handleSubmit(onSubmit)}
                     >
                       <select
-                        {...register('gender')}
-                        className="border-2 rounded-md mt-1 px-2 py-2 text-base w-full mr-3"
+                        {...register('tanvir-33')}
+                        className="profile-form-border rounded-md mt-1 px-2 py-2 text-base w-full mr-3"
                       >
-                        <option selected value="Select your education level">
+                        <option selected='selected' value="Select your education level">
                           Select your education level
                         </option>
                         <option value="hsc">High School</option>
@@ -395,10 +404,10 @@ const Profile = () => {
                       </select>
 
                       <select
-                        {...register('gender')}
-                        className="border-2 rounded-md mt-1 px-2 py-2 text-base w-full max-w-[200px]"
+                        {...register('tanvir-444')}
+                        className="profile-form-border rounded-md mt-1 px-2 py-2 text-base w-full max-w-[200px]"
                       >
-                        <option selected value="Select your education level">
+                        <option selected='selected' value="Select your education level">
                           Select your education level
                         </option>
                         <option value="hsc">High School</option>
@@ -423,10 +432,10 @@ const Profile = () => {
                       onSubmit={handleSubmit(onSubmit)}
                     >
                       <select
-                        {...register('gender')}
-                        className="border-2 rounded-md mt-1 px-2 py-2 text-base w-full mr-3"
+                        {...register('tanvir-6666')}
+                        className="profile-form-border rounded-md mt-1 px-2 py-2 text-base w-full mr-3"
                       >
-                        <option selected value="Select your education level">
+                        <option selected='selected' value="Select your education level">
                           Select your education level
                         </option>
                         <option value="hsc">High School</option>
@@ -436,43 +445,10 @@ const Profile = () => {
                       </select>
 
                       <select
-                        {...register('gender')}
-                        className="border-2 rounded-md mt-1 px-2 py-2 text-base w-full max-w-[200px]"
+                        {...register('tanvir-444444')}
+                        className="profile-form-border rounded-md mt-1 px-2 py-2 text-base w-full max-w-[200px]"
                       >
-                        <option selected value="Select your education level">
-                          Select your education level
-                        </option>
-                        <option value="hsc">High School</option>
-                        <option value="u-bs">
-                          Unfinished Bachelor's degree
-                        </option>
-                      </select>
-                    </form>
-                  </div>
-
-                  <div className="flex items-center mt-4 border-b-2 border-gray-200">
-                    <form
-                      className="flex items-center w-full pb-2"
-                      onSubmit={handleSubmit(onSubmit)}
-                    >
-                      <select
-                        {...register('gender')}
-                        className="border-2 rounded-md mt-1 px-2 py-2 text-base w-full mr-3"
-                      >
-                        <option selected value="Select your education level">
-                          Select your education level
-                        </option>
-                        <option value="hsc">High School</option>
-                        <option value="u-bs">
-                          Unfinished Bachelor's degree
-                        </option>
-                      </select>
-
-                      <select
-                        {...register('gender')}
-                        className="border-2 rounded-md mt-1 px-2 py-2 text-base w-full max-w-[200px]"
-                      >
-                        <option selected value="Select your education level">
+                        <option selected='selected' value="Select your education level">
                           Select your education level
                         </option>
                         <option value="hsc">High School</option>
@@ -489,10 +465,10 @@ const Profile = () => {
                       onSubmit={handleSubmit(onSubmit)}
                     >
                       <select
-                        {...register('gender')}
-                        className="border-2 rounded-md mt-1 px-2 py-2 text-base w-full mr-3"
+                        {...register('ge')}
+                        className="profile-form-border rounded-md mt-1 px-2 py-2 text-base w-full mr-3"
                       >
-                        <option selected value="Select your education level">
+                        <option selected='selected' value="Select your education level">
                           Select your education level
                         </option>
                         <option value="hsc">High School</option>
@@ -502,43 +478,10 @@ const Profile = () => {
                       </select>
 
                       <select
-                        {...register('gender')}
-                        className="border-2 rounded-md mt-1 px-2 py-2 text-base w-full max-w-[200px]"
+                        {...register('tanvir-55555')}
+                        className="profile-form-border rounded-md mt-1 px-2 py-2 text-base w-full max-w-[200px]"
                       >
-                        <option selected value="Select your education level">
-                          Select your education level
-                        </option>
-                        <option value="hsc">High School</option>
-                        <option value="u-bs">
-                          Unfinished Bachelor's degree
-                        </option>
-                      </select>
-                    </form>
-                  </div>
-
-                  <div className="flex items-center mt-4 border-b-2 border-gray-200">
-                    <form
-                      className="flex items-center w-full pb-2"
-                      onSubmit={handleSubmit(onSubmit)}
-                    >
-                      <select
-                        {...register('gender')}
-                        className="border-2 rounded-md mt-1 px-2 py-2 text-base w-full mr-3"
-                      >
-                        <option selected value="Select your education level">
-                          Select your education level
-                        </option>
-                        <option value="hsc">High School</option>
-                        <option value="u-bs">
-                          Unfinished Bachelor's degree
-                        </option>
-                      </select>
-
-                      <select
-                        {...register('gender')}
-                        className="border-2 rounded-md mt-1 px-2 py-2 text-base w-full max-w-[200px]"
-                      >
-                        <option selected value="Select your education level">
+                        <option selected='selected' value="Select your education level">
                           Select your education level
                         </option>
                         <option value="hsc">High School</option>
@@ -555,10 +498,10 @@ const Profile = () => {
                       onSubmit={handleSubmit(onSubmit)}
                     >
                       <select
-                        {...register('gender')}
-                        className="border-2 rounded-md mt-1 px-2 py-2 text-base w-full mr-3"
+                        {...register('tanvir-88888')}
+                        className="profile-form-border rounded-md mt-1 px-2 py-2 text-base w-full mr-3"
                       >
-                        <option selected value="Select your education level">
+                        <option selected='selected' value="Select your education level">
                           Select your education level
                         </option>
                         <option value="hsc">High School</option>
@@ -568,10 +511,76 @@ const Profile = () => {
                       </select>
 
                       <select
-                        {...register('gender')}
-                        className="border-2 rounded-md mt-1 px-2 py-2 text-base w-full max-w-[200px]"
+                        {...register('tanvir-333')}
+                        className="profile-form-border rounded-md mt-1 px-2 py-2 text-base w-full max-w-[200px]"
                       >
-                        <option selected value="Select your education level">
+                        <option selected='selected' value="Select your education level">
+                          Select your education level
+                        </option>
+                        <option value="hsc">High School</option>
+                        <option value="u-bs">
+                          Unfinished Bachelor's degree
+                        </option>
+                      </select>
+                    </form>
+                  </div>
+
+                  <div className="flex items-center mt-4 border-b-2 border-gray-200">
+                    <form
+                      className="flex items-center w-full pb-2"
+                      onSubmit={handleSubmit(onSubmit)}
+                    >
+                      <select
+                        {...register('tanvirrrrrr')}
+                        className="profile-form-border rounded-md mt-1 px-2 py-2 text-base w-full mr-3"
+                      >
+                        <option selected='selected' value="Select your education level">
+                          Select your education level
+                        </option>
+                        <option value="hsc">High School</option>
+                        <option value="u-bs">
+                          Unfinished Bachelor's degree
+                        </option>
+                      </select>
+
+                      <select
+                        {...register('tanvir=-ee')}
+                        className="profile-form-border rounded-md mt-1 px-2 py-2 text-base w-full max-w-[200px]"
+                      >
+                        <option selected='selected' value="Select your education level">
+                          Select your education level
+                        </option>
+                        <option value="hsc">High School</option>
+                        <option value="u-bs">
+                          Unfinished Bachelor's degree
+                        </option>
+                      </select>
+                    </form>
+                  </div>
+
+                  <div className="flex items-center mt-4 border-b-2 border-gray-200">
+                    <form
+                      className="flex items-center w-full pb-2"
+                      onSubmit={handleSubmit(onSubmit)}
+                    >
+                      <select
+                        {...register('tanvir-eeeee')}
+                        className="profile-form-border rounded-md mt-1 px-2 py-2 text-base w-full mr-3"
+                      >
+                        <option selected='selected' value="Select your education level">
+                          Select your education level
+                        </option>
+                        <option value="hsc">High School</option>
+                        <option value="u-bs">
+                          Unfinished Bachelor's degree
+                        </option>
+                      </select>
+
+                      <select
+                        {...register('tanvir-rrrrrr')}
+                        className="profile-form-border rounded-md mt-1 px-2 py-2 text-base w-full max-w-[200px]"
+                      >
+                        <option selected='selected' value="Select your education level">
                           Select your education level
                         </option>
                         <option value="hsc">High School</option>
@@ -587,25 +596,25 @@ const Profile = () => {
           </div>
 
           {/* Relocation */}
-          <div className="my-10">
+          <div className="my-10" id='relection'>
             <div className="w-full md:w-[732px] mx-4 md:mx-auto ">
               <h2 className=" text-2xl md:text-4xl text-[#788894]">
                 Relocation
               </h2>
             </div>
 
-            <div className="w-full md:w-[732px] p-6 rounded-lg mt-4 mx-auto bg-white">
+            <div className="w-full md:w-[732px] section-hover p-6 rounded-lg mt-4 mx-auto bg-white">
               {/* Select option  */}
               <div className="w-full pt-2 pr-4  mb-5">
                 <label htmlFor="#">Are you open to remote jobs?</label>
 
                 <form onSubmit={handleSubmit(onSubmit)}>
                   <select
-                    {...register('gender')}
-                    className="border-2 rounded-md mt-1 px-2 py-2 text-base w-1/2"
+                    {...register('education-1')}
+                    className="profile-form-border rounded-md mt-1 px-2 py-2 text-base w-1/2"
                   >
                     {/* <option selected="selected" value="">Select an option</option> */}
-                    <option selected value="Select your education level">
+                    <option selected='selected' value="Select your education level">
                       Select your education level
                     </option>
                     <option value="hsc">High School</option>
@@ -624,11 +633,11 @@ const Profile = () => {
                 >
                   <span className="text-lg font-semibold mr-4">1st</span>
                   <select
-                    {...register('gender')}
-                    className="border-2 rounded-md mt-1 px-2 py-2 text-base w-full"
+                    {...register('education-3')}
+                    className="profile-form-border rounded-md mt-1 px-2 py-2 text-base w-full"
                   >
                     {/* <option selected="selected" value="">Select an option</option> */}
-                    <option selected value="Select your education level">
+                    <option selected='selected' value="Select your education level">
                       Select your education level
                     </option>
                     <option value="hsc">High School</option>
@@ -644,11 +653,11 @@ const Profile = () => {
 
                   <form onSubmit={handleSubmit(onSubmit)}>
                     <select
-                      {...register('gender')}
-                      className="border-2 rounded-md mt-1 px-2 py-2 text-base w-full"
+                      {...register('education-4')}
+                      className="profile-form-border rounded-md mt-1 px-2 py-2 text-base w-full"
                     >
                       {/* <option selected="selected" value="">Select an option</option> */}
-                      <option selected value="Select your education level">
+                      <option selected='selected' value="Select your education level">
                         Select your education level
                       </option>
                       <option value="hsc">High School</option>
@@ -663,11 +672,11 @@ const Profile = () => {
 
                   <form onSubmit={handleSubmit(onSubmit)}>
                     <select
-                      {...register('gender')}
-                      className="border-2 rounded-md mt-1 px-2 py-2 text-base w-full"
+                      {...register('education-6')}
+                      className="profile-form-border rounded-md mt-1 px-2 py-2 text-base w-full"
                     >
                       {/* <option selected="selected" value="">Select an option</option> */}
-                      <option selected value="Select your education level">
+                      <option selected='selected' value="Select your education level">
                         Select your education level
                       </option>
                       <option value="hsc">High School</option>
@@ -682,11 +691,11 @@ const Profile = () => {
 
                   <form onSubmit={handleSubmit(onSubmit)}>
                     <select
-                      {...register('gender')}
-                      className="border-2 rounded-md mt-1 px-2 py-2 text-base w-full"
+                      {...register('education-9')}
+                      className="profile-form-border rounded-md mt-1 px-2 py-2 text-base w-full"
                     >
                       {/* <option selected="selected" value="">Select an option</option> */}
-                      <option selected value="Select your education level">
+                      <option selected='selected' value="Select your education level">
                         Select your education level
                       </option>
                       <option value="hsc">High School</option>
@@ -701,11 +710,11 @@ const Profile = () => {
 
                   <form onSubmit={handleSubmit(onSubmit)}>
                     <select
-                      {...register('gender')}
-                      className="border-2 rounded-md mt-1 px-2 py-2 text-base w-full"
+                      {...register('work')}
+                      className="profile-form-border rounded-md mt-1 px-2 py-2 text-base w-full"
                     >
                       {/* <option selected="selected" value="">Select an option</option> */}
-                      <option selected value="Select your education level">
+                      <option selected='selected' value="Select your education level">
                         Select your education level
                       </option>
                       <option value="hsc">High School</option>
@@ -720,11 +729,11 @@ const Profile = () => {
 
                   <form onSubmit={handleSubmit(onSubmit)}>
                     <select
-                      {...register('gender')}
-                      className="border-2 rounded-md mt-1 px-2 py-2 text-base w-full"
+                      {...register('work-2')}
+                      className="profile-form-border rounded-md mt-1 px-2 py-2 text-base w-full"
                     >
                       {/* <option selected="selected" value="">Select an option</option> */}
-                      <option selected value="Select your education level">
+                      <option selected='selected' value="Select your education level">
                         Select your education level
                       </option>
                       <option value="hsc">High School</option>
@@ -739,11 +748,11 @@ const Profile = () => {
 
                   <form onSubmit={handleSubmit(onSubmit)}>
                     <select
-                      {...register('gender')}
-                      className="border-2 rounded-md mt-1 px-2 py-2 text-base w-full"
+                      {...register('work-4')}
+                      className="profile-form-border rounded-md mt-1 px-2 py-2 text-base w-full"
                     >
                       {/* <option selected="selected" value="">Select an option</option> */}
-                      <option selected value="Select your education level">
+                      <option selected='selected' value="Select your education level">
                         Select your education level
                       </option>
                       <option value="hsc">High School</option>
@@ -758,10 +767,10 @@ const Profile = () => {
 
                   <form onSubmit={handleSubmit(onSubmit)}>
                     <select
-                      {...register('gender')}
-                      className="border-2 rounded-md mt-1 px-2 py-2 text-base w-full"
+                      {...register('work-6')}
+                      className="profile-form-border rounded-md mt-1 px-2 py-2 text-base w-full"
                     >
-                      <option selected value="Select your education level">
+                      <option selected='selected' value="Select your education level">
                         Select your education level
                       </option>
                       <option value="hsc">High School</option>
@@ -851,9 +860,9 @@ const Profile = () => {
                       <form onSubmit={handleSubmit(onSubmit)}>
                         <select
                           {...register('gender')}
-                          className="border-2 rounded-md px-2 py-2 text-base w-full mt-2"
+                          className="profile-form-border rounded-md px-2 py-2 text-base w-full mt-2"
                         >
-                          <option selected value="Select your education level">
+                          <option selected='selected' value="Select your education level">
                             Select your education level
                           </option>
                           <option value="hsc">High School</option>
@@ -870,7 +879,7 @@ const Profile = () => {
           </div>
 
           {/* Resume & Social Profile */}
-          <div className="my-10">
+          <div className="my-10" id='social-profile'>
             <div className="w-full md:w-[732px] mx-4 md:mx-auto ">
               <h2 className=" text-2xl md:text-4xl text-[#788894]">
                 Resume & Social Profile
@@ -914,7 +923,7 @@ const Profile = () => {
           </div>
 
           {/* Languages */}
-          <div className="my-10">
+          <div className="my-10" id='language'>
             <div className="w-full md:w-[732px] mx-4 md:mx-auto ">
               <h2 className=" text-2xl md:text-4xl text-[#788894]">
                 Languages
@@ -929,8 +938,8 @@ const Profile = () => {
                   className="md:max-w-[65%] w-full mb-2"
                 >
                   <select
-                    {...register('gender')}
-                    className="border-2 rounded-md mt-1 px-2 py-2 text-base w-full"
+                    {...register('language-1')}
+                    className="profile-form-border rounded-md mt-1 px-2 py-2 text-base w-full"
                   >
                     <option selected="selected" value="#">
                       Select your Languages
@@ -946,8 +955,8 @@ const Profile = () => {
                   className="min-w-[12.5rem] md:max-w-[33%] w-full mb-2"
                 >
                   <select
-                    {...register('gender')}
-                    className="border-2 rounded-md mt-1 px-2 py-2 text-base w-full"
+                    {...register('language-2')}
+                    className="profile-form-border rounded-md mt-1 px-2 py-2 text-base w-full"
                   >
                     <option selected="selected" value="">
                       Select an option
@@ -968,7 +977,7 @@ const Profile = () => {
           </div>
 
           {/* Experience */}
-          <div className="my-10">
+          <div className="my-10" id='experience'>
             <div className="w-full md:w-[732px] mx-4 md:mx-auto ">
               <h2 className=" text-2xl md:text-4xl text-[#788894]">
                 Experience
@@ -981,14 +990,14 @@ const Profile = () => {
           </div>
 
           {/* Education */}
-          <div className="my-10">
+          <div className="my-10" id='education'>
             <div className="w-full md:w-[732px] mx-4 md:mx-auto ">
               <h2 className=" text-2xl md:text-4xl text-[#788894]">
                 Education
               </h2>
             </div>
 
-            <div className="w-full md:w-[732px] p-6 rounded-lg mt-4 mx-auto bg-white">
+            <div className="w-full md:w-[732px] section-hover p-6 rounded-lg mt-4 mx-auto bg-white">
               <p className="text-lg font-[500]">Formal Education</p>
 
               {/* Select option  */}
@@ -997,11 +1006,11 @@ const Profile = () => {
 
                 <form onSubmit={handleSubmit(onSubmit)}>
                   <select
-                    {...register('gender')}
-                    className="border-2 rounded-md mt-1 px-2 py-2 text-base"
+                    {...register('formar-education')}
+                    className="profile-form-border rounded-md mt-1 px-2 py-2 text-base"
                   >
                     {/* <option selected="selected" value="">Select an option</option> */}
-                    <option selected value="Select your education level">
+                    <option selected='selected' value="Select your education level">
                       Select your education level
                     </option>
                     <option value="hsc">High School</option>

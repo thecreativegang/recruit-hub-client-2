@@ -49,3 +49,7 @@
 /* form:hover .general {
   box-shadow: rgb(0 0 0 / 10%) 0px 4px 14px 0px;
 } */
+
+.active {
+  background-color: #c4c3c3;
+}

@@ -29,3 +29,6 @@
 .btn-primary-vlue:focus {
   outline: none;
 }
+.profile-form-border {
+  border: 1px solid rgb(224, 224, 224);
+}

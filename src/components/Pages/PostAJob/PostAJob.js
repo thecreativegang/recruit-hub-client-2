@@ -12,6 +12,7 @@ const PostAJob = () => {
     // const [selected, setSelected] = useState(format(new Date(), 'PP'));
     const { register, formState: { errors }, handleSubmit } = useForm();
     const onSubmit = data => {
+        console.log(data);
     }
     // const userInfo = useSelector((state) => state);
     // let footer = <p className='font-semibold'>You've picked:  {format(selected, 'PP')}</p>
@@ -98,7 +99,7 @@ const PostAJob = () => {
                                     <label class="label">
                                         <span class="label-text">Educational Qualifications</span>
                                     </label>
-                                    <input type="text" placeholder="Job title" class="input border border-zinc-400 w-full " {...register('educationalQualifications',
+                                    <input type="text" placeholder="Educational Qualification" class="input border border-zinc-400 w-full " {...register('educationalQualifications',
                                         {
                                             required: true
                                         })} />
@@ -108,7 +109,7 @@ const PostAJob = () => {
                                     <label class="label">
                                         <span class="label-text">Job Requirements</span>
                                     </label>
-                                    <textarea type="text" placeholder="Job title" class="input border border-zinc-400 w-full " {...register('jobRequirements',
+                                    <textarea type="text" placeholder="Job Requirements" class="input border border-zinc-400 w-full " {...register('jobRequirements',
                                         {
                                             required: true
                                         })} />

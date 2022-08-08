@@ -13,41 +13,42 @@ import RequireUsername from './components/Shared/RequireUsername';
 import Loading from './components/Shared/Loading';
 import ChatBox from './components/Pages/ChatPage/ChatBox';
 import SkillAssessment from './components/Pages/SkillAssessment/SkillAssessment';
+import PostAJob from './components/Pages/PostAJob/PostAJob';
+import { UserStoreProvider } from './stateManagement/UserContext/UserContextStore';
+import ChatPage from './components/Pages/ChatPage/ChatPage';
 
 function App() {
   return (
-    <div>
-      <Navbar />
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <RequireUsername>
-              <Home />
-            </RequireUsername>
-          }
-        />
+    <div >
+      <UserStoreProvider>
+        <Navbar />
+        <Routes>
 
-        <Route
-          path="/home"
-          element={
+          <Route path='/' element={
             <RequireUsername>
               <Home />
             </RequireUsername>
-          }
+          } />
+
+          <Route path='/home' element={<RequireUsername>
+            <Home />
+          </RequireUsername>} />
+          <Route path='/profile' element={<Profile></Profile>} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/register' element={<AccountTypePage />} />
+          <Route path='/register/:accType' element={<Register />} />
+          <Route path='/lod' element={<Loading />}></Route>
+          <Route path='/profile' element={<Profile />}></Route>
+          <Route path='/chat' element={<ChatPage />}></Route>
+          <Route path='/postJob' element={<PostAJob />}></Route>
+          <Route path='/skilltest' element={<SkillAssessment />}></Route>
+        </Routes >
+        <FooterBottomSection />
+        <ToastContainer
+          autoClose={1500}
         />
-        <Route path="/profile" element={<Profile></Profile>} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<AccountTypePage />} />
-        <Route path="/register/:accType" element={<Register />} />
-        <Route path="/lod" element={<Loading />}></Route>
-        <Route path="/profile" element={<Profile />}></Route>
-        <Route path="/chat" element={<ChatBox />}></Route>
-        <Route path="/skilltest" element={<SkillAssessment />}></Route>
-      </Routes>
-      <FooterBottomSection />
-      <ToastContainer autoClose={1500} />
-    </div>
+      </UserStoreProvider>
+    </div >
   );
 }
 //

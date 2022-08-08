@@ -109,7 +109,7 @@ const PostAJob = () => {
                                     <label class="label">
                                         <span class="label-text">Educational Qualifications</span>
                                     </label>
-                                    <input type="text" placeholder="Educational Qualification" class="input border border-zinc-400 w-full " {...register('educationalQualifications',
+                                    <input type="text" placeholder="Educational Qualification" class="input border border-zinc-400 w-full " {...register('educationalQualification',
                                         {
                                             required: true
                                         })} />
@@ -130,7 +130,7 @@ const PostAJob = () => {
                                     <label class="label">
                                         <span class="label-text">Enter tags</span>
                                     </label>
-                                    <textarea type="text" placeholder="Seperate by comma. eg: frontend, react" class="input border border-zinc-400 w-full " {...register('tags',
+                                    <textarea type="text" placeholder="Seperate by space. eg: frontend react" className="lowercase input border border-zinc-400 w-full " {...register('tags',
                                         {
                                             required: true
                                         })} />

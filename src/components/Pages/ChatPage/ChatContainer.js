@@ -83,7 +83,7 @@ const ChatContainer = ({ currentChat, socket }) => {
                 </div>
               </div>
               <div className="text-white px-2 uppercase">
-                <h3 className="text-2xl">{currentChat.username}</h3>
+                <h3 className="text-2xl">{currentChat?.username ? currentChat.username : currentChat.email}</h3>
               </div>
             </div>
             {/* chat body */}

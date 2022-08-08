@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 const PostAJob = () => {
     const generateDigit = (start, limit) => {
@@ -10,13 +11,32 @@ const PostAJob = () => {
         }
         return digits;
     }
+    const resetForm = {
+        recruitersName: "",
+        jobTitle: "",
+        companyName: "",
+        companySize: "",
+        vacancies: 0,
+        jobNature: "",
+        educationalQualification: "",
+        jobRequirements: "",
+        tags: "",
+        deadlineDay: "",
+        deadlineMonth: "",
+        deadlineYear: "",
+
+    }
     // const [selected, setSelected] = useState(format(new Date(), 'PP'));
-    const { register, formState: { errors }, handleSubmit } = useForm();
+    const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const onSubmit = data => {
+
         console.log(data)
         axios.post(`http://localhost:3001/job/postJob`, data)
             .then(function (res) {
-                console.log(res)
+                if (res?.data?.status === 200) {
+                    toast.success("Job posted successfully!")
+                    reset(resetForm)
+                }
             })
             .then(function (err) {
                 if (err) {

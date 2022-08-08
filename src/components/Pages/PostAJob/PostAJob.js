@@ -213,5 +213,3 @@ const PostAJob = () => {
 
 export default PostAJob;
 
-
-// 

@@ -15,7 +15,7 @@ const Profile = () => {
       .then((data) => setCoutry(data?.countries));
   }, []);
 
-  country?.map((c) => console.log(c?.name));
+  // country?.map((c) => console.log(c?.name));
 
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => console.log(data);

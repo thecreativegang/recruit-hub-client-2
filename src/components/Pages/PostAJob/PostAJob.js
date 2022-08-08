@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import axios from 'axios';
 
 const PostAJob = () => {
     const generateDigit = (start, limit) => {
@@ -12,7 +13,16 @@ const PostAJob = () => {
     // const [selected, setSelected] = useState(format(new Date(), 'PP'));
     const { register, formState: { errors }, handleSubmit } = useForm();
     const onSubmit = data => {
-        console.log(data);
+        console.log(data)
+        axios.post(`http://localhost:3001/job/postJob`, data)
+            .then(function (res) {
+                console.log(res)
+            })
+            .then(function (err) {
+                if (err) {
+                    console.log(err)
+                }
+            })
     }
     // const userInfo = useSelector((state) => state);
     // let footer = <p className='font-semibold'>You've picked:  {format(selected, 'PP')}</p>
@@ -57,7 +67,7 @@ const PostAJob = () => {
                                             {
                                                 required: true
                                             })}>
-                                            <option value="select an option">Select an Option</option>
+                                            <option value="">Select an Option</option>
                                             <option value="1-10" >1-10</option>
                                             <option value="1-50" >1-50</option>
                                             <option value="1-100" >1-100</option>
@@ -86,7 +96,7 @@ const PostAJob = () => {
                                             {
                                                 required: true
                                             })}>
-                                            <option value="select an option">Select an Option</option>
+                                            <option value="">Select an Option</option>
                                             <option value="on-site" className='capitalize' >on-site</option>
                                             <option value="remote" className='capitalize'>remote</option>
                                             <option value="hybrid" className='capitalize'>hybrid</option>
@@ -142,7 +152,7 @@ const PostAJob = () => {
                                             <select name="date" id="selectDate" className='border border-zinc-400 p-3 rounded-lg w-full '{...register('deadlineDay', {
                                                 required: true
                                             })}>
-                                                <option value="Select Date">Select Date</option>
+                                                <option value="">Select Date</option>
                                                 {
 
                                                     generateDigit(1, 31)?.map(digit => <option value={digit}>{digit}</option>)
@@ -153,7 +163,7 @@ const PostAJob = () => {
                                             <select name="date" id="selectDate" className='border border-zinc-400 p-3 rounded-lg w-full'{...register('deadlineMonth', {
                                                 required: true
                                             })}>
-                                                <option value="Select Month">Select Month</option>
+                                                <option value="">Select Month</option>
                                                 {
 
                                                     generateDigit(1, 12)?.map(digit => <option value={digit}>{digit}</option>)
@@ -164,7 +174,7 @@ const PostAJob = () => {
                                             <select name="date" id="selectDate" className='border border-zinc-400 p-3 rounded-lg w-full'{...register('deadlineYear', {
                                                 required: true
                                             })}>
-                                                <option value="Select Year">Select Year</option>
+                                                <option value="">Select Year</option>
                                                 {
 
                                                     generateDigit(2022, 2025)?.map(digit => <option value={digit}>{digit}</option>)

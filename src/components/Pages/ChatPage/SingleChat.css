@@ -62,16 +62,6 @@
     display: none;
 }
 
-<<<<<<< HEAD
-=======
-/* .profile-container::-webkit-scrollbar thumb {
-    background-color: #ffffff39;
-    width: 0.1rem;
-    border-radius: 1rem;
-
-} */
-
->>>>>>> 7e929754f0ca96a873286ba900424922ee339cc2
 .chat-window .chat-body .message-container {
     width: 100%;
     height: 100%;

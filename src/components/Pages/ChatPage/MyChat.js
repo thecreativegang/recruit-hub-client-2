@@ -6,23 +6,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusSquare } from '@fortawesome/free-regular-svg-icons';
 import ScrollToBottom from 'react-scroll-to-bottom';
 import Loading from '../../Shared/Loading';
-<<<<<<< HEAD
-=======
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import axios from 'axios';
 import { noAuto } from '@fortawesome/fontawesome-svg-core';
->>>>>>> 7e929754f0ca96a873286ba900424922ee339cc2
 
 const MyChat = () => {
 
-<<<<<<< HEAD
-    console.log(chats)
-    if (!chats) {
-        <Loading></Loading>
-    }
-=======
     const [currentUser, setCurrentUser] = useState(undefined);
     const [globalUser] = useAuthState(auth);
 
@@ -44,7 +35,6 @@ const MyChat = () => {
     // console.log(globalUser);
 
     // setCurrentUser(globalUser?.email);
->>>>>>> 7e929754f0ca96a873286ba900424922ee339cc2
 
     return (
         <div className='mx-2'>
@@ -61,13 +51,9 @@ const MyChat = () => {
 
 
             <div className='p-2 my-1  h-[80vh]  rounded bg-slate-300'>
-<<<<<<< HEAD
-                <div className='bg-primary rounded p-2 my-2 text-white'>Login user name here</div>
-=======
 
                 <div className='bg-primary rounded p-2 my-2 text-white'>L :  {currentUser}</div>
 
->>>>>>> 7e929754f0ca96a873286ba900424922ee339cc2
                 <ScrollToBottom className='profile-container'>
                     {chats?.map((chat) => <SingleProfile chat={chat} />)
                     }

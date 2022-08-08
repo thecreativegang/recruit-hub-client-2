@@ -13,6 +13,7 @@ import RequireUsername from './components/Shared/RequireUsername';
 import Loading from './components/Shared/Loading';
 import ChatBox from './components/Pages/ChatPage/ChatBox';
 import SkillAssessment from './components/Pages/SkillAssessment/SkillAssessment';
+import PostAJob from './components/Pages/PostAJob/PostAJob';
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
         <Route path="/profile" element={<Profile />}></Route>
         <Route path="/chat" element={<ChatBox />}></Route>
         <Route path="/skilltest" element={<SkillAssessment />}></Route>
+        <Route path="/postJob" element={<PostAJob />}></Route>
       </Routes>
       <FooterBottomSection />
       <ToastContainer autoClose={1500} />

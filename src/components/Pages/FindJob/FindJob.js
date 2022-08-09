@@ -21,6 +21,7 @@ const FindJob = () => {
         companySize: "",
         payRange: ""
     }
+
     useEffect(() => {
         axios.get(`http://localhost:3001/job`)
             .then(function (res) {
@@ -45,7 +46,8 @@ const FindJob = () => {
                     {/* All jobs will be listed down below */}
                     <div className=' '>
                         {
-                            jobs.map(job => <SingleJobInList
+                            jobs.map((job, index) => <SingleJobInList
+                                index={index}
                                 key={job._id}
                                 job={job}
                                 setSelectedJob={setSelectedJob}

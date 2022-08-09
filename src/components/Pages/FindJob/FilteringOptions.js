@@ -13,7 +13,7 @@ const FilteringOptions = ({ searchElements }) => {
             </div>
             <div className='flex gap-2'>
                 <div>
-                    <select name="jobType" id="jobType" className='border border-black p-3 rounded-lg bg-zinc-100'>
+                    <select name="jobType" id="jobType" className='border border-black p-3 rounded-full bg-zinc-100'>
                         <option value="" className='capitalize'>Select Job Nature</option>
                         <option value="remote" className='capitalize'>Remote</option>
                         <option value="on-site" className='capitalize'>On-site</option>
@@ -21,7 +21,7 @@ const FilteringOptions = ({ searchElements }) => {
                     </select>
                 </div>
                 <div>
-                    <select name="jobType" id="jobType" className='border border-black p-3 rounded-lg bg-zinc-100'>
+                    <select name="jobType" id="jobType" className='border border-black p-3 rounded-full bg-zinc-100'>
                         <option value="">Company Size</option>
                         <option value="1-10" >1-10</option>
                         <option value="1-50" >1-50</option>
@@ -31,7 +31,7 @@ const FilteringOptions = ({ searchElements }) => {
                     </select>
                 </div>
                 <div>
-                    <select name="jobType" id="jobType" className='border border-black p-3 rounded-lg bg-zinc-100'>
+                    <select name="jobType" id="jobType" className='border border-black p-3 rounded-full bg-zinc-100'>
                         <option value="">Pay Range</option>
                         <option value="50+" >$-50+</option>
                         <option value="100+" >$-100+</option>

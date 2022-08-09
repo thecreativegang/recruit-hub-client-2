@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
+import { toast } from 'react-toastify';
+import { UserStore, UserStoreProvider } from '../../../stateManagement/UserContext/UserContextStore';
+import { useContext } from 'react';
 
 const PostAJob = () => {
+
+    //This function will be used to generate day , month, year digit 
     const generateDigit = (start, limit) => {
         const digits = []
         for (let i = start; i <= limit; i++) {
@@ -10,13 +15,38 @@ const PostAJob = () => {
         }
         return digits;
     }
+
+    //This object will be used to reset the form by this given value.
+    const resetForm = {
+        recruitersName: "",
+        jobTitle: "",
+        companyName: "",
+        companySize: "",
+        vacancies: "",
+        jobNature: "",
+        educationalQualification: "",
+        jobRequirements: "",
+        tags: "",
+        deadlineDay: "",
+        deadlineMonth: "",
+        deadlineYear: "",
+
+    }
     // const [selected, setSelected] = useState(format(new Date(), 'PP'));
-    const { register, formState: { errors }, handleSubmit } = useForm();
+    const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const onSubmit = data => {
+
         console.log(data)
-        axios.post(`http://localhost:3001/job/postJob`, data)
+        axios.post(`http://localhost:3001/job/postJob`, data, {
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+            },
+        })
             .then(function (res) {
-                console.log(res)
+                if (res?.data?.status === 200) {
+                    toast.success("Job posted successfully!")
+                    // reset(resetForm)
+                }
             })
             .then(function (err) {
                 if (err) {
@@ -72,7 +102,7 @@ const PostAJob = () => {
                                             <option value="1-50" >1-50</option>
                                             <option value="1-100" >1-100</option>
                                             <option value="200+" >200+</option>
-                                            <option value="500+" >5000+</option>
+                                            <option value="500+" >500+</option>
                                         </select>
                                     </div>
                                 </div>
@@ -119,7 +149,7 @@ const PostAJob = () => {
                                     <label class="label">
                                         <span class="label-text">Job Requirements</span>
                                     </label>
-                                    <textarea type="text" placeholder="Job Requirements" class="input border border-zinc-400 w-full " {...register('jobRequirements',
+                                    <textarea type="text" placeholder="Job Requirements" className="h-[40vh] input border border-zinc-400 w-full " {...register('jobRequirements',
                                         {
                                             required: true
                                         })} />
@@ -136,6 +166,32 @@ const PostAJob = () => {
                                         })} />
                                 </div>
 
+
+                                {/* pay range and job location */}
+                                <div className='flex gap-2'>
+                                    {/* Pay Range */}
+                                    <div className='w-full'>
+                                        <label class="label">
+                                            <span class="label-text">Pay Range</span>
+                                        </label>
+                                        <input type="number" placeholder="Pay Range eg: 100$-500$" className=" input border border-zinc-400 w-full " {...register('payRange',
+                                            {
+                                                required: true
+                                            })} />
+                                    </div>
+
+                                    {/* Job location */}
+                                    <div className='w-full'>
+                                        <label class="label">
+                                            <span class="label-text">Job Location</span>
+                                        </label>
+                                        <input type="text" placeholder="Enter location of the job" className=" input border border-zinc-400 w-full " {...register('jobLocation',
+                                            {
+                                                required: true
+                                            })} />
+                                    </div>
+
+                                </div>
                                 {/* Application Deadline */}
                                 <div className='w-full'>
                                     <label class="label">

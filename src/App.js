@@ -16,6 +16,7 @@ import SkillAssessment from './components/Pages/SkillAssessment/SkillAssessment'
 import PostAJob from './components/Pages/PostAJob/PostAJob';
 import { UserStoreProvider } from './stateManagement/UserContext/UserContextStore';
 import ChatPage from './components/Pages/ChatPage/ChatPage';
+import FindJob from './components/Pages/FindJob/FindJob';
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
           <Route path='/chat' element={<ChatPage />}></Route>
           <Route path='/postJob' element={<PostAJob />}></Route>
           <Route path='/skilltest' element={<SkillAssessment />}></Route>
+          <Route path='/findJob' element={<FindJob />}></Route>
         </Routes >
         <FooterBottomSection />
         <ToastContainer

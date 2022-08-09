@@ -16,7 +16,7 @@ const PostAJob = () => {
         jobTitle: "",
         companyName: "",
         companySize: "",
-        vacancies: 0,
+        vacancies: "",
         jobNature: "",
         educationalQualification: "",
         jobRequirements: "",

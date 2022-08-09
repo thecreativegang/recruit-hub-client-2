@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import axios from 'axios';
+import { toast } from 'react-toastify';
+import { UserStore, UserStoreProvider } from '../../../stateManagement/UserContext/UserContextStore';
+import { useContext } from 'react';
 
 const PostAJob = () => {
+
+    //This function will be used to generate day , month, year digit 
     const generateDigit = (start, limit) => {
         const digits = []
         for (let i = start; i <= limit; i++) {
@@ -9,10 +15,44 @@ const PostAJob = () => {
         }
         return digits;
     }
+
+    //This object will be used to reset the form by this given value.
+    const resetForm = {
+        recruitersName: "",
+        jobTitle: "",
+        companyName: "",
+        companySize: "",
+        vacancies: "",
+        jobNature: "",
+        educationalQualification: "",
+        jobRequirements: "",
+        tags: "",
+        deadlineDay: "",
+        deadlineMonth: "",
+        deadlineYear: "",
+
+    }
     // const [selected, setSelected] = useState(format(new Date(), 'PP'));
-    const { register, formState: { errors }, handleSubmit } = useForm();
+    const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const onSubmit = data => {
-        console.log(data);
+
+        console.log(data)
+        axios.post(`http://localhost:3001/job/postJob`, data, {
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+            },
+        })
+            .then(function (res) {
+                if (res?.data?.status === 200) {
+                    toast.success("Job posted successfully!")
+                    // reset(resetForm)
+                }
+            })
+            .then(function (err) {
+                if (err) {
+                    console.log(err)
+                }
+            })
     }
     // const userInfo = useSelector((state) => state);
     // let footer = <p className='font-semibold'>You've picked:  {format(selected, 'PP')}</p>
@@ -57,12 +97,12 @@ const PostAJob = () => {
                                             {
                                                 required: true
                                             })}>
-                                            <option value="select an option">Select an Option</option>
+                                            <option value="">Select an Option</option>
                                             <option value="1-10" >1-10</option>
                                             <option value="1-50" >1-50</option>
                                             <option value="1-100" >1-100</option>
                                             <option value="200+" >200+</option>
-                                            <option value="500+" >5000+</option>
+                                            <option value="500+" >500+</option>
                                         </select>
                                     </div>
                                 </div>
@@ -86,7 +126,7 @@ const PostAJob = () => {
                                             {
                                                 required: true
                                             })}>
-                                            <option value="select an option">Select an Option</option>
+                                            <option value="">Select an Option</option>
                                             <option value="on-site" className='capitalize' >on-site</option>
                                             <option value="remote" className='capitalize'>remote</option>
                                             <option value="hybrid" className='capitalize'>hybrid</option>
@@ -99,7 +139,7 @@ const PostAJob = () => {
                                     <label class="label">
                                         <span class="label-text">Educational Qualifications</span>
                                     </label>
-                                    <input type="text" placeholder="Educational Qualification" class="input border border-zinc-400 w-full " {...register('educationalQualifications',
+                                    <input type="text" placeholder="Educational Qualification" class="input border border-zinc-400 w-full " {...register('educationalQualification',
                                         {
                                             required: true
                                         })} />
@@ -109,7 +149,7 @@ const PostAJob = () => {
                                     <label class="label">
                                         <span class="label-text">Job Requirements</span>
                                     </label>
-                                    <textarea type="text" placeholder="Job Requirements" class="input border border-zinc-400 w-full " {...register('jobRequirements',
+                                    <textarea type="text" placeholder="Job Requirements" className="h-[40vh] input border border-zinc-400 w-full " {...register('jobRequirements',
                                         {
                                             required: true
                                         })} />
@@ -120,12 +160,38 @@ const PostAJob = () => {
                                     <label class="label">
                                         <span class="label-text">Enter tags</span>
                                     </label>
-                                    <textarea type="text" placeholder="Seperate by comma. eg: frontend, react" class="input border border-zinc-400 w-full " {...register('tags',
+                                    <textarea type="text" placeholder="Seperate by space. eg: frontend react" className="lowercase input border border-zinc-400 w-full " {...register('tags',
                                         {
                                             required: true
                                         })} />
                                 </div>
 
+
+                                {/* pay range and job location */}
+                                <div className='flex gap-2'>
+                                    {/* Pay Range */}
+                                    <div className='w-full'>
+                                        <label class="label">
+                                            <span class="label-text">Pay Range</span>
+                                        </label>
+                                        <input type="number" placeholder="Pay Range eg: 100$-500$" className=" input border border-zinc-400 w-full " {...register('payRange',
+                                            {
+                                                required: true
+                                            })} />
+                                    </div>
+
+                                    {/* Job location */}
+                                    <div className='w-full'>
+                                        <label class="label">
+                                            <span class="label-text">Job Location</span>
+                                        </label>
+                                        <input type="text" placeholder="Enter location of the job" className=" input border border-zinc-400 w-full " {...register('jobLocation',
+                                            {
+                                                required: true
+                                            })} />
+                                    </div>
+
+                                </div>
                                 {/* Application Deadline */}
                                 <div className='w-full'>
                                     <label class="label">
@@ -142,7 +208,7 @@ const PostAJob = () => {
                                             <select name="date" id="selectDate" className='border border-zinc-400 p-3 rounded-lg w-full '{...register('deadlineDay', {
                                                 required: true
                                             })}>
-                                                <option value="Select Date">Select Date</option>
+                                                <option value="">Select Date</option>
                                                 {
 
                                                     generateDigit(1, 31)?.map(digit => <option value={digit}>{digit}</option>)
@@ -153,7 +219,7 @@ const PostAJob = () => {
                                             <select name="date" id="selectDate" className='border border-zinc-400 p-3 rounded-lg w-full'{...register('deadlineMonth', {
                                                 required: true
                                             })}>
-                                                <option value="Select Month">Select Month</option>
+                                                <option value="">Select Month</option>
                                                 {
 
                                                     generateDigit(1, 12)?.map(digit => <option value={digit}>{digit}</option>)
@@ -164,7 +230,7 @@ const PostAJob = () => {
                                             <select name="date" id="selectDate" className='border border-zinc-400 p-3 rounded-lg w-full'{...register('deadlineYear', {
                                                 required: true
                                             })}>
-                                                <option value="Select Year">Select Year</option>
+                                                <option value="">Select Year</option>
                                                 {
 
                                                     generateDigit(2022, 2025)?.map(digit => <option value={digit}>{digit}</option>)
@@ -202,3 +268,4 @@ const PostAJob = () => {
 };
 
 export default PostAJob;
+

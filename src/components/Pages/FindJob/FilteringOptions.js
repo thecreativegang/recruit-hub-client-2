@@ -3,7 +3,7 @@ import React from 'react';
 const FilteringOptions = ({ searchElements }) => {
     const { searchText, jobNature, companySize, payRange } = searchElements;
     return (
-        <div className='grid grid-cols-[2fr,3fr] items-center gap-5'>
+        <div className='grid grid-cols-[2fr,3fr]  gap-5  items-center'>
             <div className='w-full'>
                 <input onKeyUp={(e) => {
                     if (e.key === " ") {

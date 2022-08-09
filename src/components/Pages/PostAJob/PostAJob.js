@@ -166,17 +166,32 @@ const PostAJob = () => {
                                         })} />
                                 </div>
 
-                                {/* Pay Range */}
-                                <div className='w-full'>
-                                    <label class="label">
-                                        <span class="label-text">Pay Range</span>
-                                    </label>
-                                    <input type="number" placeholder="Pay Range eg: 100$-500$" className="lowercase input border border-zinc-400 w-full " {...register('payRange',
-                                        {
-                                            required: true
-                                        })} />
-                                </div>
 
+                                {/* pay range and job location */}
+                                <div className='flex gap-2'>
+                                    {/* Pay Range */}
+                                    <div className='w-full'>
+                                        <label class="label">
+                                            <span class="label-text">Pay Range</span>
+                                        </label>
+                                        <input type="number" placeholder="Pay Range eg: 100$-500$" className=" input border border-zinc-400 w-full " {...register('payRange',
+                                            {
+                                                required: true
+                                            })} />
+                                    </div>
+
+                                    {/* Job location */}
+                                    <div className='w-full'>
+                                        <label class="label">
+                                            <span class="label-text">Job Location</span>
+                                        </label>
+                                        <input type="text" placeholder="Enter location of the job" className=" input border border-zinc-400 w-full " {...register('jobLocation',
+                                            {
+                                                required: true
+                                            })} />
+                                    </div>
+
+                                </div>
                                 {/* Application Deadline */}
                                 <div className='w-full'>
                                     <label class="label">

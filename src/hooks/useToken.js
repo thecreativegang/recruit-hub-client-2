@@ -6,12 +6,12 @@ const useToken = async (currentUser) => {
     const user = {
         email: currentUser?.email,
         username: currentUser?.username,
-        accountType: currentUser?.accountType
+        accountType: 'recruiter'
     };
     useEffect(() => {
         if (user.email) {
             // https://safe-oasis-01130.herokuapp.com/
-            const targetUrl = 'https://safe-oasis-01130.herokuapp.com/user/create'
+            const targetUrl = 'http://localhost:3001/user/create'
             axios.post(targetUrl, user)
                 .then(function (res) {
                     setToken(res?.data?.accessToken);

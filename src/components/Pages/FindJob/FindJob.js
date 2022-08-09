@@ -40,7 +40,7 @@ const FindJob = () => {
             </div>
 
             <div className='grid grid-cols-[2fr,3fr] gap-5'>
-                <div className='h-[100vh] shadow-md mt-10 p-3 '>
+                <div className='h-[100vh] overflow-y-scroll shadow-md mt-10 p-3 '>
                     {/* All jobs will be listed down below */}
                     <div className=' '>
                         {
@@ -57,7 +57,6 @@ const FindJob = () => {
 
                 {/* Job details will be shown here */}
                 <div>
-                    <h1 className='text-3xl'>{jobTitle}</h1>
                 </div>
             </div>
         </div>

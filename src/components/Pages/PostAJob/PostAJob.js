@@ -45,7 +45,7 @@ const PostAJob = () => {
             .then(function (res) {
                 if (res?.data?.status === 200) {
                     toast.success("Job posted successfully!")
-                    reset(resetForm)
+                    // reset(resetForm)
                 }
             })
             .then(function (err) {
@@ -102,7 +102,7 @@ const PostAJob = () => {
                                             <option value="1-50" >1-50</option>
                                             <option value="1-100" >1-100</option>
                                             <option value="200+" >200+</option>
-                                            <option value="500+" >5000+</option>
+                                            <option value="500+" >500+</option>
                                         </select>
                                     </div>
                                 </div>

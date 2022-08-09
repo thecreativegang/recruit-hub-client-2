@@ -5,13 +5,14 @@ import axios from 'axios';
 import Loading from '../../Shared/Loading';
 import { toast } from 'react-toastify';
 import SingleJobInList from './SingleJobInList';
+import JobDetail from './JobDetail';
 
 const FindJob = () => {
     const [refetch, setRefetch] = useState(true);
     const [jobs, setJobs] = useState([]);
 
     const [selectedJob, setSelectedJob] = useState([]);
-    const { recruitersName, jobTitle, companyName, companySize, vacancies, jobNature, educationalQualification, jobRequirements, tags, deadlineDay, deadlineMonth, deadlineYear, payRange } = selectedJob
+
 
 
     const searchElements = {
@@ -48,6 +49,7 @@ const FindJob = () => {
                                 key={job._id}
                                 job={job}
                                 setSelectedJob={setSelectedJob}
+                                selectedJob={selectedJob}
                             ></SingleJobInList>
 
                             )
@@ -57,6 +59,7 @@ const FindJob = () => {
 
                 {/* Job details will be shown here */}
                 <div>
+                    <JobDetail selectedJob={selectedJob} />
                 </div>
             </div>
         </div>

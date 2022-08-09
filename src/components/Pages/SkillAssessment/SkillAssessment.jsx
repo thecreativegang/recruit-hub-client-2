@@ -23,7 +23,6 @@ const SkillAssessment = () => {
       .get('https://safe-oasis-01130.herokuapp.com/skillassessment/test')
       .then((res) => {
         setQuestion(res.data);
-        console.log(res.data);
         setLoading(false);
       });
   }, []);
@@ -46,7 +45,6 @@ const SkillAssessment = () => {
                   Question {currentQuestion + 1}:{' '}
                   {questions[currentQuestion].question}
                 </h3>
-                {console.log(questions[currentQuestion].options)}
                 {questions[currentQuestion]?.options.map((option, i) => (
                   <button
                     onClick={() => handleAnsBtnClick(option.isCorrect)}

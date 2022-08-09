@@ -2,8 +2,12 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import { UserStore, UserStoreProvider } from '../../../stateManagement/UserContext/UserContextStore';
+import { useContext } from 'react';
 
 const PostAJob = () => {
+
+    //This function will be used to generate day , month, year digit 
     const generateDigit = (start, limit) => {
         const digits = []
         for (let i = start; i <= limit; i++) {
@@ -11,6 +15,8 @@ const PostAJob = () => {
         }
         return digits;
     }
+
+    //This object will be used to reset the form by this given value.
     const resetForm = {
         recruitersName: "",
         jobTitle: "",
@@ -155,6 +161,17 @@ const PostAJob = () => {
                                         <span class="label-text">Enter tags</span>
                                     </label>
                                     <textarea type="text" placeholder="Seperate by space. eg: frontend react" className="lowercase input border border-zinc-400 w-full " {...register('tags',
+                                        {
+                                            required: true
+                                        })} />
+                                </div>
+
+                                {/* Pay Range */}
+                                <div className='w-full'>
+                                    <label class="label">
+                                        <span class="label-text">Pay Range</span>
+                                    </label>
+                                    <input type="number" placeholder="Pay Range eg: 100$-500$" className="lowercase input border border-zinc-400 w-full " {...register('payRange',
                                         {
                                             required: true
                                         })} />

@@ -17,6 +17,8 @@ import { RiLoginBoxLine } from "react-icons/ri";
 import { ImExit } from "react-icons/im";
 import { CgProfile } from "react-icons/cg";
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { UserStore } from '../../../stateManagement/UserContext/UserContextStore';
 
 const Navbar = () => {
 
@@ -32,6 +34,9 @@ const Navbar = () => {
         // closed user information menu bar
         setUserSwitch(false)
     }
+
+    //user information
+    const userStore = useContext(UserStore)?.user;
 
     const closedNavbarAll = () => {
         setUserSwitch(false) //main navbar
@@ -69,6 +74,10 @@ const Navbar = () => {
 
                         <ul className='md:flex md:items-center  bg-gradient-to-r from-[#eaeaff] to-[#e4fff9] md:bg-gradient-to-r md:from-[#eaeaff00] md:to-[#e4fff900] pl-3 md:pl-0 py-5 md:py-0 w-full md:w-auto'>
 
+                            {
+                                userStore?.accountType === 'recruiter' &&
+                                <li onClick={closedNavbarAll} className='mr-5 mb-4 md:mb-0'> <NavLink to="/findJob" className={({ isActive }) => (isActive ? active : deActive)} > <MdOutlineConnectWithoutContact className='md:hidden text-base mr-2' /> Find Job</NavLink> </li>
+                            }
                             <li onClick={closedNavbarAll} className='mr-5 mb-4 md:mb-0'> <NavLink to="/" className={({ isActive }) => (isActive ? active : deActive)} ><AiFillHome className='md:hidden text-base mr-2' />Home</NavLink> </li>
 
                             <li onClick={closedNavbarAll} className='mr-5 mb-4 md:mb-0'> <NavLink to="/service" className={({ isActive }) => (isActive ? active : deActive)} ><BsTools className='md:hidden text-base mr-2' /> Services</NavLink> </li>
@@ -76,8 +85,10 @@ const Navbar = () => {
                             <li onClick={closedNavbarAll} className='mr-5 mb-4 md:mb-0'> <NavLink to="/developer" className={({ isActive }) => (isActive ? active : deActive)} > <MdDeveloperMode className='md:hidden text-base mr-2' /> Developer</NavLink> </li>
 
                             <li onClick={closedNavbarAll} className='mr-5 mb-4 md:mb-0'> <NavLink to="/contactUs" className={({ isActive }) => (isActive ? active : deActive)} > <MdOutlineConnectWithoutContact className='md:hidden text-base mr-2' /> Contact US</NavLink> </li>
-
-                            <li onClick={closedNavbarAll} className='mr-5 mb-4 md:mb-0'> <NavLink to="/postJob" className={({ isActive }) => (isActive ? active : deActive)} > <MdOutlineConnectWithoutContact className='md:hidden text-base mr-2' /> Post Job</NavLink> </li>
+                            {
+                                userStore?.accountType === 'recruiter' &&
+                                <li onClick={closedNavbarAll} className='mr-5 mb-4 md:mb-0'> <NavLink to="/postJob" className={({ isActive }) => (isActive ? active : deActive)} > <MdOutlineConnectWithoutContact className='md:hidden text-base mr-2' /> Post Job</NavLink> </li>
+                            }
                             <li onClick={closedNavbarAll} className='mr-5 mb-4 md:mb-0'> <NavLink to="/chat" className={({ isActive }) => (isActive ? active : deActive)} > <MdOutlineConnectWithoutContact className='md:hidden text-base mr-2' /> Chat</NavLink> </li>
 
                             <li onClick={closedNavbarAll} className='mb-4 md:mb-0'> <NavLink to="/aboutUs" className={({ isActive }) => (isActive ? active : deActive)} > <BsInfoCircleFill className='md:hidden text-base mr-2' /> About US</NavLink> </li>

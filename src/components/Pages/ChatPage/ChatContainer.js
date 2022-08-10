@@ -14,10 +14,11 @@ const ChatContainer = ({ currentChat, socket }) => {
   const [messages, setMessages] = useState([]);
   const [arrivalMessage, setArrivalMessage] = useState(null);
 
+
   useEffect(() => {
     const asyncFetchDailyData = async () => {
 
-      const response = await axios.get(`http://localhost:3001/messages/getmsg`, {
+      const response = await axios.post(`http://localhost:3001/messages/getmsg`, {
         from: data._id,
         to: currentChat._id,
       });
@@ -45,11 +46,11 @@ const ChatContainer = ({ currentChat, socket }) => {
       msg,
     });
 
-    // await axios.post(`http://localhost:3001/messages/addmsg`, {
-    //   from: data._id,
-    //   to: currentChat._id,
-    //   message: msg,
-    // });
+    await axios.post(`http://localhost:3001/messages/addmsg`, {
+      from: data._id,
+      to: currentChat._id,
+      message: msg,
+    });
 
     const msgs = [...messages];
     msgs.push({ fromSelf: true, message: msg });

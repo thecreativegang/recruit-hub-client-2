@@ -61,12 +61,11 @@ const ChatPage = () => {
             <div class="drawer">
                 <input id="my-drawer" type="checkbox" class="drawer-toggle" />
                 <div class="drawer-content">
-
                     <div className='grid lg:grid-cols-3  py-1 chat-background'>
                         <div className=''>
                             <MyChat userStore={userStore} setCurrentChat={setCurrentChat} allUser={allUser}></MyChat>
                         </div>
-                        <div className='col-span-2'>
+                        <div className='lg:col-span-2'>
                             {/* <SingleChatWIndow chatId={chatId} socket={socket}></SingleChatWIndow> */}
                             <ChatContainer
                                 currentChat={currentChat}
@@ -77,7 +76,7 @@ const ChatPage = () => {
                 </div>
                 <div class="drawer-side">
                     <label for="my-drawer" class="drawer-overlay"></label>
-                    <ul class="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
+                    <ul class="menu p-4 overflow-y-auto lg:w-[35%] w-[70%] bg-base-100 text-base-content">
                         <li className='text-center p-2 font-bold'>Search User</li>
 
                         <div className=' flex items-center'>
@@ -95,15 +94,12 @@ const ChatPage = () => {
                             <span onClick={handelSearch} className='btn-sm btn'> go</span>
                         </div>
 
-
                         <div>
-
                             {
                                 searchResult !== '' && searchResult?.map((chat) => <SingleProfile
                                     setCurrentChat={setCurrentChat}
                                     chat={chat} />)
                             }
-
                         </div>
                     </ul>
                 </div>

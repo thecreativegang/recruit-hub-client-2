@@ -18,14 +18,6 @@ const MyChat = ({ allUser, userStore, setCurrentChat }) => {
     }
 
 
-    // if (chats) {
-    //     return <Loading></Loading>
-    // }
-
-    // console.log(globalUser);
-
-    // setCurrentUser(globalUser?.email);
-
     return (
         <div className='mx-2'>
             <div className='flex justify-between  my-border rounded'>
@@ -33,7 +25,8 @@ const MyChat = ({ allUser, userStore, setCurrentChat }) => {
                 <h2 className='text-3xl px-2 mt-1 font-bold '>My Chats</h2>
 
                 <div class="drawer-content text-right text-black">
-                    <label for="my-drawer" class="m-2 btn-sm btn my-border hover:bg-sky-400  bg-sky-500 text-white"> <FontAwesomeIcon icon={faSearch} /> <span className=' px-2'> Search Chat</span>
+                    <label for="my-drawer" class="m-2 btn-sm btn my-border hover:bg-sky-400  bg-sky-500 text-white">
+                        <FontAwesomeIcon icon={faSearch} /> <span className=' px-2'> Search Chat</span>
                     </label>
                 </div>
 

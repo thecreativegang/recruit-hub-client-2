@@ -29,12 +29,11 @@ const SingleProfile = ({ chat, setCurrentChat }) => {
                 <div className='mx-2 my-auto'>
                     <button onClick={() => singleUserSelect(chat)}>
                         {/* <label for="my-modal-3" class=" btn btn-sm btn-primary modal-button"> Add </label> */}
-                        <label class=" btn btn-sm text-white border-0 bg-sky-500 hover:bg-sky-400 outline-none modal-button"> Add </label>
+                        <label class=" btn btn-sm text-white border-0 bg-sky-500 hover:bg-sky-400 outline-none modal-button"> Message </label>
                     </button>
                 </div>
 
             </div >
-
             <input type="checkbox" id="my-modal-3" class="modal-toggle" />
             <div class="modal">
                 <div class="modal-box relative">
@@ -42,8 +41,6 @@ const SingleProfile = ({ chat, setCurrentChat }) => {
                 </div>
             </div>
         </div >
-
-
     );
 };
 

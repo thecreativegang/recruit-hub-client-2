@@ -1,8 +1,8 @@
 import React, { useRef, useState } from 'react';
 import axios from 'axios';
 
-const FilteringOptions = ({ searchElements, SetfilteringOn, setSearchedResults, searchedResults }) => {
-    const { searchText, jobNature, companySize, payRange } = searchElements;
+const FilteringOptions = ({ searchElements, SetfilteringOn, setSearchedResults, searchedResults, setNoResultFound }) => {
+    const { searchText, jobNature, companySize, payRange, } = searchElements;
 
     const searchRef = useRef("")
     const jobNatureRef = useRef("")
@@ -18,18 +18,22 @@ const FilteringOptions = ({ searchElements, SetfilteringOn, setSearchedResults, 
         console.log(searchData)
         axios.post(`http://localhost:3001/job/filter`, searchData)
             .then(function (res) {
-                console.log(res)
+                console.log(res.data.queries)
                 if (res?.data?.message === 'No Filter Applied') {
-                    SetfilteringOn(false)
+                    SetfilteringOn(false);
 
                 }
                 if (res?.data?.result?.length !== 0) {
-                    setSearchedResults(res?.data?.result)
+                    setSearchedResults(res?.data)
                     SetfilteringOn(true)
+                    setNoResultFound(false)
+
+
                 }
                 else if (res?.data?.result?.length === 0) {
-                    setSearchedResults(res?.data?.result)
-                    SetfilteringOn(false)
+                    setSearchedResults(res?.data)
+                    SetfilteringOn(false);
+                    setNoResultFound(true)
                 }
             })
             .catch(function (err) {
@@ -38,7 +42,6 @@ const FilteringOptions = ({ searchElements, SetfilteringOn, setSearchedResults, 
                 }
             })
     }
-    console.log(searchedResults)
     return (
         <div className='grid grid-cols-[2fr,3fr]  gap-5  items-center'>
             <div className='w-full'>

@@ -6,6 +6,8 @@ import Loading from '../../Shared/Loading';
 import { toast } from 'react-toastify';
 import SingleJobInList from './SingleJobInList';
 import JobDetail from './JobDetail';
+import NoResultFoundWarning from '../../Shared/WarningAndInfo/NoResultFoundWarning';
+import ShowingSearchResultInfo from '../../Shared/WarningAndInfo/ShowingSearchResultInfo';
 
 const FindJob = () => {
     const [refetch, setRefetch] = useState(true);
@@ -13,7 +15,7 @@ const FindJob = () => {
     const [selectedJob, setSelectedJob] = useState([]);
     const [filteringOn, SetfilteringOn] = useState(false);
     const [searchedResults, setSearchedResults] = useState([]);
-
+    const [noResultFound, setNoResultFound] = useState(false);
     console.log(searchedResults)
     const searchElements = {
         searchText: [],
@@ -43,16 +45,30 @@ const FindJob = () => {
                     searchedResults={searchedResults}
                     SetfilteringOn={SetfilteringOn}
                     setJobs={setJobs}
-                    searchElements={searchElements} />
+                    searchElements={searchElements}
+                    setNoResultFound={setNoResultFound}
+                />
             </div>
 
             <div className='grid grid-cols-[2fr,3fr] gap-5'>
                 <div className='h-[100vh] overflow-y-scroll shadow-md mt-10 p-3 '>
                     {/* All jobs will be listed down below */}
+                    {/* Warning section */}
+                    {
+                        noResultFound
+                            ?
+                            <div >
+                                <NoResultFoundWarning />
+                            </div>
+                            :
+                            <div>
+                                <ShowingSearchResultInfo searchedResults={searchedResults} />
+                            </div>
+                    }
                     {
                         <div >
                             {
-                                (!filteringOn ? jobs : searchedResults).map((job, index) => <SingleJobInList
+                                (!filteringOn ? jobs : searchedResults?.result || jobs).map((job, index) => <SingleJobInList
                                     index={index}
                                     key={job._id}
                                     job={job}

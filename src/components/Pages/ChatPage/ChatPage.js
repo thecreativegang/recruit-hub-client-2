@@ -4,11 +4,10 @@ import { useRef } from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { io } from 'socket.io-client';
-import auth from '../../../firebase.init';
 import { UserStore } from '../../../stateManagement/UserContext/UserContextStore';
 import ChatContainer from './ChatContainer';
 import MyChat from './MyChat';
-import SingleChatWIndow from './SingleChatWIndow';
+import SingleProfile from './SingleProfile';
 
 
 // /const socket = io.connect("http://localhost:3001");
@@ -20,6 +19,12 @@ const ChatPage = () => {
     const currentUser = userStore.user;
     const [allUser, setAllUser] = useState([]);
     const [currentChat, setCurrentChat] = useState('');
+    const [search, setSearch] = useState('');
+
+    const [searchResult, setSearchResult] = useState('');
+
+    console.log(searchResult);
+
 
     useEffect(() => {
         if (currentUser) {
@@ -39,17 +44,28 @@ const ChatPage = () => {
     }, [])
 
 
+    const handelSearch = () => {
+
+
+        const fetchChats = async () => {
+            const data = await axios.get(`http://localhost:3001/user/search-user?search=${search}`);
+            setSearchResult(data.data);
+        }
+        fetchChats();
+        setSearchResult("");
+
+    }
+
     return (
         <div>
             <div class="drawer">
                 <input id="my-drawer" type="checkbox" class="drawer-toggle" />
                 <div class="drawer-content">
-
                     <div className='grid lg:grid-cols-3  py-1 chat-background'>
                         <div className=''>
                             <MyChat userStore={userStore} setCurrentChat={setCurrentChat} allUser={allUser}></MyChat>
                         </div>
-                        <div className='col-span-2'>
+                        <div className='lg:col-span-2'>
                             {/* <SingleChatWIndow chatId={chatId} socket={socket}></SingleChatWIndow> */}
                             <ChatContainer
                                 currentChat={currentChat}
@@ -57,17 +73,33 @@ const ChatPage = () => {
                             ></ChatContainer>
                         </div>
                     </div>
-
-
                 </div>
                 <div class="drawer-side">
                     <label for="my-drawer" class="drawer-overlay"></label>
-                    <ul class="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
-                        <li className='text-center'>Search User</li>
+                    <ul class="menu p-4 overflow-y-auto lg:w-[35%] w-[70%] bg-base-100 text-base-content">
+                        <li className='text-center p-2 font-bold'>Search User</li>
 
-                        <div className=' flex'>
-                            <input className='border-white-100 border-2 w-[70%]' type="text" placeholder='search' />
-                            <span className='btn-sm btn'> go</span>
+                        <div className=' flex items-center'>
+                            <input
+                                type="text"
+                                className='my-border p-2 m-2 w-[70%]'
+                                placeholder=' search'
+                                onChange={(event) => {
+                                    setSearch(event.target.value);
+                                }}
+                                onKeyPress={(event) => {
+                                    event.key === "Enter" && handelSearch();
+                                }}
+                            />
+                            <span onClick={handelSearch} className='btn-sm btn'> go</span>
+                        </div>
+
+                        <div>
+                            {
+                                searchResult !== '' && searchResult?.map((chat) => <SingleProfile
+                                    setCurrentChat={setCurrentChat}
+                                    chat={chat} />)
+                            }
                         </div>
                     </ul>
                 </div>

@@ -1,8 +1,10 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import axios from 'axios';
 
 const FilteringOptions = ({ searchElements }) => {
     const { searchText, jobNature, companySize, payRange } = searchElements;
+    const [searchedResults, setSearchedResults] = useState([]);
+
     const searchRef = useRef("")
     const jobNatureRef = useRef("")
     const companySizeRef = useRef("")
@@ -17,7 +19,8 @@ const FilteringOptions = ({ searchElements }) => {
         console.log(searchData)
         axios.post(`http://localhost:3001/job/filter`, searchData)
             .then(function (res) {
-                console.log(res)
+                console.log(res?.data?.result.length !== 0 ? res?.data?.result : { message: "No job matched with these filter!" })
+                setSearchedResults(res.data)
             })
             .catch(function (err) {
                 if (err) {

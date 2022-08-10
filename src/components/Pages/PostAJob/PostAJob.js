@@ -174,10 +174,16 @@ const PostAJob = () => {
                                         <label class="label">
                                             <span class="label-text">Pay Range</span>
                                         </label>
-                                        <input type="number" placeholder="Pay Range eg: 100$-500$" className=" input border border-zinc-400 w-full " {...register('payRange',
-                                            {
-                                                required: true
-                                            })} />
+                                        <select name="payRangeRef" id="payRangeRef" className='border border-black p-3 rounded-lg w-full bg-zinc-100' {...register('payRange')}>
+                                            <option value="" >Pay Range</option>
+                                            <option value="50+" >$-50+</option>
+                                            <option value="100+" >$-100+</option>
+                                            <option value="150+" >$-150+</option>
+                                            <option value="200+" >$-200+</option>
+                                            <option value="300+" >$-300+</option>
+                                            <option value="300+" >$-500+</option>
+                                            <option value="1000+" >$-1000+</option>
+                                        </select>
                                     </div>
 
                                     {/* Job location */}

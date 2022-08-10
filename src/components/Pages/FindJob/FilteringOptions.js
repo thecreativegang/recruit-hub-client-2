@@ -1,9 +1,8 @@
 import React, { useRef, useState } from 'react';
 import axios from 'axios';
 
-const FilteringOptions = ({ searchElements }) => {
+const FilteringOptions = ({ searchElements, SetfilteringOn, setSearchedResults, searchedResults }) => {
     const { searchText, jobNature, companySize, payRange } = searchElements;
-    const [searchedResults, setSearchedResults] = useState([]);
 
     const searchRef = useRef("")
     const jobNatureRef = useRef("")
@@ -19,8 +18,19 @@ const FilteringOptions = ({ searchElements }) => {
         console.log(searchData)
         axios.post(`http://localhost:3001/job/filter`, searchData)
             .then(function (res) {
-                console.log(res?.data?.result.length !== 0 ? res?.data?.result : { message: "No job matched with these filter!" })
-                setSearchedResults(res.data)
+                console.log(res)
+                if (res?.data?.message === 'No Filter Applied') {
+                    SetfilteringOn(false)
+
+                }
+                if (res?.data?.result?.length !== 0) {
+                    setSearchedResults(res?.data?.result)
+                    SetfilteringOn(true)
+                }
+                else if (res?.data?.result?.length === 0) {
+                    setSearchedResults(res?.data?.result)
+                    SetfilteringOn(false)
+                }
             })
             .catch(function (err) {
                 if (err) {
@@ -28,6 +38,7 @@ const FilteringOptions = ({ searchElements }) => {
                 }
             })
     }
+    console.log(searchedResults)
     return (
         <div className='grid grid-cols-[2fr,3fr]  gap-5  items-center'>
             <div className='w-full'>

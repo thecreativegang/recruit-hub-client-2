@@ -3,7 +3,6 @@ import { format, formatDistanceStrict, toDate } from 'date-fns';
 
 const SingleJobInList = ({ job, setSelectedJob, selectedJob, index }) => {
     const { jobTitle, companyName, jobLocation, publishedDate, _id } = job
-    console.log(toDate(publishedDate));
     const [setSelected, setSetSelected] = useState(false);
     if (index === 0 && !setSelected) {
         setSelectedJob(job)

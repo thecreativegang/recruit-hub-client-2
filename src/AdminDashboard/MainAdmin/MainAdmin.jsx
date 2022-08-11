@@ -1,4 +1,5 @@
 import React from "react";
+import { Outlet } from "react-router-dom";
 import Sidebar from "../Sidebar/Sidebar";
 import "./MainAdmin.css";
 
@@ -12,7 +13,10 @@ const MainAdmin = () => {
       </div>
 
       {/* admin component render */}
-      <div className="bg-slate-300 col-span-10 p-5"></div>
+      <div className="bg-slate-300 col-span-10 p-5">
+        <h1>dashboard</h1>
+        <Outlet></Outlet>
+      </div>
     </section>
   );
 };

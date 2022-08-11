@@ -21,4 +21,33 @@
 
 .admin-heading-color {
   color: #b1b1b5;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.admin-normal-color {
+  color: #9c9fa6;
+}
+
+.admin-border-right {
+  border-right: 1px solid #424351 !important;
+  padding-right: 1.5rem;
+}
+
+.admin-btn-yellow {
+  background-color: #f5a623;
+  padding: 0.875rem 1.5rem;
+  text-align: center;
+  vertical-align: middle;
+  color: #fff;
+  outline: none;
+  border-color: #f5a623;
+}
+
+.admin-icon-color {
+  color: #9c9fa6;
+}
+
+.admin-heading-font-weight {
+  font-weight: 600;
 }

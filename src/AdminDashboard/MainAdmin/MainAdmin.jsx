@@ -1,6 +1,5 @@
 import React from "react";
 import Sidebar from "../Sidebar/Sidebar";
-import UserActivity from "../UserActivity/UserActivity";
 import "./MainAdmin.css";
 
 const MainAdmin = () => {
@@ -13,9 +12,7 @@ const MainAdmin = () => {
       </div>
 
       {/* admin component render */}
-      <div className="bg-slate-300 col-span-10 p-5">
-        <UserActivity />
-      </div>
+      <div className="bg-slate-300 col-span-10 p-5"></div>
     </section>
   );
 };

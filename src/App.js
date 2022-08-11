@@ -11,12 +11,12 @@ import AccountTypePage from './components/Pages/Register/AccountTypePage';
 import Profile from './components/Pages/Profile/Profile';
 import RequireUsername from './components/Shared/RequireUsername';
 import Loading from './components/Shared/Loading';
-import ChatBox from './components/Pages/ChatPage/ChatBox';
 import SkillAssessment from './components/Pages/SkillAssessment/SkillAssessment';
 import PostAJob from './components/Pages/PostAJob/PostAJob';
 import { UserStoreProvider } from './stateManagement/UserContext/UserContextStore';
 import ChatPage from './components/Pages/ChatPage/ChatPage';
 import FindJob from './components/Pages/FindJob/FindJob';
+import MainAdmin from './AdminDashboard/MainAdmin/MainAdmin';
 
 function App() {
   return (
@@ -44,6 +44,8 @@ function App() {
           <Route path='/postJob' element={<PostAJob />}></Route>
           <Route path='/skilltest' element={<SkillAssessment />}></Route>
           <Route path='/findJob' element={<FindJob />}></Route>
+          <Route path='/admin' element={<MainAdmin />}></Route>
+
         </Routes >
         <FooterBottomSection />
         <ToastContainer

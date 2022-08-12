@@ -62,3 +62,7 @@ td {
   border-radius: 7px;
   font-size: 0.9375rem;
 }
+
+.font-simple {
+  font-weight: 300;
+}

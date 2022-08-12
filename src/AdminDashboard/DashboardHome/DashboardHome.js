@@ -1,6 +1,7 @@
 import React from 'react';
-import { LineChart, BarChart, Bar, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { LineChart, PieChart, BarChart, Pie, Bar, Cell, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import chart from '../../images/line-chart.png'
+
 const DashboardHome = () => {
 
     const data = [
@@ -60,6 +61,28 @@ const DashboardHome = () => {
 
         },
     ];
+
+    const data01 = [
+        { name: 'Group A', value: 400 },
+        { name: 'Group B', value: 300 },
+        { name: 'Group C', value: 300 },
+        { name: 'Group D', value: 200 },
+    ];
+    const data02 = [
+        { name: 'A1', value: 100 },
+        { name: 'A2', value: 300 },
+        { name: 'B1', value: 100 },
+        { name: 'B2', value: 80 },
+        { name: 'B3', value: 40 },
+        { name: 'B4', value: 30 },
+        { name: 'B5', value: 50 },
+        { name: 'C1', value: 100 },
+        { name: 'C2', value: 200 },
+        { name: 'D1', value: 150 },
+        { name: 'D2', value: 50 },
+    ];
+
+
     return (
         <div>
 
@@ -302,13 +325,101 @@ const DashboardHome = () => {
 
                     </ul>
 
-                    <div>
-                        <input placeholder='Add new task' type="text" name="" id="" />
+                    <div className='flex justify-between mt-6'>
+                        <input className='bg-transparent border-0 focus:outline-none' placeholder='Add new task' type="text" name="" id="" />
                         <i class="fa-solid fa-paper-plane text-[#248afd] text-[2.25rem]"></i>
                     </div>
                 </div>
             </div>
 
+            {/* details repot */}
+
+            <div className='admin-card-bg admin-shadow py-[1.25rem] mt-8 px-[1.437rem]'>
+                <h1 className='admin-heading-color'>Detail report</h1>
+                <div className='grid grid-cols-1  md:grid-cols-12 gap-8 '>
+
+                    <div className='col-span-4  flex flex-col justify-center'>
+                        <h1 className='text-[3rem] admin-heading-color'>8778373</h1>
+                        <h1 className='text-[1.875rem] font-simple admin-normal-color mb-3'>Total Hired</h1>
+                        <p className='admin-normal-color'>The total number of sessions within the date range. It is the period time a user is actively engaged with your website, page or app, etc</p>
+                    </div>
+
+                    <div className='col-span-8 my-[.8rem]'>
+                        <div className='grid grid-cols-1 md:grid-cols-2'>
+                            <div className='grid grid-cols-12'>
+                                <div className='col-span-4'>
+                                    <ul className='admin-normal-color h-[100%] flex flex-col justify-between'>
+                                        <li className=''>Bangladesh</li>
+                                        <li className=''>Usa</li>
+                                        <li className=''>India</li>
+                                        <li className=''>France</li>
+                                        <li className=''>Germany</li>
+                                        <li className=''>Argentina</li>
+                                    </ul>
+                                </div>
+                                <div class="col-span-8 flex flex-col justify-between">
+                                    <div class="text-white">
+
+                                        <div class="admin-bg h-[.7rem]">
+                                            <div
+                                                class="h-full w-[55%] bg-[#71c016]"
+                                            ></div>
+                                        </div>
+                                    </div>
+                                    <div class="text-white">
+
+
+                                        <div class="admin-bg h-[.7rem]">
+                                            <div
+                                                class="h-full w-11/12 bg-[#f5a623]"
+                                            ></div>
+                                        </div>
+                                    </div>
+                                    <div class="text-white">
+                                        <div class="admin-bg h-[.7rem]">
+                                            <div
+                                                class="h-full w-[70%] bg-[#ff4747]"
+                                            ></div>
+                                        </div>
+                                    </div>
+                                    <div class="text-white ">
+                                        <div class="admin-bg h-[.7rem]">
+                                            <div
+                                                class="h-full w-[80%] bg-[#68afff]"
+                                            ></div>
+                                        </div>
+                                    </div>
+                                    <div class="text-white">
+                                        <div class="admin-bg h-[.7rem]">
+                                            <div
+                                                class="h-full w-[30%] bg-[#71c016]"
+                                            ></div>
+                                        </div>
+                                    </div>
+                                    <div class="text-white ">
+                                        <div class="admin-bg h-[.7rem]">
+                                            <div
+                                                class="h-full w-[70%] bg-[#ff4747]"
+                                            ></div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div className='w-[100%] h-[20rem]'>
+                                <ResponsiveContainer width="100%" height="100%">
+                                    <PieChart width={400} height={400}>
+                                        <Pie data={data01} dataKey="value" cx="50%" cy="50%" outerRadius={60} fill="#ff4747" />
+                                        <Pie data={data02} dataKey="value" cx="50%" cy="50%" innerRadius={70} outerRadius={90} fill="#71c016" label />
+                                    </PieChart>
+                                </ResponsiveContainer>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };

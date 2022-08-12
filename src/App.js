@@ -28,13 +28,14 @@ function App() {
         <Routes>
 
           <Route path='/' element={
-            <RequireUsername>
+            <RequireUsername prop="home">
               <Home />
             </RequireUsername>
           } />
-          <Route path='/home' element={<RequireUsername>
-            <Home />
-          </RequireUsername>} />
+          <Route path='/home' element={
+            <RequireUsername prop="home">
+              <Home />
+            </RequireUsername>} />
 
           <Route path='/profile' element={<Profile></Profile>} />
           <Route path='/login' element={<Login />} />

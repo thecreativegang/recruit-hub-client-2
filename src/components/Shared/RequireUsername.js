@@ -4,15 +4,17 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import AskForUsername from './AskForUsername';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
-const RequireUsername = ({ children }) => {
+const RequireUsername = ({ children, prop }) => {
     const [hasUsername, setHasUsername] = useState(true);
     const navigate = useNavigate()
-    console.log(children)
     const [user] = useAuthState(auth)
     useEffect(() => {
-        if (!user) {
-            return navigate('/login');
+        if (prop !== 'home') {
+            if (!user) {
+                return navigate('/login');
+            }
         }
         else if (user?.email) {
             axios.get(`https://safe-oasis-01130.herokuapp.com/user/${user?.email}`, {
@@ -31,13 +33,14 @@ const RequireUsername = ({ children }) => {
                         setHasUsername(true);
                     }
                 })
-                .then(function (error) {
-                    console.log(error)
+                .catch(function (error) {
+                    // console.log(error)
+                    if (error?.message) {
+                        toast.error(error.message)
+                    }
                 })
         }
-        else {
-            console.log('Email not found')
-        }
+
 
     }, [user])
 

@@ -3,13 +3,18 @@ import axios from 'axios';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import AskForUsername from './AskForUsername';
+import { useNavigate } from 'react-router-dom';
 
 const RequireUsername = ({ children }) => {
     const [hasUsername, setHasUsername] = useState(true);
+    const navigate = useNavigate()
     console.log(children)
     const [user] = useAuthState(auth)
     useEffect(() => {
-        if (user?.email) {
+        if (!user) {
+            return navigate('/login');
+        }
+        else if (user?.email) {
             axios.get(`https://safe-oasis-01130.herokuapp.com/user/${user?.email}`, {
                 headers: {
                     authorization: `Bearer ${localStorage.getItem('accessToken')}`,

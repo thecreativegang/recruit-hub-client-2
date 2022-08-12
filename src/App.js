@@ -30,7 +30,6 @@ function App() {
               <Home />
             </RequireUsername>
           } />
-
           <Route path='/home' element={<RequireUsername>
             <Home />
           </RequireUsername>} />
@@ -40,7 +39,11 @@ function App() {
           <Route path='/register/:accType' element={<Register />} />
           <Route path='/lod' element={<Loading />}></Route>
           <Route path='/profile' element={<Profile />}></Route>
-          <Route path='/chat' element={<ChatPage />}></Route>
+          <Route path='/chat' element={
+            <RequireUsername>
+              <ChatPage />
+            </RequireUsername>
+          }></Route>
           <Route path='/postJob' element={<PostAJob />}></Route>
           <Route path='/skilltest' element={<SkillAssessment />}></Route>
           <Route path='/findJob' element={<FindJob />}></Route>

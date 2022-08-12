@@ -91,7 +91,7 @@ const SingleChatWIndow = ({ socket, username, room, chatId }) => {
                     :
                     <div>
                         <h1 className="text-center text-3xl mt-7 pt-6">Select your chat person for chat</h1>
-                        <p className="text-center ">  select one of them</p>
+                        <p className="text-center "> select one of them</p>
                     </div>
             }
 

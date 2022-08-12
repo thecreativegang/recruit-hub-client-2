@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+import { FaUserCircle } from 'react-icons/fa';
 import SingleChatModal from './SingleChatModal';
 
 const SingleProfile = ({ chat, setCurrentChat }) => {
@@ -12,11 +13,14 @@ const SingleProfile = ({ chat, setCurrentChat }) => {
 
     return (
         <div for="my-modal-3" className=' '>
-            < div className='my-2 flex justify-between rounded my-border bg-sky-50 hover:bg-sky-100'>
+            < div className='my-2 lg:flex justify-between rounded my-border bg-sky-50 hover:bg-sky-100'>
+
                 <div className='flex justify-start'>
                     <div class="avatar p-2">
-                        <div class="w-[70px] rounded-full">
-                            <img src="https://placeimg.com/192/192/people" alt="Tailwind-CSS-Avatar-component" />
+                        <div class="w-[50px] rounded-full">
+                            {/* <img src="https://placeimg.com/192/192/people" alt="Tailwind-CSS-Avatar-component" /> */}
+                            <FaUserCircle className='text-4xl mr-2 cursor-pointer' />
+
                         </div>
                     </div>
                     <div className='mx-2 my-auto'>
@@ -26,7 +30,7 @@ const SingleProfile = ({ chat, setCurrentChat }) => {
                     </div>
                 </div>
 
-                <div className='mx-2 my-auto'>
+                <div className='lg:mx-2 my-auto'>
                     <button onClick={() => singleUserSelect(chat)}>
                         {/* <label for="my-modal-3" class=" btn btn-sm btn-primary modal-button"> Add </label> */}
                         <label class=" btn btn-sm text-white border-0 bg-sky-500 hover:bg-sky-400 outline-none modal-button"> Message </label>

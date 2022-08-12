@@ -51,6 +51,7 @@ function App() {
           <Route path='/admin' element={<MainAdmin />}>
             <Route index element={<DashboardHome></DashboardHome>}></Route>
             <Route path='notifications' element={<Notifications />}></Route>
+            <Route path='findJob' element={<FindJob />}></Route>
           </Route>
 
         </Routes >

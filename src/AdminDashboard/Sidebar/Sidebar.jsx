@@ -1,7 +1,9 @@
 import React from "react";
 import { AiOutlineHome } from "react-icons/ai";
-import { FaAngleLeft, FaAngleRight, FaLocationArrow } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
+import { IoIosNotifications } from "react-icons/io";
+import { RiFindReplaceLine } from "react-icons/ri";
 
 const Sidebar = ({ dashboardSwitch }) => {
   // dashboard open and closed switch
@@ -33,8 +35,15 @@ const Sidebar = ({ dashboardSwitch }) => {
 
         <Link to="notifications">
           <li className={dashboardLinkStyle}>
-            <FaLocationArrow className="mr-2" />
+            <IoIosNotifications className="mr-2" />
             <span className={`${!dbSwitch && "hidden"}`}> Notifications</span>
+          </li>
+        </Link>
+
+        <Link to="findJob">
+          <li className={dashboardLinkStyle}>
+            <RiFindReplaceLine className="mr-2" />
+            <span className={`${!dbSwitch && "hidden"}`}> Find Job</span>
           </li>
         </Link>
       </ul>

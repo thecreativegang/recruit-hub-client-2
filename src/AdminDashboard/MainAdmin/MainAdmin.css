@@ -3,3 +3,29 @@
   margin: auto;
   padding: 0px 5px;
 }
+
+.admin-bg {
+  background-color: #1e1e2f;
+}
+
+.admin-shadow {
+  box-shadow: 0 1px 20px 0 rgb(0 0 0 / 10%);
+}
+.admin-card-bg {
+  background-color: #27293d;
+}
+
+.admin-sidebar-color {
+  color: #8c909a;
+}
+
+.admin-heading-color {
+  color: #b1b1b5;
+}
+
+/* notifications page styles */
+.admin-title {
+  color: #b1b1b5;
+  font-size: 1rem;
+  font-weight: 500;
+}

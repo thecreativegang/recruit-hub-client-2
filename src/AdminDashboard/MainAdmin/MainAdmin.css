@@ -22,3 +22,10 @@
 .admin-heading-color {
   color: #b1b1b5;
 }
+
+/* notifications page styles */
+.admin-title {
+  color: #b1b1b5;
+  font-size: 1rem;
+  font-weight: 500;
+}

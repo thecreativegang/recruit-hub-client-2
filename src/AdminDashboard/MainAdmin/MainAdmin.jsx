@@ -21,8 +21,7 @@ const MainAdmin = () => {
       </div>
 
       {/* admin component render */}
-      <div className="bg-slate-300 min-w-[83%] w-full p-5">
-        <h1>dashboard</h1>
+      <div className="admin-bg min-w-[83%] w-full p-5">
         <Outlet></Outlet>
       </div>
     </section>

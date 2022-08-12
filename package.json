@@ -13,6 +13,7 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.27.2",
     "daisyui": "^2.15.1",
+    "date-fns": "^2.29.1",
     "emoji-picker-react": "^3.6.0",
     "firebase": "^9.8.2",
     "react": "^18.1.0",

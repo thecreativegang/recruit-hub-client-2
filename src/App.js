@@ -11,12 +11,14 @@ import AccountTypePage from './components/Pages/Register/AccountTypePage';
 import Profile from './components/Pages/Profile/Profile';
 import RequireUsername from './components/Shared/RequireUsername';
 import Loading from './components/Shared/Loading';
-import ChatBox from './components/Pages/ChatPage/ChatBox';
 import SkillAssessment from './components/Pages/SkillAssessment/SkillAssessment';
 import PostAJob from './components/Pages/PostAJob/PostAJob';
 import { UserStoreProvider } from './stateManagement/UserContext/UserContextStore';
 import ChatPage from './components/Pages/ChatPage/ChatPage';
 import FindJob from './components/Pages/FindJob/FindJob';
+import MainAdmin from './AdminDashboard/MainAdmin/MainAdmin';
+import DashboardHome from './AdminDashboard/DashboardHome/DashboardHome';
+import Notifications from './AdminDashboard/Notifications/Notifications';
 
 function App() {
   return (
@@ -33,6 +35,7 @@ function App() {
           <Route path='/home' element={<RequireUsername>
             <Home />
           </RequireUsername>} />
+
           <Route path='/profile' element={<Profile></Profile>} />
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<AccountTypePage />} />
@@ -47,6 +50,13 @@ function App() {
           <Route path='/postJob' element={<PostAJob />}></Route>
           <Route path='/skilltest' element={<SkillAssessment />}></Route>
           <Route path='/findJob' element={<FindJob />}></Route>
+
+          <Route path='/admin' element={<MainAdmin />}>
+            <Route index element={<DashboardHome></DashboardHome>}></Route>
+            <Route path='notifications' element={<Notifications />}></Route>
+            <Route path='findJob' element={<FindJob />}></Route>
+          </Route>
+
         </Routes >
         <FooterBottomSection />
         <ToastContainer

@@ -62,7 +62,7 @@ const Notifications = () => {
       </section>
 
       {/* Bootstrap Alert */}
-      <section className="admin-card-bg m-6 p-5 rounded-md flex gap-x-4">
+      <section className="admin-card-bg m-6 p-5 rounded-md grid grid-cols-2 gap-x-6">
         <div>
           <h4 className="admin-title">Bootstrap Alert</h4>
           <p className="text-[#76838f] text-sm my-4">

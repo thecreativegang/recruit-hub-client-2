@@ -46,7 +46,7 @@ const RequireUsername = ({ children }) => {
             return children
         }
         else {
-            return <AskForUsername />
+            return navigate('/askUsername')
         }
     }
     else {

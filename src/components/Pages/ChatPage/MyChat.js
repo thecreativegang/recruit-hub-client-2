@@ -8,6 +8,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import axios from 'axios';
 import { noAuto } from '@fortawesome/fontawesome-svg-core';
+import { FaUserCircle } from 'react-icons/fa';
 
 const MyChat = ({ allUser, userStore, setCurrentChat }) => {
     const { userEmail, user } = userStore;
@@ -40,7 +41,9 @@ const MyChat = ({ allUser, userStore, setCurrentChat }) => {
                     </h2>
                     <div class="avatar">
                         <div class="w-[50px] rounded-full">
-                            <img src="https://placeimg.com/192/192/people" alt="Tailwind-CSS-Avatar-component" />
+                            {/* <img src="https://placeimg.com/192/192/people" alt="Tailwind-CSS-Avatar-component" /> */}
+                            <FaUserCircle className='text-4xl mr-2 cursor-pointer' />
+
                         </div>
                     </div>
                 </div>

@@ -41,7 +41,6 @@ const Login = () => {
         }
     }
 
-    console.log('token before const token', currentUser)
     const token = useToken(currentUser)
     useEffect(() => {
         if (!globalUser && ((tokenInLStorage + "").length > 4)) {

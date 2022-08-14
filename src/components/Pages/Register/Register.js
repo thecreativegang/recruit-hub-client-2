@@ -105,6 +105,9 @@ const Register = () => {
         if (accountType.length > 0) {
             signInWithGoogle()
         }
+
+
+
     }
     return (
         <div>

@@ -20,6 +20,7 @@ import MainAdmin from './AdminDashboard/MainAdmin/MainAdmin';
 import DashboardHome from './AdminDashboard/DashboardHome/DashboardHome';
 import Notifications from './AdminDashboard/Notifications/Notifications';
 import AskForUsername from './components/Shared/AskForUsername';
+import ProtectedRout from './components/Shared/ProtectedRout';
 
 function App() {
   return (
@@ -44,9 +45,9 @@ function App() {
           <Route path='/lod' element={<Loading />}></Route>
           <Route path='/profile' element={<Profile />}></Route>
           <Route path='/chat' element={
-            <RequireUsername>
+            <ProtectedRout>
               <ChatPage />
-            </RequireUsername>
+            </ProtectedRout>
           }></Route>
           <Route path='/postJob' element={<PostAJob />}></Route>
           <Route path='/skilltest' element={<SkillAssessment />}></Route>

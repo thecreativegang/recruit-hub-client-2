@@ -4,20 +4,22 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import { useNavigate } from 'react-router-dom';
 
-const RequireUsername = ({ children }) => {
+const ProtectedRout = ({ children }) => {
     const [hasUsername, setHasUsername] = useState(true);
     const navigate = useNavigate()
     const [user] = useAuthState(auth)
     useEffect(() => {
-
-        if (user?.email) {
+        if (!user) {
+            return navigate('/login');
+        }
+        else if (user?.email) {
             axios.get(`https://safe-oasis-01130.herokuapp.com/user/${user?.email}`, {
                 headers: {
                     authorization: `Bearer ${localStorage.getItem('accessToken')}`,
                 }
             })
                 .then(function (res) {
-                    console.log(res.data.status)
+                    // console.log(res.data.status)
                     if (res.status === 200) {
                         if (res?.data?.userInfo[0]?.username === '') {
                             setHasUsername(false)
@@ -32,7 +34,7 @@ const RequireUsername = ({ children }) => {
                 })
         }
         else {
-            console.log('Email not found')
+            console.log('Email not found for protected route')
         }
 
     }, [user])
@@ -52,4 +54,4 @@ const RequireUsername = ({ children }) => {
 
 };
 
-export default RequireUsername;
+export default ProtectedRout;

@@ -13,7 +13,7 @@ const ProtectedRout = ({ children }) => {
             return navigate('/login');
         }
         else if (user?.email) {
-            axios.get(`https://safe-oasis-01130.herokuapp.com/user/${user?.email}`, {
+            axios.get(`http://localhost:3001/user/${user?.email}`, {
                 headers: {
                     authorization: `Bearer ${localStorage.getItem('accessToken')}`,
                 }

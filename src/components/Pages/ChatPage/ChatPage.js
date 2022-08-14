@@ -13,9 +13,9 @@ import SingleProfile from './SingleProfile';
 // /const socket = io.connect("http://localhost:3001");
 
 const ChatPage = () => {
-    const socket = useRef()
-    const userStore = useContext(UserStore);
+    const socket = useRef();
 
+    const userStore = useContext(UserStore);
     const currentUser = userStore.user;
     const [allUser, setAllUser] = useState([]);
     const [currentChat, setCurrentChat] = useState('');
@@ -23,7 +23,7 @@ const ChatPage = () => {
 
     const [searchResult, setSearchResult] = useState('');
 
-    console.log(searchResult);
+
 
 
     useEffect(() => {
@@ -31,12 +31,16 @@ const ChatPage = () => {
             socket.current = io(`http://localhost:3001`)
             socket.current.emit("add-user", currentUser._id);
         }
-    })
+    }, [currentUser])
 
 
     // fetch all user data
     const fetchChats = async () => {
-        const data = await axios.get(`http://localhost:3001/user`);
+        const data = await axios.get(`http://localhost:3001/user`, {
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+            },
+        });
         setAllUser(data.data);
     }
     useEffect(() => {
@@ -48,7 +52,12 @@ const ChatPage = () => {
 
 
         const fetchChats = async () => {
-            const data = await axios.get(`http://localhost:3001/user/search-user?search=${search}`);
+            const data = await axios.get(`http://localhost:3001/user/search-user?search=${search}`, {
+                headers: {
+                    authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+                },
+            });
+
             setSearchResult(data.data);
         }
         fetchChats();
@@ -69,6 +78,7 @@ const ChatPage = () => {
                             {/* <SingleChatWIndow chatId={chatId} socket={socket}></SingleChatWIndow> */}
                             <ChatContainer
                                 currentChat={currentChat}
+                                currentUser={currentUser}
                                 socket={socket}
                             ></ChatContainer>
                         </div>
@@ -76,14 +86,14 @@ const ChatPage = () => {
                 </div>
                 <div class="drawer-side">
                     <label for="my-drawer" class="drawer-overlay"></label>
-                    <ul class="menu p-4 overflow-y-auto lg:w-[35%] w-[70%] bg-base-100 text-base-content">
+                    <ul class="menu p-4 overflow-y-auto lg:w-[30%] w-[90%] bg-base-100 text-base-content">
                         <li className='text-center p-2 font-bold'>Search User</li>
 
-                        <div className=' flex items-center'>
+                        <div className='flex items-center'>
                             <input
                                 type="text"
-                                className='my-border p-2 m-2 w-[70%]'
-                                placeholder=' search'
+                                className='my-border p-1  mx-2 my-auto w-[70%]'
+                                placeholder=' name or email'
                                 onChange={(event) => {
                                     setSearch(event.target.value);
                                 }}
@@ -91,7 +101,7 @@ const ChatPage = () => {
                                     event.key === "Enter" && handelSearch();
                                 }}
                             />
-                            <span onClick={handelSearch} className='btn-sm btn'> go</span>
+                            <span onClick={handelSearch} className='btn-sm  btn my-auto'>Search</span>
                         </div>
 
                         <div>

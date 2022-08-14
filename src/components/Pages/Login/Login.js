@@ -16,6 +16,9 @@ const Login = () => {
     let currentUser;
     let username = '';
 
+
+
+    // React hook forms element
     // React hook forms element
     const { register, formState: { errors }, handleSubmit } = useForm();
     // Error State
@@ -41,12 +44,17 @@ const Login = () => {
         }
     }
 
-    console.log('token before const token', currentUser)
     const token = useToken(currentUser)
     useEffect(() => {
-        if ((tokenInLStorage + "").length > 4) {
-            navigate(from, { replace: true });
+        if (!globalUser && ((tokenInLStorage + "").length > 4)) {
+            localStorage.removeItem("accessToken")
+        } else {
+            if ((tokenInLStorage + "").length > 4) {
+                navigate(from, { replace: true });
+            }
         }
+
+
     }, [token, navigate, from, tokenInLStorage])
 
     if (loading || gLoading) {

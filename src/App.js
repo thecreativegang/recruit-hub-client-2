@@ -17,9 +17,11 @@ import { UserStoreProvider } from './stateManagement/UserContext/UserContextStor
 import ChatPage from './components/Pages/ChatPage/ChatPage';
 import FindJob from './components/Pages/FindJob/FindJob';
 import MainAdmin from './AdminDashboard/MainAdmin/MainAdmin';
-import Alluser from './AdminDashboard/Alluser/Alluser';
 import DashboardHome from './AdminDashboard/DashboardHome/DashboardHome';
 import Review from './components/Pages/Review/Review';
+import Notifications from './AdminDashboard/Notifications/Notifications';
+import AskForUsername from './components/Shared/AskForUsername';
+import ProtectedRout from './components/Shared/ProtectedRout';
 
 function App() {
   return (
@@ -33,7 +35,6 @@ function App() {
               <Home />
             </RequireUsername>
           } />
-
           <Route path='/home' element={<RequireUsername>
             <Home />
           </RequireUsername>} />
@@ -44,14 +45,21 @@ function App() {
           <Route path='/register/:accType' element={<Register />} />
           <Route path='/lod' element={<Loading />}></Route>
           <Route path='/profile' element={<Profile />}></Route>
-          <Route path='/chat' element={<ChatPage />}></Route>
+          <Route path='/chat' element={
+            <ProtectedRout>
+              <ChatPage />
+            </ProtectedRout>
+          }></Route>
           <Route path='/postJob' element={<PostAJob />}></Route>
           <Route path='/review' element={<Review></Review>}></Route>
           <Route path='/skilltest' element={<SkillAssessment />}></Route>
           <Route path='/findJob' element={<FindJob />}></Route>
+          <Route path='/askUsername' element={<AskForUsername />}></Route>
+
           <Route path='/admin' element={<MainAdmin />}>
             <Route index element={<DashboardHome></DashboardHome>}></Route>
-            <Route path='alluser' element={<Alluser></Alluser>}></Route>
+            <Route path='notifications' element={<Notifications />}></Route>
+            <Route path='findJob' element={<FindJob />}></Route>
           </Route>
 
         </Routes >

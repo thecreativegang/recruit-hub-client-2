@@ -26,6 +26,10 @@ const Navbar = () => {
     const [navSwitch, setNavSwitch] = useState(false);
     const [userSwitch, setUserSwitch] = useState(false);
 
+    // user information  code {sourav}
+    const userStore = useContext(UserStore);
+    const currentUser = userStore.user;
+
     const [user] = useAuthState(auth);
 
     const handleSignOut = () => {
@@ -36,7 +40,7 @@ const Navbar = () => {
     }
 
     //user information
-    const userStore = useContext(UserStore)?.user;
+    // const userStore = useContext(UserStore)?.user;
 
     const closedNavbarAll = () => {
         setUserSwitch(false) //main navbar
@@ -127,8 +131,8 @@ const Navbar = () => {
                                     {/* user details  */}
                                     <div className={`${userSwitch ? "top-[3.5rem]" : "top-[-20rem]"} z-20 absolute right-0 min-w-[22rem]  bg-gradient-to-t from-[#e6e6ff] to-[#d7fbf1]  p-5 rounded-b-xl duration-300 ease-out `}>
                                         <div className='text-center'>
-                                            <h6 className='text-lg md:text-xl font-[600] mb-1 md:mb-1'>Tanvir Ahmed</h6>
-                                            <h6 className='text-xs md:text-base font-[500] mb-1 md:mb-1'>@tanvir123</h6>
+                                            <h6 className='text-lg md:text-xl font-[600] mb-1 md:mb-1'>{currentUser?.username}</h6>
+                                            <h6 className='text-xs md:text-base font-[500] mb-1 md:mb-1'>{currentUser?.email}</h6>
                                             <h6 className='text-xs md:text-base font-[500] mb-1 md:mb-1'>DE-4562415</h6>
                                         </div>
 

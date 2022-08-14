@@ -19,6 +19,7 @@ import FindJob from './components/Pages/FindJob/FindJob';
 import MainAdmin from './AdminDashboard/MainAdmin/MainAdmin';
 import Alluser from './AdminDashboard/Alluser/Alluser';
 import DashboardHome from './AdminDashboard/DashboardHome/DashboardHome';
+import Review from './components/Pages/Review/Review';
 
 function App() {
   return (
@@ -45,6 +46,7 @@ function App() {
           <Route path='/profile' element={<Profile />}></Route>
           <Route path='/chat' element={<ChatPage />}></Route>
           <Route path='/postJob' element={<PostAJob />}></Route>
+          <Route path='/review' element={<Review></Review>}></Route>
           <Route path='/skilltest' element={<SkillAssessment />}></Route>
           <Route path='/findJob' element={<FindJob />}></Route>
           <Route path='/admin' element={<MainAdmin />}>

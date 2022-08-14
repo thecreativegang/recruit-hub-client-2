@@ -26,9 +26,12 @@ const Login = () => {
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
     const [
         signInWithEmailAndPassword,
+        user,
         loading,
         error,
     ] = useSignInWithEmailAndPassword(auth);
+
+
 
     // globalUser is [user]= useAuthState(auth)
     const [showPassword, setShowPassword] = useState(false);
@@ -55,7 +58,7 @@ const Login = () => {
         }
 
 
-    }, [token, navigate, from, tokenInLStorage])
+    }, [token, navigate, globalUser, from, tokenInLStorage])
 
     if (loading || gLoading) {
         return <Loading></Loading>
@@ -70,8 +73,8 @@ const Login = () => {
             <div className=" flex justify-center items-center pt-20">
                 <div className=" md:w-1/4 flex-col lg:flex-row-reverse">
                     <div className="card flex-shrink-0 w-full  shadow-2xl bg-base-100">
-                        <form onSubmit={handleSubmit(onSubmit)}>
-                            <div className="card-body">
+                        <div className="card-body">
+                            <form onSubmit={handleSubmit(onSubmit)}>
                                 <h1 className='text-5xl font-bold text-center mb-10'>Login</h1>
                                 <div className="form-control ">
                                     <label className="label">
@@ -102,7 +105,7 @@ const Login = () => {
 
 
                                     {/* Forget password area  */}
-                                    <div className=''>
+                                    {/* <div className=''>
 
                                         {
                                             forgetPass && <input onBlur={() => setForgetPass(false)} value={forgetPassText} onChange={(e) => setForgetPassText(e.target.value)} type="text" placeholder="Enter your Email" className="mt-5 input input-bordered text-xl w-full" />
@@ -122,7 +125,7 @@ const Login = () => {
                                             </div>
                                         </div>
 
-                                    </div>
+                                    </div> */}
                                 </div>
                                 {/* Error Shows here */}
                                 <div>
@@ -141,19 +144,19 @@ const Login = () => {
                                     {
                                         loading
                                             ?
-                                            <button className="btn btn-primary font-bold text-lg text-white loading uppercase">Login</button>
+                                            <button type='submit' className="btn btn-primary font-bold text-lg text-white loading uppercase">Login</button>
                                             :
-                                            <button className="btn btn-primary font-bold text-lg text-white  uppercase">Login</button>
+                                            <button type='submit' className="btn btn-primary font-bold text-lg text-white  uppercase">Login</button>
                                     }
                                 </div>
-                                <div className="flex flex-col w-full border-opacity-50">
-                                    <div className="divider">OR</div>
-                                </div>
-                                <div className="form-control ">
-                                    <button onClick={() => signInWithGoogle()} className="btn bg-white text-black  hover:text-white  font-bold text-lg hover:bg-zinc-600"> <img src={googleLogo} alt="" /> &nbsp; Continue With Google</button>
-                                </div>
+                            </form>
+                            <div className="flex flex-col w-full border-opacity-50">
+                                <div className="divider">OR</div>
                             </div>
-                        </form>
+                            <div className="form-control ">
+                                <button onClick={() => signInWithGoogle()} className="btn bg-white text-black  hover:text-white  font-bold text-lg hover:bg-zinc-600"> <img src={googleLogo} alt="" /> &nbsp; Continue With Google</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div >

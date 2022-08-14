@@ -31,13 +31,11 @@ function App() {
         <Routes>
 
           <Route path='/' element={
-            <RequireUsername>
-              <Home />
-            </RequireUsername>
-          } />
-          <Route path='/home' element={<RequireUsername>
             <Home />
-          </RequireUsername>} />
+          } />
+          <Route path='/home' element={
+            <Home />
+          } />
 
           <Route path='/profile' element={<Profile></Profile>} />
           <Route path='/login' element={<Login />} />

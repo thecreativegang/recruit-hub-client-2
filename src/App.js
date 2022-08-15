@@ -20,6 +20,7 @@ import MainAdmin from './AdminDashboard/MainAdmin/MainAdmin';
 import DashboardHome from './AdminDashboard/DashboardHome/DashboardHome';
 import Notifications from './AdminDashboard/Notifications/Notifications';
 import AskForUsername from './components/Shared/AskForUsername';
+import FreeResource from './components/Pages/FreeResource/FreeResource';
 
 function App() {
   return (
@@ -33,9 +34,9 @@ function App() {
               <Home />
             </RequireUsername>
           } />
-          <Route path='/home' element={<RequireUsername>
-            <Home />
-          </RequireUsername>} />
+
+          <Route path='/home' element={<Home />} />
+          <Route path='/freeResource' element={<FreeResource />} />
 
           <Route path='/profile' element={<Profile></Profile>} />
           <Route path='/login' element={<Login />} />
@@ -53,6 +54,8 @@ function App() {
           <Route path='/findJob' element={<FindJob />}></Route>
           <Route path='/askUsername' element={<AskForUsername />}></Route>
 
+
+          {/* admin dashboard page  */}
           <Route path='/admin' element={<MainAdmin />}>
             <Route index element={<DashboardHome></DashboardHome>}></Route>
             <Route path='notifications' element={<Notifications />}></Route>

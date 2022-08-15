@@ -16,7 +16,7 @@ const Banner = () => {
                     </div>
                     <div className=' flex justify-center items-center'>
                         <div>
-                            <h1 className="md:text-[75px] text-[40px] leading-[60px] md:leading-[92px] font-bold text-black mb-[35px]">Brand, Design &  Development  Agency</h1>
+                            <h1 className="md:text-[65px] text-[35px] leading-[60px] md:leading-[92px] font-bold text-black mb-[35px]">Brand, Design &  Development  Agency</h1>
                             <p className=" para-color text-[18px] mb-[45px] md:pr-[7%]  font-semibold">Sit amet consectetur adipiscing elit sed do eiusmod tem porincididunt ut labore et dolore magna aliqua. Quis psum suspendisse ultrices gravida commodo viverra</p>
                             <div>
                                 <button className='   btn-primary-vlue text-white'>Start Hiring <i class="fa-solid fa-angle-right ml-[6px]"></i></button>

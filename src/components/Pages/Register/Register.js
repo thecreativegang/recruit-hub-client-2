@@ -35,12 +35,13 @@ const Register = () => {
     const [sendEmailVerification, sending, verificationerror] = useSendEmailVerification(auth);
     const [usernameAvailable, setUsernameAvailable] = useState(null);
     const [showAccType, setShowAccType] = useState(false);
+    const [username, setUsername] = useState('');
     let currentUser;
-    let username = '';
+
     //Token
     const onSubmit = async (data) => {
         if (data.password === data.confirmPassword) {
-            username = data.username
+            setUsername(data.username);
             await sendEmailVerification(); // Send Verification Email
             const displayName = data.name;
             const email = data.email;
@@ -83,7 +84,7 @@ const Register = () => {
     const handleUserNameValidation = async (username) => {
         username !== ''
             ?
-            await axios.post(`https://safe-oasis-01130.herokuapp.com/user/check-username/${username}`)
+            await axios.post(`http://localhost:3001/user/check-username/${username}`)
                 .then(data => {
                     if ((data.data.isAvailable)) {
                         setUsernameAvailable(true)
@@ -105,6 +106,9 @@ const Register = () => {
         if (accountType.length > 0) {
             signInWithGoogle()
         }
+
+
+
     }
     return (
         <div>

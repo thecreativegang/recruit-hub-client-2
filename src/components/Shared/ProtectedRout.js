@@ -3,22 +3,23 @@ import axios from 'axios';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
 
-const RequireUsername = ({ children, prop }) => {
+const ProtectedRout = ({ children }) => {
     const [hasUsername, setHasUsername] = useState(true);
     const navigate = useNavigate()
     const [user] = useAuthState(auth)
     useEffect(() => {
-
-        if (user?.email) {
+        if (!user) {
+            return navigate('/login');
+        }
+        else if (user?.email) {
             axios.get(`http://localhost:3001/user/${user?.email}`, {
                 headers: {
                     authorization: `Bearer ${localStorage.getItem('accessToken')}`,
                 }
             })
                 .then(function (res) {
-                    console.log(res.data.status)
+                    // console.log(res.data.status)
                     if (res.status === 200) {
                         if (res?.data?.userInfo[0]?.username === '') {
                             setHasUsername(false)
@@ -28,14 +29,13 @@ const RequireUsername = ({ children, prop }) => {
                         setHasUsername(true);
                     }
                 })
-                .catch(function (error) {
-                    // console.log(error)
-                    if (error?.message) {
-                        toast.error(error.message)
-                    }
+                .then(function (error) {
+                    console.log(error)
                 })
         }
-
+        else {
+            console.log('Email not found for protected route')
+        }
 
     }, [user])
 
@@ -54,4 +54,4 @@ const RequireUsername = ({ children, prop }) => {
 
 };
 
-export default RequireUsername;
+export default ProtectedRout;

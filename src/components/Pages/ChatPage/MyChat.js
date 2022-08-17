@@ -4,18 +4,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import ScrollToBottom from 'react-scroll-to-bottom';
 import Loading from '../../Shared/Loading';
-import { useAuthState } from 'react-firebase-hooks/auth';
-import auth from '../../../firebase.init';
-import axios from 'axios';
-import { noAuto } from '@fortawesome/fontawesome-svg-core';
+import { FaUserCircle } from 'react-icons/fa';
 
 const MyChat = ({ allUser, userStore, setCurrentChat }) => {
     const { userEmail, user } = userStore;
-
-
-    if (!allUser) {
-        <Loading></Loading>
-    }
 
 
     return (
@@ -40,13 +32,16 @@ const MyChat = ({ allUser, userStore, setCurrentChat }) => {
                     </h2>
                     <div class="avatar">
                         <div class="w-[50px] rounded-full">
-                            <img src="https://placeimg.com/192/192/people" alt="Tailwind-CSS-Avatar-component" />
+                            {/* <img src="https://placeimg.com/192/192/people" alt="Tailwind-CSS-Avatar-component" /> */}
+                            <FaUserCircle className='text-4xl mr-2 cursor-pointer' />
+
                         </div>
                     </div>
                 </div>
 
                 <ScrollToBottom className='profile-container pb-2'>
-                    {allUser?.map((chat) => <SingleProfile setCurrentChat={setCurrentChat} chat={chat} />)
+                    {
+                        allUser ? allUser?.map((chat) => <SingleProfile setCurrentChat={setCurrentChat} chat={chat} />) : <Loading></Loading>
                     }
                 </ScrollToBottom>
             </div>

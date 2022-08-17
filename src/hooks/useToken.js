@@ -10,7 +10,7 @@ const useToken = async (currentUser) => {
     };
     useEffect(() => {
         if (user.email) {
-            // https://safe-oasis-01130.herokuapp.com/
+            // http://localhost:3001/
             const targetUrl = 'http://localhost:3001/user/create'
             axios.post(targetUrl, user)
                 .then(function (res) {

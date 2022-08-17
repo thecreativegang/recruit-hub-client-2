@@ -30,7 +30,7 @@ const UserStoreProvider = ({ children }) => {
         }
 
         else {
-            console.log('Email not found')
+            console.log('Email not found from useContex')
         }
     }, [userEmail])
 

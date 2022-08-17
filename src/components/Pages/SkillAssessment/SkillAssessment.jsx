@@ -20,7 +20,7 @@ const SkillAssessment = () => {
 
   useEffect(() => {
     axios
-      .get('https://safe-oasis-01130.herokuapp.com/skillassessment/test')
+      .get('http://localhost:3001/skillassessment/test')
       .then((res) => {
         setQuestion(res.data);
         setLoading(false);

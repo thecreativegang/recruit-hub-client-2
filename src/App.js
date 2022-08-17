@@ -22,6 +22,7 @@ import Review from './components/Pages/Review/Review';
 import Notifications from './AdminDashboard/Notifications/Notifications';
 import AskForUsername from './components/Shared/AskForUsername';
 import ProtectedRout from './components/Shared/ProtectedRout';
+import ForgetPassword from './components/Pages/Login/ForgetPassword';
 
 function App() {
   return (
@@ -52,6 +53,7 @@ function App() {
           <Route path='/skilltest' element={<SkillAssessment />}></Route>
           <Route path='/findJob' element={<FindJob />}></Route>
           <Route path='/askUsername' element={<AskForUsername />}></Route>
+          <Route path='/forgetPassword' element={<ForgetPassword />}></Route>
 
           <Route path='/admin' element={<MainAdmin />}>
             <Route index element={<DashboardHome></DashboardHome>}></Route>

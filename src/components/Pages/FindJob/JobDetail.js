@@ -16,7 +16,7 @@ const JobDetail = ({ selectedJob, setShowJobDetail }) => {
     // console.log(currentUser.accountType)
 
     const handleAddToWishlist = async (id) => {
-
+        // 
         await axios.post(`http://localhost:3001/user/wishList`, { id }, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`,

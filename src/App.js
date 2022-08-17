@@ -29,7 +29,6 @@ function App() {
       <UserStoreProvider>
         <Navbar />
         <Routes>
-
           <Route path='/' element={
             <Home />
           } />
@@ -59,7 +58,6 @@ function App() {
             <Route path='notifications' element={<Notifications />}></Route>
             <Route path='findJob' element={<FindJob />}></Route>
           </Route>
-
         </Routes >
         <FooterBottomSection />
         <ToastContainer
@@ -69,7 +67,4 @@ function App() {
     </div >
   );
 }
-//
 export default App;
-
-//

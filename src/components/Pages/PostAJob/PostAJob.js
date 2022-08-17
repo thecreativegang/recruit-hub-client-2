@@ -4,9 +4,13 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import { UserStore, UserStoreProvider } from '../../../stateManagement/UserContext/UserContextStore';
 import { useContext } from 'react';
+import auth from './../../../firebase.init';
+import { signOut } from 'firebase/auth';
+import { MdLocalHospital } from 'react-icons/md';
+import { useNavigate } from 'react-router-dom';
 
 const PostAJob = () => {
-
+    const navigate = useNavigate()
     //This function will be used to generate day , month, year digit 
     const generateDigit = (start, limit) => {
         const digits = []
@@ -43,14 +47,20 @@ const PostAJob = () => {
             },
         })
             .then(function (res) {
+                // console.log(res.response.statusText)
+
                 if (res?.data?.status === 200) {
                     toast.success("Job posted successfully!")
                     // reset(resetForm)
                 }
             })
-            .then(function (err) {
-                if (err) {
-                    console.log(err)
+            .catch(function (err) {
+                if (err?.response?.statusText) {
+                    signOut(auth)
+                    toast.error('Token Expired')
+                    localStorage.removeItem('accessToken')
+                    navigate('/login')
+                    console.log(err.response.statusText)
                 }
             })
     }

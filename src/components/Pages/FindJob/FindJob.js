@@ -16,14 +16,13 @@ const FindJob = () => {
     const [filteringOn, SetfilteringOn] = useState(false);
     const [searchedResults, setSearchedResults] = useState([]);
     const [noResultFound, setNoResultFound] = useState(false);
-    console.log(searchedResults)
+    const [showJobDetail, setShowJobDetail] = useState(false);
     const searchElements = {
         searchText: [],
         jobNature: "",
         companySize: "",
         payRange: ""
     }
-    console.log(jobs)
     useEffect(() => {
         axios.get(`http://localhost:3001/job`)
             .then(function (res) {
@@ -37,7 +36,7 @@ const FindJob = () => {
 
 
     return (
-        <div className='min-h-[100vh] container mx-auto mt-5 '>
+        <div className='min-h-[100vh] container mx-auto mt-5 relative'>
             {/* Top section */}
             <div>
                 <FilteringOptions
@@ -50,44 +49,53 @@ const FindJob = () => {
                 />
             </div>
 
-            <div className='grid grid-cols-[2fr,3fr] gap-5'>
-                <div className='h-[100vh] overflow-y-scroll shadow-md mt-10 p-3 '>
-                    {/* All jobs will be listed down below */}
-                    {/* Warning section */}
-                    {
-                        noResultFound
-                            ?
-                            <div >
-                                <NoResultFoundWarning />
-                            </div>
-                            :
-                            <div>
-                                <ShowingSearchResultInfo searchedResults={searchedResults} />
-                            </div>
-                    }
-                    {
-                        <div >
-                            {
-                                (!filteringOn ? jobs : searchedResults?.result || jobs).map((job, index) => <SingleJobInList
-                                    index={index}
-                                    key={job._id}
-                                    job={job}
-                                    setSelectedJob={setSelectedJob}
-                                    selectedJob={selectedJob}
-                                ></SingleJobInList>
-
-                                )
-                            }
-                        </div>
-
-
-
-                    }
-
-                    {/* Job details will be shown here */}
-                </div >
+            <div className='grid md:grid-cols-[2fr,3fr] grid-col-1 gap-5 '>
                 <div>
-                    <JobDetail selectedJob={selectedJob} />
+                    <div className='h-[100vh] overflow-y-scroll shadow-md mt-10 p-3  '>
+                        {/* All jobs will be listed down below */}
+                        {/* Warning section */}
+                        {
+                            noResultFound
+                                ?
+                                <div >
+                                    <NoResultFoundWarning />
+                                </div>
+                                :
+                                <div>
+                                    <ShowingSearchResultInfo searchedResults={searchedResults} />
+                                </div>
+                        }
+                        {
+                            <div className={`w-full ${showJobDetail ? 'xs:hidden' : ''}`}>
+                                {
+                                    (!filteringOn ? jobs : searchedResults?.result || jobs).map((job, index) => <SingleJobInList
+                                        index={index}
+                                        key={job._id}
+                                        job={job}
+                                        setSelectedJob={setSelectedJob}
+                                        selectedJob={selectedJob}
+                                        setShowJobDetail={setShowJobDetail}
+                                    ></SingleJobInList>
+
+                                    )
+                                }
+                            </div>
+
+
+
+                        }
+
+                        {/* Job details will be shown here */}
+                    </div >
+                </div>
+                <div className={`${showJobDetail ? 'xs:absolute top-0 bg-white block ' : 'xs:hidden'} `}>
+                    {
+                        selectedJob?.jobTitle &&
+                        <JobDetail
+                            selectedJob={selectedJob}
+                            setShowJobDetail={setShowJobDetail}
+                        />
+                    }
                 </div>
             </div >
         </div>

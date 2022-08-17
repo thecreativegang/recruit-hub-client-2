@@ -1,46 +1,93 @@
 import { faCircle, faCircleDot, faDotCircle } from '@fortawesome/free-regular-svg-icons';
-import { faDivide, faListDots } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRightBracket, faArrowUpRightSquare, faDivide, faListDots, faArrowLeft, faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { formatDistanceStrict } from 'date-fns';
 import { faDashcube, faLine } from '@fortawesome/free-brands-svg-icons';
+import { UserStore } from '../../../stateManagement/UserContext/UserContextStore';
+import { useContext } from 'react';
+import axios from 'axios';
+import { toast } from 'react-toastify';
 
-const JobDetail = ({ selectedJob }) => {
-    const { recruitersName, jobTitle, companyName, companySize, vacancies, jobNature, educationalQualification, jobRequirements, tags, deadlineDay, deadlineMonth, deadlineYear, payRange, companyLocation, publishedDate, applicantCount } = selectedJob
+const JobDetail = ({ selectedJob, setShowJobDetail }) => {
+    const { recruitersName, jobTitle, companyName, companySize, vacancies, jobNature, educationalQualification, jobRequirements, tags, applicationDeadline, deadlineMonth, deadlineYear, payRange, companyLocation, publishedDate, applicantCount, _id } = selectedJob
+    const monthName = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec']
+    const currentUser = useContext(UserStore)?.user;
+    // console.log(currentUser.accountType)
+
+    const handleAddToWishlist = async (id) => {
+        // 
+        await axios.post(`http://localhost:3001/user/wishList`, { id }, {
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+            },
+        })
+            .then(function (res) {
+                console.log(res)
+                if (res?.data?.response?.modifiedCount === 1) {
+                    toast.success('Added to wishlist')
+                }
+                else if (res?.data?.response?.modifiedCount === 0) {
+                    toast.error('Item already added!')
+                }
+                else {
+                    console.log('ok')
+                }
+            })
+    }
     return (
-        <div className='mt-5 shadow-lg h-[100vh] overflow-y-auto p-5 rounded-lg'>
+        <div className='mt-5 shadow-lg min-h-[100vh]  overflow-y-auto p-5 rounded-lg pb-10 '>
+            <p onClick={() => setShowJobDetail(false)} className={`md:hidden w-full bg-primary text-white py-2 p-5 rounded-full`}><FontAwesomeIcon icon={faArrowLeft} /> Go back</p>
             <h1 className='text-3xl '>{jobTitle}</h1>
             <div className='flex flex-col gap-1 mt-5'>
-                <p>Organization: {companyName} </p>
+                {
+                    companyName &&
+                    <p><span className={`font-bold`}>Organization:</span> {companyName} </p>
+                }
                 {
                     companyLocation &&
-                    <p>Location: {companyLocation || ""}</p>
-
+                    <p><span className={`font-bold`}>Location:</span> {companyLocation || ""}</p>
                 }
                 {
                     companySize &&
-                    <p>Organization size: {companySize} Employees</p>
+                    <p><span className={`font-bold`}>Organization size:</span> {companySize} Employees</p>
+                }
+                {
+                    recruitersName &&
+                    <p><span className={`font-bold`}>Recruiter:</span> {recruitersName} </p>
                 }
                 {
                     publishedDate &&
-                    <p>Posted: {formatDistanceStrict(new Date(publishedDate), new Date()) + " ago" || ""} </p>
+                    <p><span className={`font-bold`}>Posted:</span> {formatDistanceStrict(new Date(publishedDate), new Date()) + " ago" || ""} </p>
                 }
                 {
 
-                    <p>Applied: {applicantCount || 0} Applicants</p>
+                    <p><span className={`font-bold`}>Applied:</span> {applicantCount || 0} Applicants</p>
                 }
                 {
                     jobNature &&
-                    <p>Job Type: {jobNature}</p>
+                    <p><span className={`font-bold`}>Job Type:</span> {jobNature}</p>
 
                 }
                 {
                     vacancies &&
-                    <p>Vacancies: {vacancies}</p>
+                    <p><span className={`font-bold`}>Vacancies:</span> {vacancies}</p>
                 }
 
-
             </div>
+            {/* Apply Job section */}
+            {
+                currentUser?.accountType !== "developer" &&
+                <div className={`mt-10 flex gap-5 flex-col md:flex-row`}>
+                    <button className={`border border-zinc-400 btn-primary text-white px-8 py-3 rounded-full`}>Apply Now &nbsp;<FontAwesomeIcon icon={faArrowUpRightFromSquare} /></button>
+
+                    <button onClick={() => handleAddToWishlist(_id)} className={`border border-zinc-400 btn-primary text-white px-8 py-3 rounded-full `}>Add to whishlist &nbsp;<FontAwesomeIcon icon={faArrowUpRightFromSquare} /></button>
+
+                </div>
+
+            }
+
+
             {/* Job Requirements */}
             <div>
                 <p className={`underline text-xl mt-20 mb-5`}>Job Requirements</p>
@@ -53,13 +100,19 @@ const JobDetail = ({ selectedJob }) => {
                 <p>{educationalQualification}</p>
             </div>
 
-            {/* Job Requirements */}
+            {/* Pay Range */}
             <div>
-                <p className={`underline text-xl mt-20 mb-5`}>Job Requirements</p>
-                <p>{jobRequirements}</p>
+                <p className={`underline text-xl mt-10 mb-5`}>Pay Range</p>
+                <p><span className={`font-bold`}>${payRange}</span> Per Month</p>
             </div>
 
-        </div>
+            {/* Pay Range */}
+            <div>
+                <p className={` text-xl mt-10 mb-5`}>Application Deadline:  <span className={`font-bold`}>{applicationDeadline?.deadlineDay}-{monthName[applicationDeadline?.deadlineMonth - 1]}-{applicationDeadline?.deadlineYear}</span></p>
+
+            </div>
+
+        </div >
     );
 };
 

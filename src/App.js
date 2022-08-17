@@ -26,7 +26,6 @@ function App() {
       <UserStoreProvider>
         <Navbar />
         <Routes>
-
           <Route path='/' element={
             <RequireUsername prop="home">
               <Home />
@@ -36,7 +35,6 @@ function App() {
             <RequireUsername prop="home">
               <Home />
             </RequireUsername>} />
-
           <Route path='/profile' element={<Profile></Profile>} />
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<AccountTypePage />} />
@@ -44,20 +42,18 @@ function App() {
           <Route path='/lod' element={<Loading />}></Route>
           <Route path='/profile' element={<Profile />}></Route>
           <Route path='/chat' element={
-            <RequireUsername>
+            <RequireUsername prop="chatPage">
               <ChatPage />
             </RequireUsername>
           }></Route>
           <Route path='/postJob' element={<PostAJob />}></Route>
           <Route path='/skilltest' element={<SkillAssessment />}></Route>
           <Route path='/findJob' element={<FindJob />}></Route>
-
           <Route path='/admin' element={<MainAdmin />}>
             <Route index element={<DashboardHome></DashboardHome>}></Route>
             <Route path='notifications' element={<Notifications />}></Route>
             <Route path='findJob' element={<FindJob />}></Route>
           </Route>
-
         </Routes >
         <FooterBottomSection />
         <ToastContainer
@@ -67,7 +63,4 @@ function App() {
     </div >
   );
 }
-//
 export default App;
-
-//

@@ -1,24 +1,32 @@
 import React, { useRef, useState } from 'react';
 import axios from 'axios';
+import { useContext } from 'react';
+import { UserStore } from '../../../stateManagement/UserContext/UserContextStore';
 
 const FilteringOptions = ({ searchElements, SetfilteringOn, setSearchedResults, searchedResults, setNoResultFound }) => {
     const { searchText, jobNature, companySize, payRange, } = searchElements;
-
+    const currentUser = useContext(UserStore)?.user;
     const searchRef = useRef("")
     const jobNatureRef = useRef("")
     const companySizeRef = useRef("")
     const payRangeRef = useRef("")
+    const showAllorOnlyMine = useRef("")
     const searchJob = (e) => {
         const searchData = {
             searchJobNature: jobNatureRef.current?.value,
             searchSearchText: searchRef.current?.value,
             searchCompanySize: companySizeRef.current?.value,
             searchPayRange: payRangeRef.current?.value,
+            searchShowAllorOnlyMine: showAllorOnlyMine.current?.value,
         }
         console.log(searchData)
-        axios.post(`http://localhost:3001/job/filter`, searchData)
+        axios.post(`http://localhost:3001/job/filter`, searchData, {
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+            },
+        })
             .then(function (res) {
-                console.log(res.data.queries)
+                console.log(res)
                 if (res?.data?.message === 'No Filter Applied') {
                     SetfilteringOn(false);
 
@@ -77,6 +85,17 @@ const FilteringOptions = ({ searchElements, SetfilteringOn, setSearchedResults, 
                         <option value="500+" >$-500+</option>
                         <option value="1000+" >$-1000+</option>
                     </select>
+                </div>
+                <div>
+                    {
+                        currentUser?.accountType === 'recruiter' &&
+                        <select ref={showAllorOnlyMine} onChange={searchJob} name="showAllorOnlyMine" id="showAllorOnlyMine" className='border border-black p-3 rounded-full bg-zinc-100'>
+                            <option value="" >Showing All</option>
+                            <option value="mine" >Show My Post</option>
+
+                        </select>
+                    }
+
                 </div>
             </div>
         </div>

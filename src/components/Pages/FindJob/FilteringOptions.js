@@ -51,11 +51,11 @@ const FilteringOptions = ({ searchElements, SetfilteringOn, setSearchedResults, 
             })
     }
     return (
-        <div className='grid grid-cols-[2fr,3fr]  gap-5  items-center'>
+        <div className='grid grid-col-1 md:grid-cols-[2fr,3fr]  gap-5  items-center'>
             <div className='w-full'>
                 <input ref={searchRef} onKeyUp={searchJob} type="text" className='input border border-zinc-400  w-full' placeholder='Search Jobs....' />
             </div>
-            <div className='flex gap-2'>
+            <div className='flex gap-2 flex-wrap justify-center'>
                 <div>
                     <select ref={jobNatureRef} onChange={searchJob} name="jobNature" id="jobNature" className='border border-black p-3 rounded-full bg-zinc-100'>
                         <option value="" className='capitalize'>Job Nature</option>

@@ -1,5 +1,5 @@
 import { faCircle, faCircleDot, faDotCircle } from '@fortawesome/free-regular-svg-icons';
-import { faArrowRightFromBracket, faArrowUpRightFromSquare, faDivide, faListDots } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRightBracket, faArrowUpRightSquare, faDivide, faListDots, faArrowLeft, faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { formatDistanceStrict } from 'date-fns';
@@ -9,7 +9,7 @@ import { useContext } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
-const JobDetail = ({ selectedJob }) => {
+const JobDetail = ({ selectedJob, setShowJobDetail }) => {
     const { recruitersName, jobTitle, companyName, companySize, vacancies, jobNature, educationalQualification, jobRequirements, tags, applicationDeadline, deadlineMonth, deadlineYear, payRange, companyLocation, publishedDate, applicantCount, _id } = selectedJob
     const monthName = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec']
     const currentUser = useContext(UserStore)?.user;
@@ -36,7 +36,8 @@ const JobDetail = ({ selectedJob }) => {
             })
     }
     return (
-        <div className='mt-5 shadow-lg h-[100vh] overflow-y-auto p-5 rounded-lg'>
+        <div className='mt-5 shadow-lg min-h-[100vh]  overflow-y-auto p-5 rounded-lg pb-10 '>
+            <p onClick={() => setShowJobDetail(false)} className={`md:hidden w-full bg-primary text-white py-2 p-5 rounded-full`}><FontAwesomeIcon icon={faArrowLeft} /> Go back</p>
             <h1 className='text-3xl '>{jobTitle}</h1>
             <div className='flex flex-col gap-1 mt-5'>
                 {
@@ -77,10 +78,10 @@ const JobDetail = ({ selectedJob }) => {
             {/* Apply Job section */}
             {
                 currentUser?.accountType !== "developer" &&
-                <div className={`mt-10`}>
+                <div className={`mt-10 flex gap-5 flex-col md:flex-row`}>
                     <button className={`border border-zinc-400 btn-primary text-white px-8 py-3 rounded-full`}>Apply Now &nbsp;<FontAwesomeIcon icon={faArrowUpRightFromSquare} /></button>
 
-                    <button onClick={() => handleAddToWishlist(_id)} className={`border border-zinc-400 btn-primary text-white px-8 py-3 rounded-full mx-5`}>Add to whishlist &nbsp;<FontAwesomeIcon icon={faArrowUpRightFromSquare} /></button>
+                    <button onClick={() => handleAddToWishlist(_id)} className={`border border-zinc-400 btn-primary text-white px-8 py-3 rounded-full `}>Add to whishlist &nbsp;<FontAwesomeIcon icon={faArrowUpRightFromSquare} /></button>
 
                 </div>
 

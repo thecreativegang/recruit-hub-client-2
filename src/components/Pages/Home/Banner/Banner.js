@@ -2,11 +2,17 @@ import React from 'react';
 import '../Home/Home.css';
 import heroImg from '../../../../images/hero-one-img-2.jpg';
 import heroImgLogo from '../../../../images/circle-logo-1.png';
+import { useNavigate } from 'react-router-dom';
 
 
 import './Banner.css'
 
 const Banner = () => {
+    // navigate for developer 
+    const navigateDeveloper = useNavigate()
+    //navigate for recruiter 
+
+    const navigateRecruiter = useNavigate()
     return (
         <div className='page-banner md:h-[110vh] h-full relative pb-[8rem] pt-[6rem] md:p-0'>
             <div className=' h-full w-[95%] md:w-[75%] mx-auto '>
@@ -16,11 +22,12 @@ const Banner = () => {
                     </div>
                     <div className=' flex justify-center items-center'>
                         <div>
-                            <h1 className="md:text-[65px] text-[35px] leading-[60px] md:leading-[92px] font-bold text-black mb-[35px]">Brand, Design &  Development  Agency</h1>
+                            <h1 className="md:text-[75px] text-[40px] leading-[60px] md:leading-[92px] font-bold text-black mb-[35px]">Get talent , Get job Recruiter Hub</h1>
                             <p className=" para-color text-[18px] mb-[45px] md:pr-[7%]  font-semibold">Sit amet consectetur adipiscing elit sed do eiusmod tem porincididunt ut labore et dolore magna aliqua. Quis psum suspendisse ultrices gravida commodo viverra</p>
                             <div>
-                                <button className='   btn-primary-vlue text-white'>Start Hiring <i class="fa-solid fa-angle-right ml-[6px]"></i></button>
-                                <button className='  btn-primary-vlue text-white ml-[25px]'>Get a job <i class="fa-solid fa-angle-right ml-[6px]"></i></button>
+
+                                <button onClick={() => navigateRecruiter('/register/recruiter')} className=' btn-primary-vlue text-white'>Start Hiring <i class="fa-solid fa-angle-right ml-[6px]"></i></button>
+                                <button onClick={() => navigateDeveloper('/register/developer')} className='  btn-primary-vlue text-white ml-[25px]'>Get a job <i class="fa-solid fa-angle-right ml-[6px]"></i></button>
 
                             </div>
                         </div>

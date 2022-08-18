@@ -10,9 +10,8 @@ const Sidebar = ({ dashboardSwitch }) => {
   const { dbSwitch, setDbSwitch } = dashboardSwitch;
 
   // dashboard link style
-  const dashboardLinkStyle = `my-2 text-gray-400 hover:text-gray-50 hover:bg-[#3a3f51] flex items-center rounded-lg ${
-    dbSwitch ? "p-3 text-base " : "p-1 text-2xl justify-center"
-  } font-semibold cursor-pointer`;
+  const dashboardLinkStyle = `my-2 text-gray-400 hover:text-gray-50 hover:bg-[#3a3f51] flex items-center rounded-lg ${dbSwitch ? "p-3 text-base " : "p-1 text-2xl justify-center"
+    } font-semibold cursor-pointer`;
 
   return (
     <div className="px-2 relative">
@@ -44,6 +43,12 @@ const Sidebar = ({ dashboardSwitch }) => {
           <li className={dashboardLinkStyle}>
             <RiFindReplaceLine className="mr-2" />
             <span className={`${!dbSwitch && "hidden"}`}> Find Job</span>
+          </li>
+        </Link>
+        <Link to="postResource">
+          <li className={dashboardLinkStyle}>
+            <RiFindReplaceLine className="mr-2" />
+            <span className={`${!dbSwitch && "hidden"}`}> Post Resource</span>
           </li>
         </Link>
       </ul>

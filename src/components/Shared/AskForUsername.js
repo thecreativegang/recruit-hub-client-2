@@ -19,7 +19,7 @@ const AskForUsername = () => {
             <>
                 {setLoading(true)}
                 {
-                    axios.post(`https://safe-oasis-01130.herokuapp.com/user/check-username/${username || ''}`)
+                    axios.post(`http://localhost:3001/user/check-username/${username || ''}`)
                         .then(data => {
                             if ((data.data.isAvailable)) {
                                 setUsernameAvailable(true)
@@ -43,7 +43,7 @@ const AskForUsername = () => {
 
     const onSubmit = async (data) => {
 
-        axios.post(`https://safe-oasis-01130.herokuapp.com/user/username`, data, {
+        axios.post(`http://localhost:3001/user/username`, data, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`,
             }

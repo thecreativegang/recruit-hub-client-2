@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { io } from 'socket.io-client';
 import { UserStore } from '../../../stateManagement/UserContext/UserContextStore';
+import Loading from '../../Shared/Loading';
 import ChatContainer from './ChatContainer';
 import MyChat from './MyChat';
 import SingleProfile from './SingleProfile';
@@ -22,9 +23,6 @@ const ChatPage = () => {
     const [search, setSearch] = useState('');
 
     const [searchResult, setSearchResult] = useState('');
-
-
-
 
     useEffect(() => {
         if (currentUser) {
@@ -45,12 +43,10 @@ const ChatPage = () => {
     }
     useEffect(() => {
         fetchChats();
-    }, [])
+    }, [allUser])
 
 
     const handelSearch = () => {
-
-
         const fetchChats = async () => {
             const data = await axios.get(`http://localhost:3001/user/search-user?search=${search}`, {
                 headers: {
@@ -64,6 +60,7 @@ const ChatPage = () => {
         setSearchResult("");
 
     }
+
 
     return (
         <div>
@@ -106,9 +103,9 @@ const ChatPage = () => {
 
                         <div>
                             {
-                                searchResult !== '' && searchResult?.map((chat) => <SingleProfile
+                                searchResult ? searchResult?.map((chat) => <SingleProfile
                                     setCurrentChat={setCurrentChat}
-                                    chat={chat} />)
+                                    chat={chat} />) : <Loading></Loading>
                             }
                         </div>
                     </ul>

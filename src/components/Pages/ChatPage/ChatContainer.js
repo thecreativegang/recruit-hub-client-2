@@ -4,6 +4,7 @@ import axios from "axios";
 import Chatinput from "./Chatinput";
 import ScrollToBottom from "react-scroll-to-bottom";
 import { FaUserCircle } from "react-icons/fa";
+import Loading from "../../Shared/Loading";
 
 const ChatContainer = ({ currentChat, currentUser, socket }) => {
 
@@ -34,7 +35,6 @@ const ChatContainer = ({ currentChat, currentUser, socket }) => {
 
 
   const handleSendMsg = async (msg) => {
-
     socket.current.emit("send-msg", {
       to: currentChat._id,
       from: currentUser._id,
@@ -67,6 +67,7 @@ const ChatContainer = ({ currentChat, currentUser, socket }) => {
   useEffect(() => {
     scrollRef.current?.scrollIntoView({ behaviour: "smooth" });
   }, [messages])
+
 
   return (
     <div className="w-100">

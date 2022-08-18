@@ -26,8 +26,13 @@ const Navbar = () => {
     const [navSwitch, setNavSwitch] = useState(false);
     const [userSwitch, setUserSwitch] = useState(false);
 
+    // user information  code {sourav}
+    const userStore = useContext(UserStore);
+    const currentUser = userStore.user;
+
     const [user] = useAuthState(auth);
 
+    console.log(userStore.user.accountType)
     const handleSignOut = () => {
         localStorage.removeItem('accessToken')
         signOut(auth);
@@ -36,7 +41,7 @@ const Navbar = () => {
     }
 
     //user information
-    const userStore = useContext(UserStore)?.user;
+    // const userStore = useContext(UserStore)?.user;
 
     const closedNavbarAll = () => {
         setUserSwitch(false) //main navbar
@@ -48,7 +53,7 @@ const Navbar = () => {
     const deActive = " font-semibold text-lg flex items-center"
 
     return (
-        <nav className='sticky top-0 left-0 z-50 shadow-2xl bg-gradient-to-r from-[#e6e6ff] to-[#d6fff5] '>
+        <nav className='sticky py-4 top-0 left-0 z-50 shadow-2xl bg-gradient-to-r from-[#e6e6ff] to-[#d6fff5] '>
             <div className='container max-w-[1280px] mx-auto relative z-50'>
                 <div className='flex justify-between items-center relative'>
                     {/* logo and navbar menu */}
@@ -74,10 +79,7 @@ const Navbar = () => {
 
                         <ul className='md:flex md:items-center  bg-gradient-to-r from-[#eaeaff] to-[#e4fff9] md:bg-gradient-to-r md:from-[#eaeaff00] md:to-[#e4fff900] pl-3 md:pl-0 py-5 md:py-0 w-full md:w-auto'>
 
-                            {
-                                userStore?.accountType === 'recruiter' &&
-                                <li onClick={closedNavbarAll} className='mr-5 mb-4 md:mb-0'> <NavLink to="/findJob" className={({ isActive }) => (isActive ? active : deActive)} > <MdOutlineConnectWithoutContact className='md:hidden text-base mr-2' /> Find Job</NavLink> </li>
-                            }
+                            <li onClick={closedNavbarAll} className='mr-5 mb-4 md:mb-0'> <NavLink to="/findJob" className={({ isActive }) => (isActive ? active : deActive)} > <MdOutlineConnectWithoutContact className='md:hidden text-base mr-2' /> Find Job</NavLink> </li>
                             <li onClick={closedNavbarAll} className='mr-5 mb-4 md:mb-0'> <NavLink to="/" className={({ isActive }) => (isActive ? active : deActive)} ><AiFillHome className='md:hidden text-base mr-2' />Home</NavLink> </li>
 
                             <li onClick={closedNavbarAll} className='mr-5 mb-4 md:mb-0'> <NavLink to="/freeResource" className={({ isActive }) => (isActive ? active : deActive)} ><BsTools className='md:hidden text-base mr-2' /> Resource</NavLink> </li>
@@ -86,7 +88,7 @@ const Navbar = () => {
 
                             <li onClick={closedNavbarAll} className='mr-5 mb-4 md:mb-0'> <NavLink to="/contactUs" className={({ isActive }) => (isActive ? active : deActive)} > <MdOutlineConnectWithoutContact className='md:hidden text-base mr-2' /> Contact US</NavLink> </li>
                             {
-                                userStore?.accountType === 'recruiter' &&
+                                userStore?.user?.accountType === 'recruiter' &&
                                 <li onClick={closedNavbarAll} className='mr-5 mb-4 md:mb-0'> <NavLink to="/postJob" className={({ isActive }) => (isActive ? active : deActive)} > <MdOutlineConnectWithoutContact className='md:hidden text-base mr-2' /> Post Job</NavLink> </li>
                             }
                             <li onClick={closedNavbarAll} className='mr-5 mb-4 md:mb-0'> <NavLink to="/chat" className={({ isActive }) => (isActive ? active : deActive)} > <MdOutlineConnectWithoutContact className='md:hidden text-base mr-2' /> Chat</NavLink> </li>
@@ -127,8 +129,8 @@ const Navbar = () => {
                                     {/* user details  */}
                                     <div className={`${userSwitch ? "top-[3.5rem]" : "top-[-20rem]"} z-20 absolute right-0 min-w-[22rem]  bg-gradient-to-t from-[#e6e6ff] to-[#d7fbf1]  p-5 rounded-b-xl duration-300 ease-out `}>
                                         <div className='text-center'>
-                                            <h6 className='text-lg md:text-xl font-[600] mb-1 md:mb-1'>Tanvir Ahmed</h6>
-                                            <h6 className='text-xs md:text-base font-[500] mb-1 md:mb-1'>@tanvir123</h6>
+                                            <h6 className='text-lg md:text-xl font-[600] mb-1 md:mb-1'>{currentUser?.username}</h6>
+                                            <h6 className='text-xs md:text-base font-[500] mb-1 md:mb-1'>{currentUser?.email}</h6>
                                             <h6 className='text-xs md:text-base font-[500] mb-1 md:mb-1'>DE-4562415</h6>
                                         </div>
 

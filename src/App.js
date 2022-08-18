@@ -22,6 +22,7 @@ import Review from './components/Pages/Review/Review';
 import Notifications from './AdminDashboard/Notifications/Notifications';
 import AskForUsername from './components/Shared/AskForUsername';
 import ProtectedRout from './components/Shared/ProtectedRout';
+import PostResource from './AdminDashboard/PostResource/PostResource';
 
 function App() {
   return (
@@ -57,6 +58,7 @@ function App() {
             <Route index element={<DashboardHome></DashboardHome>}></Route>
             <Route path='notifications' element={<Notifications />}></Route>
             <Route path='findJob' element={<FindJob />}></Route>
+            <Route path='postResource' element={<PostResource />}></Route>
           </Route>
         </Routes >
         <FooterBottomSection />

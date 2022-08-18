@@ -22,7 +22,13 @@ import Review from './components/Pages/Review/Review';
 import Notifications from './AdminDashboard/Notifications/Notifications';
 import AskForUsername from './components/Shared/AskForUsername';
 import ProtectedRout from './components/Shared/ProtectedRout';
+
+import UserMain from './components/Pages/UserDasboard/UserMain/UserMain';
+import UserProfile from './components/Pages/UserDasboard/UserProfile/UserProfile';
+import UserReview from './components/Pages/UserDasboard/UserReiew/UserReview';
+
 import PostResource from './AdminDashboard/PostResource/PostResource';
+
 
 function App() {
   return (
@@ -49,7 +55,7 @@ function App() {
             </ProtectedRout>
           }></Route>
           <Route path='/postJob' element={<PostAJob />}></Route>
-          <Route path='/review' element={<Review></Review>}></Route>
+
           <Route path='/skilltest' element={<SkillAssessment />}></Route>
           <Route path='/findJob' element={<FindJob />}></Route>
           <Route path='/askUsername' element={<AskForUsername />}></Route>
@@ -60,6 +66,15 @@ function App() {
             <Route path='findJob' element={<FindJob />}></Route>
             <Route path='postResource' element={<PostResource />}></Route>
           </Route>
+
+
+          <Route path='/dashboard' element={<UserMain></UserMain>}>
+            <Route index element={<UserProfile></UserProfile>}></Route>
+            <Route path='userReview' element={<Review></Review>}></Route>
+          </Route>
+
+
+
         </Routes >
         <FooterBottomSection />
         <ToastContainer

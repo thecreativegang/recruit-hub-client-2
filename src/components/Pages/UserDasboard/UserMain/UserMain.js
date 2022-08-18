@@ -7,7 +7,7 @@ const UserMain = () => {
     return (
         <div className='flex bg-[#F3F3F3] h-screen relative'>
             {/* side bar  */}
-            <div className='w-[20%]  p-6 usernav sticky top-0 left-0'>
+            <div className='w-[20%]  p-6 usernav bg-white'>
                 <UserSidebar></UserSidebar>
             </div>
 

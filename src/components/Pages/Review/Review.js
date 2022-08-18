@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useEffect, useRef } from "react";
 import './Review.css'
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import { useForm } from 'react-hook-form';
+import Lottie from 'lottie-web';
+import data from './53395-login.json'
+
+
+
 const Review = () => {
 
     const [user] = useAuthState(auth);
@@ -10,7 +15,20 @@ const Review = () => {
     const { register, handleSubmit } = useForm();
     const onSubmit = data => console.log(data);
 
-
+    const anime = useRef(null);
+    useEffect(() => {
+        Lottie.loadAnimation({
+            container: anime.current,
+            renderer: "svg",
+            loop: true,
+            autoplay: true,
+            animationData: data,
+            rendererSettings: {
+                preserveAspectRatio: 'xMidYMid slice'
+            }
+        });
+        // More logic goes here
+    }, []);
 
     return (
 
@@ -27,6 +45,10 @@ const Review = () => {
                         <textarea required="" name="" id="" class="review-textarea mb-4 h-[150px] w-[100%]" placeholder="Tell Me about Us Freely " spellcheck="false" autocomplete="off" {...register("review-text")}></textarea>
                         <input className='bg-blue-dark py-[13px] px-[35px] font-semibold cursor-pointer text-white' type="submit" />
                     </form>
+
+
+
+                    {/* <div className="overflow-hidden" style={{ height: 250, width: 300 }} ref={anime}></div>; */}
                 </div>
             </div>
 

@@ -12,7 +12,7 @@ import axios from 'axios';
 import { useRef } from 'react';
 import { toast } from 'react-toastify';
 import googleLogo from '../../../images/google.png';
-import { data } from 'autoprefixer';
+
 import AccountTypePage from './AccountTypePage';
 
 
@@ -110,6 +110,8 @@ const Register = () => {
 
 
     }
+
+
     return (
         <div>
             <div className=" flex justify-center items-center pt-20 my-10">
@@ -264,6 +266,8 @@ const Register = () => {
                         }
                     </div>
                 </div>
+
+
             </div >
         </div >
     );

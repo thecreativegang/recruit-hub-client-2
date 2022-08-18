@@ -2,8 +2,13 @@ import React from "react";
 import "./module.FreeResource.css";
 import { AiOutlineSearch } from "react-icons/ai";
 import ReactPlayer from "react-player";
+import GetThumbnail from "../../../hooks/GetThumbnail";
 
 const FreeResource = () => {
+  // get YouTube Video Thumbnail function Start
+  const youtubImg = GetThumbnail("https://www.youtube.com/watch?v=lNsmaXFmnSI");
+  // get YouTube Video Thumbnail function End
+
   return (
     <div>
       {/* hero section  */}
@@ -53,38 +58,116 @@ const FreeResource = () => {
             </button>
           </div>
 
-          {/* video  */}
-          <div className="grid grid-cols-3 md:grid-cols-4 gap-6 justify-center items-center">
+          {/* video render hear  */}
+          <div className="w-[70%] h-[500px] border-4 border-gray-600 rounded-sm mx-auto my-16">
             <ReactPlayer
-              width="auto"
-              height="auto"
+              width="100%"
+              height="100%"
               controls
               url="https://youtu.be/7sDY4m8KNLc"
             />
-            <ReactPlayer
-              width="auto"
-              height="auto"
-              controls
-              url="https://youtu.be/7sDY4m8KNLc"
-            />
-            <ReactPlayer
-              width="auto"
-              height="auto"
-              controls
-              url="https://youtu.be/7sDY4m8KNLc"
-            />
-            <ReactPlayer
-              width="auto"
-              height="auto"
-              controls
-              url="https://youtu.be/7sDY4m8KNLc"
-            />
-            <ReactPlayer
-              width="auto"
-              height="auto"
-              controls
-              url="https://youtu.be/7sDY4m8KNLc"
-            />
+          </div>
+
+          {/* video list  */}
+          <div className="grid grid-cols-4 justify-center items-center gap-10 pt-10 mb-20 mx-3">
+            <div className=" w-full h-full rounded overflow-hidden shadow-xl">
+              <div className=" w-full h-auto rounded overflow-hidden">
+                <img className="w-full h-full" src={youtubImg} alt="you" />
+              </div>
+              <h3 className="text-gray-800 text-base font-medium mt-2 mb-4 mx-2">
+                Lorem ipsum dolor sit amet consec
+              </h3>
+            </div>
+
+            <div className=" w-full h-full rounded overflow-hidden shadow-xl">
+              <div className=" w-full h-auto rounded overflow-hidden">
+                <img className="w-full h-full" src={youtubImg} alt="you" />
+              </div>
+              <h3 className="text-gray-800 text-base font-medium mt-2 mb-4 mx-2">
+                Lorem ipsum dolor sit amet consec
+              </h3>
+            </div>
+
+            <div className=" w-full h-full rounded overflow-hidden shadow-xl">
+              <div className=" w-full h-auto rounded overflow-hidden">
+                <img className="w-full h-full" src={youtubImg} alt="you" />
+              </div>
+              <h3 className="text-gray-800 text-base font-medium mt-2 mb-4 mx-2">
+                Lorem ipsum dolor sit amet consec
+              </h3>
+            </div>
+
+            <div className=" w-full h-full rounded overflow-hidden shadow-xl">
+              <div className=" w-full h-auto rounded overflow-hidden">
+                <img className="w-full h-full" src={youtubImg} alt="you" />
+              </div>
+              <h3 className="text-gray-800 text-base font-medium mt-2 mb-4 mx-2">
+                Lorem ipsum dolor sit amet consec
+              </h3>
+            </div>
+
+            <div className=" w-full h-full rounded overflow-hidden shadow-xl">
+              <div className=" w-full h-auto rounded overflow-hidden">
+                <img className="w-full h-full" src={youtubImg} alt="you" />
+              </div>
+              <h3 className="text-gray-800 text-base font-medium mt-2 mb-4 mx-2">
+                Lorem ipsum dolor sit amet consec
+              </h3>
+            </div>
+
+            <div className=" w-full h-full rounded overflow-hidden shadow-xl">
+              <div className=" w-full h-auto rounded overflow-hidden">
+                <img className="w-full h-full" src={youtubImg} alt="you" />
+              </div>
+              <h3 className="text-gray-800 text-base font-medium mt-2 mb-4 mx-2">
+                Lorem ipsum dolor sit amet consec
+              </h3>
+            </div>
+
+            <div className=" w-full h-full rounded overflow-hidden shadow-xl">
+              <div className=" w-full h-auto rounded overflow-hidden">
+                <img className="w-full h-full" src={youtubImg} alt="you" />
+              </div>
+              <h3 className="text-gray-800 text-base font-medium mt-2 mb-4 mx-2">
+                Lorem ipsum dolor sit amet consec
+              </h3>
+            </div>
+
+            <div className=" w-full h-full rounded overflow-hidden shadow-xl">
+              <div className=" w-full h-auto rounded overflow-hidden">
+                <img className="w-full h-full" src={youtubImg} alt="you" />
+              </div>
+              <h3 className="text-gray-800 text-base font-medium mt-2 mb-4 mx-2">
+                Lorem ipsum dolor sit amet consec
+              </h3>
+            </div>
+
+            <div className=" w-full h-full rounded overflow-hidden shadow-xl">
+              <div className=" w-full h-auto rounded overflow-hidden">
+                <img className="w-full h-full" src={youtubImg} alt="you" />
+              </div>
+              <h3 className="text-gray-800 text-base font-medium mt-2 mb-4 mx-2">
+                Lorem ipsum dolor sit amet consec
+              </h3>
+            </div>
+
+            <div className=" w-full h-full rounded overflow-hidden shadow-xl">
+              <div className=" w-full h-auto rounded overflow-hidden">
+                <img className="w-full h-full" src={youtubImg} alt="you" />
+              </div>
+              <h3 className="text-gray-800 text-base font-medium mt-2 mb-4 mx-2">
+                Lorem ipsum dolor sit amet consec
+              </h3>
+            </div>
+
+            <div className=" w-full h-full rounded overflow-hidden shadow-xl">
+              <div className=" w-full h-auto rounded overflow-hidden">
+                <img className="w-full h-full" src={youtubImg} alt="you" />
+              </div>
+              <h3 className="text-gray-800 text-base font-medium mt-2 mb-4 mx-2">
+                Lorem ipsum dolor sit amet consec
+              </h3>
+            </div>
           </div>
         </div>
       </section>

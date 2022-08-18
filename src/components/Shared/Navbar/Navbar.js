@@ -31,6 +31,7 @@ const Navbar = () => {
 
     const [user] = useAuthState(auth);
 
+    console.log(userStore.user.accountType)
     const handleSignOut = () => {
         localStorage.removeItem('accessToken')
         signOut(auth);
@@ -77,10 +78,7 @@ const Navbar = () => {
 
                         <ul className='md:flex md:items-center  bg-gradient-to-r from-[#eaeaff] to-[#e4fff9] md:bg-gradient-to-r md:from-[#eaeaff00] md:to-[#e4fff900] pl-3 md:pl-0 py-5 md:py-0 w-full md:w-auto'>
 
-                            {
-                                userStore?.accountType === 'recruiter' &&
-                                <li onClick={closedNavbarAll} className='mr-5 mb-4 md:mb-0'> <NavLink to="/findJob" className={({ isActive }) => (isActive ? active : deActive)} > <MdOutlineConnectWithoutContact className='md:hidden text-base mr-2' /> Find Job</NavLink> </li>
-                            }
+                            <li onClick={closedNavbarAll} className='mr-5 mb-4 md:mb-0'> <NavLink to="/findJob" className={({ isActive }) => (isActive ? active : deActive)} > <MdOutlineConnectWithoutContact className='md:hidden text-base mr-2' /> Find Job</NavLink> </li>
                             <li onClick={closedNavbarAll} className='mr-5 mb-4 md:mb-0'> <NavLink to="/" className={({ isActive }) => (isActive ? active : deActive)} ><AiFillHome className='md:hidden text-base mr-2' />Home</NavLink> </li>
 
                             <li onClick={closedNavbarAll} className='mr-5 mb-4 md:mb-0'> <NavLink to="/service" className={({ isActive }) => (isActive ? active : deActive)} ><BsTools className='md:hidden text-base mr-2' /> Services</NavLink> </li>
@@ -89,7 +87,7 @@ const Navbar = () => {
 
                             <li onClick={closedNavbarAll} className='mr-5 mb-4 md:mb-0'> <NavLink to="/contactUs" className={({ isActive }) => (isActive ? active : deActive)} > <MdOutlineConnectWithoutContact className='md:hidden text-base mr-2' /> Contact US</NavLink> </li>
                             {
-                                userStore?.accountType === 'recruiter' &&
+                                userStore?.user?.accountType === 'recruiter' &&
                                 <li onClick={closedNavbarAll} className='mr-5 mb-4 md:mb-0'> <NavLink to="/postJob" className={({ isActive }) => (isActive ? active : deActive)} > <MdOutlineConnectWithoutContact className='md:hidden text-base mr-2' /> Post Job</NavLink> </li>
                             }
                             <li onClick={closedNavbarAll} className='mr-5 mb-4 md:mb-0'> <NavLink to="/chat" className={({ isActive }) => (isActive ? active : deActive)} > <MdOutlineConnectWithoutContact className='md:hidden text-base mr-2' /> Chat</NavLink> </li>

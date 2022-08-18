@@ -3,8 +3,9 @@ import axios from 'axios';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
-const RequireUsername = ({ children }) => {
+const RequireUsername = ({ children, prop }) => {
     const [hasUsername, setHasUsername] = useState(true);
     const navigate = useNavigate()
     const [user] = useAuthState(auth)
@@ -27,13 +28,14 @@ const RequireUsername = ({ children }) => {
                         setHasUsername(true);
                     }
                 })
-                .then(function (error) {
-                    console.log(error)
+                .catch(function (error) {
+                    // console.log(error)
+                    if (error?.message) {
+                        toast.error(error.message)
+                    }
                 })
         }
-        else {
-            console.log('Email not found')
-        }
+
 
     }, [user])
 

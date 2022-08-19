@@ -29,6 +29,12 @@
 .btn-primary-vlue:focus {
   outline: none;
 }
+.btn-primary-vlue:hover {
+  background-color: #191919;
+  color: #fff;
+  transition: all 0.2s;
+}
+
 .profile-form-border {
   border: 1px solid rgb(224, 224, 224);
 }

@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import navLogo from '../../../images/logo.png';
 import './Navbar.css'
@@ -133,6 +132,8 @@ const Navbar = () => {
                                         {/* routes  */}
                                         <ul>
                                             <li onClick={closedNavbarAll} className='mb-4'> <NavLink to="/profile" className={({ isActive }) => (isActive ? active : deActive)} > <CgProfile className=' text-base md:text-xl mr-2' />Profile</NavLink> </li>
+                                            <li onClick={closedNavbarAll} className='mb-4'> <NavLink to="/dashboard" className={({ isActive }) => (isActive ? active : deActive)} > <CgProfile className=' text-base md:text-xl mr-2' />Dashboard</NavLink> </li>
+
 
                                             <li onClick={() => handleSignOut()} className='mb-4 cursor-pointer font-semibold text-lg flex items-center'> <ImExit className=' text-base md:text-xl mr-2' />Logout</li>
 

@@ -20,7 +20,7 @@ const SkillAssessment = () => {
 
   useEffect(() => {
     axios
-      .get('http://localhost:3001/skillassessment/test')
+      .get('${serverLink}/skillassessment/test')
       .then((res) => {
         setQuestion(res.data);
         setLoading(false);

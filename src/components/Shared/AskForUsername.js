@@ -6,6 +6,8 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from './../../firebase.init';
 import { useNavigate } from 'react-router-dom';
 import Loading from './Loading';
+import { checkTokenExpired } from './../../utilities/checkTokenExpired';
+import { serverLink } from './../../utilities/links';
 
 const AskForUsername = () => {
     const [user] = useAuthState(auth)
@@ -19,7 +21,7 @@ const AskForUsername = () => {
             <>
                 {setLoading(true)}
                 {
-                    axios.post(`http://localhost:3001/user/check-username/${username || ''}`)
+                    axios.post(`${serverLink}/user/check-username/${username || ''}`)
                         .then(data => {
                             if ((data.data.isAvailable)) {
                                 setUsernameAvailable(true)
@@ -43,7 +45,7 @@ const AskForUsername = () => {
 
     const onSubmit = async (data) => {
 
-        axios.post(`http://localhost:3001/user/username`, data, {
+        axios.post(`${serverLink}/user/username`, data, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`,
             }
@@ -60,10 +62,8 @@ const AskForUsername = () => {
                 }
 
             })
-            .then(function (err) {
-                if (err) {
-                    console.log(err)
-                }
+            .catch(function (err) {
+                checkTokenExpired(err) === true && navigate('/login')
             })
     }
     if (loading) {

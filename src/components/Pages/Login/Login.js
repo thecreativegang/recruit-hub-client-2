@@ -8,8 +8,6 @@ import useToken from './../../../hooks/useToken';
 import googleLogo from '../../../images/google.png';
 const Login = () => {
     const [globalUser] = useAuthState(auth);
-    const [forgetPass, setForgetPass] = useState(false);
-    const [forgetPassText, setForgetPassText] = useState("");
     const [passwordError, setPasswordError] = useState('');
     const location = useLocation();
     const from = location?.state?.from?.pathname || '/';
@@ -69,7 +67,7 @@ const Login = () => {
         signInWithEmailAndPassword(email, password);
     };
     return (
-        <div className=''>
+        <div className='min-h-[100vh] mt-10 '>
             <div className=" flex justify-center items-center ">
                 <div className=" md:w-1/4 flex-col lg:flex-row-reverse">
                     <div className="card flex-shrink-0 w-full  shadow-2xl bg-base-100">
@@ -96,37 +94,19 @@ const Login = () => {
                                         {
                                             required: true,
                                         })} />
-                                    <div className='text-xl flex justify-end items-center'>
+                                    <div className='text-xl flex justify-between items-center'>
+                                        <div>
+                                            <label className="my-2">
+                                                <Link to="/forgetPassword" className=" hover:text-primary  text-lg"><span >Forgot password?</span></Link>
+                                            </label>
+                                        </div>
                                         <label className="label cursor-pointer">
                                             <span className="label-text text-lg">&nbsp; Show Password &nbsp;</span>
                                             <input onChange={() => setShowPassword(!showPassword)} type="checkbox" checked={showPassword} className="checkbox" />
                                         </label>
                                     </div>
-
-
-                                    {/* Forget password area  */}
-                                    {/* <div className=''>
-
-                                        {
-                                            forgetPass && <input onBlur={() => setForgetPass(false)} value={forgetPassText} onChange={(e) => setForgetPassText(e.target.value)} type="text" placeholder="Enter your Email" className="mt-5 input input-bordered text-xl w-full" />
-                                        }
-                                        <br />
-                                        <div className='flex flex-col md:flex-row-reverse xs:gap-3 xs:my-0 justify-between'>
-                                            <div >
-                                                <label className="my-2">
-                                                    <button onClick={() => setForgetPass(!forgetPass)} className=" hover:text-primary font-semibold text-lg"><span >Forgot password?</span></button>
-                                                </label>
-                                            </div>
-                                            <div>
-                                                <label className="">
-                                                    <Link to="/register" className=" pointer hover:text-primary font-semibold  text-lg">New here? Sign Up
-                                                    </Link>
-                                                </label>
-                                            </div>
-                                        </div>
-
-                                    </div> */}
                                 </div>
+
                                 {/* Error Shows here */}
                                 <div>
                                     {

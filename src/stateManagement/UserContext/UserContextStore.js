@@ -4,10 +4,13 @@ import { useEffect } from "react";
 import { createContext } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
+import { checkTokenExpired } from './../../utilities/checkTokenExpired';
+import { useNavigate } from 'react-router-dom';
+import { serverLink } from './../../utilities/links';
 const UserStore = createContext()
 
 const UserStoreProvider = ({ children }) => {
-
+    const navigate = useNavigate()
 
     //get user data with auth
     const [globalUser] = useAuthState(auth)
@@ -19,14 +22,15 @@ const UserStoreProvider = ({ children }) => {
 
     useEffect(() => {
         if (userEmail) {
-            axios.get(`http://localhost:3001/user/email/${userEmail}`, {
+            axios.get(`${serverLink}/user/email/${userEmail}`, {
                 headers: {
                     authorization: `Bearer ${localStorage.getItem('accessToken')}`,
                 }
             })
                 .then(res => setUser(res.data))
-
-                .catch(err => console.error(err))
+                .catch(function (err) {
+                    checkTokenExpired(err) === true && navigate('/login')
+                })
         }
 
         else {

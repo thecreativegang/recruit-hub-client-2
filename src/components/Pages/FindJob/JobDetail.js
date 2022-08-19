@@ -8,16 +8,18 @@ import { UserStore } from '../../../stateManagement/UserContext/UserContextStore
 import { useContext } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import { serverLink } from './../../../utilities/links';
+import checkTokenExpired from './../../../utilities/checkTokenExpired';
+import { useNavigate } from 'react-router-dom';
 
 const JobDetail = ({ selectedJob, setShowJobDetail }) => {
     const { recruitersName, jobTitle, companyName, companySize, vacancies, jobNature, educationalQualification, jobRequirements, tags, applicationDeadline, deadlineMonth, deadlineYear, payRange, companyLocation, publishedDate, applicantCount, _id } = selectedJob
     const monthName = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec']
     const currentUser = useContext(UserStore)?.user;
-    // console.log(currentUser.accountType)
 
+    const navigate = useNavigate()
     const handleAddToWishlist = async (id) => {
-        // 
-        await axios.post(`http://localhost:3001/user/wishList`, { id }, {
+        await axios.post(`${serverLink}/user/wishList`, { id }, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`,
             },
@@ -33,6 +35,23 @@ const JobDetail = ({ selectedJob, setShowJobDetail }) => {
                 else {
                     console.log('ok')
                 }
+            }
+            )
+            .catch(function (err) {
+                checkTokenExpired(err) === true && navigate('/login')
+            })
+    }
+    const handleApplyJob = (id) => {
+        axios.post(`${serverLink}/job/apply/${id}`, {
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+            },
+        })
+            .then(function (res) {
+                console.log(res)
+            })
+            .catch(function (err) {
+                checkTokenExpired(err) === true && navigate('/login')
             })
     }
     return (
@@ -79,9 +98,9 @@ const JobDetail = ({ selectedJob, setShowJobDetail }) => {
             {
                 currentUser?.accountType !== "developer" &&
                 <div className={`mt-10 flex gap-5 flex-col md:flex-row`}>
-                    <button className={`border border-zinc-400 btn-primary text-white px-8 py-3 rounded-full`}>Apply Now &nbsp;<FontAwesomeIcon icon={faArrowUpRightFromSquare} /></button>
+                    <button onClick={() => handleApplyJob(_id)} className={` btn-primary text-white px-8 py-3 rounded-full`}>Apply Now &nbsp;<FontAwesomeIcon icon={faArrowUpRightFromSquare} /></button>
 
-                    <button onClick={() => handleAddToWishlist(_id)} className={`border border-zinc-400 btn-primary text-white px-8 py-3 rounded-full `}>Add to whishlist &nbsp;<FontAwesomeIcon icon={faArrowUpRightFromSquare} /></button>
+                    <button onClick={() => handleAddToWishlist(_id)} className={` btn-primary text-white px-8 py-3 rounded-full `}>Add to whishlist &nbsp;<FontAwesomeIcon icon={faArrowUpRightFromSquare} /></button>
 
                 </div>
 

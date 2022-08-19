@@ -1,0 +1,19 @@
+import { signOut } from 'firebase/auth';
+import auth from './../firebase.init';
+import { toast } from 'react-toastify';
+export const checkTokenExpired = (err) => {
+    if (err?.response?.status === 403) {
+        localStorage.removeItem('accessToken')
+        signOut(auth);
+        toast.error("Token Expired!");
+        return true;
+    }
+    else if (err) {
+        toast.error(err.message);
+    }
+    else {
+        return false
+    }
+};
+
+export default checkTokenExpired;

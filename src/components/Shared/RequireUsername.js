@@ -4,6 +4,8 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { checkTokenExpired } from './../../utilities/checkTokenExpired';
+import { serverLink } from './../../utilities/links';
 
 const RequireUsername = ({ children, prop }) => {
     const [hasUsername, setHasUsername] = useState(true);
@@ -12,7 +14,7 @@ const RequireUsername = ({ children, prop }) => {
     useEffect(() => {
 
         if (user?.email) {
-            axios.get(`http://localhost:3001/user/${user?.email}`, {
+            axios.get(`${serverLink}/user/${user?.email}`, {
                 headers: {
                     authorization: `Bearer ${localStorage.getItem('accessToken')}`,
                 }
@@ -28,11 +30,8 @@ const RequireUsername = ({ children, prop }) => {
                         setHasUsername(true);
                     }
                 })
-                .catch(function (error) {
-                    // console.log(error)
-                    if (error?.message) {
-                        toast.error(error.message)
-                    }
+                .catch(function (err) {
+                    checkTokenExpired(err) === true && navigate('/login')
                 })
         }
 

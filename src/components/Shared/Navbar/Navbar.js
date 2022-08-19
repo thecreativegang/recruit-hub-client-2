@@ -21,17 +21,12 @@ import { UserStore } from '../../../stateManagement/UserContext/UserContextStore
 
 const Navbar = () => {
 
-
     const [navSwitch, setNavSwitch] = useState(false);
     const [userSwitch, setUserSwitch] = useState(false);
-
     // user information  code {sourav}
     const userStore = useContext(UserStore);
     const currentUser = userStore.user;
-
     const [user] = useAuthState(auth);
-
-    console.log(userStore.user.accountType)
     const handleSignOut = () => {
         localStorage.removeItem('accessToken')
         signOut(auth);

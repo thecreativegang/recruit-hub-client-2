@@ -29,6 +29,7 @@ import UserProfile from './components/Pages/UserDasboard/UserProfile/UserProfile
 import UserReview from './components/Pages/UserDasboard/UserReiew/UserReview';
 
 import PostResource from './AdminDashboard/PostResource/PostResource';
+import FreeResource from './components/Pages/FreeResource/FreeResource';
 
 
 function App() {
@@ -38,11 +39,13 @@ function App() {
         <Navbar />
         <Routes>
           <Route path='/' element={
-            <Home />
+            <RequireUsername>
+              <Home />
+            </RequireUsername>
           } />
-          <Route path='/home' element={
-            <Home />
-          } />
+
+          <Route path='/home' element={<Home />} />
+          <Route path='/freeResource' element={<FreeResource />} />
 
           <Route path='/profile' element={<Profile></Profile>} />
           <Route path='/login' element={<Login />} />
@@ -62,6 +65,8 @@ function App() {
           <Route path='/askUsername' element={<AskForUsername />}></Route>
           <Route path='/forgetPassword' element={<ForgetPassword />}></Route>
 
+
+          {/* admin dashboard page  */}
           <Route path='/admin' element={<MainAdmin />}>
             <Route index element={<DashboardHome></DashboardHome>}></Route>
             <Route path='notifications' element={<Notifications />}></Route>

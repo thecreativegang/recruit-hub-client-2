@@ -2,6 +2,7 @@ import axios from 'axios';
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import { serverLink } from './../../../utilities/links';
 
 const SkillAssessment = () => {
   const [questions, setQuestion] = useState([]);
@@ -20,7 +21,7 @@ const SkillAssessment = () => {
 
   useEffect(() => {
     axios
-      .get('${serverLink}/skillassessment/test')
+      .get(`${serverLink}/skillassessment/test`)
       .then((res) => {
         setQuestion(res.data);
         setLoading(false);

@@ -22,6 +22,15 @@ import Review from './components/Pages/Review/Review';
 import Notifications from './AdminDashboard/Notifications/Notifications';
 import AskForUsername from './components/Shared/AskForUsername';
 import ProtectedRout from './components/Shared/ProtectedRout';
+import ForgetPassword from './components/Pages/Login/ForgetPassword';
+
+import UserMain from './components/Pages/UserDasboard/UserMain/UserMain';
+import UserProfile from './components/Pages/UserDasboard/UserProfile/UserProfile';
+import UserReview from './components/Pages/UserDasboard/UserReiew/UserReview';
+
+import PostResource from './AdminDashboard/PostResource/PostResource';
+import FreeResource from './components/Pages/FreeResource/FreeResource';
+
 
 function App() {
   return (
@@ -30,11 +39,13 @@ function App() {
         <Navbar />
         <Routes>
           <Route path='/' element={
-            <Home />
+            <RequireUsername>
+              <Home />
+            </RequireUsername>
           } />
-          <Route path='/home' element={
-            <Home />
-          } />
+
+          <Route path='/home' element={<Home />} />
+          <Route path='/freeResource' element={<FreeResource />} />
 
           <Route path='/profile' element={<Profile></Profile>} />
           <Route path='/login' element={<Login />} />
@@ -48,16 +59,29 @@ function App() {
             </ProtectedRout>
           }></Route>
           <Route path='/postJob' element={<PostAJob />}></Route>
-          <Route path='/review' element={<Review></Review>}></Route>
+
           <Route path='/skilltest' element={<SkillAssessment />}></Route>
           <Route path='/findJob' element={<FindJob />}></Route>
           <Route path='/askUsername' element={<AskForUsername />}></Route>
+          <Route path='/forgetPassword' element={<ForgetPassword />}></Route>
 
+
+          {/* admin dashboard page  */}
           <Route path='/admin' element={<MainAdmin />}>
             <Route index element={<DashboardHome></DashboardHome>}></Route>
             <Route path='notifications' element={<Notifications />}></Route>
             <Route path='findJob' element={<FindJob />}></Route>
+            <Route path='postResource' element={<PostResource />}></Route>
           </Route>
+
+
+          <Route path='/dashboard' element={<UserMain></UserMain>}>
+            <Route index element={<UserProfile></UserProfile>}></Route>
+            <Route path='userReview' element={<Review></Review>}></Route>
+          </Route>
+
+
+
         </Routes >
         <FooterBottomSection />
         <ToastContainer

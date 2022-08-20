@@ -8,6 +8,7 @@ import SingleJobInList from './SingleJobInList';
 import JobDetail from './JobDetail';
 import NoResultFoundWarning from '../../Shared/WarningAndInfo/NoResultFoundWarning';
 import ShowingSearchResultInfo from '../../Shared/WarningAndInfo/ShowingSearchResultInfo';
+import { serverLink } from './../../../utilities/links';
 
 const FindJob = () => {
     const [refetch, setRefetch] = useState(true);
@@ -24,7 +25,7 @@ const FindJob = () => {
         payRange: ""
     }
     useEffect(() => {
-        axios.get(`http://localhost:3001/job`)
+        axios.get(`${serverLink}/job`)
             .then(function (res) {
                 console.log(res.data.jobs)
                 setJobs(res?.data?.jobs)

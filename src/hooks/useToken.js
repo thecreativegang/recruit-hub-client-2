@@ -1,6 +1,7 @@
 import axios from "axios"
 import { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
+import { serverLink } from './../utilities/links';
 const useToken = async (currentUser) => {
     const [token, setToken] = useState('');
     const user = {
@@ -10,8 +11,8 @@ const useToken = async (currentUser) => {
     };
     useEffect(() => {
         if (user.email) {
-            // http://localhost:3001/
-            const targetUrl = 'http://localhost:3001/user/create'
+            // ${serverLink}/
+            const targetUrl = `${serverLink}/user/create`
             axios.post(targetUrl, user)
                 .then(function (res) {
                     setToken(res?.data?.accessToken);

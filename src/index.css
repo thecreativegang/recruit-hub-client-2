@@ -1,6 +1,21 @@
+/* google fonts poppins ( font-family: 'Poppins', sans-serif; ) */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+/* font-family: 'Open Sans', sans-serif; */
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.container {
+  max-width: 1280px;
+  margin: auto;
+}
+
+.open-sans {
+  font-family: "Open Sans", sans-serif;
+}
 
 .bg-blue-dark {
   background-color: #5956e9;
@@ -29,6 +44,12 @@
 .btn-primary-vlue:focus {
   outline: none;
 }
+.btn-primary-vlue:hover {
+  background-color: #191919;
+  color: #fff;
+  transition: all 0.2s;
+}
+
 .profile-form-border {
   border: 1px solid rgb(224, 224, 224);
 }

@@ -12,8 +12,9 @@ import axios from 'axios';
 import { useRef } from 'react';
 import { toast } from 'react-toastify';
 import googleLogo from '../../../images/google.png';
-import { data } from 'autoprefixer';
+
 import AccountTypePage from './AccountTypePage';
+import { serverLink } from './../../../utilities/links';
 
 
 const Register = () => {
@@ -84,7 +85,7 @@ const Register = () => {
     const handleUserNameValidation = async (username) => {
         username !== ''
             ?
-            await axios.post(`http://localhost:3001/user/check-username/${username}`)
+            await axios.post(`${serverLink}/user/check-username/${username}`)
                 .then(data => {
                     if ((data.data.isAvailable)) {
                         setUsernameAvailable(true)
@@ -110,6 +111,8 @@ const Register = () => {
 
 
     }
+
+
     return (
         <div>
             <div className=" flex justify-center items-center pt-20 my-10">
@@ -264,6 +267,8 @@ const Register = () => {
                         }
                     </div>
                 </div>
+
+
             </div >
         </div >
     );

@@ -5,6 +5,7 @@ import Chatinput from "./Chatinput";
 import ScrollToBottom from "react-scroll-to-bottom";
 import { FaUserCircle } from "react-icons/fa";
 import Loading from "../../Shared/Loading";
+import { serverLink } from './../../../utilities/links';
 
 const ChatContainer = ({ currentChat, currentUser, socket }) => {
 
@@ -19,7 +20,7 @@ const ChatContainer = ({ currentChat, currentUser, socket }) => {
 
     const asyncFetchDailyData = async () => {
       if (currentChat) {
-        const response = await axios.post(`http://localhost:3001/messages/getmsg`, {
+        const response = await axios.post(`${serverLink}/messages/getmsg`, {
           from: currentUser._id,
           to: currentChat._id,
         });
@@ -41,7 +42,7 @@ const ChatContainer = ({ currentChat, currentUser, socket }) => {
       msg,
     });
 
-    await axios.post(`http://localhost:3001/messages/addmsg`, {
+    await axios.post(`${serverLink}/messages/addmsg`, {
       from: currentUser._id,
       to: currentChat._id,
       message: msg,

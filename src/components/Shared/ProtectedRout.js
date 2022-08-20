@@ -3,6 +3,8 @@ import axios from 'axios';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import { useNavigate } from 'react-router-dom';
+import { checkTokenExpired } from './../../utilities/checkTokenExpired';
+import { serverLink } from './../../utilities/links';
 
 const ProtectedRout = ({ children }) => {
     const [hasUsername, setHasUsername] = useState(true);
@@ -13,7 +15,7 @@ const ProtectedRout = ({ children }) => {
             return navigate('/login');
         }
         else if (user?.email) {
-            axios.get(`http://localhost:3001/user/${user?.email}`, {
+            axios.get(`${serverLink}/user/${user?.email}`, {
                 headers: {
                     authorization: `Bearer ${localStorage.getItem('accessToken')}`,
                 }
@@ -29,8 +31,8 @@ const ProtectedRout = ({ children }) => {
                         setHasUsername(true);
                     }
                 })
-                .then(function (error) {
-                    console.log(error)
+                .catch(function (err) {
+                    checkTokenExpired(err) === true && navigate('/login')
                 })
         }
         else {

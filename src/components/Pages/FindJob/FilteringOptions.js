@@ -2,6 +2,9 @@ import React, { useRef, useState } from 'react';
 import axios from 'axios';
 import { useContext } from 'react';
 import { UserStore } from '../../../stateManagement/UserContext/UserContextStore';
+import { checkTokenExpired } from './../../../utilities/checkTokenExpired';
+import { useNavigate } from 'react-router-dom';
+import { serverLink } from './../../../utilities/links';
 
 const FilteringOptions = ({ searchElements, SetfilteringOn, setSearchedResults, searchedResults, setNoResultFound }) => {
     const { searchText, jobNature, companySize, payRange, } = searchElements;
@@ -11,6 +14,7 @@ const FilteringOptions = ({ searchElements, SetfilteringOn, setSearchedResults, 
     const companySizeRef = useRef("")
     const payRangeRef = useRef("")
     const showAllorOnlyMine = useRef("")
+    const navigate = useNavigate()
     const searchJob = (e) => {
         const searchData = {
             searchJobNature: jobNatureRef.current?.value,
@@ -20,7 +24,7 @@ const FilteringOptions = ({ searchElements, SetfilteringOn, setSearchedResults, 
             searchShowAllorOnlyMine: showAllorOnlyMine.current?.value,
         }
         console.log(searchData)
-        axios.post(`http://localhost:3001/job/filter`, searchData, {
+        axios.post(`${serverLink}/job/filter`, searchData, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`,
             },
@@ -45,9 +49,7 @@ const FilteringOptions = ({ searchElements, SetfilteringOn, setSearchedResults, 
                 }
             })
             .catch(function (err) {
-                if (err) {
-                    console.log(err)
-                }
+                checkTokenExpired(err) === true && navigate('/login')
             })
     }
     return (

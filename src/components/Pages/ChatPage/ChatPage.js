@@ -9,13 +9,16 @@ import Loading from '../../Shared/Loading';
 import ChatContainer from './ChatContainer';
 import MyChat from './MyChat';
 import SingleProfile from './SingleProfile';
+import { checkTokenExpired } from './../../../utilities/checkTokenExpired';
+import { useNavigate } from 'react-router-dom';
+import { serverLink } from './../../../utilities/links';
 
 
-// /const socket = io.connect("http://localhost:3001");
+// /const socket = io.connect("${serverLink}");
 
 const ChatPage = () => {
     const socket = useRef();
-
+    const navigate = useNavigate()
     const userStore = useContext(UserStore);
     const currentUser = userStore.user;
     const [allUser, setAllUser] = useState([]);
@@ -26,7 +29,7 @@ const ChatPage = () => {
 
     useEffect(() => {
         if (currentUser) {
-            socket.current = io(`http://localhost:3001`)
+            socket.current = io(`${serverLink}`)
             socket.current.emit("add-user", currentUser._id);
         }
     }, [currentUser])
@@ -34,12 +37,18 @@ const ChatPage = () => {
 
     // fetch all user data
     const fetchChats = async () => {
-        const data = await axios.get(`http://localhost:3001/user`, {
+        await axios.get(`${serverLink}/user`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`,
             },
-        });
-        setAllUser(data.data);
+        }
+        )
+            .then(function (res) {
+                setAllUser(res?.data);
+            })
+            .catch(function (err) {
+                checkTokenExpired(err) === true && navigate('/login')
+            })
     }
     useEffect(() => {
         fetchChats();
@@ -48,13 +57,18 @@ const ChatPage = () => {
 
     const handelSearch = () => {
         const fetchChats = async () => {
-            const data = await axios.get(`http://localhost:3001/user/search-user?search=${search}`, {
+            const data = await axios.get(`${serverLink}/user/search-user?search=${search}`, {
                 headers: {
                     authorization: `Bearer ${localStorage.getItem('accessToken')}`,
                 },
-            });
+            })
+                .then(function (res) {
+                    setSearchResult(res?.data);
+                })
+                .catch(function (err) {
+                    checkTokenExpired(err) === true && navigate('/login')
+                })
 
-            setSearchResult(data.data);
         }
         fetchChats();
         setSearchResult("");

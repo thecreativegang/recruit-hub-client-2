@@ -8,6 +8,8 @@ import auth from './../../../firebase.init';
 import { signOut } from 'firebase/auth';
 import { MdLocalHospital } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
+import { checkTokenExpired } from './../../../utilities/checkTokenExpired';
+import { serverLink } from './../../../utilities/links';
 
 const PostAJob = () => {
     const navigate = useNavigate()
@@ -41,7 +43,7 @@ const PostAJob = () => {
     const onSubmit = data => {
 
         console.log(data)
-        axios.post(`http://localhost:3001/job/postJob`, data, {
+        axios.post(`${serverLink}/job/postJob`, data, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`,
             },
@@ -55,13 +57,7 @@ const PostAJob = () => {
                 }
             })
             .catch(function (err) {
-                if (err?.response?.statusText) {
-                    signOut(auth)
-                    toast.error('Token Expired')
-                    localStorage.removeItem('accessToken')
-                    navigate('/login')
-                    console.log(err.response.statusText)
-                }
+                checkTokenExpired(err) === true && navigate('/login')
             })
     }
     // const userInfo = useSelector((state) => state);

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useSignInWithEmailAndPassword, useSignInWithGoogle, useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from "react-hook-form";
@@ -6,6 +6,7 @@ import auth from './../../../firebase.init';
 import Loading from './../../Shared/Loading';
 import useToken from './../../../hooks/useToken';
 import googleLogo from '../../../images/google.png';
+import { UserStore } from '../../../stateManagement/UserContext/UserContextStore';
 const Login = () => {
     const [globalUser] = useAuthState(auth);
     const [passwordError, setPasswordError] = useState('');
@@ -13,6 +14,7 @@ const Login = () => {
     const from = location?.state?.from?.pathname || '/';
     let currentUser;
     let username = '';
+    const currentUserinfo = useContext(UserStore)?.user;
 
 
 
@@ -51,12 +53,20 @@ const Login = () => {
             localStorage.removeItem("accessToken")
         } else {
             if ((tokenInLStorage + "").length > 4) {
-                navigate(from, { replace: true });
+                console.log("See account type", currentUserinfo.accountType)
+                console.log("see whats inside from", from)
+                if (currentUserinfo.accountType === 'developer') {
+                    console.log("Account type is developer")
+                    navigate('/findJob');
+                }
+                else {
+                    navigate(from, { replace: true } || '/');
+                }
             }
         }
 
 
-    }, [token, navigate, globalUser, from, tokenInLStorage])
+    }, [token, navigate, globalUser, from, tokenInLStorage, currentUserinfo.accountType])
 
     if (loading || gLoading) {
         return <Loading></Loading>

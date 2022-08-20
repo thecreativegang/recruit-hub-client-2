@@ -13,7 +13,7 @@ import checkTokenExpired from './../../../utilities/checkTokenExpired';
 import { useNavigate } from 'react-router-dom';
 
 const JobDetail = ({ selectedJob, setShowJobDetail }) => {
-    const { recruitersName, jobTitle, companyName, companySize, vacancies, jobNature, educationalQualification, jobRequirements, tags, applicationDeadline, deadlineMonth, deadlineYear, payRange, companyLocation, publishedDate, applicantCount, _id } = selectedJob
+    const { recruitersName, jobTitle, companyName, companySize, vacancies, jobNature, educationalQualification, jobRequirements, tags, applicationDeadline, payRange, companyLocation, publishedDate, applicantCount, _id } = selectedJob
     const monthName = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec']
     const currentUser = useContext(UserStore)?.user;
 
@@ -41,6 +41,7 @@ const JobDetail = ({ selectedJob, setShowJobDetail }) => {
                 checkTokenExpired(err) === true && navigate('/login')
             })
     }
+
     const handleApplyJob = (id) => {
         axios.post(`${serverLink}/job/apply/${id}`, {
             headers: {
@@ -96,7 +97,7 @@ const JobDetail = ({ selectedJob, setShowJobDetail }) => {
             </div>
             {/* Apply Job section */}
             {
-                currentUser?.accountType !== "developer" &&
+                currentUser?.accountType === "developer" &&
                 <div className={`mt-10 flex gap-5 flex-col md:flex-row`}>
                     <button onClick={() => handleApplyJob(_id)} className={` btn-primary text-white px-8 py-3 rounded-full`}>Apply Now &nbsp;<FontAwesomeIcon icon={faArrowUpRightFromSquare} /></button>
 

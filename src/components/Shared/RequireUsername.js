@@ -20,7 +20,6 @@ const RequireUsername = ({ children, prop }) => {
                 }
             })
                 .then(function (res) {
-                    console.log(res.data.status)
                     if (res.status === 200) {
                         if (res?.data?.userInfo[0]?.username === '') {
                             setHasUsername(false)
@@ -36,7 +35,7 @@ const RequireUsername = ({ children, prop }) => {
         }
 
 
-    }, [user])
+    }, [user, navigate])
 
     if (user) {
         if (hasUsername) {

@@ -14,10 +14,11 @@ import { useNavigate } from 'react-router-dom';
 import { serverLink } from './../../../utilities/links';
 
 
-// /const socket = io.connect("${serverLink}");
+
+
 
 const ChatPage = () => {
-    const socket = useRef();
+    const socket = io.connect(serverLink);
     const navigate = useNavigate()
     const userStore = useContext(UserStore);
     const currentUser = userStore.user;
@@ -27,12 +28,14 @@ const ChatPage = () => {
 
     const [searchResult, setSearchResult] = useState('');
 
+
+    // Conection to soket io
     useEffect(() => {
         if (currentUser) {
-            socket.current = io(`${serverLink}`)
-            socket.current.emit("add-user", currentUser._id);
+            socket.emit("add-user", currentUser._id);
         }
     }, [currentUser])
+
 
 
     // fetch all user data
@@ -86,7 +89,6 @@ const ChatPage = () => {
                             <MyChat userStore={userStore} setCurrentChat={setCurrentChat} allUser={allUser}></MyChat>
                         </div>
                         <div className='lg:col-span-2'>
-                            {/* <SingleChatWIndow chatId={chatId} socket={socket}></SingleChatWIndow> */}
                             <ChatContainer
                                 currentChat={currentChat}
                                 currentUser={currentUser}

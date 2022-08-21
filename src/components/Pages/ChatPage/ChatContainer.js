@@ -4,7 +4,6 @@ import axios from "axios";
 import Chatinput from "./Chatinput";
 import ScrollToBottom from "react-scroll-to-bottom";
 import { FaUserCircle } from "react-icons/fa";
-import Loading from "../../Shared/Loading";
 import { serverLink } from './../../../utilities/links';
 
 const ChatContainer = ({ currentChat, currentUser, socket }) => {
@@ -36,16 +35,16 @@ const ChatContainer = ({ currentChat, currentUser, socket }) => {
 
 
   const handleSendMsg = async (msg) => {
-    socket.current.emit("send-msg", {
-      to: currentChat._id,
-      from: currentUser._id,
-      msg,
-    });
-
     await axios.post(`${serverLink}/messages/addmsg`, {
       from: currentUser._id,
       to: currentChat._id,
       message: msg,
+    });
+
+    socket.emit("send-msg", {
+      to: currentChat._id,
+      from: currentUser._id,
+      msg,
     });
 
     const msgs = [...messages];
@@ -54,12 +53,12 @@ const ChatContainer = ({ currentChat, currentUser, socket }) => {
   };
 
   useEffect(() => {
-    if (socket.current) {
-      socket.current.on("msg-recieve", (msg) => {
+    if (socket) {
+      socket.on("msg-recieve", (msg) => {
         setArrivalMessage({ fromSelf: false, message: msg });
       });
     }
-  }, []);
+  }, [arrivalMessage]);
 
   useEffect(() => {
     arrivalMessage && setMessages((prev) => [...prev, arrivalMessage]);

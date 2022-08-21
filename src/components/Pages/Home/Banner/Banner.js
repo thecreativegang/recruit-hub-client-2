@@ -28,7 +28,7 @@ const Banner = () => {
 
                                 <button onClick={() => {
                                     localStorage.setItem('accountType', 'recruiter')
-                                    navigateRecruiter('/register/recruiter')
+                                    navigateRecruiter('/register/recruiter') //
                                 }} className=' btn-primary-vlue text-white'>Start Hiring <i class="fa-solid fa-angle-right ml-[6px]"></i></button>
                                 <button onClick={() => {
                                     localStorage.setItem('accountType', 'developer')

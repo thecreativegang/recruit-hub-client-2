@@ -5,6 +5,8 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import { signOut } from 'firebase/auth';
 
+import { HiLightBulb } from "react-icons/hi";
+import { MdDarkMode } from "react-icons/md";
 // react icon import links 
 import { FaUserCircle } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -18,8 +20,10 @@ import { CgProfile } from "react-icons/cg";
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { UserStore } from '../../../stateManagement/UserContext/UserContextStore';
+import useDarkMode from '../../../hooks/useDarkMode';
 
 const Navbar = () => {
+    const [colorTheme, setTheme] = useDarkMode()
 
     const [navSwitch, setNavSwitch] = useState(false);
     const [userSwitch, setUserSwitch] = useState(false);
@@ -43,11 +47,11 @@ const Navbar = () => {
     }
 
     //navbar active or deActive color style 
-    const active = " font-semibold text-violet-600 text-lg flex items-center md:underline"
-    const deActive = " font-semibold text-lg flex items-center"
+    const active = " font-semibold dark:text-white dark:rounded-[5px] p-2 dark:bg-[#1F2937] text-[17px]  flex items-center "
+    const deActive = " font-semibold  flex items-center text-[17px]   p-2 "
 
     return (
-        <nav className='sticky py-4 top-0 left-0 z-50 shadow-2xl bg-gradient-to-r from-[#e6e6ff] to-[#d6fff5] '>
+        <nav className='sticky py-4 top-0 left-0 z-50 dark:bg-[#0C1322]'>
             <div className='container max-w-[1280px] mx-auto relative z-50'>
                 <div className='flex justify-between items-center relative'>
                     {/* logo and navbar menu */}
@@ -63,7 +67,7 @@ const Navbar = () => {
                             <img className='w-8 h-8' src={navLogo} alt="Logo" />
                         </Link>
                         <Link to='/'>
-                            <span className='ml-1'>RecruitHub</span>
+                            <span className='ml-1 text-white'>RecruitHub</span>
                         </Link>
 
                     </div>
@@ -71,23 +75,23 @@ const Navbar = () => {
                     {/* routes  */}
                     <div className={`routes absolute md:static left-0 z-10 w-full md:w-auto ease-out duration-300 shadow-lg md:shadow-none ${navSwitch ? "navOpen" : "navClosed"}`}>
 
-                        <ul className='md:flex md:items-center  bg-gradient-to-r from-[#eaeaff] to-[#e4fff9] md:bg-gradient-to-r md:from-[#eaeaff00] md:to-[#e4fff900] pl-3 md:pl-0 py-5 md:py-0 w-full md:w-auto'>
+                        <ul className='md:flex  bg-gradient-to-r from-[#eaeaff] to-[#e4fff9] md:bg-gradient-to-r md:from-[#eaeaff00] md:to-[#e4fff900] pl-3 md:pl-0 py-5 md:py-0 w-full md:w-auto'>
 
-                            <li onClick={closedNavbarAll} className='mr-5 mb-4 md:mb-0'> <NavLink to="/findJob" className={({ isActive }) => (isActive ? active : deActive)} > <MdOutlineConnectWithoutContact className='md:hidden text-base mr-2' /> Find Job</NavLink> </li>
-                            <li onClick={closedNavbarAll} className='mr-5 mb-4 md:mb-0'> <NavLink to="/" className={({ isActive }) => (isActive ? active : deActive)} ><AiFillHome className='md:hidden text-base mr-2' />Home</NavLink> </li>
+                            <li onClick={closedNavbarAll} className='mr-5 mb-4 md:mb-0 dark:text-[#c6c9d8]'> <NavLink to="/findJob" className={({ isActive }) => (isActive ? active : deActive)} > <MdOutlineConnectWithoutContact className='md:hidden text-base mr-2' /> Find Job</NavLink> </li>
+                            <li onClick={closedNavbarAll} className='mr-5 mb-4 md:mb-0 dark:text-[#c6c9d8]'> <NavLink to="/" className={({ isActive }) => (isActive ? active : deActive)} ><AiFillHome className='md:hidden text-base mr-2 ' />Home</NavLink> </li>
 
-                            <li onClick={closedNavbarAll} className='mr-5 mb-4 md:mb-0'> <NavLink to="/freeResource" className={({ isActive }) => (isActive ? active : deActive)} ><BsTools className='md:hidden text-base mr-2' /> Resource</NavLink> </li>
+                            <li onClick={closedNavbarAll} className='mr-5 mb-4 md:mb-0 dark:text-[#c6c9d8]'> <NavLink to="/freeResource" className={({ isActive }) => (isActive ? active : deActive)} ><BsTools className='md:hidden text-base mr-2' /> Resource</NavLink> </li>
 
-                            <li onClick={closedNavbarAll} className='mr-5 mb-4 md:mb-0'> <NavLink to="/developer" className={({ isActive }) => (isActive ? active : deActive)} > <MdDeveloperMode className='md:hidden text-base mr-2' /> Developer</NavLink> </li>
+                            <li onClick={closedNavbarAll} className='mr-5 mb-4 md:mb-0 dark:text-[#c6c9d8]'> <NavLink to="/developer" className={({ isActive }) => (isActive ? active : deActive)} > <MdDeveloperMode className='md:hidden text-base mr-2 ' /> Developer</NavLink> </li>
 
-                            <li onClick={closedNavbarAll} className='mr-5 mb-4 md:mb-0'> <NavLink to="/contactUs" className={({ isActive }) => (isActive ? active : deActive)} > <MdOutlineConnectWithoutContact className='md:hidden text-base mr-2' /> Contact US</NavLink> </li>
+                            <li onClick={closedNavbarAll} className='mr-5 mb-4 md:mb-0 dark:text-[#c6c9d8]'> <NavLink to="/contactUs" className={({ isActive }) => (isActive ? active : deActive)} > <MdOutlineConnectWithoutContact className='md:hidden text-base mr-2' /> Contact US</NavLink> </li>
                             {
                                 userStore?.user?.accountType === 'recruiter' &&
-                                <li onClick={closedNavbarAll} className='mr-5 mb-4 md:mb-0'> <NavLink to="/postJob" className={({ isActive }) => (isActive ? active : deActive)} > <MdOutlineConnectWithoutContact className='md:hidden text-base mr-2' /> Post Job</NavLink> </li>
+                                <li onClick={closedNavbarAll} className='mr-5 mb-4 md:mb-0 dark:text-[#c6c9d8]'> <NavLink to="/postJob" className={({ isActive }) => (isActive ? active : deActive)} > <MdOutlineConnectWithoutContact className='md:hidden text-base mr-2' /> Post Job</NavLink> </li>
                             }
-                            <li onClick={closedNavbarAll} className='mr-5 mb-4 md:mb-0'> <NavLink to="/chat" className={({ isActive }) => (isActive ? active : deActive)} > <MdOutlineConnectWithoutContact className='md:hidden text-base mr-2' /> Chat</NavLink> </li>
+                            <li onClick={closedNavbarAll} className='mr-5 mb-4 md:mb-0 dark:text-[#c6c9d8]'> <NavLink to="/chat" className={({ isActive }) => (isActive ? active : deActive)} > <MdOutlineConnectWithoutContact className='md:hidden text-base mr-2' /> Chat</NavLink> </li>
 
-                            <li onClick={closedNavbarAll} className='mb-4 md:mb-0'> <NavLink to="/aboutUs" className={({ isActive }) => (isActive ? active : deActive)} > <BsInfoCircleFill className='md:hidden text-base mr-2' /> About US</NavLink> </li>
+                            <li onClick={closedNavbarAll} className='mb-4 md:mb-0 dark:text-[#c6c9d8]'> <NavLink to="/aboutUs" className={({ isActive }) => (isActive ? active : deActive)} > <BsInfoCircleFill className='md:hidden text-base mr-2' /> About US</NavLink> </li>
 
 
 
@@ -119,7 +123,7 @@ const Navbar = () => {
                                     <>
                                         {/* user photo  */}
                                         <div className='relative'>
-                                            <FaUserCircle onClick={() => setUserSwitch(!userSwitch)} className='text-4xl mr-3 cursor-pointer' />
+                                            <FaUserCircle onClick={() => setUserSwitch(!userSwitch)} className='text-4xl dark:text-[#c6c9d8] mr-3 cursor-pointer' />
                                         </div>
 
                                         {/* user details  */}
@@ -129,14 +133,17 @@ const Navbar = () => {
                                                 <h6 className='text-xs md:text-base font-[500] mb-1 md:mb-1'>{currentUser?.email}</h6>
                                                 <h6 className='text-xs md:text-base font-[500] mb-1 md:mb-1'>DE-4562415</h6>
                                             </div>
-
+                                            <span onClick={() => setTheme(colorTheme)}>
+                                                {colorTheme === 'light' ?
+                                                    <HiLightBulb className='cursor-pointer' />
+                                                    : <MdDarkMode className='cursor-pointer' />
+                                                }
+                                            </span>
 
                                             {/* routes  */}
                                             <ul>
                                                 <li onClick={closedNavbarAll} className='mb-4'> <NavLink to="/profile" className={({ isActive }) => (isActive ? active : deActive)} > <CgProfile className=' text-base md:text-xl mr-2' />Profile</NavLink> </li>
                                                 <li onClick={closedNavbarAll} className='mb-4'> <NavLink to="/dashboard" className={({ isActive }) => (isActive ? active : deActive)} > <CgProfile className=' text-base md:text-xl mr-2' />Dashboard</NavLink> </li>
-
-
                                                 <li onClick={() => handleSignOut()} className='mb-4 cursor-pointer font-semibold text-lg flex items-center'> <ImExit className=' text-base md:text-xl mr-2' />Logout</li>
 
                                             </ul>

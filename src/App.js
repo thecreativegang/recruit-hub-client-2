@@ -34,7 +34,7 @@ import FreeResource from './components/Pages/FreeResource/FreeResource';
 
 function App() {
   return (
-    <div >
+    <div className='transition-all duration-500'>
       <UserStoreProvider>
         <Navbar />
         <Routes>

@@ -53,3 +53,26 @@
 .profile-form-border {
   border: 1px solid rgb(224, 224, 224);
 }
+
+/* dark mode code 
+ */
+
+.dark-nav-link {
+  color: #c6c9d8;
+}
+
+.dark-bg-light {
+  background-color: #0f172a;
+}
+
+.dark-bg {
+  background-color: #0c1322;
+}
+
+.dark-btn-bg {
+  background-color: #0284c7;
+}
+
+.dark-highlight-text {
+  color: #38bdf8;
+}

@@ -1,6 +1,5 @@
 import axios from 'axios';
 import React, { useContext } from 'react';
-import { useRef } from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { io } from 'socket.io-client';
@@ -16,9 +15,9 @@ import { serverLink } from './../../../utilities/links';
 
 
 
-
 const ChatPage = () => {
     const socket = io.connect(serverLink);
+
     const navigate = useNavigate()
     const userStore = useContext(UserStore);
     const currentUser = userStore.user;
@@ -81,13 +80,23 @@ const ChatPage = () => {
 
     return (
         <div>
-            <div class="drawer">
+            <div class="drawer h-[calc(100vh-201px)]">
                 <input id="my-drawer" type="checkbox" class="drawer-toggle" />
-                <div class="drawer-content">
-                    <div className='grid lg:grid-cols-3  py-1 chat-background'>
-                        <div className=''>
-                            <MyChat userStore={userStore} setCurrentChat={setCurrentChat} allUser={allUser}></MyChat>
+
+                <div class="drawer-content max-h-screen">
+                    <div className='grid lg:grid-cols-3  py-1 chat-background h-[calc(100vh-201px)]'>
+                        <div class="h-[calc(100vh-211px)] carousel carousel-vertical ">
+
+                            <div className=''>
+                                {
+                                    <MyChat userStore={userStore} setCurrentChat={setCurrentChat} allUser={allUser}></MyChat>
+                                }
+                            </div>
+
                         </div>
+                        {/* <div className=''>
+                            <MyChat userStore={userStore} setCurrentChat={setCurrentChat} allUser={allUser}></MyChat>
+                        </div> */}
                         <div className='lg:col-span-2'>
                             <ChatContainer
                                 currentChat={currentChat}
@@ -97,6 +106,7 @@ const ChatPage = () => {
                         </div>
                     </div>
                 </div>
+
                 <div class="drawer-side">
                     <label for="my-drawer" class="drawer-overlay"></label>
                     <ul class="menu p-4 overflow-y-auto lg:w-[30%] w-[90%] bg-base-100 text-base-content">
@@ -119,9 +129,9 @@ const ChatPage = () => {
 
                         <div>
                             {
-                                searchResult ? searchResult?.map((chat) => <SingleProfile
+                                searchResult ? "Search your Chat" ? searchResult?.map((chat) => <SingleProfile
                                     setCurrentChat={setCurrentChat}
-                                    chat={chat} />) : <Loading></Loading>
+                                    chat={chat} />) : <Loading></Loading> : <Loading></Loading>
                             }
                         </div>
                     </ul>

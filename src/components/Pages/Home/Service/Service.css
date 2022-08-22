@@ -11,8 +11,6 @@
 }
 
 .service-item:hover {
-  background-color: #fff;
-  border-color: transparent;
-
-  box-shadow: 0 10px 60px 0 rgb(89 86 233 / 10%);
+  transition: all 0.5s;
+  transform: scale(1.02);
 }

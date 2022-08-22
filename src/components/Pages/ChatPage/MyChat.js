@@ -11,11 +11,11 @@ const MyChat = ({ allUser, userStore, setCurrentChat }) => {
 
 
     return (
-        <div className='lg:mx-2'>
+        <div className='lg:mx-2 pt-2'>
+            {/* My chat header start*/}
+
             <div className='flex justify-between  my-border rounded'>
-
                 <h2 className='text-3xl lg:px-2 mt-1 font-bold '>My Chats</h2>
-
                 <div class="drawer-content text-right text-black">
                     <label for="my-drawer" class="m-2 btn-sm btn my-border hover:bg-sky-400  bg-sky-500 text-white">
                         <FontAwesomeIcon icon={faSearch} /> <span className=' px-2'> Search Chat</span>
@@ -23,28 +23,64 @@ const MyChat = ({ allUser, userStore, setCurrentChat }) => {
                 </div>
 
             </div>
+            <div className='bg-sky-500 rounded p-2 my-2 text-white flex items-center justify-between'>
+                <h2 className='px-3 text-2xl'>
+                    User Name: {user?.username ? user?.username : user?.email}
+                </h2>
+                <div class="avatar">
+                    <div class="w-[50px] rounded-full">
+                        <FaUserCircle className='text-4xl mr-2 cursor-pointer' />
+                    </div>
+                </div>
+            </div>
+            {/*My chat header end*/}
+
+            {/* admin chat list start*/}
+            <div class="collapse collapse-arrow  my-border">
+                <input type="checkbox" class="peer" />
+                <div class="collapse-title text-primary font-2xl">
+                    Admins
+                </div>
+                <div class="collapse-content px-1 peer-checked:bg-sky-200">
+                    <div className='overflow-x-hidden   overflow-y-auto '>
+                        {
+                            allUser ? allUser?.map((chat) => <SingleProfile setCurrentChat={setCurrentChat} chat={chat} />) : <Loading></Loading>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            {/* admin chat list end*/}
+
+            {/* useer */}
+            <div className='overflow-x-hidden  overflow-y-auto '>
+                {
+                    allUser ? allUser?.map((chat) => <SingleProfile setCurrentChat={setCurrentChat} chat={chat} />) : <Loading></Loading>
+                }
+            </div>
 
 
-            <div className='lg:px-2 mt-1  h-[92vh]  rounded my-border'>
+
+            {/* user content */}
+
+            {/* <div className='lg:px-2 mt-0  h-[calc(100vh-280px)]  rounded my-border'>
                 <div className='bg-sky-500 rounded p-2 my-2 text-white flex items-center justify-between'>
                     <h2 className='px-3 text-2xl'>
                         User Name: {user?.username ? user?.username : user?.email}
                     </h2>
                     <div class="avatar">
                         <div class="w-[50px] rounded-full">
-                            {/* <img src="https://placeimg.com/192/192/people" alt="Tailwind-CSS-Avatar-component" /> */}
                             <FaUserCircle className='text-4xl mr-2 cursor-pointer' />
-
                         </div>
                     </div>
                 </div>
 
-                <ScrollToBottom className='profile-container pb-2'>
+                <div className='overflow-x-hidden  overflow-y-auto lg:h-[85%] md:h-[80%] '>
                     {
                         allUser ? allUser?.map((chat) => <SingleProfile setCurrentChat={setCurrentChat} chat={chat} />) : <Loading></Loading>
                     }
-                </ScrollToBottom>
-            </div>
+                </div>
+            </div> */}
 
         </div>
     );

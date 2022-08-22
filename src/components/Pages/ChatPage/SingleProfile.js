@@ -38,12 +38,16 @@ const SingleProfile = ({ chat, setCurrentChat }) => {
                 </div>
 
             </div >
-            <input type="checkbox" id="my-modal-3" class="modal-toggle" />
+
+            {/* modal for join chat start*/}
+            {/* <input type="checkbox" id="my-modal-3" class="modal-toggle" />
             <div class="modal">
                 <div class="modal-box relative">
                     <SingleChatModal chatModalId={chatModalId} chat={chat}></SingleChatModal>
                 </div>
-            </div>
+            </div> */}
+            {/* modal for join chat end*/}
+
         </div >
     );
 };

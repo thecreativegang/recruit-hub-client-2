@@ -1,5 +1,5 @@
 import { faCircle, faCircleDot, faDotCircle } from '@fortawesome/free-regular-svg-icons';
-import { faArrowRightBracket, faArrowUpRightSquare, faDivide, faListDots, faArrowLeft, faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRightBracket, faArrowUpRightSquare, faDivide, faListDots, faArrowLeft, faArrowUpRightFromSquare, faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { formatDistanceStrict } from 'date-fns';
@@ -58,7 +58,10 @@ const JobDetail = ({ selectedJob, setShowJobDetail }) => {
     return (
         <div className='mt-5 shadow-lg min-h-[100vh]  overflow-y-auto p-5 rounded-lg pb-10 '>
             <p onClick={() => setShowJobDetail(false)} className={`md:hidden w-full bg-primary text-white py-2 p-5 rounded-full`}><FontAwesomeIcon icon={faArrowLeft} /> Go back</p>
-            <h1 className='text-3xl '>{jobTitle}</h1>
+            <div className={`flex flex-row items-center justify-between justify-items-center mt-10 px-2`}>
+                <h1 className='text-3xl '>{jobTitle}</h1>
+                <p><FontAwesomeIcon icon={faEllipsisVertical} className={`text-2xl`} /></p>
+            </div>
             <div className='flex flex-col gap-1 mt-5'>
                 {
                     companyName &&

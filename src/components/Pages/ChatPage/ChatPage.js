@@ -78,7 +78,6 @@ const ChatPage = () => {
     }, [allAdmin])
 
 
-
     const handelSearch = () => {
         const fetchChats = async () => {
             const data = await axios.get(`${serverLink}/user/search-user?search=${search}`, {
@@ -111,7 +110,7 @@ const ChatPage = () => {
 
                             <div className=''>
                                 {
-                                    <MyChat userStore={userStore} setCurrentChat={setCurrentChat} allUser={allUser}></MyChat>
+                                    <MyChat userStore={userStore} setCurrentChat={setCurrentChat} allAdmin={allAdmin} allUser={allUser}></MyChat>
                                 }
                             </div>
 

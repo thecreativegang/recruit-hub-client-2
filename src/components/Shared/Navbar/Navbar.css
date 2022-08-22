@@ -27,3 +27,7 @@
   text-transform: capitalize;
   font-weight: 700;
 }
+
+.nav-border {
+  border-bottom: 1px solid rgba(221, 221, 221, 0.146);
+}

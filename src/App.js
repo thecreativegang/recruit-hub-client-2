@@ -30,9 +30,12 @@ import UserReview from './components/Pages/UserDasboard/UserReiew/UserReview';
 
 import PostResource from './AdminDashboard/PostResource/PostResource';
 import FreeResource from './components/Pages/FreeResource/FreeResource';
+import { useLocation } from 'react-router-dom';
 
 
 function App() {
+  const url = useLocation()
+  console.log('see current location', url)
   return (
     <div >
       <UserStoreProvider>
@@ -79,11 +82,14 @@ function App() {
             <Route index element={<UserProfile></UserProfile>}></Route>
             <Route path='userReview' element={<Review></Review>}></Route>
           </Route>
-
-
-
         </Routes >
-        <FooterBottomSection />
+
+        <div >
+          {
+            url?.pathname !== '/chat' &&
+            < FooterBottomSection />
+          }
+        </div>
         <ToastContainer
           autoClose={1500}
         />

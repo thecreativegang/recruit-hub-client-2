@@ -131,6 +131,7 @@ const Login = () => {
                                     }
                                 </div>
                                 <div className="form-control mt-6">
+                                    <p className={`hover:underline`}><Link to="/register">New here? Create an account</Link></p>
                                     {
                                         loading
                                             ?

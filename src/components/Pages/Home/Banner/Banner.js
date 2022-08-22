@@ -26,8 +26,15 @@ const Banner = () => {
                             <p className=" para-color text-[18px] mb-[45px] md:pr-[7%]  font-semibold">Sit amet consectetur adipiscing elit sed do eiusmod tem porincididunt ut labore et dolore magna aliqua. Quis psum suspendisse ultrices gravida commodo viverra</p>
                             <div>
 
-                                <button onClick={() => navigateRecruiter('/register/recruiter')} className=' btn-primary-vlue text-white'>Start Hiring <i class="fa-solid fa-angle-right ml-[6px]"></i></button>
-                                <button onClick={() => navigateDeveloper('/register/developer')} className='  btn-primary-vlue text-white ml-[25px]'>Get a job <i class="fa-solid fa-angle-right ml-[6px]"></i></button>
+                                <button onClick={() => {
+                                    localStorage.setItem('accountType', 'recruiter')
+                                    navigateRecruiter('/register/recruiter') //
+                                }} className=' btn-primary-vlue text-white'>Start Hiring <i class="fa-solid fa-angle-right ml-[6px]"></i></button>
+                                <button onClick={() => {
+                                    localStorage.setItem('accountType', 'developer')
+                                    navigateDeveloper('/register/developer')
+                                }
+                                } className='  btn-primary-vlue text-white ml-[25px]'>Get a job <i class="fa-solid fa-angle-right ml-[6px]"></i></button>
 
                             </div>
                         </div>
@@ -42,10 +49,10 @@ const Banner = () => {
                     <img className='absolute top-[3rem] left-[2rem] hidden  md:inline-block' src="https://wordpressriverthemes.com/htmltemp/pixlab/assets/images/shape/shape-1.png" alt="" />
 
                 </div>
-            </div>
+            </div >
 
 
-        </div>
+        </div >
     );
 };
 

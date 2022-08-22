@@ -42,7 +42,7 @@ const SkillAssessment = () => {
           !loading && (
             <>
               <div className="w-3/4 mx-auto mt-4">
-                <h3 className="text-xl text-gray-600">
+                <h3  className="text-xl text-gray-600">
                   Question {currentQuestion + 1}:{' '}
                   {questions[currentQuestion].question}
                 </h3>

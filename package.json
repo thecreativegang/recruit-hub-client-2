@@ -30,6 +30,7 @@
     "react-scroll": "^1.8.7",
     "react-scroll-to-bottom": "^4.2.0",
     "react-toastify": "^9.0.2",
+    "react-tooltip": "^4.2.21",
     "recharts": "^2.1.13",
     "socket.io-client": "^4.5.1",
     "styled-components": "^5.3.5",

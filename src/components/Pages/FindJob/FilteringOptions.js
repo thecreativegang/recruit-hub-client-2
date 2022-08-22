@@ -24,7 +24,7 @@ const FilteringOptions = ({ searchElements, SetfilteringOn, setSearchedResults, 
             searchShowAllorOnlyMine: showAllorOnlyMine.current?.value,
         }
         console.log(searchData)
-        axios.post(`${serverLink}/job/filter`, searchData, {
+        axios.post(`${serverLink}/job/filter`, searchData, {}, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`,
             },

@@ -42,8 +42,8 @@ const JobDetail = ({ selectedJob, setShowJobDetail }) => {
             })
     }
 
-    const handleApplyJob = (id) => {
-        axios.post(`${serverLink}/job/apply/${id}`, {
+    const handleApplyJob = async (id) => {
+        await axios.post(`${serverLink}/job/apply/${id}`, {}, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`,
             },

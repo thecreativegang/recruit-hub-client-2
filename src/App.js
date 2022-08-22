@@ -31,6 +31,7 @@ import UserReview from './components/Pages/UserDasboard/UserReiew/UserReview';
 import PostResource from './AdminDashboard/PostResource/PostResource';
 import FreeResource from './components/Pages/FreeResource/FreeResource';
 import { useLocation } from 'react-router-dom';
+import ReactTooltip from 'react-tooltip';
 
 
 function App() {
@@ -93,6 +94,7 @@ function App() {
         <ToastContainer
           autoClose={1500}
         />
+        <ReactTooltip />
       </UserStoreProvider>
     </div >
   );

@@ -25,7 +25,11 @@ const FindJob = () => {
         payRange: ""
     }
     useEffect(() => {
-        axios.get(`${serverLink}/job`)
+        axios.get(`${serverLink}/job`, {
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+            },
+        })
             .then(function (res) {
                 console.log(res.data.jobs)
                 setJobs(res?.data?.jobs)

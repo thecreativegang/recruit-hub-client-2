@@ -1,10 +1,15 @@
 import React from "react";
 import "./Developer.css";
+import { useContext } from "react";
+import { UserStore } from "../../../stateManagement/UserContext/UserContextStore";
 
 //react icon import link
 import { MdVerified } from "react-icons/md";
 
 const Developer = () => {
+  const { developer } = useContext(UserStore);
+  const [developerData, error, loading] = developer;
+
   return (
     <div className="min-h-screen">
       <div className="container">
@@ -17,48 +22,65 @@ const Developer = () => {
         </h5>
 
         {/* Show developer box  */}
-        <section className="my-16">
-          <div>
+        <section className="my-16 border-t-2 border-gray-200">
+          <div className="mt-6 card-grid ">
             {/* single card no 1  */}
-            <div className="w-[350px] card-Shadow p-4 bg-[#f9f9f9]">
-              <div class="text-center">
-                {/* image Box  */}
-                <div className="flex justify-center">
-                  <img
-                    class="w-[6rem] h-[6rem] rounded-full border-2 border-gray-600 p-[1px]"
-                    src="https://randomuser.me/api/portraits/women/79.jpg"
-                    alt="user"
-                  />
-                </div>
-                <h3 className="mt-[.5rem] mb-[.1rem] text-2xl font-semibold text-gray-600 flex justify-center items-center">
-                  Ricky Park{" "}
-                  <MdVerified className="ml-1 text-[#0285ff] text-xl" />
-                </h3>
-                <h6 className="text-base font-medium text-gray-500">
-                  @tanvir-123
-                </h6>
-                <p>Front-end Developer</p>
-                <div class="buttons">
-                  <button class="card-button-primary">View Profile</button>
-                </div>
-              </div>
 
-              {/* skills */}
-              <div class="text-left mt-8">
-                <h6 className="text-xl font-semibold text-gray-700 mb-3">
-                  Skills
-                </h6>
-                <ul className="text-lg flex flex-wrap">
-                  <li className="mr-5">UI / UX</li>
-                  <li className="mr-5">Front End Development</li>
-                  <li className="mr-5">HTML</li>
-                  <li className="mr-5">CSS</li>
-                  <li className="mr-5">JavaScript</li>
-                  <li className="mr-5">React</li>
-                  <li className="mr-5">Node</li>
-                </ul>
+            {developerData.map((singleData) => (
+              <div className="w-full card-Shadow p-4 bg-[#e9faff]">
+                <div class="text-center">
+                  {/* image Box  */}
+                  <div className="flex justify-center mt-3">
+                    <img
+                      class="w-[6rem] h-[6rem] rounded-full border-2 border-gray-600 p-[1px]"
+                      src="https://randomuser.me/api/portraits/women/79.jpg"
+                      alt="user"
+                    />
+                  </div>
+                  <h3 className="mt-[.5rem] mb-[.1rem] text-xl font-semibold text-gray-600 flex justify-center items-center">
+                    Ricky Park{" "}
+                    <MdVerified className="ml-1 text-[#0285ff] text-xl" />
+                  </h3>
+                  <h6 className="text-base font-medium text-gray-500">
+                    @tanvir-123
+                  </h6>
+                  <p>Front-end Developer</p>
+                  <div class="buttons">
+                    <button class="card-button-primary">View Profile</button>
+                  </div>
+                </div>
+
+                {/* skills */}
+                <div class="text-left">
+                  <h6 className="text-lg font-semibold text-gray-700 mb-3">
+                    Skills
+                  </h6>
+                  <ul className="text-base flex gap-2 flex-wrap">
+                    <li className="py-[.1rem] px-2 bg-[#0285ff23] rounded-lg mb-2">
+                      UI / UX
+                    </li>
+                    <li className="py-[.1rem] px-2 bg-[#0285ff23] rounded-lg mb-2">
+                      Front End Development
+                    </li>
+                    <li className="py-[.1rem] px-2 bg-[#0285ff23] rounded-lg mb-2">
+                      HTML
+                    </li>
+                    <li className="py-[.1rem] px-2 bg-[#0285ff23] rounded-lg mb-2">
+                      CSS
+                    </li>
+                    <li className="py-[.1rem] px-2 bg-[#0285ff23] rounded-lg mb-2">
+                      JavaScript
+                    </li>
+                    <li className="py-[.1rem] px-2 bg-[#0285ff23] rounded-lg mb-2">
+                      React
+                    </li>
+                    <li className="py-[.1rem] px-2 bg-[#0285ff23] rounded-lg mb-2">
+                      Node
+                    </li>
+                  </ul>
+                </div>
               </div>
-            </div>
+            ))}
           </div>
         </section>
       </div>

@@ -12,8 +12,15 @@
   padding: 0.3rem 0.9rem;
   margin-top: 1rem;
   outline: none;
-  transition: 0.3s ease-in-out;
+  transition: 0.2s ease-in-out;
 }
 .card-button-primary:hover {
   border: 0.1rem solid #333;
+}
+
+/* card grid style  */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  grid-gap: 1.2rem;
 }

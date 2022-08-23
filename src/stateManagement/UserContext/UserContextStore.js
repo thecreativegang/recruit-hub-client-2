@@ -18,8 +18,12 @@ const UserStoreProvider = ({ children }) => {
 
     const [user, setUser] = useState([])
 
-    // Get user data form api
+    //developer info storage 
+    const [devLoading, setDevLoading] = useState(true)
+    const [devError, setDevError] = useState({})
+    const [devData, setDevData] = useState([])
 
+    // Get user data form api
     useEffect(() => {
         if (userEmail) {
             axios.get(`${serverLink}/user/email/${userEmail}`, {
@@ -39,10 +43,26 @@ const UserStoreProvider = ({ children }) => {
     }, [userEmail])
 
 
+
+    // Get developer information form developer api
+    useEffect(() => {
+        fetch("http://localhost:3001/user/developer", {
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+            }
+        })
+            .then(req => req.json())
+            .then(data => setDevData(data))
+            .catch(err => setDevError(err))
+        setDevLoading(false)
+    }, [devError])
+
     //this state stored user data  //==> Don't move this one !
     const userData = {
         userEmail,
         user,
+        developer: [devData, devError, devLoading],
+
     }
     //user context provider component //==> Don't move this one !
     return (

@@ -22,6 +22,7 @@ const ChatPage = () => {
     const userStore = useContext(UserStore);
     const currentUser = userStore.user;
     const [allUser, setAllUser] = useState([]);
+    const [allAdmin, setAllAdmin] = useState([]);
     const [currentChat, setCurrentChat] = useState('');
     const [search, setSearch] = useState('');
 
@@ -29,11 +30,11 @@ const ChatPage = () => {
 
 
     // Conection to soket io
-    useEffect(() => {
-        if (currentUser) {
-            socket.emit("add-user", currentUser._id);
-        }
-    }, [currentUser])
+    // useEffect(() => {
+    //     if (currentUser) {
+    //         socket.emit("add-user", currentUser._id);
+    //     }
+    // }, [currentUser])
 
 
 
@@ -57,6 +58,26 @@ const ChatPage = () => {
     }, [allUser])
 
 
+    // fetch all admin data
+    const fetchAdmin = async () => {
+        await axios.get(`${serverLink}/user/admin`, {
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+            },
+        }
+        )
+            .then(function (res) {
+                setAllAdmin(res?.data);
+            })
+            .catch(function (err) {
+                checkTokenExpired(err) === true && navigate('/login')
+            })
+    }
+    useEffect(() => {
+        fetchAdmin();
+    }, [allAdmin])
+
+
     const handelSearch = () => {
         const fetchChats = async () => {
             const data = await axios.get(`${serverLink}/user/search-user?search=${search}`, {
@@ -74,22 +95,21 @@ const ChatPage = () => {
         }
         fetchChats();
         setSearchResult("");
-
     }
 
 
     return (
         <div>
-            <div class="drawer h-[calc(100vh-201px)]">
+            <div class="drawer h-[calc(100vh-110px)]">
                 <input id="my-drawer" type="checkbox" class="drawer-toggle" />
 
-                <div class="drawer-content max-h-screen">
-                    <div className='grid lg:grid-cols-3  py-1 chat-background h-[calc(100vh-201px)]'>
-                        <div class="h-[calc(100vh-211px)] carousel carousel-vertical ">
+                <div class="drawer-content ">
+                    <div className='grid lg:grid-cols-3  py-1 chat-background ]'>
+                        <div class="h-[calc(100vh-130px)] carousel carousel-vertical ">
 
                             <div className=''>
                                 {
-                                    <MyChat userStore={userStore} setCurrentChat={setCurrentChat} allUser={allUser}></MyChat>
+                                    <MyChat userStore={userStore} setCurrentChat={setCurrentChat} allAdmin={allAdmin} allUser={allUser}></MyChat>
                                 }
                             </div>
 

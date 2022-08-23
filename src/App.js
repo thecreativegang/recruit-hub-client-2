@@ -31,6 +31,7 @@ import UserReview from './components/Pages/UserDasboard/UserReiew/UserReview';
 import PostResource from './AdminDashboard/PostResource/PostResource';
 import FreeResource from './components/Pages/FreeResource/FreeResource';
 import { useLocation } from 'react-router-dom';
+import ReactTooltip from 'react-tooltip';
 
 
 function App() {
@@ -62,7 +63,6 @@ function App() {
             </ProtectedRout>
           }></Route>
           <Route path='/postJob' element={<PostAJob />}></Route>
-
           <Route path='/skilltest' element={<SkillAssessment />}></Route>
           <Route path='/findJob' element={<FindJob />}></Route>
           <Route path='/askUsername' element={<AskForUsername />}></Route>
@@ -93,6 +93,7 @@ function App() {
         <ToastContainer
           autoClose={1500}
         />
+        <ReactTooltip />
       </UserStoreProvider>
     </div >
   );

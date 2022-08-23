@@ -22,7 +22,7 @@ const UserStoreProvider = ({ children }) => {
 
     useEffect(() => {
         if (userEmail) {
-            axios.get(`${serverLink}/user/email/${userEmail}`, {
+            axios.get(`${serverLink}/user/email/${userEmail}`, {}, {
                 headers: {
                     authorization: `Bearer ${localStorage.getItem('accessToken')}`,
                 }

@@ -22,6 +22,7 @@ const ChatPage = () => {
     const userStore = useContext(UserStore);
     const currentUser = userStore.user;
     const [allUser, setAllUser] = useState([]);
+    const [allAdmin, setAllAdmin] = useState([]);
     const [currentChat, setCurrentChat] = useState('');
     const [search, setSearch] = useState('');
 
@@ -55,6 +56,27 @@ const ChatPage = () => {
     useEffect(() => {
         fetchChats();
     }, [allUser])
+
+
+    // fetch all admin data
+    const fetchAdmin = async () => {
+        await axios.get(`${serverLink}/user/admin`, {
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+            },
+        }
+        )
+            .then(function (res) {
+                setAllAdmin(res?.data);
+            })
+            .catch(function (err) {
+                checkTokenExpired(err) === true && navigate('/login')
+            })
+    }
+    useEffect(() => {
+        fetchAdmin();
+    }, [allAdmin])
+
 
 
     const handelSearch = () => {

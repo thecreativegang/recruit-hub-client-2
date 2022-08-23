@@ -49,7 +49,7 @@ const JobDetail = ({ selectedJob, setShowJobDetail }) => {
             },
         })
             .then(function (res) {
-                console.log(res)
+                console.log(res?.data?.response)
             })
             .catch(function (err) {
                 checkTokenExpired(err) === true && navigate('/login')

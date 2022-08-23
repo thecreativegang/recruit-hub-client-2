@@ -63,7 +63,6 @@ function App() {
             </ProtectedRout>
           }></Route>
           <Route path='/postJob' element={<PostAJob />}></Route>
-
           <Route path='/skilltest' element={<SkillAssessment />}></Route>
           <Route path='/findJob' element={<FindJob />}></Route>
           <Route path='/askUsername' element={<AskForUsername />}></Route>

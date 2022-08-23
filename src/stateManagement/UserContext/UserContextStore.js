@@ -16,12 +16,28 @@ const UserStoreProvider = ({ children }) => {
     const [globalUser] = useAuthState(auth)
     const userEmail = globalUser?.email
 
+    console.log(userEmail)
+
     const [user, setUser] = useState([])
 
     // Get user data form api
+    const fetchUser = async () => {
+        axios.get(`${serverLink}/user/email/${userEmail}`, {
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+            }
+        })
+            .then(res => setUser(res.data))
+            .catch(function (err) {
+                checkTokenExpired(err) === true && navigate('/login')
+            })
+    }
 
     useEffect(() => {
         if (userEmail) {
+<<<<<<< HEAD
+            fetchUser();
+=======
             axios.get(`${serverLink}/user/email/${userEmail}`, {}, {
                 headers: {
                     authorization: `Bearer ${localStorage.getItem('accessToken')}`,
@@ -31,13 +47,12 @@ const UserStoreProvider = ({ children }) => {
                 .catch(function (err) {
                     checkTokenExpired(err) === true && navigate('/login')
                 })
+>>>>>>> 9004b59f967f12387bca2fdd5868c64605d5839a
         }
-
         else {
             console.log('Email not found from useContex')
         }
     }, [userEmail])
-
 
     //this state stored user data  //==> Don't move this one !
     const userData = {

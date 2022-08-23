@@ -66,16 +66,11 @@ const ChatContainer = ({ currentChat, currentUser, socket }) => {
         from: currentUser._id,
         msg,
       });
-
-
     }
     const msgs = [...messages];
     msgs.push({ fromSelf: true, message: msg });
     setMessages(msgs);
   };
-
-
-
 
   // For lottie animation
   const anime = useRef(null);
@@ -112,7 +107,7 @@ const ChatContainer = ({ currentChat, currentUser, socket }) => {
             </div>
           </div>
           {/* chat body */}
-          <div className="message-body overflow-x-hidden  overflow-y-auto h-[62vh]">
+          <div className="message-body overflow-x-hidden  overflow-y-auto h-[calc(100vh-280px)]">
             {messages.map((message) => {
               return (
                 <div >

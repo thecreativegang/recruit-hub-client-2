@@ -30,11 +30,11 @@ const ChatPage = () => {
 
 
     // Conection to soket io
-    useEffect(() => {
-        if (currentUser) {
-            socket.emit("add-user", currentUser._id);
-        }
-    }, [currentUser])
+    // useEffect(() => {
+    //     if (currentUser) {
+    //         socket.emit("add-user", currentUser._id);
+    //     }
+    // }, [currentUser])
 
 
 

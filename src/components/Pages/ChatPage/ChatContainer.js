@@ -16,52 +16,33 @@ const ChatContainer = ({ currentChat, currentUser, socket }) => {
   const [arrivalMessage, setArrivalMessage] = useState(null);
   const scrollRef = useRef();
 
-  useEffect(() => {
 
-    const asyncFetchDailyData = async () => {
-      if (currentChat) {
-        const response = await axios.post(`${serverLink}/messages/getmsg`, {
-          from: currentUser._id,
-          to: currentChat._id,
-        });
-        setMessages(response.data);
-      }
+
+  const asyncFetchDailyData = async () => {
+    if (currentChat) {
+      const response = await axios.post(`${serverLink}/messages/getmsg`, {
+        from: currentUser._id,
+        to: currentChat._id,
+      });
+      setMessages(response.data);
     }
-
+  }
+  useEffect(() => {
     asyncFetchDailyData();
-
   }, [currentChat]);
 
-
-
-
-  const handleSendMsg = async (msg) => {
-    await axios.post(`${serverLink}/messages/addmsg`, {
-      from: currentUser._id,
-      to: currentChat._id,
-      message: msg,
-    });
-
-    if (currentChat._id) {
-      socket.emit("send-msg", {
-        to: currentChat._id,
-        from: currentUser._id,
-        msg,
-      });
-
-    }
-    const msgs = [...messages];
-    msgs.push({ fromSelf: true, message: msg });
-    setMessages(msgs);
-  };
-
-  useEffect(() => {
+  const msgTransfer = async () => {
     if (socket) {
-      socket.on("msg-recieve", (msg) => {
-        setArrivalMessage({ fromSelf: false, message: msg });
+      await socket.on("msg-transfer", (msg) => {
+        console.log(msg)
+        setArrivalMessage({ fromSelf: false, message: msg.msg });
       });
     }
+  }
+  useEffect(() => {
+    msgTransfer();
   }, [arrivalMessage]);
+
 
   useEffect(() => {
     arrivalMessage && setMessages((prev) => [...prev, arrivalMessage]);
@@ -70,6 +51,31 @@ const ChatContainer = ({ currentChat, currentUser, socket }) => {
   useEffect(() => {
     scrollRef.current?.scrollIntoView({ behaviour: "smooth" });
   }, [messages])
+
+  const handleSendMsg = async (msg) => {
+
+    await axios.post(`${serverLink}/messages/addmsg`, {
+      from: currentUser._id,
+      to: currentChat._id,
+      message: msg,
+    });
+
+    if (currentChat) {
+      socket.emit("send-msg", {
+        to: currentChat._id,
+        from: currentUser._id,
+        msg,
+      });
+
+
+    }
+    const msgs = [...messages];
+    msgs.push({ fromSelf: true, message: msg });
+    setMessages(msgs);
+  };
+
+
+
 
   // For lottie animation
   const anime = useRef(null);

@@ -1,5 +1,5 @@
 import { faCircle, faCircleDot, faDotCircle } from '@fortawesome/free-regular-svg-icons';
-import { faArrowRightBracket, faArrowUpRightSquare, faDivide, faListDots, faArrowLeft, faArrowUpRightFromSquare, faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRightBracket, faArrowUpRightSquare, faDivide, faListDots, faArrowLeft, faArrowUpRightFromSquare, faEllipsisVertical, faClose } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { formatDistanceStrict } from 'date-fns';
@@ -10,13 +10,12 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import { serverLink } from './../../../utilities/links';
 import checkTokenExpired from './../../../utilities/checkTokenExpired';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const JobDetail = ({ selectedJob, setShowJobDetail }) => {
     const { recruitersName, jobTitle, companyName, companySize, vacancies, jobNature, educationalQualification, jobRequirements, tags, applicationDeadline, payRange, companyLocation, publishedDate, applicantCount, _id } = selectedJob
     const monthName = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec']
     const currentUser = useContext(UserStore)?.user;
-
     const navigate = useNavigate()
     const handleAddToWishlist = async (id) => {
         await axios.post(`${serverLink}/user/wishList`, { id }, {
@@ -41,6 +40,7 @@ const JobDetail = ({ selectedJob, setShowJobDetail }) => {
                 checkTokenExpired(err) === true && navigate('/login')
             })
     }
+    const url = useLocation();
 
     const handleApplyJob = async (id) => {
         await axios.post(`${serverLink}/job/apply/${id}`, {}, {
@@ -57,7 +57,13 @@ const JobDetail = ({ selectedJob, setShowJobDetail }) => {
     }
     return (
         <div className='mt-5 shadow-lg min-h-[100vh]  overflow-y-auto p-5 rounded-lg pb-10 '>
-            <p onClick={() => setShowJobDetail(false)} className={`md:hidden w-full bg-primary text-white py-2 p-5 rounded-full`}><FontAwesomeIcon icon={faArrowLeft} /> Go back</p>
+            {
+                url?.pathname !== '/profile'
+                    ?
+                    <p onClick={() => setShowJobDetail(false)} className={`md:hidden w-full bg-primary text-white py-2 p-5 rounded-full`}><FontAwesomeIcon icon={faArrowLeft} /> Go back</p>
+                    :
+                    <p onClick={() => setShowJobDetail(false)} className={` w-full bg-primary text-white py-2 p-5 rounded-full cursor-pointer`}><FontAwesomeIcon icon={faClose} /> Close</p>
+            }
             <div className={`flex flex-row items-center justify-between justify-items-center mt-10 px-2`}>
                 <h1 className='text-3xl '>{jobTitle}</h1>
                 <p><FontAwesomeIcon icon={faEllipsisVertical} className={`text-2xl`} /></p>

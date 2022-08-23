@@ -12,6 +12,7 @@ import SocialProfile from './sections/SocialProfile';
 import Language from './sections/Language';
 import Education from './sections/Education';
 import Experience from './sections/Experience';
+import JobSettings from './sections/JobSetting/JobSettings';
 
 const Profile = () => {
 
@@ -30,9 +31,9 @@ const Profile = () => {
                 <span className='sidebar-link pl-[1rem]'>General</span>
               </Link>
             </li>
+
+            {/* Personal Overview route */}
             <li>
-
-
               <Link activeClass="active" className="px-4  flex py-[12px] cursor-pointer " to="overview" spy={true} smooth={true} offset={-100} duration={500} >
 
                 <img
@@ -42,12 +43,22 @@ const Profile = () => {
                 />
                 <span className='sidebar-link pl-[1rem]'>Personal Overview</span>
               </Link>
-
             </li>
+
+            {/* Job Settings route */}
             <li>
+              <Link activeClass="active" className="px-4  flex py-[12px] cursor-pointer " to="jobSetting" spy={true} smooth={true} offset={-100} duration={500} >
 
+                <img
+                  src="https://vanhack.com/static-desktop/ecb8fa162c6ca3693c69b34b22ffc82d.svg"
 
+                  alt=""
+                />
+                <span className='sidebar-link pl-[1rem]'>Job Setting</span>
+              </Link>
+            </li>
 
+            <li>
               <Link activeClass="active" className=" flex py-[12px] px-4  cursor-pointer " to="relection" spy={true} smooth={true} offset={-100} duration={500} >
                 <img
                   src="https://vanhack.com/static-desktop/bea44a8645ff996094f8bdc8f7191dc0.svg"
@@ -170,6 +181,10 @@ const Profile = () => {
             <ProfessionalOverview />
           </div>
 
+          {/* Job Settings */}
+          <div className="my-10" id='jobSetting'>
+            <JobSettings />
+          </div>
 
           {/* Relocation */}
           <div id="relocation">

@@ -35,7 +35,19 @@ const UserStoreProvider = ({ children }) => {
 
     useEffect(() => {
         if (userEmail) {
+<<<<<<< HEAD
             fetchUser();
+=======
+            axios.get(`${serverLink}/user/email/${userEmail}`, {}, {
+                headers: {
+                    authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+                }
+            })
+                .then(res => setUser(res.data))
+                .catch(function (err) {
+                    checkTokenExpired(err) === true && navigate('/login')
+                })
+>>>>>>> 9004b59f967f12387bca2fdd5868c64605d5839a
         }
         else {
             console.log('Email not found from useContex')

@@ -51,7 +51,7 @@ const Navbar = () => {
     const deActive = " font-semibold  flex items-center text-[17px]   p-2 "
 
     return (
-        <nav className='sticky py-4 top-0 left-0 z-50 dark:bg-[#0C1322] nav-border'>
+        <nav className='sticky py-4 top-0 left-0 z-50 dark:bg-[#0C1322] nav-border dark:border-1 dark:border-[#ddd'>
             <div className='container max-w-[1280px] mx-auto relative z-50'>
                 <div className='flex justify-between items-center relative'>
                     {/* logo and navbar menu */}

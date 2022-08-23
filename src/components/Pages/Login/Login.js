@@ -9,6 +9,7 @@ import googleLogo from '../../../images/google.png';
 import { UserStore } from '../../../stateManagement/UserContext/UserContextStore';
 import Lottie from 'lottie-web';
 import loginLottie from './login2.json'
+// import { AiFillEye } from 'react-icons/ai'
 import './Login.css'
 // import loginLottie from './login-lottie.json'
 
@@ -107,7 +108,7 @@ const Login = () => {
         <div className='min-h-[100vh] py-10 dark:bg-[#0D1425]'>
             <div className='conatiner container max-w-[1280px] mx-auto'>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div className="card flex-shrink-0 w-full ">
+                    <div className="card flex-shrink-0 w-full order-last md:order-first">
                         <div className="card-body">
                             <form onSubmit={handleSubmit(onSubmit)}>
                                 <h1 className='text-[2.5rem] font-bold text-center dark:text-white'> <span className='text-[#6D28D9] dark:text-[#38BDF8]'>Login</span> Here</h1>
@@ -116,7 +117,8 @@ const Login = () => {
                                     <label className="label">
                                         <span className="label-text font-semibold dark:text-[#8C9BB6] text-[#334155]">Email</span>
                                     </label>
-                                    <input type="email" placeholder="Email" name='email' className="input-customize dark:bg-[#1E293B] dark:border-0" {...register("email",
+                                    <input type="email" placeholder="Email" name='email' className="input-customize dark:border-[#0D1425]  
+                                    dark:bg-[#1E293B] dark:text-white dark:outline-0" {...register("email",
                                         { required: true })} />
                                     <label className="label">
                                         {errors?.email?.type === 'required' && <span className="label-text-alt text-lg">{errors.email.message}</span>}
@@ -128,10 +130,15 @@ const Login = () => {
                                         <span className="label-text dark:text-[#8C9BB6] text-[#334155] font-semibold">Password</span>
                                     </label>
 
-                                    <input type={showPassword ? "text" : "password"} placeholder="Password" name='password' className="input-customize dark:bg-[#1E293B] dark:border-0" {...register("password",
+
+                                    <input type={showPassword ? "text" : "password"} placeholder="Password" name='password' className="input-customize dark:border-[#0D1425] dark:bg-[#1E293B] dark:text-white" {...register("password",
                                         {
                                             required: true,
-                                        })} />
+                                        })} >
+
+                                    </input>
+
+
                                     <div className='mt-6 flex justify-between items-center'>
                                         {/* <div>
                                             <label className="my-2">

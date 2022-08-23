@@ -26,11 +26,11 @@ import ForgetPassword from './components/Pages/Login/ForgetPassword';
 
 import UserMain from './components/Pages/UserDasboard/UserMain/UserMain';
 import UserProfile from './components/Pages/UserDasboard/UserProfile/UserProfile';
-import UserReview from './components/Pages/UserDasboard/UserReiew/UserReview';
 
 import PostResource from './AdminDashboard/PostResource/PostResource';
 import FreeResource from './components/Pages/FreeResource/FreeResource';
 import { useLocation } from 'react-router-dom';
+import Developer from './components/Pages/Developer/Developer';
 
 
 function App() {
@@ -62,6 +62,7 @@ function App() {
             </ProtectedRout>
           }></Route>
           <Route path='/postJob' element={<PostAJob />}></Route>
+          <Route path='/developer' element={<Developer />}></Route>
 
           <Route path='/skilltest' element={<SkillAssessment />}></Route>
           <Route path='/findJob' element={<FindJob />}></Route>

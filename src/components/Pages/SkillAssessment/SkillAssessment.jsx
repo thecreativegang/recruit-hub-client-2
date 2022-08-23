@@ -24,6 +24,7 @@ const SkillAssessment = () => {
     nextQuestion < questions.length
       ? setCurrentQuestion(nextQuestion)
       : setShowScore(true);
+    setSelectedOption({});
   };
 
   useEffect(() => {
@@ -69,6 +70,7 @@ const SkillAssessment = () => {
                   ))}
                   <button
                     className="float-right bg-primary text-white px-6 py-3 rounded hover:opacity-80"
+                    disabled={Object.keys(selectedOption).length === 0}
                     onClick={() => handleAnsBtnClick(selectedOption)}
                   >
                     Next Question

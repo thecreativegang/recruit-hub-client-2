@@ -33,6 +33,7 @@ import FreeResource from './components/Pages/FreeResource/FreeResource';
 import { useLocation } from 'react-router-dom';
 import ReactTooltip from 'react-tooltip';
 import UserProfile from './components/Pages/UserProfile/UserProfile';
+import UserAbout from './components/Pages/UserProfile/UserAbout/UserAbout';
 
 
 function App() {
@@ -79,7 +80,9 @@ function App() {
           </Route>
 
 
-          <Route path='user-profile' element={<UserProfile />} ></Route>
+          <Route path='/user-profile' element={<UserProfile />} >
+            <Route index element={<UserAbout />} />
+          </Route>
 
           {/* <Route path='/dashboard' element={<UserMain></UserMain>}>
             <Route index element={<UserProfile></UserProfile>}></Route>

@@ -1,10 +1,11 @@
 import React from "react";
+import { Outlet } from "react-router-dom";
 import "./UserProfile.css";
 
 const UserProfile = () => {
   return (
     <>
-      <section className="min-h-screen bg-white">
+      <section className=" bg-white">
         <div className="user-profile-shadow pb-1">
           {/* User Hero section  */}
           <section className="container border-b-2 border-gray-200 pb-5">
@@ -78,6 +79,13 @@ const UserProfile = () => {
                 </li>
               </ul>
             </div>
+          </div>
+        </div>
+      </section>
+      <section className="bg-[#F0F2F5] pt-6">
+        <div className="container">
+          <div className="bg-white rounded-lg">
+            <Outlet />
           </div>
         </div>
       </section>

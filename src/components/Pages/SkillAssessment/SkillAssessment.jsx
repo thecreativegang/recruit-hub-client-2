@@ -30,15 +30,27 @@ const SkillAssessment = () => {
   useEffect(() => {
     axios.get(`${serverLink}/skillassessment/test`).then((res) => {
       setQuestion(res.data);
+      console.log(res.data);
       setLoading(false);
     });
   }, []);
   return (
     <>
+      <div className="flex flex-col items-center mt-3 md:mt-7">
+        <div>
+          Question number: {currentQuestion + 1} / {questions.length}
+        </div>
+        <progress
+          className="progress progress-primary w-1/2 flex flex-col justify-center"
+          value={currentQuestion + 1}
+          max={questions.length}
+        ></progress>
+      </div>
       <div className="h-[80vh] my-auto">
         <div className="text-3xl text-center font-sans font-semibold mt-6">
           Try your skill
         </div>
+
         <div className="flex flex-col justify-center">
           {loading && <progress class="progress w-56"></progress>}
           {showScore ? (
@@ -73,7 +85,9 @@ const SkillAssessment = () => {
                     disabled={Object.keys(selectedOption).length === 0}
                     onClick={() => handleAnsBtnClick(selectedOption)}
                   >
-                    Next Question
+                    {currentQuestion === questions.length - 1
+                      ? 'Submit'
+                      : 'Next Question'}
                   </button>
                 </div>
               </>

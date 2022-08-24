@@ -1,0 +1,13 @@
+/* custom font link  */
+@font-face {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  src: url(../../../Font/SEGOEUI.TTF);
+}
+
+.font-segoeUi {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.user-profile-shadow {
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}

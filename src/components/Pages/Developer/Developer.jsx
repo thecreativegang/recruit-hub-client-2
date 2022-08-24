@@ -37,14 +37,14 @@ const Developer = () => {
                       alt="user"
                     />
                   </div>
-                  <h3 className="mt-[.5rem] mb-[.1rem] text-xl font-semibold text-gray-600 flex justify-center items-center">
-                    Ricky Park{" "}
+                  <h3 className="mt-[.5rem] mb-[.1rem] text-xl font-semibold text-gray-600 flex justify-center items-center capitalize">
+                    Ricky Park
                     <MdVerified className="ml-1 text-[#0285ff] text-xl" />
                   </h3>
                   <h6 className="text-base font-medium text-gray-500">
-                    @tanvir-123
+                    @{singleData?.username}
                   </h6>
-                  <p>Front-end Developer</p>
+                  <p className="capitalize">{singleData?.accountType}</p>
                   <div class="buttons">
                     <button class="card-button-primary">View Profile</button>
                   </div>

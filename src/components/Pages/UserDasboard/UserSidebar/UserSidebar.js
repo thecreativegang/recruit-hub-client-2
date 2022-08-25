@@ -12,22 +12,22 @@ const UserSidebar = () => {
                 {/* sidebar link  */}
 
                 <Link to="/dashboard" className='flex p-3  items-center mb-2 cursor-pointer usernav-link'>
-                    <HiUser className="mr-2 text-xl text-[20px]" />
-                    <span>Profile</span>
+                    <HiUser className="mr-2 text-xl text-[20px] dark:text-[#38BDF8]" />
+                    <span className='dark:text-[#E2E8F0]'>Profile</span>
                 </Link>
 
 
 
 
                 <Link to="userReview" className='flex p-3  items-center mb-2 cursor-pointer usernav-link'>
-                    <HiChatAlt className="mr-2 text-[20px]" />
+                    <HiChatAlt className="mr-2 text-[20px] dark:text-[#38BDF8]" />
 
-                    <span>Review</span>
+                    <span className='dark:text-[#E2E8F0]'>Review</span>
                 </Link>
 
                 <Link to="userReview" className='flex p-3  items-center mb-2 cursor-pointer usernav-link'>
-                    <FaBusinessTime className="mr-2 text-[20px]" />
-                    <span>Interview schedule</span>
+                    <FaBusinessTime className="mr-2 text-[20px] dark:text-[#38BDF8]" />
+                    <span className='dark:text-[#E2E8F0]'>Interview schedule</span>
                 </Link>
             </ul>
         </div>

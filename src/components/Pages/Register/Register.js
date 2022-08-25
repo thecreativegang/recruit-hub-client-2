@@ -140,7 +140,7 @@ const Register = () => {
                             <div className="card flex-shrink-0 w-full order-last md:order-first">
                                 <form onSubmit={handleSubmit(onSubmit)}>
                                     <div className="card-body">
-                                        <h1 className='text-[2.5rem] font-bold text-center dark:text-white'><span className='text-[#6D28D9] dark:text-[#38BDF8] capitalize'>{accType}</span> Registration</h1>
+                                        <h1 className='text-[2.5rem] font-bold text-center dark:text-white'><span className='text-[#3878DF] dark:text-[#38BDF8] capitalize'>{accType}</span> Registration</h1>
 
                                         {/* userName of user  */}
                                         <div className="form-control mb-">

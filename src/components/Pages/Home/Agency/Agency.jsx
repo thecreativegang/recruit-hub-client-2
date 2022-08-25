@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import "./Agency.css";
-import { FaRocket } from "react-icons/fa";
+import { ImManWoman } from "react-icons/im";
+import { FaRocket, FaStaylinked } from "react-icons/fa";
 import CountUp from "react-countup";
 import ScrollTrigger from "react-scroll-trigger";
+import { RiMoneyDollarBoxFill } from "react-icons/ri";
+import { MdRateReview } from "react-icons/md";
 
 const Agency = () => {
   const [counterOn, setCounterOn] = useState(false);
@@ -17,7 +20,7 @@ const Agency = () => {
 
           <div className="flex justify-center ">
             <div className="text-center mb-10">
-              <h3 className="section-title font-semibold text-[#5956e9] dark:text-[#38BDF8] st-one relative">
+              <h3 className="section-title font-semibold  dark:text-[#38BDF8] st-one relative">
                 Agency Statistics
               </h3>
               <h1 className="dark:text-[#E2E8F0] text-[2rem] md:text-[3.5rem] leading-[3.2rem] text-black font-semibold mb-2">
@@ -30,54 +33,54 @@ const Agency = () => {
           </div>
 
           <div className="md:flex justify-evenly mt-10 pb-10">
-            <div className="px-6 py-6 text-center shadow-2xl mb-8 md:mb-0 rounded-2xl">
+            <div className="p-10 text-center bg-white dark:bg-transparent shadow-agency  mb-8 ">
               <div className="flex justify-center mb-4">
-                <FaRocket className="text-5xl text-[#5956e9] dark:text-[#38BDF8]" />
+                <ImManWoman className="text-5xl text-[#061835] dark:text-[#38BDF8]" />
               </div>
               <h3 className="text-5xl font-bold mb-2 dark:text-[#E2E8F0]">
                 {counterOn && (
-                  <CountUp end={98} start={0} delay={0} duration={2} />
+                  <CountUp end={10} start={0} delay={0} duration={2} />
+                )}
+                K+
+              </h3>
+              <p className="text-xl font-semibold text-gray-700 dark:text-[#8C9BB6]">
+                Total Recruiter
+              </p>
+            </div>
+
+            <div className="p-10 text-center bg-white dark:bg-transparent shadow-agency  mb-8 ">
+              <div className="flex justify-center mb-4">
+                <RiMoneyDollarBoxFill className="text-5xl text-[#061835] dark:text-[#38BDF8]" />
+              </div>
+              <h3 className="text-5xl font-bold mb-2 dark:text-[#E2E8F0]">
+                {counterOn && (
+                  <CountUp end={102} start={0} delay={0} duration={2} />
                 )}
                 +
               </h3>
               <p className="text-xl font-semibold text-gray-700 dark:text-[#8C9BB6]">
-                Project Complate
+                Got Job
               </p>
             </div>
 
-            <div className="px-6 py-6 text-center shadow-2xl mb-8 md:mb-0 rounded-2xl">
+            <div className="p-10 text-center bg-white dark:bg-transparent shadow-agency  mb-8 ">
               <div className="flex justify-center mb-4">
-                <FaRocket className="text-5xl text-[#5956e9] dark:text-[#38BDF8]" />
+                <FaStaylinked className="text-5xl text-[#061835] dark:text-[#38BDF8]" />
               </div>
-              <h3 className="text-5xl font-bold mb-2 dark:text-[#E2E8F0]">
-                {counterOn && (
-                  <CountUp end={98} start={0} delay={0} duration={2} />
-                )}
-                +
-              </h3>
-              <p className="text-xl font-semibold text-gray-700 dark:text-[#8C9BB6]">
-                Project Complate
-              </p>
-            </div>
-
-            <div className="px-6 py-6 text-center shadow-2xl mb-8 md:mb-0 rounded-2xl">
-              <div className="flex justify-center mb-4">
-                <FaRocket className="text-5xl text-[#5956e9] dark:text-[#38BDF8]" />
-              </div>
-              <h3 className="text-5xl font-bold mb-2 dark:text-[#E2E8F0]">
+              <h3 className="text-5xl  font-bold mb-2 dark:text-[#E2E8F0]">
                 {counterOn && (
                   <CountUp end={55} start={0} delay={0} duration={2} />
                 )}
                 +
               </h3>
               <p className="text-xl font-semibold text-gray-700 dark:text-[#8C9BB6]">
-                Project Complate
+                All interviewed
               </p>
             </div>
 
-            <div className="px-6 py-6 text-center shadow-2xl mb-8 md:mb-0 rounded-2xl">
+            <div className="p-10 text-center bg-white dark:bg-transparent shadow-agency  mb-8 ">
               <div className="flex justify-center mb-4">
-                <FaRocket className="text-5xl text-[#5956e9] dark:text-[#38BDF8]" />
+                <MdRateReview className="text-5xl text-[#061835] dark:text-[#38BDF8]" />
               </div>
               <h3 className="text-5xl font-bold mb-2 dark:text-[#E2E8F0]">
                 {counterOn && (
@@ -86,7 +89,7 @@ const Agency = () => {
                 +
               </h3>
               <p className="text-xl font-semibold text-gray-700 dark:text-[#8C9BB6]">
-                Project Complate
+                Total Review
               </p>
             </div>
           </div>

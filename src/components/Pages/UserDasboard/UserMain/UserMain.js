@@ -5,9 +5,9 @@ import UserSidebar from '../UserSidebar/UserSidebar';
 
 const UserMain = () => {
     return (
-        <div className='flex bg-[#F3F3F3] h-screen relative'>
+        <div className='flex bg-[#F3F3F3] dark:bg-[#0b1120] h-screen relative'>
             {/* side bar  */}
-            <div className='w-[20%]  p-6 usernav bg-white'>
+            <div className='w-[20%] dark:bg-[#0F172A] p-6 usernav bg-white'>
                 <UserSidebar></UserSidebar>
             </div>
 

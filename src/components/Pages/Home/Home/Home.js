@@ -6,9 +6,9 @@ import Footer from '../../../Shared/Footer/Footer';
 import About from '../About/About';
 import Service from '../Service/Service';
 import Banner from './../Banner/Banner';
-import Experience from '../Experience/Experience';
+
 import Agency from '../Agency/Agency';
-import Testimonials from '../Testimonials/Testimonials';
+
 
 const Home = () => {
     return (
@@ -16,9 +16,9 @@ const Home = () => {
             <Banner />
             <About />
             <Service />
-            <Experience />
+
             <Agency />
-            <Testimonials />
+
             <OurTeam />
             <Articles />
             <RhubDesign />

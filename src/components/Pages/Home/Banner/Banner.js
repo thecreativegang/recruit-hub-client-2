@@ -13,7 +13,7 @@ const Banner = () => {
 
     const navigateRecruiter = useNavigate()
     return (
-        <div className=' bg-[#f3f3f3] md:h-[110vh] h-full relative pb-[8rem] pt-[6rem] md:p-0 dark:bg-[#0b1120]'>
+        <div className=' bg-[#F3F3F3] md:h-[110vh] h-full relative pb-[8rem] pt-[6rem] md:p-0 dark:bg-[#0b1120]'>
             <div className=' h-full w-[95%] md:w-[75%] mx-auto '>
                 <section className='grid grid-cols-1 md:grid-cols-2 gap-2  h-full mx-auto '>
                     <div className='flex justify-center mb-[3rem] md:hidden'>

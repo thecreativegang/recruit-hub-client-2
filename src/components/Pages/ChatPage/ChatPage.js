@@ -30,17 +30,17 @@ const ChatPage = () => {
 
 
     // Conection to soket io
-    useEffect(() => {
-        if (currentUser) {
-            socket.emit("add-user", currentUser._id);
-        }
-    }, [currentUser])
+    // useEffect(() => {
+    //     if (currentUser) {
+    //         socket.emit("add-user", currentUser._id);
+    //     }
+    // }, [currentUser])
 
 
 
     // fetch all user data
     const fetchChats = async () => {
-        await axios.get(`${serverLink}/user`, {}, {
+        await axios.get(`${serverLink}/user`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`,
             },
@@ -81,7 +81,7 @@ const ChatPage = () => {
 
     const handelSearch = () => {
         const fetchChats = async () => {
-            const data = await axios.get(`${serverLink}/user/search-user?search=${search}`, {}, {
+            const data = await axios.get(`${serverLink}/user/search-user?search=${search}`, {
                 headers: {
                     authorization: `Bearer ${localStorage.getItem('accessToken')}`,
                 },

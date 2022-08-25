@@ -1,12 +1,18 @@
 import React from 'react';
 import { useState } from 'react';
 import { FaUserCircle } from 'react-icons/fa';
+import Loading from '../../Shared/Loading';
 import SingleChatModal from './SingleChatModal';
 
 const SingleProfile = ({ chat, setCurrentChat }) => {
 
-    const [chatModalId, setChatModalId] = useState('')
+    const [chatModalId, setChatModalId] = useState('');
+
     const singleUserSelect = (chat) => {
+
+        if (!chat.email) {
+            return <Loading></Loading>
+        }
         setCurrentChat(chat);
         setChatModalId(chat);
     }
@@ -31,10 +37,10 @@ const SingleProfile = ({ chat, setCurrentChat }) => {
                 </div>
 
                 <div className='lg:mx-2 my-auto'>
-                    <button onClick={() => singleUserSelect(chat)}>
-                        {/* <label for="my-modal-3" class=" btn btn-sm btn-primary modal-button"> Add </label> */}
-                        <label class=" btn btn-sm text-white border-0 bg-sky-500 hover:bg-sky-400 outline-none modal-button"> Message </label>
-                    </button>
+
+                    {/* <label for="my-modal-3" class=" btn btn-sm btn-primary modal-button"> Add </label> */}
+                    <label onClick={() => singleUserSelect(chat)} class="focus:outline-none btn btn-sm text-white border-0 bg-sky-500 hover:bg-sky-400 outline-none modal-button"> Message </label>
+
                 </div>
 
             </div >

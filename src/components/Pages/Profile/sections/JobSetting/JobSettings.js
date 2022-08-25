@@ -15,7 +15,7 @@ const JobSettings = () => {
                 <button onClick={() => {
                     setShowHiddenJobs(!showHiddenJobs)
                     setLoading(!showHiddenJobs)
-                }} className={`  ${loading && 'loading'} ${!showHiddenJobs ? 'bg-zinc-400' : 'btn-primary'}`}>Hidden Jobs</button>
+                }} className={`  ${loading && 'loading'} ${!showHiddenJobs ? 'bg-zinc-400 b' : 'btn-primary'}`}>Hidden Jobs</button>
             </div>
             <div>
                 {

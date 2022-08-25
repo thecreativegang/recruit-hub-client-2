@@ -13,10 +13,8 @@ const RequireUsername = ({ children, prop }) => {
     const [user] = useAuthState(auth)
     useEffect(() => {
 
-        if (user) {
-            console.log(localStorage.getItem('accessToken'));
-
-            axios.get(`${serverLink}/user/all/${user?.email}`, {}, {
+        if (user?.email) {
+            axios.get(`${serverLink}/user/${user?.email}`, {
                 headers: {
                     authorization: `Bearer ${localStorage.getItem('accessToken')}`,
                 },

@@ -119,6 +119,8 @@ const Navbar = () => {
                                     <>
                                         {/* user photo  */}
                                         <div className='relative'>
+
+
                                             <FaUserCircle onClick={() => setUserSwitch(!userSwitch)} className='text-4xl mr-3 cursor-pointer' />
                                         </div>
 

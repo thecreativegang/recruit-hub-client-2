@@ -6,7 +6,7 @@ import ScrollToBottom from 'react-scroll-to-bottom';
 import Loading from '../../Shared/Loading';
 import { FaUserCircle } from 'react-icons/fa';
 
-const MyChat = ({ allUser, userStore, setCurrentChat }) => {
+const MyChat = ({ allUser, allAdmin, userStore, setCurrentChat }) => {
     const { userEmail, user } = userStore;
 
 
@@ -44,7 +44,7 @@ const MyChat = ({ allUser, userStore, setCurrentChat }) => {
                 <div class="collapse-content px-1 peer-checked:bg-sky-200">
                     <div className='overflow-x-hidden   overflow-y-auto '>
                         {
-                            allUser ? allUser?.map((chat) => <SingleProfile setCurrentChat={setCurrentChat} chat={chat} />) : <Loading></Loading>
+                            allAdmin ? allAdmin?.map((chat) => <SingleProfile setCurrentChat={setCurrentChat} chat={chat} />) : <Loading></Loading>
                         }
                     </div>
                 </div>

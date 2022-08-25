@@ -24,20 +24,33 @@ const SkillAssessment = () => {
     nextQuestion < questions.length
       ? setCurrentQuestion(nextQuestion)
       : setShowScore(true);
+    setSelectedOption({});
   };
 
   useEffect(() => {
     axios.get(`${serverLink}/skillassessment/test`).then((res) => {
       setQuestion(res.data);
+      console.log(res.data);
       setLoading(false);
     });
   }, []);
   return (
     <>
+      <div className="flex flex-col items-center mt-3 md:mt-7">
+        <div>
+          Question number: {currentQuestion + 1} / {questions.length}
+        </div>
+        <progress
+          className="progress progress-primary w-1/2 flex flex-col justify-center"
+          value={currentQuestion + 1}
+          max={questions.length}
+        ></progress>
+      </div>
       <div className="h-[80vh] my-auto">
         <div className="text-3xl text-center font-sans font-semibold mt-6">
           Try your skill
         </div>
+
         <div className="flex flex-col justify-center">
           {loading && <progress class="progress w-56"></progress>}
           {showScore ? (
@@ -47,7 +60,7 @@ const SkillAssessment = () => {
           ) : (
             !loading && (
               <>
-                <div className="w-3/4 mx-auto mt-4">
+                <div className="w-1/2 mx-auto mt-4">
                   <h3 className="text-xl text-gray-600">
                     Question {currentQuestion + 1}:{' '}
                     {questions[currentQuestion].question}
@@ -69,9 +82,12 @@ const SkillAssessment = () => {
                   ))}
                   <button
                     className="float-right bg-primary text-white px-6 py-3 rounded hover:opacity-80"
+                    disabled={Object.keys(selectedOption).length === 0}
                     onClick={() => handleAnsBtnClick(selectedOption)}
                   >
-                    Next Question
+                    {currentQuestion === questions.length - 1
+                      ? 'Submit'
+                      : 'Next Question'}
                   </button>
                 </div>
               </>

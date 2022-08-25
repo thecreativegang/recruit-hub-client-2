@@ -1,5 +1,5 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, NavLink } from "react-router-dom";
 import "./UserProfile.css";
 
 const UserProfile = () => {
@@ -56,27 +56,83 @@ const UserProfile = () => {
           <div className="container">
             <div className="py-2 ">
               <ul className="flex">
-                <li className="text-base font-semibold px-3 py-1 rounded hover:bg-[#e8e8e8] duration-200 ease-in-out cursor-pointer">
-                  About
-                </li>
-                <li className="text-base font-semibold px-3 py-1 rounded hover:bg-[#e8e8e8] duration-200 ease-in-out cursor-pointer">
-                  Skills
-                </li>
-                <li className="text-base font-semibold px-3 py-1 rounded hover:bg-[#e8e8e8] duration-200 ease-in-out cursor-pointer">
-                  Featured
-                </li>
-                <li className="text-base font-semibold px-3 py-1 rounded hover:bg-[#e8e8e8] duration-200 ease-in-out cursor-pointer">
-                  Experience
-                </li>
-                <li className="text-base font-semibold px-3 py-1 rounded hover:bg-[#e8e8e8] duration-200 ease-in-out cursor-pointer">
-                  Courses
-                </li>
-                <li className="text-base font-semibold px-3 py-1 rounded hover:bg-[#e8e8e8] duration-200 ease-in-out cursor-pointer">
-                  Projects
-                </li>
-                <li className="text-base font-semibold px-3 py-1 rounded hover:bg-[#e8e8e8] duration-200 ease-in-out cursor-pointer">
-                  More
-                </li>
+                <NavLink
+                  to="/user-profile/"
+                  className={({ isActive }) =>
+                    isActive && "border-b-2 border-blue-600"
+                  }
+                >
+                  <li className="text-base font-semibold px-3 py-1 rounded hover:bg-[#e8e8e8] duration-200 ease-in-out cursor-pointer">
+                    About
+                  </li>
+                </NavLink>
+                <NavLink
+                  to="/user-profile/skills"
+                  className={({ isActive }) =>
+                    isActive && "border-b-2 border-blue-600"
+                  }
+                >
+                  <li className="text-base font-semibold px-3 py-1 rounded hover:bg-[#e8e8e8] duration-200 ease-in-out cursor-pointer">
+                    Skills
+                  </li>
+                </NavLink>
+
+                <NavLink
+                  to="/user-profile/featured"
+                  className={({ isActive }) =>
+                    isActive && "border-b-2 border-blue-600"
+                  }
+                >
+                  <li className="text-base font-semibold px-3 py-1 rounded hover:bg-[#e8e8e8] duration-200 ease-in-out cursor-pointer">
+                    Featured
+                  </li>
+                </NavLink>
+
+                <NavLink
+                  to="/user-profile/experience"
+                  className={({ isActive }) =>
+                    isActive && "border-b-2 border-blue-600"
+                  }
+                >
+                  <li className="text-base font-semibold px-3 py-1 rounded hover:bg-[#e8e8e8] duration-200 ease-in-out cursor-pointer">
+                    Experience
+                  </li>
+                </NavLink>
+
+                <NavLink
+                  to="/user-profile/courses"
+                  className={({ isActive }) =>
+                    isActive && "border-b-2 border-blue-600"
+                  }
+                >
+                  {" "}
+                  <li className="text-base font-semibold px-3 py-1 rounded hover:bg-[#e8e8e8] duration-200 ease-in-out cursor-pointer">
+                    Courses
+                  </li>
+                </NavLink>
+
+                <NavLink
+                  to="/user-profile/projects"
+                  className={({ isActive }) =>
+                    isActive && "border-b-2 border-blue-600"
+                  }
+                >
+                  {" "}
+                  <li className="text-base font-semibold px-3 py-1 rounded hover:bg-[#e8e8e8] duration-200 ease-in-out cursor-pointer">
+                    Projects
+                  </li>
+                </NavLink>
+
+                <NavLink
+                  to="/user-profile/more"
+                  className={({ isActive }) =>
+                    isActive && "border-b-2 border-blue-600"
+                  }
+                >
+                  <li className="text-base font-semibold px-3 py-1 rounded hover:bg-[#e8e8e8] duration-200 ease-in-out cursor-pointer">
+                    More
+                  </li>
+                </NavLink>
               </ul>
             </div>
           </div>

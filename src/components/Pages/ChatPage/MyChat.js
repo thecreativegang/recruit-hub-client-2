@@ -9,7 +9,7 @@ import { FaUserCircle } from 'react-icons/fa';
 const MyChat = ({ allUser, allAdmin, userStore, setCurrentChat }) => {
     const { userEmail, user } = userStore;
 
-
+    console.log(allAdmin);
     return (
         <div className='lg:mx-2 pt-2'>
             {/* My chat header start*/}
@@ -44,7 +44,7 @@ const MyChat = ({ allUser, allAdmin, userStore, setCurrentChat }) => {
                 <div class="collapse-content px-1 peer-checked:bg-sky-200">
                     <div className='overflow-x-hidden   overflow-y-auto '>
                         {
-                            allAdmin ? allAdmin?.map((chat) => <SingleProfile setCurrentChat={setCurrentChat} chat={chat} />) : <Loading></Loading>
+                            allAdmin && allAdmin ? allAdmin?.map((chat) => <SingleProfile setCurrentChat={setCurrentChat} chat={chat} />) : <Loading></Loading>
                         }
                     </div>
                 </div>
@@ -55,7 +55,7 @@ const MyChat = ({ allUser, allAdmin, userStore, setCurrentChat }) => {
             {/* useer */}
             <div className='overflow-x-hidden  overflow-y-auto '>
                 {
-                    allUser ? allUser?.map((chat) => <SingleProfile setCurrentChat={setCurrentChat} chat={chat} />) : <Loading></Loading>
+                    allUser && allUser ? allUser?.map((chat) => <SingleProfile setCurrentChat={setCurrentChat} chat={chat} />) : <Loading></Loading>
                 }
             </div>
 

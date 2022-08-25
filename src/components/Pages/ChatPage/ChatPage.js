@@ -29,6 +29,7 @@ const ChatPage = () => {
     const [searchResult, setSearchResult] = useState('');
 
 
+
     // Conection to soket io
     // useEffect(() => {
     //     if (currentUser) {
@@ -67,7 +68,7 @@ const ChatPage = () => {
         }
         )
             .then(function (res) {
-                setAllAdmin(res?.data);
+                setAllAdmin(res?.data?.userInfo);
             })
             .catch(function (err) {
                 checkTokenExpired(err) === true && navigate('/login')
@@ -76,6 +77,9 @@ const ChatPage = () => {
     useEffect(() => {
         fetchAdmin();
     }, [allAdmin])
+
+
+    console.log(currentChat)
 
 
     const handelSearch = () => {

@@ -51,7 +51,8 @@ const Login = () => {
     useEffect(() => {
         if (!globalUser && ((tokenInLStorage + "").length > 4)) {
             localStorage.removeItem("accessToken")
-        } else {
+        }
+        else {
             if ((tokenInLStorage + "").length > 4) {
                 console.log("See account type", currentUserinfo.accountType)
                 console.log("see whats inside from", from)

@@ -5,7 +5,8 @@ import SingleChatModal from './SingleChatModal';
 
 const SingleProfile = ({ chat, setCurrentChat }) => {
 
-    const [chatModalId, setChatModalId] = useState('')
+    const [chatModalId, setChatModalId] = useState('');
+
     const singleUserSelect = (chat) => {
         setCurrentChat(chat);
         setChatModalId(chat);

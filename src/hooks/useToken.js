@@ -11,7 +11,7 @@ const useToken = async (currentUser) => {
         accountType: 'recruiter'
     };
     useEffect(() => {
-        if (user.email) {
+        if (user?.email) {
             // ${serverLink}/
             const targetUrl = `${serverLink}/user/create`
             axios.post(targetUrl, user)

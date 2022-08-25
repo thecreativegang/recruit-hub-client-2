@@ -11,11 +11,12 @@ const useToken = async (currentUser) => {
         accountType: 'recruiter'
     };
     useEffect(() => {
-        if (user?.email) {
+        if (user.email) {
             const targetUrl = `${serverLink}/user/create`
             axios.post(targetUrl, user)
                 .then(function (res) {
                     setToken(res?.data?.accessToken);
+                    localStorage.setItem('accessToken', res?.data?.accessToken);
                     localStorage.removeItem('accountType')
                 })
                 .catch(function (err) {

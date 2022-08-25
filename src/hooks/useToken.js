@@ -17,8 +17,8 @@ const useToken = async (currentUser) => {
             axios.post(targetUrl, user)
                 .then(function (res) {
                     setToken(res?.data?.accessToken);
-                    localStorage.setItem('accessToken', res?.data?.accessToken);
                     localStorage.removeItem('accountType')
+                    localStorage.setItem('accessToken', res?.data?.accessToken);
                     const socket = io(`${serverLink}`)
                     console.log('socket console.log', socket)
                 })

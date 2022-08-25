@@ -7,6 +7,7 @@ import auth from '../../firebase.init';
 import { checkTokenExpired } from './../../utilities/checkTokenExpired';
 import { useNavigate } from 'react-router-dom';
 import { serverLink } from './../../utilities/links';
+import Loading from '../../components/Shared/Loading';
 const UserStore = createContext();
 
 const UserStoreProvider = ({ children }) => {
@@ -16,7 +17,6 @@ const UserStoreProvider = ({ children }) => {
   const [globalUser] = useAuthState(auth);
   const userEmail = globalUser?.email;
 
-  console.log(userEmail);
 
   const [user, setUser] = useState([]);
 
@@ -56,6 +56,9 @@ const UserStoreProvider = ({ children }) => {
     }
   }, [userEmail]);
 
+  // if (!userEmail) {
+  //   return <Loading></Loading>
+  // }
   //this state stored user data  //==> Don't move this one !
   const userData = {
     userEmail,

@@ -37,16 +37,20 @@ const ChatContainer = ({ currentChat, currentUser, socket }) => {
         console.log(msg)
         setArrivalMessage({ fromSelf: false, message: msg.msg });
       });
+
+      return () => {
+        socket.disconnect();
+      }
     }
   }
   useEffect(() => {
     msgTransfer();
-  }, [arrivalMessage]);
+  }, []);
 
 
   useEffect(() => {
     arrivalMessage && setMessages((prev) => [...prev, arrivalMessage]);
-  }, [arrivalMessage]);
+  }, []);
 
   useEffect(() => {
     scrollRef.current?.scrollIntoView({ behaviour: "smooth" });

@@ -35,6 +35,7 @@ import ReactTooltip from 'react-tooltip';
 import UserProfile from './components/Pages/UserProfile/UserProfile';
 import UserAbout from './components/Pages/UserProfile/UserAbout/UserAbout';
 import UserSkills from './components/Pages/UserProfile/UserSkills/UserSkills';
+import Featured from './components/Pages/UserProfile/Featured/Featured';
 
 
 function App() {
@@ -84,6 +85,7 @@ function App() {
           <Route path='/user-profile' element={<UserProfile />} >
             <Route index element={<UserAbout />} />
             <Route path="skills" element={<UserSkills />} />
+            <Route path="featured" element={<Featured />} />
           </Route>
 
           {/* <Route path='/dashboard' element={<UserMain></UserMain>}>

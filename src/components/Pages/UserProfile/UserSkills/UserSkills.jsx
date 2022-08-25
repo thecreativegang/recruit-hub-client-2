@@ -12,7 +12,7 @@ const UserSkills = () => {
       <div className="px-5 pb-5">
         {/* all skills box */}
         <div>
-          <div className="max-w-[25rem] w-full px-8 py-6 user-skills-shadow rounded mb-10">
+          <div className="max-w-[25rem] w-full px-8 py-6 user-card-shadow rounded mb-10">
             <p className="text-xl font-bold text-gray-600 flex justify-start items-center">
               <FaHtml5 className="mr-2" />
               HTML 5

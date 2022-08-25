@@ -36,6 +36,8 @@ import UserProfile from './components/Pages/UserProfile/UserProfile';
 import UserAbout from './components/Pages/UserProfile/UserAbout/UserAbout';
 import UserSkills from './components/Pages/UserProfile/UserSkills/UserSkills';
 import Featured from './components/Pages/UserProfile/Featured/Featured';
+import Courses from './components/Pages/UserProfile/Courses/Courses';
+import Projects from './components/Pages/UserProfile/Projects/Projects';
 
 
 function App() {
@@ -86,6 +88,8 @@ function App() {
             <Route index element={<UserAbout />} />
             <Route path="skills" element={<UserSkills />} />
             <Route path="featured" element={<Featured />} />
+            <Route path="courses" element={<Courses />} />
+            <Route path="projects" element={<Projects />} />
           </Route>
 
           {/* <Route path='/dashboard' element={<UserMain></UserMain>}>

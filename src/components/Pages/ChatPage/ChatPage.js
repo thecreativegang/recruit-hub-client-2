@@ -96,7 +96,7 @@ const ChatPage = () => {
         fetchChats();
         setSearchResult("");
     }
-
+    // c
 
     return (
         <div>

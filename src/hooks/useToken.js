@@ -12,17 +12,13 @@ const useToken = async (currentUser) => {
     };
     useEffect(() => {
         if (user.email) {
-            // ${serverLink}/
             const targetUrl = `${serverLink}/user/create`
             axios.post(targetUrl, user)
                 .then(function (res) {
                     setToken(res?.data?.accessToken);
                     localStorage.removeItem('accountType')
-                    localStorage.setItem('accessToken', res?.data?.accessToken);
-                    const socket = io(`${serverLink}`)
-                    console.log('socket console.log', socket)
                 })
-                .then(function (err) {
+                .catch(function (err) {
                     if (err) {
                         console.log(err)
                     }

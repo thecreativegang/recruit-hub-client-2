@@ -1,6 +1,4 @@
 import React from "react";
-import { TbWorld } from "react-icons/tb";
-import { FaGithub } from "react-icons/fa";
 
 const Courses = () => {
   return (
@@ -40,28 +38,6 @@ const Courses = () => {
               dolor quo odit repellat porro! Harum, dolores. Repellendus ea
               cupiditate voluptatem perferendis. At deleniti inventore
             </p>
-            {/* Projects link  */}
-            <ul className="flex items-center justify-start mt-6">
-              <a href="http://" target="_blank" rel="noopener noreferrer">
-                <li className="flex items-center justify-start text-lg text-blue-600 hover:text-gray-700 duration-150 ease-in-out mr-8">
-                  <TbWorld className="mr-1" />
-                  Live Site
-                </li>
-              </a>
-
-              <a href="http://" target="_blank" rel="noopener noreferrer">
-                <li className="flex items-center justify-start text-lg text-blue-600 hover:text-gray-700 duration-150 ease-in-out mr-8">
-                  <FaGithub className="mr-1" />
-                  Client Site
-                </li>
-              </a>
-              <a href="http://" target="_blank" rel="noopener noreferrer">
-                <li className="flex items-center justify-start text-lg text-blue-600 hover:text-gray-700 duration-150 ease-in-out mr-8">
-                  <FaGithub className="mr-1" />
-                  Server Site
-                </li>
-              </a>
-            </ul>
           </div>
         </div>
         {/* Courses box  */}
@@ -94,28 +70,6 @@ const Courses = () => {
               dolor quo odit repellat porro! Harum, dolores. Repellendus ea
               cupiditate voluptatem perferendis. At deleniti inventore
             </p>
-            {/* Projects link  */}
-            <ul className="flex items-center justify-start mt-6">
-              <a href="http://" target="_blank" rel="noopener noreferrer">
-                <li className="flex items-center justify-start text-lg text-blue-600 hover:text-gray-700 duration-150 ease-in-out mr-8">
-                  <TbWorld className="mr-1" />
-                  Live Site
-                </li>
-              </a>
-
-              <a href="http://" target="_blank" rel="noopener noreferrer">
-                <li className="flex items-center justify-start text-lg text-blue-600 hover:text-gray-700 duration-150 ease-in-out mr-8">
-                  <FaGithub className="mr-1" />
-                  Client Site
-                </li>
-              </a>
-              <a href="http://" target="_blank" rel="noopener noreferrer">
-                <li className="flex items-center justify-start text-lg text-blue-600 hover:text-gray-700 duration-150 ease-in-out mr-8">
-                  <FaGithub className="mr-1" />
-                  Server Site
-                </li>
-              </a>
-            </ul>
           </div>
         </div>
       </div>

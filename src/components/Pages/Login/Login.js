@@ -53,15 +53,7 @@ const Login = () => {
             localStorage.removeItem("accessToken")
         } else {
             if ((tokenInLStorage + "").length > 4) {
-                console.log("See account type", currentUserinfo.accountType)
-                console.log("see whats inside from", from)
-                if (currentUserinfo.accountType === 'developer') {
-                    console.log("Account type is developer")
-                    navigate('/findJob');
-                }
-                else {
-                    navigate(from, { replace: true } || '/');
-                }
+                navigate(from, { replace: true } || '/');
             }
         }
 

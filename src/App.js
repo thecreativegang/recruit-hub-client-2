@@ -18,20 +18,27 @@ import ChatPage from './components/Pages/ChatPage/ChatPage';
 import FindJob from './components/Pages/FindJob/FindJob';
 import MainAdmin from './AdminDashboard/MainAdmin/MainAdmin';
 import DashboardHome from './AdminDashboard/DashboardHome/DashboardHome';
-import Review from './components/Pages/Review/Review';
+// import Review from './components/Pages/Review/Review';
 import Notifications from './AdminDashboard/Notifications/Notifications';
 import AskForUsername from './components/Shared/AskForUsername';
 import ProtectedRout from './components/Shared/ProtectedRout';
 import ForgetPassword from './components/Pages/Login/ForgetPassword';
 
-import UserMain from './components/Pages/UserDasboard/UserMain/UserMain';
-import UserProfile from './components/Pages/UserDasboard/UserProfile/UserProfile';
-import UserReview from './components/Pages/UserDasboard/UserReiew/UserReview';
+// import UserMain from './components/Pages/UserDasboard/UserMain/UserMain';
+// import UserProfile from './components/Pages/UserDasboard/UserProfile/UserProfile';
+// import UserReview from './components/Pages/UserDasboard/UserReiew/UserReview';
 
 import PostResource from './AdminDashboard/PostResource/PostResource';
 import FreeResource from './components/Pages/FreeResource/FreeResource';
 import { useLocation } from 'react-router-dom';
 import ReactTooltip from 'react-tooltip';
+import UserProfile from './components/Pages/UserProfile/UserProfile';
+import UserAbout from './components/Pages/UserProfile/UserAbout/UserAbout';
+import UserSkills from './components/Pages/UserProfile/UserSkills/UserSkills';
+import Featured from './components/Pages/UserProfile/Featured/Featured';
+import Courses from './components/Pages/UserProfile/Courses/Courses';
+import Projects from './components/Pages/UserProfile/Projects/Projects';
+import Experience from './components/Pages/UserProfile/Experience/Experience';
 
 
 function App() {
@@ -78,10 +85,19 @@ function App() {
           </Route>
 
 
-          <Route path='/dashboard' element={<UserMain></UserMain>}>
+          <Route path='/user-profile' element={<UserProfile />} >
+            <Route index element={<UserAbout />} />
+            <Route path="skills" element={<UserSkills />} />
+            <Route path="featured" element={<Featured />} />
+            <Route path="courses" element={<Courses />} />
+            <Route path="projects" element={<Projects />} />
+            <Route path="experience" element={<Experience />} />
+          </Route>
+
+          {/* <Route path='/dashboard' element={<UserMain></UserMain>}>
             <Route index element={<UserProfile></UserProfile>}></Route>
             <Route path='userReview' element={<Review></Review>}></Route>
-          </Route>
+          </Route> */}
         </Routes >
 
         <div >

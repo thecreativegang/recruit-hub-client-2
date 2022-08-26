@@ -36,7 +36,7 @@ import ReactTooltip from 'react-tooltip';
 
 function App() {
   const url = useLocation()
-  console.log('see current location', url)
+  // console.log('see current location', url)
   return (
     <div >
       <UserStoreProvider>

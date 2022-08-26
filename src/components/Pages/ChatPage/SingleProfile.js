@@ -1,6 +1,9 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useContext, useEffect } from 'react';
 import { useState } from 'react';
 import { FaUserCircle } from 'react-icons/fa';
+import { UserStore } from '../../../stateManagement/UserContext/UserContextStore';
+import { serverLink } from '../../../utilities/links';
 import Loading from '../../Shared/Loading';
 import SingleChatModal from './SingleChatModal';
 
@@ -8,14 +11,38 @@ const SingleProfile = ({ chat, setCurrentChat }) => {
 
     const [chatModalId, setChatModalId] = useState('');
 
-    const singleUserSelect = (chat) => {
+    const [lastMessage, setLastMessage] = useState([]);
 
+    const userStore = useContext(UserStore);
+    const currentUser = userStore.user;
+
+    let emailLength = chat.email.slice(0, 15)
+
+    const singleUserSelect = (chat) => {
         if (!chat.email) {
             return <Loading></Loading>
         }
         setCurrentChat(chat);
         setChatModalId(chat);
     }
+
+    // fetch for last message
+    const asyncFetchDailyData = async () => {
+        if (chat) {
+            const response = await axios.post(`${serverLink}/messages/getmsg`, {
+                from: currentUser._id,
+                to: chat._id,
+            });
+            setLastMessage(response.data);
+        }
+    }
+    useEffect(() => {
+        asyncFetchDailyData();
+    }, [chat]);
+
+    let lastOne = lastMessage?.slice(-1);
+    let lastMsg = lastOne[0]?.message;
+    let lastMsgLength = lastMsg?.slice(0, 15)
 
     return (
         <div for="my-modal-3" className=' '>
@@ -30,9 +57,9 @@ const SingleProfile = ({ chat, setCurrentChat }) => {
                         </div>
                     </div>
                     <div className='mx-2 my-auto'>
-                        <h2 className='py-0'>  {chat.email}</h2>
+                        <h2 className='py-0'> {emailLength} {chat.email.length > 15 ? "..." : ''}</h2>
                         <p className='font-bold text-sm' >{chat?.username ? chat?.username : "UserName"} :
-                            <span className='font-normal'>last message</span> </p>
+                            <span className='font-normal'>  {lastMsgLength}{lastMsg?.length > 15 ? "....." : ""}</span> </p>
                     </div>
                 </div>
 
@@ -46,12 +73,12 @@ const SingleProfile = ({ chat, setCurrentChat }) => {
             </div >
 
             {/* modal for join chat start*/}
-            {/* <input type="checkbox" id="my-modal-3" class="modal-toggle" />
+            <input type="checkbox" id="my-modal-3" class="modal-toggle" />
             <div class="modal">
                 <div class="modal-box relative">
-                    <SingleChatModal chatModalId={chatModalId} chat={chat}></SingleChatModal>
+                    <SingleChatModal key={chat._id} chat={chat}></SingleChatModal>
                 </div>
-            </div> */}
+            </div>
             {/* modal for join chat end*/}
 
         </div >

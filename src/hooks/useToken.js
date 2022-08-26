@@ -1,7 +1,5 @@
 import axios from "axios"
 import { useState, useEffect } from 'react';
-import { toast } from 'react-toastify';
-import { io } from "socket.io-client";
 import { serverLink } from './../utilities/links';
 const useToken = async (currentUser) => {
     const [token, setToken] = useState('');

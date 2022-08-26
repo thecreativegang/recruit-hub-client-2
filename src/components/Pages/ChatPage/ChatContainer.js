@@ -5,16 +5,20 @@ import { FaUserCircle } from "react-icons/fa";
 import { serverLink } from './../../../utilities/links';
 import Lottie from "lottie-web";
 import lottieData from './27649-lets-chat.json'
+import Loading from "../../Shared/Loading";
+// import { io } from 'socket.io-client';
 
 
-const ChatContainer = ({ currentChat, currentUser, socket }) => {
+const ChatContainer = ({ currentChat, currentUser }) => {
 
+  // const socket = io.connect(serverLink);
 
 
 
   const [messages, setMessages] = useState([]);
   const [arrivalMessage, setArrivalMessage] = useState(null);
   const scrollRef = useRef();
+
 
 
 
@@ -31,21 +35,7 @@ const ChatContainer = ({ currentChat, currentUser, socket }) => {
     asyncFetchDailyData();
   }, [currentChat]);
 
-  const msgTransfer = async () => {
-    if (socket) {
-      await socket.on("msg-transfer", (msg) => {
-        console.log(msg)
-        setArrivalMessage({ fromSelf: false, message: msg.msg });
-      });
 
-      return () => {
-        socket.disconnect();
-      }
-    }
-  }
-  useEffect(() => {
-    msgTransfer();
-  }, []);
 
 
   useEffect(() => {
@@ -64,18 +54,18 @@ const ChatContainer = ({ currentChat, currentUser, socket }) => {
       message: msg,
     });
 
-    if (currentChat) {
-      socket.emit("send-msg", {
-        to: currentChat._id,
-        from: currentUser._id,
-        msg,
-      });
-    }
+    // if (currentChat) {
+    //   socket.emit("send-msg", {
+    //     to: currentChat._id,
+    //     from: currentUser._id,
+    //     msg,
+    //   });
+    // }
+
     const msgs = [...messages];
     msgs.push({ fromSelf: true, message: msg });
     setMessages(msgs);
   };
-
   // For lottie animation
   const anime = useRef(null);
   useEffect(() => {
@@ -91,6 +81,19 @@ const ChatContainer = ({ currentChat, currentUser, socket }) => {
     });
     // More logic goes here
   }, []);
+
+
+
+  // if (socket) {
+  //   socket.on("msg-transfer", (msg) => {
+  //     setArrivalMessage({ fromSelf: false, message: msg.msg });
+  //   });
+
+  //   return () => {
+  //     socket.disconnect();
+  //   }
+  // }
+
 
   return (
     <div className="w-100">
@@ -132,6 +135,7 @@ const ChatContainer = ({ currentChat, currentUser, socket }) => {
 
         </div>
       }
+
       {
         currentChat === '' && <>
           <h2 className="text-center text-3xl my-5 font-bold">Select your Chat</h2>
@@ -140,7 +144,6 @@ const ChatContainer = ({ currentChat, currentUser, socket }) => {
             ref={anime}>
           </div>
         </>
-
       }
     </div >
 

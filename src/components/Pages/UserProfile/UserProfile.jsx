@@ -1,5 +1,5 @@
 import React from "react";
-import { Outlet, NavLink } from "react-router-dom";
+import { Outlet, NavLink, Link } from "react-router-dom";
 import "./UserProfile.css";
 
 const UserProfile = () => {
@@ -49,6 +49,12 @@ const UserProfile = () => {
                 <button className="px-5 py-2 rounded-3xl outline-none font-bold bg-[#287eff] text-white">
                   Message
                 </button>
+                <Link
+                  to="/userDashboard"
+                  className="px-5 py-2 rounded-3xl outline-none font-bold bg-[#3a4d6a] text-white ml-3"
+                >
+                  Edit
+                </Link>
               </div>
             </div>
           </section>

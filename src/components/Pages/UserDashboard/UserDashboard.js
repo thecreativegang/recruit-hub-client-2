@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import './Profile.css';
+import './UserDashboard.css';
 import { AiOutlineCloudUpload } from 'react-icons/ai';
 import { Link } from 'react-scroll';
 import ProfessionalOverview from './sections/ProfessionalOverview';

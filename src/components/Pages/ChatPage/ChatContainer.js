@@ -13,22 +13,22 @@ const ChatContainer = ({ currentChat, currentUser }) => {
 
   // const socket = io.connect(serverLink);
 
-
-
   const [messages, setMessages] = useState([]);
   const [arrivalMessage, setArrivalMessage] = useState(null);
+  const [msgLoading, setMsgLoading] = useState(false);
   const scrollRef = useRef();
 
 
-
-
   const asyncFetchDailyData = async () => {
+
     if (currentChat) {
+      setMsgLoading(true);
       const response = await axios.post(`${serverLink}/messages/getmsg`, {
         from: currentUser._id,
         to: currentChat._id,
       });
-      setMessages(response.data);
+      setMessages(response?.data);
+      setMsgLoading(false);
     }
   }
   useEffect(() => {
@@ -93,6 +93,7 @@ const ChatContainer = ({ currentChat, currentUser }) => {
   //     socket.disconnect();
   //   }
   // }
+  // console.log(messages[0]?.message)
 
 
   return (
@@ -101,7 +102,7 @@ const ChatContainer = ({ currentChat, currentUser }) => {
         currentChat &&
         <div>
           {/* chat header */}
-          <div className="flex bg-sky-500 p-2 px-3 my-border rounded items-center">
+          < div className="flex bg-sky-500 p-2 px-3 my-border rounded items-center">
             <div class="avatar">
               <div class="w-[50px] rounded-full">
                 {
@@ -113,27 +114,33 @@ const ChatContainer = ({ currentChat, currentUser }) => {
               <h3 className="lg:text-2xl text-sm">{currentChat?.username ? currentChat.username : currentChat.email}</h3>
             </div>
           </div>
-          {/* chat body */}
-          <div className="message-body overflow-x-hidden  overflow-y-auto h-[calc(100vh-280px)]">
-            {messages.map((message) => {
-              return (
-                <div >
-                  <div
-                    className={`message ${message.fromSelf ? "sended" : "recieved"}`}
-                  >
-                    <div className="content ">
-                      <p>{message.message}</p>
-                    </div>
-                  </div>
-                </div>
+          {
+            msgLoading ? <Loading></Loading> :
+              <>
 
-              );
-            })}
-          </div>
+                {/* chat body */}
+                <div className="message-body overflow-x-hidden  overflow-y-auto h-[calc(100vh-280px)]">
+                  {messages.map((message) => {
+                    return (
+                      <div >
+                        <div
+                          className={`message ${message.fromSelf ? "sended" : "recieved"}`}
+                        >
+                          <div className="content ">
+                            <p>{message.message}</p>
+                          </div>
+                        </div>
+                      </div>
+
+                    );
+                  })}
+                </div>
+              </>
+          }
 
           <Chatinput handleSendMsg={handleSendMsg} />
 
-        </div>
+        </div >
       }
 
       {

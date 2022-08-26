@@ -37,5 +37,4 @@ const ManageBookmarkedJob = ({ job, index, refetch }) => {
         </div >
     );
 };
-
 export default ManageBookmarkedJob;

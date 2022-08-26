@@ -65,42 +65,42 @@ const JobDetail = ({ selectedJob, setShowJobDetail }) => {
                     <p onClick={() => setShowJobDetail(false)} className={` w-full bg-primary text-white py-2 p-5 rounded-full cursor-pointer`}><FontAwesomeIcon icon={faClose} /> Close</p>
             }
             <div className={`flex flex-row items-center justify-between justify-items-center mt-10 px-2`}>
-                <h1 className='text-3xl '>{jobTitle}</h1>
-                <p><FontAwesomeIcon icon={faEllipsisVertical} className={`text-2xl`} /></p>
+                <h1 className='text-3xl text-black'>{jobTitle}</h1>
+                <p className={`text-black`}><FontAwesomeIcon icon={faEllipsisVertical} className={`text-2xl`} /></p>
             </div>
             <div className='flex flex-col gap-1 mt-5'>
                 {
                     companyName &&
-                    <p><span className={`font-bold`}>Organization:</span> {companyName} </p>
+                    <p className={`text-black`}><span className={`font-bold`}>Organization:</span> {companyName} </p>
                 }
                 {
                     companyLocation &&
-                    <p><span className={`font-bold`}>Location:</span> {companyLocation || ""}</p>
+                    <p className={`text-black`}><span className={`font-bold`}>Location:</span> {companyLocation || ""}</p>
                 }
                 {
                     companySize &&
-                    <p><span className={`font-bold`}>Organization size:</span> {companySize} Employees</p>
+                    <p className={`text-black`}><span className={`font-bold`}>Organization size:</span> {companySize} Employees</p>
                 }
                 {
                     recruitersName &&
-                    <p><span className={`font-bold`}>Recruiter:</span> {recruitersName} </p>
+                    <p className={`text-black`}><span className={`font-bold`}>Recruiter:</span> {recruitersName} </p>
                 }
                 {
                     publishedDate &&
-                    <p><span className={`font-bold`}>Posted:</span> {formatDistanceStrict(new Date(publishedDate), new Date()) + " ago" || ""} </p>
+                    <p className={`text-black`}><span className={`font-bold`}>Posted:</span> {formatDistanceStrict(new Date(publishedDate), new Date()) + " ago" || ""} </p>
                 }
                 {
 
-                    <p><span className={`font-bold`}>Applied:</span> {applicantCount || 0} Applicants</p>
+                    <p className={`text-black`}><span className={`font-bold`}>Applied:</span> {applicantCount || 0} Applicants</p>
                 }
                 {
                     jobNature &&
-                    <p><span className={`font-bold`}>Job Type:</span> {jobNature}</p>
+                    <p className={`text-black`}><span className={`font-bold`}>Job Type:</span> {jobNature}</p>
 
                 }
                 {
                     vacancies &&
-                    <p><span className={`font-bold`}>Vacancies:</span> {vacancies}</p>
+                    <p className={`text-black`}><span className={`font-bold`}>Vacancies:</span> {vacancies}</p>
                 }
 
             </div>
@@ -119,25 +119,25 @@ const JobDetail = ({ selectedJob, setShowJobDetail }) => {
 
             {/* Job Requirements */}
             <div>
-                <p className={`underline text-xl mt-20 mb-5`}>Job Requirements</p>
-                <p>{jobRequirements}</p>
+                <p className={`underline text-xl mt-20 mb-5 text-black`}>Job Requirements</p>
+                <p className={`text-black`}>{jobRequirements}</p>
             </div>
 
             {/* Educational Requirements */}
             <div>
-                <p className={`underline text-xl mt-20 mb-5`}>Educational Qualifications</p>
-                <p>{educationalQualification}</p>
+                <p className={`underline text-xl mt-20 mb-5 text-black`}>Educational Qualifications</p>
+                <p className={`text-black`}>{educationalQualification}</p>
             </div>
 
             {/* Pay Range */}
             <div>
-                <p className={`underline text-xl mt-10 mb-5`}>Pay Range</p>
-                <p><span className={`font-bold`}>${payRange}</span> Per Month</p>
+                <p className={`underline text-xl mt-10 mb-5 text-black`}>Pay Range</p>
+                <p className={`text-black`}><span className={`font-bold`}>${payRange}</span> Per Month</p>
             </div>
 
             {/* Pay Range */}
             <div>
-                <p className={` text-xl mt-10 mb-5`}>Application Deadline:  <span className={`font-bold`}>{applicationDeadline?.deadlineDay}-{monthName[applicationDeadline?.deadlineMonth - 1]}-{applicationDeadline?.deadlineYear}</span></p>
+                <p className={` text-xl mt-10 mb-5 text-black `}>Application Deadline:  <span className={`font-bold`}>{applicationDeadline?.deadlineDay}-{monthName[applicationDeadline?.deadlineMonth - 1]}-{applicationDeadline?.deadlineYear}</span></p>
 
             </div>
 

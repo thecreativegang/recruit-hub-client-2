@@ -53,13 +53,13 @@ const FilteringOptions = ({ searchElements, SetfilteringOn, setSearchedResults, 
             })
     }
     return (
-        <div className='grid grid-col-1 md:grid-cols-[2fr,3fr]  gap-5  items-center'>
+        <div className='grid grid-col-1 md:grid-cols-[2fr,3fr]  gap-5  items-center mt-5'>
             <div className='w-full'>
-                <input ref={searchRef} onKeyUp={searchJob} type="text" className='input border border-zinc-400  w-full' placeholder='Search Jobs....' />
+                <input ref={searchRef} onKeyUp={searchJob} type="text" className='input border border-zinc-400  w-full bg-white' placeholder='Search Jobs....' />
             </div>
             <div className='flex gap-2 flex-wrap justify-center'>
                 <div>
-                    <select ref={jobNatureRef} onChange={searchJob} name="jobNature" id="jobNature" className='border border-black p-3 rounded-full bg-zinc-100'>
+                    <select ref={jobNatureRef} onChange={searchJob} name="jobNature" id="jobNature" className='border border-black p-3 rounded-full bg-zinc-100 text-black'>
                         <option value="" className='capitalize'>Job Nature</option>
                         <option value="remote" className='capitalize'>Remote</option>
                         <option value="on-site" className='capitalize'>On-site</option>
@@ -67,7 +67,7 @@ const FilteringOptions = ({ searchElements, SetfilteringOn, setSearchedResults, 
                     </select>
                 </div>
                 <div>
-                    <select ref={companySizeRef} onChange={searchJob} name="companySizeRef" id="companySizeRef" className='border border-black p-3 rounded-full bg-zinc-100'>
+                    <select ref={companySizeRef} onChange={searchJob} name="companySizeRef" id="companySizeRef" className='border border-black p-3 rounded-full bg-zinc-100 text-black'>
                         <option value="" >Company Size </option>
                         <option value="1-10" >1-10</option>
                         <option value="1-50" >1-50</option>
@@ -77,7 +77,7 @@ const FilteringOptions = ({ searchElements, SetfilteringOn, setSearchedResults, 
                     </select>
                 </div>
                 <div>
-                    <select ref={payRangeRef} onChange={searchJob} name="payRangeRef" id="payRangeRef" className='border border-black p-3 rounded-full bg-zinc-100'>
+                    <select ref={payRangeRef} onChange={searchJob} name="payRangeRef" id="payRangeRef" className='border border-black p-3 rounded-full bg-zinc-100 text-black'>
                         <option value="" >Pay Range</option>
                         <option value="50+" >$-50+</option>
                         <option value="100+" >$-100+</option>
@@ -91,7 +91,7 @@ const FilteringOptions = ({ searchElements, SetfilteringOn, setSearchedResults, 
                 <div>
                     {
                         currentUser?.accountType === 'recruiter' &&
-                        <select ref={showAllorOnlyMine} onChange={searchJob} name="showAllorOnlyMine" id="showAllorOnlyMine" className='border border-black p-3 rounded-full bg-zinc-100'>
+                        <select ref={showAllorOnlyMine} onChange={searchJob} name="showAllorOnlyMine" id="showAllorOnlyMine" className='border border-black p-3 rounded-full bg-zinc-100 text-black'>
                             <option value="" >Showing All</option>
                             <option value="mine" >Show My Post</option>
 

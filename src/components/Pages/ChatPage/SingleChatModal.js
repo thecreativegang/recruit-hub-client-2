@@ -2,7 +2,10 @@ import Loading from "../../Shared/Loading";
 import "./SingleChat.css";
 const SingleChatModal = ({ chat, chatModalId }) => {
     // console.log(chatModalId._id)
+    if (!chat._id) {
+        return <Loading></Loading>
 
+    }
     return (
         <div className="App">
             <label for="my-modal-3" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
@@ -27,7 +30,6 @@ const SingleChatModal = ({ chat, chatModalId }) => {
                 }
             </div>
 
-            {/* // <Chat socket={socket} username={username} room={room} /> */}
 
 
         </div>

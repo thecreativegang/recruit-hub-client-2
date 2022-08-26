@@ -57,9 +57,9 @@ const SingleJobInList = ({ job, setSelectedJob, selectedJob, index, setShowJobDe
             setShowJobDetail(true)
         }} className={`border-b border-zinc-400 p-3 rounded-lg ${_id === selectedJob?._id ? "shadow-xl bg-zinc-200" : ""} hover:shadow-lg my-5 flex items-center justify-between `}>
             <div>
-                <h1 className='text-2xl'>{jobTitle}</h1>
-                <p>Company: {companyName}</p>
-                <p>Location: {jobLocation}</p>
+                <h1 className='text-2xl text-black'>{jobTitle}</h1>
+                <p className={`text-black`}>Company: {companyName}</p>
+                <p className={`text-black`}>Location: {jobLocation}</p>
                 {
                     publishedDate &&
                     <p className='text-zinc-500'>{formatDistanceStrict(new Date(publishedDate), new Date())}</p>

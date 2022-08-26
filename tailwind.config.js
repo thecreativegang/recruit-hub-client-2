@@ -1,21 +1,11 @@
 module.exports = {
+  darkMode: 'class',
   content: ["./src/**/*.{html,js}"],
   theme: {
     extend: {},
   },
   daisyui: {
-    themes: [
-      {
-        doctortheme: {
-          primary: "#4338ca", // add your own color
-          secondary: "#FFA100", // add your own color
-          accent: "#FF8C00", // add your own color
-          neutral: "#3d4451", // add your own color
-          "base-100": "#ffffff",// add your own color
-        },
-      },
-      "cupcake",
-    ],
+
   },
   plugins: [require("daisyui"),
   function ({ addVariant }) {
@@ -26,3 +16,5 @@ module.exports = {
   }
   ],
 }
+
+// dark mode 

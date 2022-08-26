@@ -11,6 +11,7 @@
 .container {
   max-width: 1280px;
   margin: auto;
+  padding: 0 10px;
 }
 
 .open-sans {
@@ -34,13 +35,29 @@
 }
 
 .btn-primary-vlue {
-  background: #5956e9;
+  background: #061835;
   color: #fff;
-  padding: 16px 35px;
-  border-radius: 5px;
-  font-weight: 500;
-}
+  padding: 15px 20px;
 
+  font-weight: 500;
+  transition: all 0.5s;
+}
+.btn-primary-vlue2 {
+  background: #3878df;
+  color: #fff;
+  padding: 15px 20px;
+
+  font-weight: 500;
+  transition: all 0.5s;
+}
+.btn-primary-vlue2:hover {
+  transform: translateY(-7px);
+  transition: all 0.5s;
+}
+.btn-primary-vlue:hover {
+  transform: translateY(-7px);
+  transition: all 0.5s;
+}
 .btn-primary-vlue:focus {
   outline: none;
 }
@@ -52,4 +69,27 @@
 
 .profile-form-border {
   border: 1px solid rgb(224, 224, 224);
+}
+
+/* dark mode code 
+ */
+
+.dark-nav-link {
+  color: #c6c9d8;
+}
+
+.dark-bg-light {
+  background-color: #0f172a;
+}
+
+.dark-bg {
+  background-color: #0c1322;
+}
+
+.dark-btn-bg {
+  background-color: #0284c7;
+}
+
+.dark-highlight-text {
+  color: #38bdf8;
 }

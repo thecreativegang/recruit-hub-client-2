@@ -63,8 +63,8 @@ const PostAJob = () => {
     // const userInfo = useSelector((state) => state);
     // let footer = <p className='font-semibold'>You've picked:  {format(selected, 'PP')}</p>
     return (
-        <div className='flex justify-center mt-10 mb-16'>
-            <div class="card md:w-1/3 w-full bg-base-100 shadow-xl">
+        <div className='flex justify-center mt-10 mb-16 '>
+            <div class="card md:w-1/3 w-full  shadow-xl bg-white">
                 <div class="card-body w-full">
                     <form onSubmit={handleSubmit(onSubmit)} className="min-h-[100vh]">
                         <h1 className='text-3xl text-center font-semibold'>Post a Job</h1>
@@ -78,7 +78,7 @@ const PostAJob = () => {
                                     <label class="label">
                                         <span class="label-text">Job title</span>
                                     </label>
-                                    <input type="text" placeholder="Job title" class="input border border-zinc-400 w-full " {...register('jobTitle',
+                                    <input type="text" placeholder="Job title" class="input border border-zinc-400 w-full bg-white " {...register('jobTitle',
                                         {
                                             required: true
                                         })} />
@@ -90,7 +90,7 @@ const PostAJob = () => {
                                         <label class="label">
                                             <span class="label-text">Company Name</span>
                                         </label>
-                                        <input type="text" placeholder="Type your company name" class="input border border-zinc-400 w-full " {...register('companyName',
+                                        <input type="text" placeholder="Type your company name" class="input border border-zinc-400 w-full bg-white" {...register('companyName',
                                             {
                                                 required: true
                                             })} />
@@ -119,7 +119,7 @@ const PostAJob = () => {
                                         <label class="label">
                                             <span class="label-text">Vacancies</span>
                                         </label>
-                                        <input type="number" placeholder="Vacancies for this post" class="input border border-zinc-400 w-full " {...register('vacancies',
+                                        <input type="number" placeholder="Vacancies for this post" class="input border border-zinc-400 w-full bg-white" {...register('vacancies',
                                             {
                                                 required: true
                                             })} />
@@ -128,7 +128,7 @@ const PostAJob = () => {
                                         <label class="label">
                                             <span class="label-text">Job Nature</span>
                                         </label>
-                                        <select name="CompanySize" id="companySize" className='border border-zinc-400 w-full p-3 rounded-lg '{...register('jobNature',
+                                        <select name="CompanySize" id="companySize" className='border border-zinc-400 w-full p-3 rounded-lg bg-white'{...register('jobNature',
                                             {
                                                 required: true
                                             })}>
@@ -145,7 +145,7 @@ const PostAJob = () => {
                                     <label class="label">
                                         <span class="label-text">Educational Qualifications</span>
                                     </label>
-                                    <input type="text" placeholder="Educational Qualification" class="input border border-zinc-400 w-full " {...register('educationalQualification',
+                                    <input type="text" placeholder="Educational Qualification" class="input border border-zinc-400 w-full bg-white " {...register('educationalQualification',
                                         {
                                             required: true
                                         })} />
@@ -155,7 +155,7 @@ const PostAJob = () => {
                                     <label class="label">
                                         <span class="label-text">Job Requirements</span>
                                     </label>
-                                    <textarea type="text" placeholder="Job Requirements" className="h-[40vh] input border border-zinc-400 w-full " {...register('jobRequirements',
+                                    <textarea type="text" placeholder="Job Requirements" className="h-[40vh] input border border-zinc-400 w-full bg-white" {...register('jobRequirements',
                                         {
                                             required: true
                                         })} />
@@ -166,7 +166,7 @@ const PostAJob = () => {
                                     <label class="label">
                                         <span class="label-text">Enter tags</span>
                                     </label>
-                                    <textarea type="text" placeholder="Seperate by space. eg: frontend react" className="lowercase input border border-zinc-400 w-full " {...register('tags',
+                                    <textarea type="text" placeholder="Seperate by space. eg: frontend react" className="lowercase input border border-zinc-400 w-full bg-white" {...register('tags',
                                         {
                                             required: true
                                         })} />
@@ -197,7 +197,7 @@ const PostAJob = () => {
                                         <label class="label">
                                             <span class="label-text">Job Location</span>
                                         </label>
-                                        <input type="text" placeholder="Enter location of the job" className=" input border border-zinc-400 w-full " {...register('jobLocation',
+                                        <input type="text" placeholder="Enter location of the job" className=" input border border-zinc-400 w-full bg-white" {...register('jobLocation',
                                             {
                                                 required: true
                                             })} />
@@ -261,7 +261,7 @@ const PostAJob = () => {
                                     <label class="label">
                                         <span class="label-text">Recruiter's Name</span>
                                     </label>
-                                    <input type="text" placeholder="Recruiter's Name" class="input border border-zinc-400 w-full " {...register('recruitersName',
+                                    <input type="text" placeholder="Recruiter's Name" class="input border border-zinc-400 w-full bg-white" {...register('recruitersName',
                                         {
                                             required: true
                                         })} />

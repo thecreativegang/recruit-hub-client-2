@@ -8,7 +8,6 @@ import Home from './components/Pages/Home/Home/Home';
 import Navbar from './components/Shared/Navbar/Navbar';
 import FooterBottomSection from './components/Shared/Footer/FooterBottomSection';
 import AccountTypePage from './components/Pages/Register/AccountTypePage';
-import Profile from './components/Pages/Profile/Profile';
 import RequireUsername from './components/Shared/RequireUsername';
 import Loading from './components/Shared/Loading';
 import SkillAssessment from './components/Pages/SkillAssessment/SkillAssessment';
@@ -18,27 +17,30 @@ import ChatPage from './components/Pages/ChatPage/ChatPage';
 import FindJob from './components/Pages/FindJob/FindJob';
 import MainAdmin from './AdminDashboard/MainAdmin/MainAdmin';
 import DashboardHome from './AdminDashboard/DashboardHome/DashboardHome';
-import Review from './components/Pages/Review/Review';
 import Notifications from './AdminDashboard/Notifications/Notifications';
 import AskForUsername from './components/Shared/AskForUsername';
 import ProtectedRout from './components/Shared/ProtectedRout';
 import ForgetPassword from './components/Pages/Login/ForgetPassword';
 
-import UserMain from './components/Pages/UserDasboard/UserMain/UserMain';
-import UserProfile from './components/Pages/UserDasboard/UserProfile/UserProfile';
-import UserReview from './components/Pages/UserDasboard/UserReiew/UserReview';
-
 import PostResource from './AdminDashboard/PostResource/PostResource';
 import FreeResource from './components/Pages/FreeResource/FreeResource';
 import { useLocation } from 'react-router-dom';
 import ReactTooltip from 'react-tooltip';
+import UserProfile from './components/Pages/UserProfile/UserProfile';
+import UserAbout from './components/Pages/UserProfile/UserAbout/UserAbout';
+import UserSkills from './components/Pages/UserProfile/UserSkills/UserSkills';
+import UserDashboard from './components/Pages/UserDashboard/UserDashboard';
+import Featured from './components/Pages/UserProfile/Featured/Featured';
+import Courses from './components/Pages/UserProfile/Courses/Courses';
+import Projects from './components/Pages/UserProfile/Projects/Projects';
+import Experience from './components/Pages/UserProfile/Experience/Experience';
 
 
 function App() {
   const url = useLocation()
   // console.log('see current location', url)
   return (
-    <div >
+    <div className='transition-all duration-500 bg-[#F3F3F3]'>
       <UserStoreProvider>
         <Navbar />
         <Routes>
@@ -50,13 +52,10 @@ function App() {
 
           <Route path='/home' element={<Home />} />
           <Route path='/freeResource' element={<FreeResource />} />
-
-          <Route path='/profile' element={<Profile></Profile>} />
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<AccountTypePage />} />
           <Route path='/register/:accType' element={<Register />} />
           <Route path='/lod' element={<Loading />}></Route>
-          <Route path='/profile' element={<Profile />}></Route>
           <Route path='/chat' element={
             <ProtectedRout>
               <ChatPage />
@@ -78,10 +77,18 @@ function App() {
           </Route>
 
 
-          <Route path='/dashboard' element={<UserMain></UserMain>}>
-            <Route index element={<UserProfile></UserProfile>}></Route>
-            <Route path='userReview' element={<Review></Review>}></Route>
+          <Route path='/user-profile' element={<UserProfile />} >
+            <Route index element={<UserAbout />} />
+            <Route path="skills" element={<UserSkills />} />
+            <Route path="featured" element={<Featured />} />
+            <Route path="courses" element={<Courses />} />
+            <Route path="projects" element={<Projects />} />
+            <Route path="experience" element={<Experience />} />
           </Route>
+
+          <Route path='userDashboard' element={<UserDashboard />} />
+
+
         </Routes >
 
         <div >

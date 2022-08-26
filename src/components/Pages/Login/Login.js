@@ -184,7 +184,7 @@ const Login = () => {
                                 <div className="divider dark:text-[#8C9BB6]">OR</div>
                             </div>
                             <div className="form-control mt-4 ">
-                                <button onClick={() => signInWithGoogle()} className=" py-2  flex justify-center items-center input-border dark:border-0 font-semibold  text-[#334155] dark:text-[#8C9BB6] dark:bg-[#1E293B] w-full ">
+                                <button onClick={() => signInWithGoogle()} className=" py-2  flex justify-center items-center input-border dark:border-0 font-semibold  text-[#334155] dark:text-[#8C9BB6] dark:bg-[#1E293B] w-full bg-white">
                                     <img src={googleLogo} alt="" />
                                     <span className='ml-2'>Continue With Google</span>
                                 </button>

@@ -280,7 +280,7 @@ const Register = () => {
                                             <div className="divider dark:text-[#8C9BB6]">OR</div>
                                         </div>
                                         <div className="form-control ">
-                                            <button onClick={() => handleGoogleSignIn()} className=" py-2  flex justify-center items-center input-border dark:border-0 font-semibold  text-[#334155] dark:text-[#8C9BB6] dark:bg-[#1E293B] w-full "> <img src={googleLogo} alt="" /> &nbsp; Continue With Google</button>
+                                            <button onClick={() => handleGoogleSignIn()} className=" py-2  flex justify-center items-center input-border dark:border-0 font-semibold  text-[#334155] dark:text-[#8C9BB6] dark:bg-[#1E293B] w-full bg-white"> <img src={googleLogo} alt="" /> &nbsp; Continue With Google</button>
                                         </div>
                                     </div>
                                 </form>

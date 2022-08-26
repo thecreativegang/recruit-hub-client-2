@@ -22,7 +22,7 @@ import Notifications from './AdminDashboard/Notifications/Notifications';
 import AskForUsername from './components/Shared/AskForUsername';
 import ProtectedRout from './components/Shared/ProtectedRout';
 import ForgetPassword from './components/Pages/Login/ForgetPassword';
-import UserProfile from './components/Pages/UserDasboard/UserProfile/UserProfile';
+import UserProfile from './components/Pages/UserProfile/UserProfile';
 
 import PostResource from './AdminDashboard/PostResource/PostResource';
 import FreeResource from './components/Pages/FreeResource/FreeResource';

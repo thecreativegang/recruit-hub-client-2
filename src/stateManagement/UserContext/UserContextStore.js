@@ -7,6 +7,7 @@ import auth from '../../firebase.init';
 import { checkTokenExpired } from './../../utilities/checkTokenExpired';
 import { useNavigate } from 'react-router-dom';
 import { serverLink } from './../../utilities/links';
+import DeveloperStore from "../DeveloperStore";
 import Loading from '../../components/Shared/Loading';
 const UserStore = createContext();
 
@@ -83,10 +84,16 @@ const UserStoreProvider = ({ children }) => {
 
 
 
+    //developer data 
+    const { developer } = DeveloperStore()
+
+    console.log(developer);
+
     //this state stored user data  //==> Don't move this one !
     const userData = {
         userEmail,
         user,
+        developer,
         allUser,
         allAdmin,
 

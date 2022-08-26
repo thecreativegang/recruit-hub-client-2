@@ -1,3 +1,4 @@
+import { useLocation } from 'react-router-dom';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import { ToastContainer } from 'react-toastify';
@@ -21,12 +22,12 @@ import Notifications from './AdminDashboard/Notifications/Notifications';
 import AskForUsername from './components/Shared/AskForUsername';
 import ProtectedRout from './components/Shared/ProtectedRout';
 import ForgetPassword from './components/Pages/Login/ForgetPassword';
+import UserProfile from './components/Pages/UserDasboard/UserProfile/UserProfile';
 
 import PostResource from './AdminDashboard/PostResource/PostResource';
 import FreeResource from './components/Pages/FreeResource/FreeResource';
-import { useLocation } from 'react-router-dom';
+import Developer from './components/Pages/Developer/Developer';
 import ReactTooltip from 'react-tooltip';
-import UserProfile from './components/Pages/UserProfile/UserProfile';
 import UserAbout from './components/Pages/UserProfile/UserAbout/UserAbout';
 import UserSkills from './components/Pages/UserProfile/UserSkills/UserSkills';
 import UserDashboard from './components/Pages/UserDashboard/UserDashboard';
@@ -62,6 +63,8 @@ function App() {
             </ProtectedRout>
           }></Route>
           <Route path='/postJob' element={<PostAJob />}></Route>
+          <Route path='/developer' element={<Developer />}></Route>
+
           <Route path='/skilltest' element={<SkillAssessment />}></Route>
           <Route path='/findJob' element={<FindJob />}></Route>
           <Route path='/askUsername' element={<AskForUsername />}></Route>

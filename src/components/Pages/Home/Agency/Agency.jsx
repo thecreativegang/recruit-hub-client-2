@@ -15,7 +15,7 @@ const Agency = () => {
       onExit={() => setCounterOn(false)}
     >
       <section>
-        <div className="px-8 py-8 dark:bg-[#0F172A]">
+        <div className="px-8 py-8 dark:bg-[#0F172A] bg-white">
           {/* Agency header  */}
 
           <div className="flex justify-center ">
@@ -37,7 +37,7 @@ const Agency = () => {
               <div className="flex justify-center mb-4">
                 <ImManWoman className="text-5xl text-[#061835] dark:text-[#38BDF8]" />
               </div>
-              <h3 className="text-5xl font-bold mb-2 dark:text-[#E2E8F0]">
+              <h3 className="text-5xl font-bold mb-2 dark:text-[#E2E8F0] text-black">
                 {counterOn && (
                   <CountUp end={10} start={0} delay={0} duration={2} />
                 )}
@@ -52,7 +52,7 @@ const Agency = () => {
               <div className="flex justify-center mb-4">
                 <RiMoneyDollarBoxFill className="text-5xl text-[#061835] dark:text-[#38BDF8]" />
               </div>
-              <h3 className="text-5xl font-bold mb-2 dark:text-[#E2E8F0]">
+              <h3 className="text-5xl font-bold mb-2 dark:text-[#E2E8F0] text-black">
                 {counterOn && (
                   <CountUp end={102} start={0} delay={0} duration={2} />
                 )}
@@ -65,9 +65,9 @@ const Agency = () => {
 
             <div className="p-10 text-center bg-white dark:bg-transparent shadow-agency  mb-8 ">
               <div className="flex justify-center mb-4">
-                <FaStaylinked className="text-5xl text-[#061835] dark:text-[#38BDF8]" />
+                <FaStaylinked className="text-5xl text-[#061835] dark:text-[#38BDF8] " />
               </div>
-              <h3 className="text-5xl  font-bold mb-2 dark:text-[#E2E8F0]">
+              <h3 className="text-5xl  font-bold mb-2 dark:text-[#E2E8F0] text-black">
                 {counterOn && (
                   <CountUp end={55} start={0} delay={0} duration={2} />
                 )}
@@ -82,7 +82,7 @@ const Agency = () => {
               <div className="flex justify-center mb-4">
                 <MdRateReview className="text-5xl text-[#061835] dark:text-[#38BDF8]" />
               </div>
-              <h3 className="text-5xl font-bold mb-2 dark:text-[#E2E8F0]">
+              <h3 className="text-5xl font-bold mb-2 dark:text-[#E2E8F0] text-black">
                 {counterOn && (
                   <CountUp end={44} start={0} delay={0} duration={2} />
                 )}

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const Service = () => {
     return (
-        <div className='py-16  dark:bg-[#0b1120]'>
+        <div className='py-16  dark:bg-[#0b1120] bg-white'>
             <div className='flex justify-center '>
                 <div className='text-center'>
                     <h1 className='section-tittle relative text-[#061835] font-semibold inline-block dark:text-[#38BDF8] '>Service</h1>

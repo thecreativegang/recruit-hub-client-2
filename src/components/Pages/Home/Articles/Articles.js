@@ -7,20 +7,20 @@ const Articles = () => {
     <div>
       <div>
         <div className='text-center'>
-          <h1 className='text-xl text-primary my-10'>Articles News</h1>
-          <h1 className=' text-5xl'>Latest News & Blogs</h1>
-          <p className='my-10 text-2xl text-gray-400'>Professional Recruit Agency to provide solutions</p>
+          <h1 className='text-xl text-primary my-10 '>Articles News</h1>
+          <h1 className=' text-5xl text-black'>Latest News & Blogs</h1>
+          <p className='my-10 text-2xl text-gray-400 '>Professional Recruit Agency to provide solutions</p>
         </div>
 
-        <div className='grid sm:grid-cols-1 lg:grid-cols-3 gap-y-10 gap-x-10 justify-items-center'>
+        <div className='grid sm:grid-cols-1 lg:grid-cols-3 gap-y-10 gap-x-10 justify-items-center bg-white'>
           {/* card-1 */}
-          <div className="card w-full bg-base-100 shadow-xl">
+          <div className="card w-full bg-white shadow-xl ">
             <div className="card-body">
               <div className="card-actions justify-start">
                 <button className="  btn btn-primary text-white">Click Now</button>
               </div>
-              <h2 className="card-title">Everything You Want To Know About</h2>
-              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iure qui facere labore soluta dolorum veniam minima minus suscipit autem inventore.</p>
+              <h2 className="card-title text-black">Everything You Want To Know About</h2>
+              <p className={`text-black`}>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iure qui facere labore soluta dolorum veniam minima minus suscipit autem inventore.</p>
 
               <Link to="/" className="link link-primary">Read More </Link>
             </div>
@@ -28,7 +28,7 @@ const Articles = () => {
 
 
           {/* card-2 */}
-          <div className="card w-full bg-base-100 shadow-xl">
+          <div className="card w-full bg-white shadow-xl">
             <div className="card-body">
               <div className="card-actions justify-start">
                 <button className="  btn btn-primary text-white">Click Now</button>
@@ -39,7 +39,7 @@ const Articles = () => {
               <Link to="/" className="link link-primary">Read More </Link>
             </div>
           </div>
-          <div className="card w-full bg-base-100 shadow-xl">
+          <div className="card w-full bg-white shadow-xl">
             <div className="card-body">
               <div className="card-actions justify-start">
                 <button className="  btn btn-primary text-white">Click Now</button>

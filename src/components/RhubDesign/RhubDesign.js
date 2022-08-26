@@ -2,9 +2,9 @@ import React from 'react';
 
 const RhubDesign = () => {
   return (
-    <div className='my-20'>
-      <div className="flex  w-full flex-row">
-        <div className="grid flex-grow  h-32 card bg-base-100 rounded-box place-items-center">
+    <div className='my-20 bg-white'>
+      <div className="flex  w-full flex-row bg-white">
+        <div className="grid flex-grow  h-32 card bg-base-100 rounded-box place-items-center ">
           <h1 className='text-xl md:text-7xl text-right font-bold'>Recruit Hub</h1>
         </div>
         <div className="divider divider-horizontal"></div>

@@ -97,7 +97,7 @@ const Login = () => {
 
 
     return (
-        <div className='min-h-[100vh] py-10 dark:bg-[#0D1425]'>
+        <div className='min-h-[100vh] py-10 dark:bg-[#0D1425] bg-[#F3F3F3]'>
             <div className='conatiner container max-w-[1280px] mx-auto'>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div className="card flex-shrink-0 w-full order-last md:order-first">

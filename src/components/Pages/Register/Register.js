@@ -133,14 +133,14 @@ const Register = () => {
 
     return (
         <div>
-            <div className='min-h-[100vh] py-10 dark:bg-[#0D1425]'>
+            <div className='min-h-[100vh] py-10 dark:bg-[#0D1425] bg-[#F3F3F3]'>
                 <div className='conatiner container max-w-[1280px] mx-auto'>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div className=" ">
                             <div className="card flex-shrink-0 w-full order-last md:order-first">
                                 <form onSubmit={handleSubmit(onSubmit)}>
                                     <div className="card-body">
-                                        <h1 className='text-[2.5rem] font-bold text-center dark:text-white'><span className='text-[#3878DF] dark:text-[#38BDF8] capitalize'>{accType}</span> Registration</h1>
+                                        <h1 className='text-[2.5rem] font-bold text-center dark:text-white text-[#334155]'><span className='text-[#3878DF] dark:text-[#38BDF8] capitalize'>{accType}</span> Registration</h1>
 
                                         {/* userName of user  */}
                                         <div className="form-control mb-">

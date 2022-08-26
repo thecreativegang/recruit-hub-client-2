@@ -6,6 +6,7 @@ import ManagehiddenJob from './ManagehiddenJob';
 
 const HiddenJobs = ({ setLoading, loading }) => {
     const [hiddenJobs, setHiddenJobs] = useState([]);
+    const [refetchHiddenJobs, setRefetchHiddenJobs] = useState(false);
     console.log('Loading', loading)
     useEffect(() => {
         axios.get(`${serverLink}/job/hidden`, {
@@ -16,14 +17,16 @@ const HiddenJobs = ({ setLoading, loading }) => {
             .then(function (res) {
                 console.log(res.data.hiddenJobs)
                 setHiddenJobs(res?.data?.hiddenJobs)
+                setLoading(false)
 
             })
             .catch(function (err) {
                 toast.error(err.message)
-            })
-        setLoading(false)
+                setLoading(false)
 
-    }, [setLoading])
+            })
+
+    }, [loading, refetchHiddenJobs])
 
     return (
         <div>
@@ -34,6 +37,7 @@ const HiddenJobs = ({ setLoading, loading }) => {
                         key={singleHidden?._id}
                         job={singleHidden}
                         index={index}
+                        refetch={setRefetchHiddenJobs}
                     ></ManagehiddenJob>)
                 }
             </div>

@@ -11,7 +11,7 @@ import ShowingSearchResultInfo from '../../Shared/WarningAndInfo/ShowingSearchRe
 import { serverLink } from './../../../utilities/links';
 
 const FindJob = () => {
-    const [refetch, setRefetch] = useState(true);
+    const [refetchAllJob, setRefetchAllJob] = useState(false);
     const [jobs, setJobs] = useState([]);
     const [selectedJob, setSelectedJob] = useState([]);
     const [filteringOn, SetfilteringOn] = useState(false);
@@ -37,7 +37,7 @@ const FindJob = () => {
             .then(function (err) {
                 toast.error(err?.message)
             })
-    }, [])
+    }, [refetchAllJob])
 
 
     return (
@@ -80,6 +80,7 @@ const FindJob = () => {
                                         setSelectedJob={setSelectedJob}
                                         selectedJob={selectedJob}
                                         setShowJobDetail={setShowJobDetail}
+                                        setRefetchAllJob={setRefetchAllJob}
                                     ></SingleJobInList>
 
                                     )

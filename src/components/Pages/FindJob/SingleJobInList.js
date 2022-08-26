@@ -5,14 +5,17 @@ import { faArrowLeft, faBookBookmark, faBookmark, faEyeSlash, faSave } from '@fo
 import ReactTooltip from 'react-tooltip';
 import axios from 'axios';
 import { serverLink } from './../../../utilities/links';
+import { toast } from 'react-toastify';
 
-const SingleJobInList = ({ job, setSelectedJob, selectedJob, index, setShowJobDetail }) => {
+const SingleJobInList = ({ job, setSelectedJob, selectedJob, index, setShowJobDetail, setRefetchAllJob }) => {
     const { jobTitle, companyName, jobLocation, publishedDate, _id } = job
     const [setSelected, setSetSelected] = useState(false);
     if (index === 0 && !setSelected) {
         setSelectedJob(job)
         setSetSelected(true)
     }
+
+    // Handle Hide Job Function
     const handleHideJob = async (id) => {
         await axios.post(`${serverLink}/user/hideJob/${id}`, {}, {
             headers: {
@@ -21,9 +24,31 @@ const SingleJobInList = ({ job, setSelectedJob, selectedJob, index, setShowJobDe
         })
             .then(function (res) {
                 console.log(res)
+                setRefetchAllJob(true)
             })
             .catch(function (err) {
                 console.log(err)
+            })
+    }
+
+
+    // Handle bookmarked Job
+    const handleBookmarkJob = async (id) => {
+        await axios.post(`${serverLink}/user/bookmarkedJobs/${id}`, {}, {
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+            },
+        })
+            .then(function (res) {
+                console.log(res.data.modifiedCount)
+                if (res?.data?.modifiedCount) {
+                    toast.success('Successfully added to bookmarked')
+                }
+                setRefetchAllJob(true)
+
+            })
+            .catch(function (err) {
+                toast.err(err?.message)
             })
     }
     return (
@@ -41,10 +66,14 @@ const SingleJobInList = ({ job, setSelectedJob, selectedJob, index, setShowJobDe
                 }
             </div>
             <div className={`flex gap-5 relative `}>
+
+                {/* Hide Job  */}
                 <p onClick={() => handleHideJob(_id)} className={`tooltip`} data-tip="Hide this post">
                     <FontAwesomeIcon icon={faEyeSlash} className={`text-black hover:text-primary text-xl`} />
                 </p>
-                <p className={`tooltip-left tooltip`} data-tip="Bookmark this job">
+
+                {/* Bookmark Job  */}
+                <p onClick={() => handleBookmarkJob(_id)} className={`tooltip-left tooltip`} data-tip="Bookmark this job">
                     <FontAwesomeIcon icon={faBookmark} className={`text-black hover:text-primary text-xl`} />
                 </p>
             </div>

@@ -1,7 +1,5 @@
 import axios from "axios"
 import { useState, useEffect } from 'react';
-import { toast } from 'react-toastify';
-import { io } from "socket.io-client";
 import { serverLink } from './../utilities/links';
 const useToken = async (currentUser) => {
     const [token, setToken] = useState('');
@@ -12,17 +10,14 @@ const useToken = async (currentUser) => {
     };
     useEffect(() => {
         if (user.email) {
-            // ${serverLink}/
             const targetUrl = `${serverLink}/user/create`
             axios.post(targetUrl, user)
                 .then(function (res) {
                     setToken(res?.data?.accessToken);
                     localStorage.setItem('accessToken', res?.data?.accessToken);
                     localStorage.removeItem('accountType')
-                    const socket = io(`${serverLink}`)
-                    console.log('socket console.log', socket)
                 })
-                .then(function (err) {
+                .catch(function (err) {
                     if (err) {
                         console.log(err)
                     }

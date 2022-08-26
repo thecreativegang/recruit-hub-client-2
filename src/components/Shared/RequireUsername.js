@@ -17,7 +17,7 @@ const RequireUsername = ({ children, prop }) => {
             axios.get(`${serverLink}/user/${user?.email}`, {
                 headers: {
                     authorization: `Bearer ${localStorage.getItem('accessToken')}`,
-                }
+                },
             })
                 .then(function (res) {
                     if (res.status === 200) {

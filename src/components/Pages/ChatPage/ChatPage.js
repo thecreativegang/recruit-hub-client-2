@@ -16,66 +16,21 @@ import { serverLink } from './../../../utilities/links';
 
 
 const ChatPage = () => {
-    const socket = io.connect(serverLink);
+    // const socket = io.connect(serverLink);
 
     const navigate = useNavigate()
+
     const userStore = useContext(UserStore);
     const currentUser = userStore.user;
-    const [allUser, setAllUser] = useState([]);
-    const [allAdmin, setAllAdmin] = useState([]);
+
+
+
     const [currentChat, setCurrentChat] = useState('');
     const [search, setSearch] = useState('');
-
     const [searchResult, setSearchResult] = useState('');
 
 
-    // Conection to soket io
-    useEffect(() => {
-        if (currentUser) {
-            socket.emit("add-user", currentUser._id);
-        }
-    }, [currentUser])
 
-
-
-    // fetch all user data
-    const fetchChats = async () => {
-        await axios.get(`${serverLink}/user`, {
-            headers: {
-                authorization: `Bearer ${localStorage.getItem('accessToken')}`,
-            },
-        }
-        )
-            .then(function (res) {
-                setAllUser(res?.data);
-            })
-            .catch(function (err) {
-                checkTokenExpired(err) === true && navigate('/login')
-            })
-    }
-    useEffect(() => {
-        fetchChats();
-    }, [allUser])
-
-
-    // fetch all admin data
-    const fetchAdmin = async () => {
-        await axios.get(`${serverLink}/user/admin`, {
-            headers: {
-                authorization: `Bearer ${localStorage.getItem('accessToken')}`,
-            },
-        }
-        )
-            .then(function (res) {
-                setAllAdmin(res?.data);
-            })
-            .catch(function (err) {
-                checkTokenExpired(err) === true && navigate('/login')
-            })
-    }
-    useEffect(() => {
-        fetchAdmin();
-    }, [allAdmin])
 
 
 
@@ -96,34 +51,32 @@ const ChatPage = () => {
         }
         fetchChats();
         setSearchResult("");
-
     }
-
+    // c
 
     return (
         <div>
-            <div class="drawer h-[calc(100vh-201px)]">
+            <div class="drawer h-[calc(100vh-110px)]">
                 <input id="my-drawer" type="checkbox" class="drawer-toggle" />
 
-                <div class="drawer-content max-h-screen">
-                    <div className='grid lg:grid-cols-3  py-1 chat-background h-[calc(100vh-201px)]'>
-                        <div class="h-[calc(100vh-211px)] carousel carousel-vertical ">
+                <div class="drawer-content ">
+                    <div className='grid lg:grid-cols-3  py-1 chat-background ]'>
+                        <div class="h-[calc(100vh-130px)] carousel carousel-vertical ">
 
                             <div className=''>
                                 {
-                                    <MyChat userStore={userStore} setCurrentChat={setCurrentChat} allUser={allUser}></MyChat>
+                                    <MyChat setCurrentChat={setCurrentChat} ></MyChat>
                                 }
                             </div>
 
                         </div>
-                        {/* <div className=''>
-                            <MyChat userStore={userStore} setCurrentChat={setCurrentChat} allUser={allUser}></MyChat>
-                        </div> */}
+
                         <div className='lg:col-span-2'>
                             <ChatContainer
+                                key={currentChat._id}
                                 currentChat={currentChat}
                                 currentUser={currentUser}
-                                socket={socket}
+                            // socket={socket}
                             ></ChatContainer>
                         </div>
                     </div>
@@ -152,6 +105,7 @@ const ChatPage = () => {
                         <div>
                             {
                                 searchResult ? "Search your Chat" ? searchResult?.map((chat) => <SingleProfile
+                                    key={chat?._id}
                                     setCurrentChat={setCurrentChat}
                                     chat={chat} />) : <Loading></Loading> : <Loading></Loading>
                             }

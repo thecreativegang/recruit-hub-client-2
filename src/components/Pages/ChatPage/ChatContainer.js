@@ -5,10 +5,13 @@ import { FaUserCircle } from "react-icons/fa";
 import { serverLink } from './../../../utilities/links';
 import Lottie from "lottie-web";
 import lottieData from './27649-lets-chat.json'
+import Loading from "../../Shared/Loading";
+// import { io } from 'socket.io-client';
 
 
-const ChatContainer = ({ currentChat, currentUser, socket }) => {
+const ChatContainer = ({ currentChat, currentUser }) => {
 
+  // const socket = io.connect(serverLink);
 
 
 
@@ -16,61 +19,53 @@ const ChatContainer = ({ currentChat, currentUser, socket }) => {
   const [arrivalMessage, setArrivalMessage] = useState(null);
   const scrollRef = useRef();
 
-  useEffect(() => {
 
-    const asyncFetchDailyData = async () => {
-      if (currentChat) {
-        const response = await axios.post(`${serverLink}/messages/getmsg`, {
-          from: currentUser._id,
-          to: currentChat._id,
-        });
-        setMessages(response.data);
-      }
+
+
+  const asyncFetchDailyData = async () => {
+    if (currentChat) {
+      const response = await axios.post(`${serverLink}/messages/getmsg`, {
+        from: currentUser._id,
+        to: currentChat._id,
+      });
+      setMessages(response.data);
     }
-
+  }
+  useEffect(() => {
     asyncFetchDailyData();
-
   }, [currentChat]);
 
 
 
 
+  useEffect(() => {
+    arrivalMessage && setMessages((prev) => [...prev, arrivalMessage]);
+  }, []);
+
+  useEffect(() => {
+    scrollRef.current?.scrollIntoView({ behaviour: "smooth" });
+  }, [messages])
+
   const handleSendMsg = async (msg) => {
+
     await axios.post(`${serverLink}/messages/addmsg`, {
       from: currentUser._id,
       to: currentChat._id,
       message: msg,
     });
 
-    if (currentChat._id) {
-      socket.emit("send-msg", {
-        to: currentChat._id,
-        from: currentUser._id,
-        msg,
-      });
+    // if (currentChat) {
+    //   socket.emit("send-msg", {
+    //     to: currentChat._id,
+    //     from: currentUser._id,
+    //     msg,
+    //   });
+    // }
 
-    }
     const msgs = [...messages];
     msgs.push({ fromSelf: true, message: msg });
     setMessages(msgs);
   };
-
-  useEffect(() => {
-    if (socket) {
-      socket.on("msg-recieve", (msg) => {
-        setArrivalMessage({ fromSelf: false, message: msg });
-      });
-    }
-  }, [arrivalMessage]);
-
-  useEffect(() => {
-    arrivalMessage && setMessages((prev) => [...prev, arrivalMessage]);
-  }, [arrivalMessage]);
-
-  useEffect(() => {
-    scrollRef.current?.scrollIntoView({ behaviour: "smooth" });
-  }, [messages])
-
   // For lottie animation
   const anime = useRef(null);
   useEffect(() => {
@@ -86,6 +81,19 @@ const ChatContainer = ({ currentChat, currentUser, socket }) => {
     });
     // More logic goes here
   }, []);
+
+
+
+  // if (socket) {
+  //   socket.on("msg-transfer", (msg) => {
+  //     setArrivalMessage({ fromSelf: false, message: msg.msg });
+  //   });
+
+  //   return () => {
+  //     socket.disconnect();
+  //   }
+  // }
+
 
   return (
     <div className="w-100">
@@ -106,7 +114,7 @@ const ChatContainer = ({ currentChat, currentUser, socket }) => {
             </div>
           </div>
           {/* chat body */}
-          <div className="message-body overflow-x-hidden  overflow-y-auto h-[62vh]">
+          <div className="message-body overflow-x-hidden  overflow-y-auto h-[calc(100vh-280px)]">
             {messages.map((message) => {
               return (
                 <div >
@@ -127,6 +135,7 @@ const ChatContainer = ({ currentChat, currentUser, socket }) => {
 
         </div>
       }
+
       {
         currentChat === '' && <>
           <h2 className="text-center text-3xl my-5 font-bold">Select your Chat</h2>
@@ -135,7 +144,6 @@ const ChatContainer = ({ currentChat, currentUser, socket }) => {
             ref={anime}>
           </div>
         </>
-
       }
     </div >
 

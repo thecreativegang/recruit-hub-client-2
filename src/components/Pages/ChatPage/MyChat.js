@@ -1,14 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import SingleProfile from './SingleProfile';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import ScrollToBottom from 'react-scroll-to-bottom';
 import Loading from '../../Shared/Loading';
 import { FaUserCircle } from 'react-icons/fa';
+import { UserStore } from '../../../stateManagement/UserContext/UserContextStore';
 
-const MyChat = ({ allUser, userStore, setCurrentChat }) => {
-    const { userEmail, user } = userStore;
+const MyChat = ({ setCurrentChat }) => {
 
+
+    const userStore = useContext(UserStore);
+
+    const { user, allUser, allAdmin } = userStore;
 
     return (
         <div className='lg:mx-2 pt-2'>
@@ -44,7 +47,7 @@ const MyChat = ({ allUser, userStore, setCurrentChat }) => {
                 <div class="collapse-content px-1 peer-checked:bg-sky-200">
                     <div className='overflow-x-hidden   overflow-y-auto '>
                         {
-                            allUser ? allUser?.map((chat) => <SingleProfile setCurrentChat={setCurrentChat} chat={chat} />) : <Loading></Loading>
+                            allAdmin && allAdmin ? allAdmin?.map((chat) => <SingleProfile key={chat?._id} setCurrentChat={setCurrentChat} chat={chat} />) : <Loading></Loading>
                         }
                     </div>
                 </div>
@@ -55,32 +58,10 @@ const MyChat = ({ allUser, userStore, setCurrentChat }) => {
             {/* useer */}
             <div className='overflow-x-hidden  overflow-y-auto '>
                 {
-                    allUser ? allUser?.map((chat) => <SingleProfile setCurrentChat={setCurrentChat} chat={chat} />) : <Loading></Loading>
+                    allUser && allUser ? allUser?.map((chat) => <SingleProfile key={chat?._id} setCurrentChat={setCurrentChat} chat={chat} />) : <Loading></Loading>
                 }
             </div>
 
-
-
-            {/* user content */}
-
-            {/* <div className='lg:px-2 mt-0  h-[calc(100vh-280px)]  rounded my-border'>
-                <div className='bg-sky-500 rounded p-2 my-2 text-white flex items-center justify-between'>
-                    <h2 className='px-3 text-2xl'>
-                        User Name: {user?.username ? user?.username : user?.email}
-                    </h2>
-                    <div class="avatar">
-                        <div class="w-[50px] rounded-full">
-                            <FaUserCircle className='text-4xl mr-2 cursor-pointer' />
-                        </div>
-                    </div>
-                </div>
-
-                <div className='overflow-x-hidden  overflow-y-auto lg:h-[85%] md:h-[80%] '>
-                    {
-                        allUser ? allUser?.map((chat) => <SingleProfile setCurrentChat={setCurrentChat} chat={chat} />) : <Loading></Loading>
-                    }
-                </div>
-            </div> */}
 
         </div>
     );

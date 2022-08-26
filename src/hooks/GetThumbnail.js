@@ -1,9 +1,6 @@
 
 const GetThumbnail = (url) => {
 
-
-
-
     var p =
         /^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
     const videoId = url.match(p) ? RegExp.$1 : false;

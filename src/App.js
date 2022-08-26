@@ -38,6 +38,7 @@ import UserSkills from './components/Pages/UserProfile/UserSkills/UserSkills';
 import Featured from './components/Pages/UserProfile/Featured/Featured';
 import Courses from './components/Pages/UserProfile/Courses/Courses';
 import Projects from './components/Pages/UserProfile/Projects/Projects';
+import Experience from './components/Pages/UserProfile/Experience/Experience';
 
 
 function App() {
@@ -90,6 +91,7 @@ function App() {
             <Route path="featured" element={<Featured />} />
             <Route path="courses" element={<Courses />} />
             <Route path="projects" element={<Projects />} />
+            <Route path="experience" element={<Experience />} />
           </Route>
 
           {/* <Route path='/dashboard' element={<UserMain></UserMain>}>

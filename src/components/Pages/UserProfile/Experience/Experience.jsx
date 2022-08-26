@@ -1,68 +1,80 @@
 import React from "react";
-import "./UserSkills.css";
+import "./Experience.css";
 
-import { FaHtml5 } from "react-icons/fa";
-import { BiMessageSquareError } from "react-icons/bi";
-import { BsCheckCircle } from "react-icons/bs";
-
-const UserSkills = () => {
+const Experience = () => {
   return (
     <section>
-      <h2 className="user-title">Programing Learning Skills</h2>
+      <h2 className="user-title">Our Experience</h2>
       <div className="px-5 pb-5">
-        {/* all skills box */}
+        {/* all Experience box */}
         <div>
-          <div className="max-w-[25rem] w-full px-8 py-6 user-card-shadow rounded mb-10">
-            <p className="text-xl font-bold text-gray-600 flex justify-start items-center">
-              <FaHtml5 className="mr-2" />
-              HTML 5
-            </p>
-            <p className="text-base font-medium text-yellow-500 flex justify-start items-center">
-              <BiMessageSquareError className="mr-2" /> NO VERIFY
-            </p>
-            <p className="text-base font-medium text-green-600 flex justify-start items-center">
-              <BsCheckCircle className="mr-2" />
-              VERIFY BY RECRUIT HUB
-            </p>
+          <div className="max-w-[25rem] w-full px-2 py-2 user-card-shadow rounded mb-10 flex justify-start gap-3 align-top">
+            <div>
+              <img
+                className="w-12 h-12 object-cover border-2 border-gray-200"
+                src="https://brandmark.io/logo-rank/random/twitter.png"
+                alt="Experience Images"
+              />
+            </div>
+            <div>
+              <h3 className="text-lg font-medium ">Experience Title</h3>
+              <p className="">Full-time · 11 mos</p>
+              <p className="">Jun 2021 - Present 11 mos</p>
+              <p className="font-medium text-gray-600 mt-1">
+                Skills: HTML CSS Javascript React
+              </p>
+            </div>
           </div>
-          <div className="max-w-[25rem] w-full px-8 py-6 user-skills-shadow rounded mb-10">
-            <p className="text-xl font-bold text-gray-600 flex justify-start items-center">
-              <FaHtml5 className="mr-2" />
-              HTML 5
-            </p>
-            <p className="text-base font-medium text-yellow-500 flex justify-start items-center">
-              <BiMessageSquareError className="mr-2" /> NO VERIFY
-            </p>
-            <p className="text-base font-medium text-green-600 flex justify-start items-center">
-              <BsCheckCircle className="mr-2" />
-              VERIFY BY RECRUIT HUB
-            </p>
+          <div className="max-w-[25rem] w-full px-2 py-2 user-card-shadow rounded mb-10 flex justify-start gap-3 align-top">
+            <div>
+              <img
+                className="w-12 h-12 object-cover border-2 border-gray-200"
+                src="https://brandmark.io/logo-rank/random/twitter.png"
+                alt="Experience Images"
+              />
+            </div>
+            <div>
+              <h3 className="text-lg font-medium ">Experience Title</h3>
+              <p className="">Full-time · 11 mos</p>
+              <p className="">Jun 2021 - Present 11 mos</p>
+              <p className="font-medium text-gray-600 mt-1">
+                Skills: HTML CSS Javascript React
+              </p>
+            </div>
           </div>
-          <div className="max-w-[25rem] w-full px-8 py-6 user-skills-shadow rounded mb-10">
-            <p className="text-xl font-bold text-gray-600 flex justify-start items-center">
-              <FaHtml5 className="mr-2" />
-              HTML 5
-            </p>
-            <p className="text-base font-medium text-yellow-500 flex justify-start items-center">
-              <BiMessageSquareError className="mr-2" /> NO VERIFY
-            </p>
-            <p className="text-base font-medium text-green-600 flex justify-start items-center">
-              <BsCheckCircle className="mr-2" />
-              VERIFY BY RECRUIT HUB
-            </p>
+          <div className="max-w-[25rem] w-full px-2 py-2 user-card-shadow rounded mb-10 flex justify-start gap-3 align-top">
+            <div>
+              <img
+                className="w-12 h-12 object-cover border-2 border-gray-200"
+                src="https://brandmark.io/logo-rank/random/twitter.png"
+                alt="Experience Images"
+              />
+            </div>
+            <div>
+              <h3 className="text-lg font-medium ">Experience Title</h3>
+              <p className="">Full-time · 11 mos</p>
+              <p className="">Jun 2021 - Present 11 mos</p>
+              <p className="font-medium text-gray-600 mt-1">
+                Skills: HTML CSS Javascript React
+              </p>
+            </div>
           </div>
-          <div className="max-w-[25rem] w-full px-8 py-6 user-skills-shadow rounded mb-10">
-            <p className="text-xl font-bold text-gray-600 flex justify-start items-center">
-              <FaHtml5 className="mr-2" />
-              HTML 5
-            </p>
-            <p className="text-base font-medium text-yellow-500 flex justify-start items-center">
-              <BiMessageSquareError className="mr-2" /> NO VERIFY
-            </p>
-            <p className="text-base font-medium text-green-600 flex justify-start items-center">
-              <BsCheckCircle className="mr-2" />
-              VERIFY BY RECRUIT HUB
-            </p>
+          <div className="max-w-[25rem] w-full px-2 py-2 user-card-shadow rounded mb-10 flex justify-start gap-3 align-top">
+            <div>
+              <img
+                className="w-12 h-12 object-cover border-2 border-gray-200"
+                src="https://brandmark.io/logo-rank/random/twitter.png"
+                alt="Experience Images"
+              />
+            </div>
+            <div>
+              <h3 className="text-lg font-medium ">Experience Title</h3>
+              <p className="">Full-time · 11 mos</p>
+              <p className="">Jun 2021 - Present 11 mos</p>
+              <p className="font-medium text-gray-600 mt-1">
+                Skills: HTML CSS Javascript React
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -70,4 +82,4 @@ const UserSkills = () => {
   );
 };
 
-export default UserSkills;
+export default Experience;

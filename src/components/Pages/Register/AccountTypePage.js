@@ -6,7 +6,8 @@ import { useNavigate } from 'react-router-dom';
 
 const AccountTypePage = ({ type }) => {
     const [selectedOptionDev, setSelectedOptionDev] = useState('border-2');
-    const [selectedOptionRecruiter, setSelectedOptionRecruiter] = useState('border-2');
+    const [selectedOptionRecruiter, setSelectedOptionRecruiter] =
+        useState('border-2');
 
     const [error, setError] = useState('');
     const navigate = useNavigate();
@@ -33,27 +34,26 @@ const AccountTypePage = ({ type }) => {
             setErrorStyle('')
         }
 
-    }
+    };
     const handleNavigateLogin = () => {
         if (localStorage.getItem('accountType') !== '') {
             if (type !== 'googleSignIn') {
-                navigate(`/register/${localStorage.getItem('accountType')}`)
+                navigate(`/register/${localStorage.getItem('accountType')}`);
             }
-        }
-        else {
+        } else {
             setError('Select an Option');
-            setErrorStyle('border-2 border-red-500 p-2  rounded-lg')
+            setErrorStyle('border-2 border-red-500 p-2  rounded-lg');
         }
-    }
+    };
     const handleNavigateToRegister = () => {
         if (localStorage.getItem('accountType') !== '') {
-            navigate(`/register/${localStorage.getItem('accountType')}`)
-        }
-        else {
+            navigate(`/register/${localStorage.getItem('accountType')}`);
+        } else {
             setError('Select an Option');
-            setErrorStyle('border-2 border-red-500 p-2  rounded-lg')
+            setErrorStyle('border-2 border-red-500 p-2  rounded-lg');
         }
     }
+
     return (
         <div className='h-[100vh] dark:bg-[#0b1120] bg-[#fff]'>
             <div className='flex justify-center   justify-items-center pt-20'>
@@ -87,7 +87,27 @@ const AccountTypePage = ({ type }) => {
                     </div>
                 </div>
             </div>
+            {type !== 'googleSignIn' ? (
+                <div className="mt-10">
+                    <button
+                        onClick={() => handleNavigateLogin()}
+                        className=" btn w-full text-white"
+                    >
+                        Next <FontAwesomeIcon icon={faArrowRight} />
+                    </button>
+                </div>
+            ) : (
+                <div className="mt-10">
+                    <button
+                        onClick={() => handleNavigateToRegister()}
+                        className=" btn w-full text-white"
+                    >
+                        Next <FontAwesomeIcon icon={faArrowRight} />
+                    </button>
+                </div>
+            )}
         </div>
+
     );
 };
 

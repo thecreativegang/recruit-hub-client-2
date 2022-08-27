@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { Outlet } from "react-router-dom";
-import { useLocation } from "react-router-dom";
-import Sidebar from "../Sidebar/Sidebar";
-import "./MainAdmin.css";
+import React, { useState } from 'react';
+import { Outlet } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import Sidebar from '../Sidebar/Sidebar';
+import './MainAdmin.css';
 
 const MainAdmin = () => {
   // dashboard open and closed switch
@@ -11,10 +11,9 @@ const MainAdmin = () => {
 
   // use Location
   const location = useLocation();
-  console.log(location.pathname);
 
   const bgColor =
-    location?.pathname == "/admin/findJob" ? "bg-white" : "admin-bg";
+    location?.pathname === '/admin/findJob' ? 'bg-white' : 'admin-bg';
 
   return (
     //main admin dashboard section
@@ -22,7 +21,7 @@ const MainAdmin = () => {
       {/* admin sidebar */}
       <div
         className={`admin-bg  min-h-screen duration-500 ease-in-out ${
-          dbSwitch ? "w-[17%] min-w-[15rem]" : "w-[5rem]"
+          dbSwitch ? 'w-[17%] min-w-[15rem]' : 'w-[5rem]'
         }`}
       >
         <Sidebar dashboardSwitch={dashboardSwitch} />

@@ -1,55 +1,29 @@
-.side-bar ul li:hover .sidebar-link {
-  color: #5956e9;
-  transition: all 0.1s;
+/* custom font link  */
+@font-face {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  src: url(../../../Font/SEGOEUI.TTF);
 }
 
-.sidebar-link {
-  font-size: 14px;
+.font-segoeUi {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+/* common style  */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.user-title {
+  font-size: 1.25rem;
+  padding: 0.5rem 0 0.5rem 1.25rem;
   font-weight: 500;
+  color: black;
+  margin-bottom: 1rem;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
-.code-test {
-  border-right: 1px solid black;
+.user-profile-shadow {
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.test {
-  color: rgb(41, 46, 51);
-}
-
-/* button style  */
-.btn {
-  margin-top: 6px;
-  color: rgb(255, 255, 255);
-  padding: 7px;
-  border-radius: 4px;
-  font-size: 12px;
-  text-align: center;
-  cursor: pointer;
-  background-color: rgb(6, 117, 206);
-  border: 1px solid rgb(6, 117, 206);
-}
-
-@media screen and (min-width: 768px) {
-  .btn {
-    padding: 10px;
-    border-radius: 3px;
-    font-size: 14px;
-  }
-}
-
-.profile-form-border {
-  border: 1px solid rgb(224, 224, 224);
-}
-
-.section-hover:hover {
-  box-shadow: rgb(0 0 0 / 10%) 0px 4px 14px 0px;
-  transition: all 0.2s;
-}
-
-/* form:hover .general {
-  box-shadow: rgb(0 0 0 / 10%) 0px 4px 14px 0px;
-} */
-
-.active {
-  background-color: #c4c3c3;
+.user-card-shadow {
+  box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.2);
 }

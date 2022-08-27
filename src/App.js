@@ -23,6 +23,8 @@ import AskForUsername from './components/Shared/AskForUsername';
 import ProtectedRout from './components/Shared/ProtectedRout';
 import ForgetPassword from './components/Pages/Login/ForgetPassword';
 import UserProfile from './components/Pages/UserProfile/UserProfile';
+import UserDashboard from './components/Pages/UserDashboard/UserDashboard';
+
 
 import PostResource from './AdminDashboard/PostResource/PostResource';
 import FreeResource from './components/Pages/FreeResource/FreeResource';
@@ -30,7 +32,6 @@ import Developer from './components/Pages/Developer/Developer';
 import ReactTooltip from 'react-tooltip';
 import UserAbout from './components/Pages/UserProfile/UserAbout/UserAbout';
 import UserSkills from './components/Pages/UserProfile/UserSkills/UserSkills';
-import UserDashboard from './components/Pages/UserDashboard/UserDashboard';
 import Featured from './components/Pages/UserProfile/Featured/Featured';
 import Courses from './components/Pages/UserProfile/Courses/Courses';
 import Projects from './components/Pages/UserProfile/Projects/Projects';
@@ -42,11 +43,7 @@ function App() {
   const url = useLocation();
   // console.log('see current location', url)
   return (
-<<<<<<< HEAD
     <div className='transition-all duration-500 bg-[#F3F3F3] dark:bg-[#0b1120]'>
-=======
-    <div className="transition-all duration-500 bg-[#F3F3F3]">
->>>>>>> 97e458aaa9107a68ae0cc134f06fc27f1a51cb0f
       <UserStoreProvider>
         <Navbar />
         <Routes>
@@ -60,6 +57,11 @@ function App() {
           />
 
           <Route path="/home" element={<Home />} />
+
+          <Route path="/user-dashboard" element={<UserDashboard />}>
+
+          </Route>
+
           <Route path="/freeResource" element={<FreeResource />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<AccountTypePage />} />

@@ -18,7 +18,8 @@ const AccountTypePage = ({ type }) => {
 
     const handleBgColor = (type) => {
         if (type === 'developer') {
-            setSelectedOptionDev('bg-primary text-white')
+
+            setSelectedOptionDev('bg-[#3878df] text-[#fff] dark:text-[#fff]')
             setSelectedOptionRecruiter('border-2');
             localStorage.setItem('accountType', 'developer')
             setError('');
@@ -26,7 +27,7 @@ const AccountTypePage = ({ type }) => {
         }
         else if (type === 'recruiter') {
             setSelectedOptionDev('border-2')
-            setSelectedOptionRecruiter('bg-primary text-white')
+            setSelectedOptionRecruiter('bg-[#3878df] text-[#fff] dark:text-[#fff]')
             localStorage.setItem('accountType', 'recruiter')
             setError('');
             setErrorStyle('')
@@ -54,17 +55,17 @@ const AccountTypePage = ({ type }) => {
         }
     }
     return (
-        <div className='h-[100vh] '>
-            <div className='flex justify-center  justify-items-center mt-20'>
-                <div class="card  md:w-1/5 w-full bg-base-100 shadow-xl h-fit">
+        <div className='h-[100vh] dark:bg-[#0b1120] bg-[#fff]'>
+            <div className='flex justify-center   justify-items-center pt-20'>
+                <div class="card  md:w-1/5 w-full dark:text-[#0b1120] my-border dark:bg-transparent bg-[#fff] shadow-xl h-fit">
 
                     <div class="card-body ">
-                        <h2 class="card-title text-2xl text-center font-bold">Are you a Developer? or Recruiter</h2>
+                        <h2 class="card-title dark:text-[#8C9BB6] text-[#273272] text-2xl text-center font-semibold ">Are you a Developer? or Recruiter</h2>
                         <div className={`flex flex-col gap-5 mt-10 ${errorStyle}`}>
-                            <div onClick={() => handleBgColor('developer')} className={` border-zinc-400 p-2 text-xl text-center rounded-lg ${selectedOptionDev} cursor-pointer`}>
+                            <div onClick={() => handleBgColor('developer')} className={`text-[#273272] dark:text-[#8C9BB6] my-border p-2 text-xl text-center rounded-lg ${selectedOptionDev} cursor-pointer`}>
                                 <p>Join As a Developer</p>
                             </div>
-                            <div onClick={() => handleBgColor('recruiter')} className={` border-zinc-400 p-2 rounded-lg ${selectedOptionRecruiter} text-xl text-center  cursor-pointer`}>
+                            <div onClick={() => handleBgColor('recruiter')} className={`text-[#273272] dark:text-[#8C9BB6] my-border p-2 rounded-lg ${selectedOptionRecruiter} text-xl text-center  cursor-pointer`}>
                                 <p>Join As a Recruiter</p>
                             </div>
                             {
@@ -75,11 +76,11 @@ const AccountTypePage = ({ type }) => {
                             type !== 'googleSignIn'
                                 ?
                                 <div className='mt-10'>
-                                    <button onClick={() => handleNavigateLogin()} className=' btn w-full text-white'>Next <FontAwesomeIcon icon={faArrowRight} /></button>
+                                    <button onClick={() => handleNavigateLogin()} className=' btn-primary-blue w-full text-white'>Next <FontAwesomeIcon icon={faArrowRight} /></button>
                                 </div>
                                 :
                                 <div className='mt-10'>
-                                    <button onClick={() => handleNavigateToRegister()} className=' btn w-full text-white'>Next <FontAwesomeIcon icon={faArrowRight} /></button>
+                                    <button onClick={() => handleNavigateToRegister()} className=' btn-primary-blue text-white'>Next <FontAwesomeIcon icon={faArrowRight} /></button>
                                 </div>
                         }
 

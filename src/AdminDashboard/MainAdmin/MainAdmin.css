@@ -1,5 +1,5 @@
 .Container {
-  max-width: 1280px;
+  max-width: 1349px;
   margin: auto;
   padding: 0px 5px;
 }
@@ -11,6 +11,7 @@
 .admin-shadow {
   box-shadow: 0 1px 20px 0 rgb(0 0 0 / 10%);
 }
+
 .admin-card-bg {
   background-color: #27293d;
 }

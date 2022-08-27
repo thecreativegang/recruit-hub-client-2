@@ -5,7 +5,8 @@ const DeveloperStore = () => {
     //developer info storage 
     const [devLoading, setDevLoading] = useState(true)
     const [devError, setDevError] = useState({})
-    const [devData, setDevData] = useState([])
+    const [devData, setDevData] = useState([]);
+
 
     // Get developer information form developer api
     useEffect(() => {

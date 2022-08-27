@@ -30,14 +30,14 @@ const Banner = () => {
                                 <button onClick={() => {
                                     localStorage.setItem('accountType', 'recruiter')
                                     navigateRecruiter('/register/recruiter') //
-                                }} className=' btn-primary-vlue dark:bg-[#0284C7] text-white '>Start Hiring <i class="fa-solid fa-angle-right ml-[6px]"></i></button>
+                                }} className=' btn-primary-blue dark:bg-[#0284C7] text-white '>Start Hiring <i class="fa-solid fa-angle-right ml-[6px]"></i></button>
 
 
                                 <button oonClick={() => {
                                     localStorage.setItem('accountType', 'developer')
                                     navigateDeveloper('/register/developer')
                                 }
-                                } className='  btn-primary-vlue2 dark:bg-[#0284C7] text-white ml-[25px]'>Get a job <i class="fa-solid fa-angle-right ml-[6px]"></i></button>
+                                } className='  btn-primary-blue2 dark:bg-[#0284C7] text-white ml-[25px]'>Get a job <i class="fa-solid fa-angle-right ml-[6px]"></i></button>
 
                             </div>
                         </div>

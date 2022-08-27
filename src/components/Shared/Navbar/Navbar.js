@@ -51,8 +51,8 @@ const Navbar = () => {
     const deActive = " dark:text-[#8C9BB6]  font-semibold text-[#273272] flex items-center text-[17px]   p-2 "
 
     return (
-        <nav className='sticky py-1 bg-white top-0 left-0 z-50 dark:bg-[#0C1322] nav-shadow nav-border dark:border-1 dark:border-[#ddd'>
-            <div className='container max-w-[1280px] mx-auto relative z-50'>
+        <nav className='sticky py-2 bg-white top-0 left-0 z-50 dark:bg-[#0C1322] nav-shadow nav-border dark:border-1 dark:border-[#ddd'>
+            <div className='container max-w-[1349px] mx-auto relative z-50'>
                 <div className='flex justify-between items-center relative'>
                     {/* logo and navbar menu */}
                     <div className='logo flex items-center text-xl font-bold py-3 ml-3'>
@@ -123,7 +123,7 @@ const Navbar = () => {
                                     <>
                                         {/* user photo  */}
                                         <div className='relative'>
-                                            <FaHouseUser onClick={() => setUserSwitch(!userSwitch)} className='text-2xl dark:text-[#c6c9d8] mr-3 cursor-pointer' />
+                                            <FaHouseUser onClick={() => setUserSwitch(!userSwitch)} className='text-[#0D1425] text-2xl dark:text-[#c6c9d8] mr-3 cursor-pointer' />
                                         </div>
 
                                         {/* user details  */}
@@ -152,7 +152,7 @@ const Navbar = () => {
                         <span onClick={() => setTheme(colorTheme)} className='mr-[10px]'>
                             {colorTheme === 'light' ?
                                 <HiLightBulb className='cursor-pointer text-2xl text-yellow-400' />
-                                : <MdDarkMode className='cursor-pointer text-2xl' />
+                                : <MdDarkMode className='cursor-pointer text-[#0D1425] text-2xl' />
                             }
                         </span>
                     </div>

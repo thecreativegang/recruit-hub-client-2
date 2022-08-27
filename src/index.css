@@ -9,7 +9,7 @@
 @tailwind utilities;
 
 .container {
-  max-width: 1280px;
+  max-width: 1349px;
   margin: auto;
   padding: 0 10px;
 }
@@ -34,7 +34,7 @@
   color: #191919;
 }
 
-.btn-primary-vlue {
+.btn-primary-blue {
   background: #061835;
   color: #fff;
   padding: 15px 20px;
@@ -42,7 +42,8 @@
   font-weight: 500;
   transition: all 0.5s;
 }
-.btn-primary-vlue2 {
+
+.btn-primary-blue2 {
   background: #3878df;
   color: #fff;
   padding: 15px 20px;
@@ -50,18 +51,22 @@
   font-weight: 500;
   transition: all 0.5s;
 }
-.btn-primary-vlue2:hover {
+
+.btn-primary-blue2:hover {
   transform: translateY(-7px);
   transition: all 0.5s;
 }
-.btn-primary-vlue:hover {
+
+.btn-primary-blue:hover {
   transform: translateY(-7px);
   transition: all 0.5s;
 }
-.btn-primary-vlue:focus {
+
+.btn-primary-blue:focus {
   outline: none;
 }
-.btn-primary-vlue:hover {
+
+.btn-primary-blue:hover {
   background-color: #191919;
   color: #fff;
   transition: all 0.2s;

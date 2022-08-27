@@ -98,12 +98,12 @@ const Login = () => {
 
     return (
         <div className='min-h-[100vh] py-10 dark:bg-[#0D1425] bg-[#F3F3F3]'>
-            <div className='conatiner container max-w-[1280px] mx-auto'>
+            <div className='conatiner container max-w-[1349px] mx-auto'>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div className="card flex-shrink-0 w-full order-last md:order-first">
                         <div className="card-body">
                             <form onSubmit={handleSubmit(onSubmit)}>
-                                <h1 className='text-[2.5rem] font-bold text-center dark:text-white'> <span className='text-[#3878DF] dark:text-[#38BDF8]'>Login</span> Here</h1>
+                                <h1 className='text-[2.5rem] font-bold text-center text-[#0D1425] dark:text-white'> <span className='text-[#3878DF] dark:text-[#38BDF8]'>Login</span> Here</h1>
                                 <p className='text-[#334155] dark:text-[#8C9BB6] font-semibold text-center  text-[1.25rem]'>Dont share your login information</p>
                                 <div className="form-control mt-4">
                                     <label className="label">
@@ -189,9 +189,9 @@ const Login = () => {
                                 <div className="divider dark:text-[#8C9BB6]">OR</div>
                             </div>
                             <div className="form-control mt-4 ">
-                                <button onClick={() => signInWithGoogle()} className=" py-2  flex justify-center items-center input-border dark:border-0 font-semibold  text-[#334155] dark:text-[#8C9BB6] dark:bg-[#1E293B] w-full ">
+                                <button onClick={() => signInWithGoogle()} className=" py-2  flex justify-center items-center input-border dark:border-0 font-semibold bg-transparent text-[#334155] dark:text-[#8C9BB6] dark:bg-[#1E293B] w-full ">
                                     <img src={googleLogo} alt="" />
-                                    <span className='ml-2'>Continue With Google</span>
+                                    <span className='text-[#334155] dark:text-[#8C9BB6]  ml-2'>Continue With Google</span>
                                 </button>
                             </div>
                         </div>

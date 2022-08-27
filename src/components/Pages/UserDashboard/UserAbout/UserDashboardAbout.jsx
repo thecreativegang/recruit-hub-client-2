@@ -1,143 +1,162 @@
 import React from "react";
 
-//react icons link
-import { AiFillHome } from "react-icons/ai";
-import { MdLocationOn } from "react-icons/md";
-import {
-  FaEnvelope,
-  FaPhoneAlt,
-  FaGithub,
-  FaLinkedinIn,
-  FaFacebook,
-  FaInstagram,
-} from "react-icons/fa";
-
-const About = () => {
-  const userInfo = {
-    CoverPhoto:
-      "https://i.pinimg.com/564x/30/5c/5a/305c5a457807ba421ed67495c93198d3.jpg",
-    ProfilePhoto:
-      "https://wac-cdn.atlassian.com/dam/jcr:ba03a215-2f45-40f5-8540-b2015223c918/Max-R_Headshot%20(1).jpg",
-    name: "Tanvir Ahmed",
-    userName: "tkljfld.232",
-    developerType: "Front-End Web Developer",
-    Bio: "Front-End Web Developer | Interested in React Js. and React Native | Passionate about Web Development | Dreaming to be a Professional Full Stack Web Developer",
-    state: "barisal",
-    country: "bangladesh",
-    contactsInfo: { email: "", phone: "" },
-    socialLink: { github: "", linkdin: "", facebook: "", instagram: "" },
-    skills: [
-      { skillName: "", skillTest: 100 },
-      { skillName: "", skillTest: "" },
-      { skillName: "", skillTest: "" },
-    ],
-    featured: [
-      { featuredPhoto: "", featuredTitle: "", featuredDescription: "" },
-      { featuredPhoto: "", featuredTitle: "", featuredDescription: "" },
-      { featuredPhoto: "", featuredTitle: "", featuredDescription: "" },
-    ],
-    experince: [
-      {
-        experinceTitle: "",
-        jobType: "full time",
-        duration: "",
-        skills: ["", "", "", ""],
-      },
-    ],
-    courses: [
-      { coursesPhoto: "", coursesTitle: "", coursesDescription: "" },
-      { coursesPhoto: "", coursesTitle: "", coursesDescription: "" },
-      { coursesPhoto: "", coursesTitle: "", coursesDescription: "" },
-    ],
-    projects: [
-      {
-        projectsPhoto: "",
-        projectsTitle: "",
-        projectsDescription: "",
-        projectsLink: { githubServer: "", githubClint: "", liveSite: "" },
-      },
-
-      {
-        projectsPhoto: "",
-        projectsTitle: "",
-        projectsDescription: "",
-        projectsLink: { githubServer: "", githubClint: "", liveSite: "" },
-      },
-
-      {
-        projectsPhoto: "",
-        projectsTitle: "",
-        projectsDescription: "",
-        projectsLink: { githubServer: "", githubClint: "", liveSite: "" },
-      },
-    ],
-  };
-
+const UserDashboardAbout = () => {
   return (
-    <section className="">
-      {/* Basic info  */}
-      <h3 className="user-title">Basic Information</h3>
-      <div className="inline-block p-5">
-        <p className=" capitalize text-lg text-gray-500 font-medium mb-3 flex justify-start items-center cursor-pointer">
-          <AiFillHome className="mr-3" />
-          Live In
-          <span className="font-semibold text-gray-800 capitalize">
-            {userInfo?.state}
-          </span>
-        </p>
-        <p className=" capitalize text-lg text-gray-500 font-medium mb-3 flex justify-start items-center cursor-pointer">
-          <MdLocationOn className="mr-3" />
-          <span className="font-semibold text-gray-800 capitalize">
-            {userInfo?.country}
-          </span>
-        </p>
-        <p className=" text-lg text-gray-500 font-medium mb-3 flex justify-start items-center hover:text-blue-600 duration-100 ease-in-out cursor-pointer lowercase">
-          <FaEnvelope className="mr-3" />
-          {userInfo?.contactsInfo?.email}
-        </p>
-        <p className=" capitalize text-lg text-gray-500 font-medium mb-3 flex justify-start items-center cursor-pointer">
-          <FaPhoneAlt className="mr-3" />
-          {userInfo?.contactsInfo?.phone}
-        </p>
-        <a
-          href={userInfo?.socialLink?.github}
-          target="_blank"
-          rel="noopener noreferrer"
-          className=" capitalize text-lg text-gray-500 font-medium mb-3 flex justify-start items-center hover:text-blue-600 duration-100 ease-in-out cursor-pointer"
-        >
-          <FaGithub className="mr-3" />
-          github
-        </a>
-        <a
-          href={userInfo?.socialLink?.linkdin}
-          target="_blank"
-          rel="noopener noreferrer"
-          className=" capitalize text-lg text-gray-500 font-medium mb-3 flex justify-start items-center hover:text-blue-600 duration-100 ease-in-out cursor-pointer"
-        >
-          <FaLinkedinIn className="mr-3" />
-          linkdin
-        </a>
-        <a
-          href={userInfo?.socialLink?.facebook}
-          target="_blank"
-          rel="noopener noreferrer"
-          className=" capitalize text-lg text-gray-500 font-medium mb-3 flex justify-start items-center hover:text-blue-600 duration-100 ease-in-out cursor-pointer"
-        >
-          <FaFacebook className="mr-3" />
-          facebook
-        </a>
-        <a
-          href={userInfo?.socialLink?.instagram}
-          target="_blank"
-          rel="noopener noreferrer"
-          className=" capitalize text-lg text-gray-500 font-medium mb-3 flex justify-start items-center hover:text-blue-600 duration-100 ease-in-out cursor-pointer"
-        >
-          <FaInstagram className="mr-3" />
-          insatgram
-        </a>
+    <section className="min-h-screen py-8">
+      <div className="container">
+        {/* Basic info  */}
+
+        <div className="max-w-[32rem] mx-auto bg-[#edebeb] px-6 py-4 rounded-md">
+          <h3 className="text-3xl font-medium text-[#0b1120] border-b-4 text-center mb-6">
+            About
+          </h3>
+          <form action="">
+            {/* state  */}
+            <div className="w-full mb-3 ">
+              <label
+                for="state"
+                class="block mb-2 text-base font-medium text-gray-900 ml-1"
+              >
+                State
+              </label>
+              <input
+                type="text"
+                id="state"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                placeholder="Your State"
+                required
+              />
+            </div>
+
+            {/* country  */}
+            <div className="w-full mb-3">
+              <label
+                for="country"
+                class="block mb-2 text-base font-medium text-gray-900 ml-1"
+              >
+                Country
+              </label>
+              <input
+                type="text"
+                id="country"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                placeholder="Your Country"
+                required
+              />
+            </div>
+
+            {/* Email  */}
+            <div className="w-full mb-3">
+              <label
+                for="email"
+                class="block mb-2 text-base font-medium text-gray-900 ml-1"
+              >
+                Email
+              </label>
+              <input
+                type="text"
+                id="email"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                placeholder="Your Email"
+                required
+              />
+            </div>
+
+            {/* PHONE  */}
+            <div className="w-full mb-3">
+              <label
+                for="phone"
+                class="block mb-2 text-base font-medium text-gray-900 ml-1"
+              >
+                Phone
+              </label>
+              <input
+                type="text"
+                id="phone"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                placeholder="+880 000000000"
+                required
+              />
+            </div>
+
+            {/* Github  */}
+            <div className="w-full mb-3">
+              <label
+                for="github"
+                class="block mb-2 text-base font-medium text-gray-900 ml-1"
+              >
+                Github Link
+              </label>
+              <input
+                type="text"
+                id="github"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                placeholder="Your github Link"
+              />
+            </div>
+
+            {/* LinkedIn  */}
+            <div className="w-full mb-3">
+              <label
+                for="linkedin"
+                class="block mb-2 text-base font-medium text-gray-900 ml-1"
+              >
+                Linkedin Link
+              </label>
+              <input
+                type="text"
+                id="linkedin"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                placeholder="Your github Link"
+              />
+            </div>
+
+            {/* Facebook  */}
+            <div className="w-full mb-3">
+              <label
+                for="facebook"
+                class="block mb-2 text-base font-medium text-gray-900 ml-1"
+              >
+                Facebook Link
+              </label>
+              <input
+                type="text"
+                id="facebook"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                placeholder="Your github Link"
+              />
+            </div>
+
+            {/* instagram  */}
+            <div className="w-full mb-3">
+              <label
+                for="instagram"
+                class="block mb-2 text-base font-medium text-gray-900 ml-1"
+              >
+                Instagram Link
+              </label>
+              <input
+                type="text"
+                id="instagram"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                placeholder="Your github Link"
+              />
+            </div>
+
+            {/* Submit button  */}
+            <div className=" max-w-[30rem] mx-auto">
+              <button
+                type="submit"
+                className="px-3 py-1 btn w-full text-lg font-medium rounded-lg outline-none duration-150 ease-in-out mt-3"
+              >
+                Next
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </section>
   );
 };
 
-export default About;
+export default UserDashboardAbout;

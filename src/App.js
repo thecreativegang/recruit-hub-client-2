@@ -38,6 +38,7 @@ import Projects from './components/Pages/UserProfile/Projects/Projects';
 import Experience from './components/Pages/UserProfile/Experience/Experience';
 import PostBlogs from './AdminDashboard/PostBlogs/PostBlogs';
 import AdminList from './AdminDashboard/AdminList/AdminList';
+import UserDashboardAbout from './components/Pages/UserDashboard/UserAbout/UserDashboardAbout';
 
 function App() {
   const url = useLocation();
@@ -58,9 +59,8 @@ function App() {
 
           <Route path="/home" element={<Home />} />
 
-          <Route path="/user-dashboard" element={<UserDashboard />}>
-
-          </Route>
+          <Route path="/user-dashboard" element={<UserDashboard />} />
+          <Route path="/user-dashboard-about" element={<UserDashboardAbout />} />
 
           <Route path="/freeResource" element={<FreeResource />} />
           <Route path="/login" element={<Login />} />

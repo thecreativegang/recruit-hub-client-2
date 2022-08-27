@@ -30,10 +30,6 @@ const ChatPage = () => {
     const [searchResult, setSearchResult] = useState('');
 
 
-
-
-
-
     const handelSearch = () => {
         const fetchChats = async () => {
             const data = await axios.get(`${serverLink}/user/search-user?search=${search}`, {
@@ -59,7 +55,7 @@ const ChatPage = () => {
             <div class="drawer h-[calc(100vh-110px)]">
                 <input id="my-drawer" type="checkbox" class="drawer-toggle" />
 
-                <div class="drawer-content">
+                <div class="drawer-content ">
                     <div className='grid lg:grid-cols-3  py-1 chat-background ]'>
                         <div class="h-[calc(100vh-130px)] carousel carousel-vertical ">
 

@@ -41,7 +41,7 @@ function App() {
   const url = useLocation()
   // console.log('see current location', url)
   return (
-    <div className='transition-all duration-500 bg-[#F3F3F3]'>
+    <div className='transition-all duration-500 bg-[#F3F3F3] dark:bg-[#0b1120]'>
       <UserStoreProvider>
         <Navbar />
         <Routes>

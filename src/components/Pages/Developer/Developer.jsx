@@ -11,10 +11,10 @@ const Developer = () => {
   const [developerData, error, loading] = developer;
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-[#F3F3F3] dark:bg-[#0b1120]">
       <div className="container">
         {/* section title  */}
-        <h2 className="md:text-[32px] font-bold text-center text-gray-700 mt-10 ">
+        <h2 className="md:text-[32px] font-bold text-center text-gray-700 dark:text-[#38BDF8] mt-10 ">
           Hire the Best Web Developers
         </h2>
         <h5 className="text-[26px] font-medium text-center mt-3">
@@ -22,12 +22,12 @@ const Developer = () => {
         </h5>
 
         {/* Show developer box  */}
-        <section className="my-16 border-t-2 border-gray-200">
+        <section className="my-12 border-t-2 dark:border-[#505050] border-gray-200">
           <div className="mt-6 card-grid ">
             {/* single card no 1  */}
 
             {developerData.map((singleData) => (
-              <div className="w-full card-Shadow p-4 bg-[#e9faff]">
+              <div className="w-full card-Shadow p-4 bg-[#e9faff] dark:bg-[#1e293b]">
                 <div class="text-center">
                   {/* image Box  */}
                   <div className="flex justify-center mt-3">
@@ -37,7 +37,7 @@ const Developer = () => {
                       alt="user"
                     />
                   </div>
-                  <h3 className="mt-[.5rem] mb-[.1rem] text-xl font-semibold text-gray-600 flex justify-center items-center capitalize">
+                  <h3 className="mt-[.5rem] mb-[.1rem] text-xl font-semibold text-gray-600 dark:text-gray-300 flex justify-center items-center capitalize">
                     Ricky Park
                     <MdVerified className="ml-1 text-[#0285ff] text-xl" />
                   </h3>

@@ -12,7 +12,7 @@ const SkillAssessment = () => {
   const [showScore, setShowScore] = useState(false);
   const [selectedOption, setSelectedOption] = useState({});
   const optionDesign =
-    'text-lg my-4 p-4 cursor-pointer block w-full text-left focus:outline-none';
+    'text-lg my-4 p-4 cursor-pointer block w-full text-left focus:outline-none text-black';
 
   const currentOption = (option) => {
     setSelectedOption(option);
@@ -36,7 +36,7 @@ const SkillAssessment = () => {
   }, []);
   return (
     <>
-      <div className="flex flex-col items-center mt-3 md:mt-7">
+      <div className="flex flex-col items-center mt-3 md:mt-7 text-black">
         <div>
           Question number: {currentQuestion + 1} / {questions.length}
         </div>
@@ -47,12 +47,12 @@ const SkillAssessment = () => {
         ></progress>
       </div>
       <div className="h-[80vh] my-auto">
-        <div className="text-3xl text-center font-sans font-semibold mt-6">
+        <div className="text-3xl text-center font-sans font-semibold mt-6 text-black">
           Try your skill
         </div>
 
         <div className="flex flex-col justify-center">
-          {loading && <progress class="progress w-56"></progress>}
+          {loading && <progress className="progress w-56"></progress>}
           {showScore ? (
             <h1 className="text-4xl font-bold my-6 text-center">
               Your score is {score}

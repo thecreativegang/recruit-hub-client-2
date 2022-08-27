@@ -1,16 +1,14 @@
-import React, { useState, useEffect, useRef } from "react";
-import axios from "axios";
-import Chatinput from "./Chatinput";
-import { FaUserCircle } from "react-icons/fa";
+import React, { useState, useEffect, useRef } from 'react';
+import axios from 'axios';
+import Chatinput from './Chatinput';
+import { FaUserCircle } from 'react-icons/fa';
 import { serverLink } from './../../../utilities/links';
-import Lottie from "lottie-web";
-import lottieData from './27649-lets-chat.json'
-import Loading from "../../Shared/Loading";
+import Lottie from 'lottie-web';
+import lottieData from './27649-lets-chat.json';
+import Loading from '../../Shared/Loading';
 // import { io } from 'socket.io-client';
 
-
 const ChatContainer = ({ currentChat, currentUser }) => {
-
   // const socket = io.connect(serverLink);
 
   const [messages, setMessages] = useState([]);
@@ -18,9 +16,7 @@ const ChatContainer = ({ currentChat, currentUser }) => {
   const [msgLoading, setMsgLoading] = useState(false);
   const scrollRef = useRef();
 
-
   const asyncFetchDailyData = async () => {
-
     if (currentChat) {
       setMsgLoading(true);
       const response = await axios.post(`${serverLink}/messages/getmsg`, {
@@ -30,24 +26,20 @@ const ChatContainer = ({ currentChat, currentUser }) => {
       setMessages(response?.data);
       setMsgLoading(false);
     }
-  }
+  };
   useEffect(() => {
     asyncFetchDailyData();
   }, [currentChat]);
-
-
-
 
   useEffect(() => {
     arrivalMessage && setMessages((prev) => [...prev, arrivalMessage]);
   }, []);
 
   useEffect(() => {
-    scrollRef.current?.scrollIntoView({ behaviour: "smooth" });
-  }, [messages])
+    scrollRef.current?.scrollIntoView({ behaviour: 'smooth' });
+  }, [messages]);
 
   const handleSendMsg = async (msg) => {
-
     await axios.post(`${serverLink}/messages/addmsg`, {
       from: currentUser._id,
       to: currentChat._id,
@@ -71,18 +63,16 @@ const ChatContainer = ({ currentChat, currentUser }) => {
   useEffect(() => {
     Lottie.loadAnimation({
       container: anime.current,
-      renderer: "svg",
+      renderer: 'svg',
       loop: true,
       autoplay: true,
       animationData: lottieData,
       rendererSettings: {
-        preserveAspectRatio: 'xMidYMid slice'
-      }
+        preserveAspectRatio: 'xMidYMid slice',
+      },
     });
     // More logic goes here
   }, []);
-
-
 
   // if (socket) {
   //   socket.on("msg-transfer", (msg) => {
@@ -95,68 +85,69 @@ const ChatContainer = ({ currentChat, currentUser }) => {
   // }
   // console.log(messages[0]?.message)
 
-
   return (
     <div className="w-100">
-      {
-        currentChat &&
+      {currentChat && (
         <div>
           {/* chat header */}
-          < div className="flex bg-sky-500 p-2 px-3 my-border rounded items-center">
-            <div class="avatar">
-              <div class="w-[50px] rounded-full">
-                {
-                  <FaUserCircle className='text-4xl mr-2 cursor-pointer' />
-                }
+          <div className="flex bg-sky-500 p-2 px-3 my-border rounded items-center">
+            <div className="avatar">
+              <div className="w-[50px] rounded-full">
+                {<FaUserCircle className="text-4xl mr-2 cursor-pointer" />}
               </div>
             </div>
             <div className="text-white px-2 uppercase">
-              <h3 className="lg:text-2xl text-sm">{currentChat?.username ? currentChat.username : currentChat.email}</h3>
+              <h3 className="lg:text-2xl text-sm">
+                {currentChat?.username
+                  ? currentChat.username
+                  : currentChat.email}
+              </h3>
             </div>
           </div>
-          {
-            msgLoading ? <Loading></Loading> :
-              <>
-
-                {/* chat body */}
-                <div className="message-body overflow-x-hidden  overflow-y-auto h-[calc(100vh-280px)]">
-                  {messages.map((message) => {
-                    return (
-                      <div >
-                        <div
-                          className={`message ${message.fromSelf ? "sended" : "recieved"}`}
-                        >
-                          <div className="content ">
-                            <p>{message.message}</p>
-                          </div>
+          {msgLoading ? (
+            <Loading></Loading>
+          ) : (
+            <>
+              {/* chat body */}
+              <div className="message-body overflow-x-hidden  overflow-y-auto h-[calc(100vh-280px)]">
+                {messages.map((message) => {
+                  return (
+                    <div>
+                      <div
+                        className={`message ${
+                          message.fromSelf ? 'sended' : 'recieved'
+                        }`}
+                      >
+                        <div className="content ">
+                          <p>{message.message}</p>
                         </div>
                       </div>
-
-                    );
-                  })}
-                </div>
-              </>
-          }
+                    </div>
+                  );
+                })}
+              </div>
+            </>
+          )}
 
           <Chatinput handleSendMsg={handleSendMsg} />
+        </div>
+      )}
 
-        </div >
-      }
+      {currentChat === '' && (
+        <>
+          <h2 className="text-center text-3xl my-5 font-bold">
+            Select your Chat
+          </h2>
 
-      {
-        currentChat === '' && <>
-          <h2 className="text-center text-3xl my-5 font-bold">Select your Chat</h2>
-
-          < div className="overflow-hidden mx-auto" style={{ height: 400, width: 600 }}
-            ref={anime}>
-          </div>
+          <div
+            className="overflow-hidden mx-auto"
+            style={{ height: 400, width: 600 }}
+            ref={anime}
+          ></div>
         </>
-      }
-    </div >
-
-  )
+      )}
+    </div>
+  );
 };
-
-
 
 export default ChatContainer;

@@ -36,53 +36,62 @@ import Courses from './components/Pages/UserProfile/Courses/Courses';
 import Projects from './components/Pages/UserProfile/Projects/Projects';
 import Experience from './components/Pages/UserProfile/Experience/Experience';
 import PostBlogs from './AdminDashboard/PostBlogs/PostBlogs';
-
+import AdminList from './AdminDashboard/AdminList/AdminList';
 
 function App() {
-  const url = useLocation()
+  const url = useLocation();
   // console.log('see current location', url)
   return (
+<<<<<<< HEAD
     <div className='transition-all duration-500 bg-[#F3F3F3] dark:bg-[#0b1120]'>
+=======
+    <div className="transition-all duration-500 bg-[#F3F3F3]">
+>>>>>>> 97e458aaa9107a68ae0cc134f06fc27f1a51cb0f
       <UserStoreProvider>
         <Navbar />
         <Routes>
-          <Route path='/' element={
-            <RequireUsername>
-              <Home />
-            </RequireUsername>
-          } />
+          <Route
+            path="/"
+            element={
+              <RequireUsername>
+                <Home />
+              </RequireUsername>
+            }
+          />
 
-          <Route path='/home' element={<Home />} />
-          <Route path='/freeResource' element={<FreeResource />} />
-          <Route path='/login' element={<Login />} />
-          <Route path='/register' element={<AccountTypePage />} />
-          <Route path='/register/:accType' element={<Register />} />
-          <Route path='/lod' element={<Loading />}></Route>
-          <Route path='/chat' element={
-            <ProtectedRout>
-              <ChatPage />
-            </ProtectedRout>
-          }></Route>
-          <Route path='/postJob' element={<PostAJob />}></Route>
-          <Route path='/developer' element={<Developer />}></Route>
+          <Route path="/home" element={<Home />} />
+          <Route path="/freeResource" element={<FreeResource />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<AccountTypePage />} />
+          <Route path="/register/:accType" element={<Register />} />
+          <Route path="/lod" element={<Loading />}></Route>
+          <Route
+            path="/chat"
+            element={
+              <ProtectedRout>
+                <ChatPage />
+              </ProtectedRout>
+            }
+          ></Route>
+          <Route path="/postJob" element={<PostAJob />}></Route>
+          <Route path="/developer" element={<Developer />}></Route>
 
-          <Route path='/skilltest' element={<SkillAssessment />}></Route>
-          <Route path='/findJob' element={<FindJob />}></Route>
-          <Route path='/askUsername' element={<AskForUsername />}></Route>
-          <Route path='/forgetPassword' element={<ForgetPassword />}></Route>
-
+          <Route path="/skilltest" element={<SkillAssessment />}></Route>
+          <Route path="/findJob" element={<FindJob />}></Route>
+          <Route path="/askUsername" element={<AskForUsername />}></Route>
+          <Route path="/forgetPassword" element={<ForgetPassword />}></Route>
 
           {/* admin dashboard page  */}
-          <Route path='/admin' element={<MainAdmin />}>
+          <Route path="/admin" element={<MainAdmin />}>
             <Route index element={<DashboardHome></DashboardHome>}></Route>
-            <Route path='notifications' element={<Notifications />}></Route>
-            <Route path='findJob' element={<FindJob />}></Route>
-            <Route path='postResource' element={<PostResource />}></Route>
-            <Route path='postBlogs' element={<PostBlogs />}></Route>
+            <Route path="notifications" element={<Notifications />}></Route>
+            <Route path="findJob" element={<FindJob />}></Route>
+            <Route path="postResource" element={<PostResource />}></Route>
+            <Route path="postBlogs" element={<PostBlogs />}></Route>
+            <Route path="admins" element={<AdminList />}></Route>
           </Route>
 
-
-          <Route path='/user-profile' element={<UserProfile />} >
+          <Route path="/user-profile" element={<UserProfile />}>
             <Route index element={<UserAbout />} />
             <Route path="skills" element={<UserSkills />} />
             <Route path="featured" element={<Featured />} />
@@ -91,23 +100,14 @@ function App() {
             <Route path="experience" element={<Experience />} />
           </Route>
 
-          <Route path='userDashboard' element={<UserDashboard />} />
+          <Route path="userDashboard" element={<UserDashboard />} />
+        </Routes>
 
-
-        </Routes >
-
-        <div >
-          {
-            url?.pathname !== '/chat' &&
-            < FooterBottomSection />
-          }
-        </div>
-        <ToastContainer
-          autoClose={1500}
-        />
+        <div>{url?.pathname !== '/chat' && <FooterBottomSection />}</div>
+        <ToastContainer autoClose={1500} />
         <ReactTooltip />
       </UserStoreProvider>
-    </div >
+    </div>
   );
 }
 export default App;

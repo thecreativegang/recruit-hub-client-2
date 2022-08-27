@@ -1,10 +1,10 @@
-import React from "react";
-import "./Developer.css";
-import { useContext } from "react";
-import { UserStore } from "../../../stateManagement/UserContext/UserContextStore";
+import React from 'react';
+import './Developer.css';
+import { useContext } from 'react';
+import { UserStore } from '../../../stateManagement/UserContext/UserContextStore';
 
 //react icon import link
-import { MdVerified } from "react-icons/md";
+import { MdVerified } from 'react-icons/md';
 
 const Developer = () => {
   const { developer } = useContext(UserStore);
@@ -28,11 +28,11 @@ const Developer = () => {
 
             {developerData.map((singleData) => (
               <div className="w-full card-Shadow p-4 bg-[#e9faff]">
-                <div class="text-center">
+                <div className="text-center">
                   {/* image Box  */}
                   <div className="flex justify-center mt-3">
                     <img
-                      class="w-[6rem] h-[6rem] rounded-full border-2 border-gray-600 p-[1px]"
+                      className="w-[6rem] h-[6rem] rounded-full border-2 border-gray-600 p-[1px]"
                       src="https://randomuser.me/api/portraits/women/79.jpg"
                       alt="user"
                     />
@@ -45,13 +45,15 @@ const Developer = () => {
                     @{singleData?.username}
                   </h6>
                   <p className="capitalize">{singleData?.accountType}</p>
-                  <div class="buttons">
-                    <button class="card-button-primary">View Profile</button>
+                  <div className="buttons">
+                    <button className="card-button-primary">
+                      View Profile
+                    </button>
                   </div>
                 </div>
 
                 {/* skills */}
-                <div class="text-left">
+                <div className="text-left">
                   <h6 className="text-lg font-semibold text-gray-700 mb-3">
                     Skills
                   </h6>

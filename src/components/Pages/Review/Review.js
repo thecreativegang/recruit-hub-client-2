@@ -59,7 +59,7 @@ const Review = () => {
               required=""
               name="message"
               id=""
-              class="review-textarea mb-4 h-[150px] w-[100%]"
+              className="review-textarea mb-4 h-[150px] w-[100%]"
               placeholder="Tell Me about Us Freely "
               spellcheck="false"
               autocomplete="off"

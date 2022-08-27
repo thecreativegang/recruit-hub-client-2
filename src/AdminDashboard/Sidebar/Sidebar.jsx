@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
 import { IoIosNotifications } from 'react-icons/io';
 import { RiFindReplaceLine } from 'react-icons/ri';
+import { FcManager } from 'react-icons/fc';
 
 const Sidebar = ({ dashboardSwitch }) => {
   // dashboard open and closed switch
@@ -54,7 +55,7 @@ const Sidebar = ({ dashboardSwitch }) => {
         </Link>
         <Link to="admins">
           <li className={dashboardLinkStyle}>
-            <AiFillFileText className="mr-2" />
+            <FcManager className="mr-2" />
             <span className={`${!dbSwitch && 'hidden'}`}> Admins</span>
           </li>
         </Link>

@@ -87,7 +87,6 @@ const UserStoreProvider = ({ children }) => {
     //developer data 
     const { developer } = DeveloperStore()
 
-    console.log(developer);
 
     //this state stored user data  //==> Don't move this one !
     const userData = {

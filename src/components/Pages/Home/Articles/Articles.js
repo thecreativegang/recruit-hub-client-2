@@ -1,8 +1,29 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { serverLink } from '../../../../utilities/links';
+import SingleArticle from './SingleArticle';
 
 
 const Articles = () => {
+  const [blogs, setBlogs] = useState([])
+  // fetch blogs
+  const fetchBlogs = async () => {
+    await axios.get(`${serverLink}/blogs`, {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+      },
+    }
+    )
+      .then(function (res) {
+        setBlogs(res?.data);
+      })
+  }
+  useEffect(() => {
+    fetchBlogs();
+  }, [blogs])
+
+
   return (
     <div>
       <div>
@@ -12,47 +33,22 @@ const Articles = () => {
           <p className='my-10 text-2xl text-gray-400'>Professional Recruit Agency to provide solutions</p>
         </div>
 
-        <div className='grid sm:grid-cols-1 lg:grid-cols-3 gap-y-10 gap-x-10 justify-items-center'>
-          {/* card-1 */}
-          <div className="card w-full bg-base-100 shadow-xl">
-            <div className="card-body">
-              <div className="card-actions justify-start">
-                <button className="  btn btn-primary text-white">Click Now</button>
-              </div>
-              <h2 className="card-title">Everything You Want To Know About</h2>
-              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iure qui facere labore soluta dolorum veniam minima minus suscipit autem inventore.</p>
+        <div class="carousel carousel-center">
+          {
+            blogs && blogs?.map((blog) => (
+              <SingleArticle key={blog._id} blog={blog}></SingleArticle>
+            ))
+          }
 
-              <Link to="/" className="link link-primary">Read More </Link>
-            </div>
-          </div>
-
-
-          {/* card-2 */}
-          <div className="card w-full bg-base-100 shadow-xl">
-            <div className="card-body">
-              <div className="card-actions justify-start">
-                <button className="  btn btn-primary text-white">Click Now</button>
-              </div>
-              <h2 className="card-title">Everything You Want To Know About</h2>
-              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iure qui facere labore soluta dolorum veniam minima minus suscipit autem inventore.</p>
-
-              <Link to="/" className="link link-primary">Read More </Link>
-            </div>
-          </div>
-          <div className="card w-full bg-base-100 shadow-xl">
-            <div className="card-body">
-              <div className="card-actions justify-start">
-                <button className="  btn btn-primary text-white">Click Now</button>
-              </div>
-              <h2 className="card-title">Everything You Want To Know About</h2>
-              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iure qui facere labore soluta dolorum veniam minima minus suscipit autem inventore.</p>
-
-              <Link to="/" className="link link-primary">Read More </Link>
-            </div>
-          </div>
         </div>
-        <div className='grid justify-items-center my-10'>
-          <button className="  btn btn-primary text-white">View More News</button>
+
+        <div className='flex lg:justify-between justify-center my-0 mx-5'>
+          <div className='lg:mx-0 mx-1'>
+            <a href="#slide2" class="btn btn-circle">❮</a>
+          </div>
+          <div>
+            <a href="#slide4" class="btn btn-circle">❯</a>
+          </div>
         </div>
       </div>
 

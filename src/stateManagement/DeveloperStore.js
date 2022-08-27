@@ -20,7 +20,6 @@ const DeveloperStore = () => {
         setDevLoading(false)
     }, [devError])
 
-    console.log(devData)
     return { developer: [devData, devError, devLoading] }
 };
 

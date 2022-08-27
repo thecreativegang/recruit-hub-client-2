@@ -35,6 +35,7 @@ import Featured from './components/Pages/UserProfile/Featured/Featured';
 import Courses from './components/Pages/UserProfile/Courses/Courses';
 import Projects from './components/Pages/UserProfile/Projects/Projects';
 import Experience from './components/Pages/UserProfile/Experience/Experience';
+import PostBlogs from './AdminDashboard/PostBlogs/PostBlogs';
 
 
 function App() {
@@ -77,6 +78,7 @@ function App() {
             <Route path='notifications' element={<Notifications />}></Route>
             <Route path='findJob' element={<FindJob />}></Route>
             <Route path='postResource' element={<PostResource />}></Route>
+            <Route path='postBlogs' element={<PostBlogs />}></Route>
           </Route>
 
 

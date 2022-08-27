@@ -1,5 +1,5 @@
 import React from "react";
-import { AiOutlineHome } from "react-icons/ai";
+import { AiFillFileText, AiOutlineHome, AiOutlineUpload } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 import { IoIosNotifications } from "react-icons/io";
@@ -47,8 +47,14 @@ const Sidebar = ({ dashboardSwitch }) => {
         </Link>
         <Link to="postResource">
           <li className={dashboardLinkStyle}>
-            <RiFindReplaceLine className="mr-2" />
+            <AiOutlineUpload className="mr-2" />
             <span className={`${!dbSwitch && "hidden"}`}> Post Resource</span>
+          </li>
+        </Link>
+        <Link to="postBlogs">
+          <li className={dashboardLinkStyle}>
+            <AiFillFileText className="mr-2" />
+            <span className={`${!dbSwitch && "hidden"}`}> Post Blogs</span>
           </li>
         </Link>
       </ul>

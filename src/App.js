@@ -38,8 +38,12 @@ import Projects from './components/Pages/UserProfile/Projects/Projects';
 import Experience from './components/Pages/UserProfile/Experience/Experience';
 import PostBlogs from './AdminDashboard/PostBlogs/PostBlogs';
 import AdminList from './AdminDashboard/AdminList/AdminList';
-import UserDashboardAbout from './components/Pages/UserDashboard/UserAbout/UserDashboardAbout';
-import UserDashboardActivity from './components/Pages/UserDashboard/UserDashboardActivity/UserDashboardActivity';
+import UserDashboardAbout from './components/Pages/UserDashboard/UserDashboardAbout/UserDashboardAbout';
+import UserDashboardSkills from './components/Pages/UserDashboard/UserDashboardSkills/UserDashboardSkills';
+import UserDashboardFeatured from './components/Pages/UserDashboard/UserDashboardFeatured/UserDashboardFeatured';
+import UserDashboardExperience from './components/Pages/UserDashboard/UserDashboardExperience/UserDashboardExperience';
+import UserDashboardCourses from './components/Pages/UserDashboard/UserDashboardCourses/UserDashboardCourses';
+import UserDashboardProjects from './components/Pages/UserDashboard/UserDashboardProjects/UserDashboardProjects';
 
 function App() {
   const url = useLocation();
@@ -62,7 +66,11 @@ function App() {
 
           <Route path="/user-dashboard" element={<UserDashboard />} />
           <Route path="/user-dashboard-about" element={<UserDashboardAbout />} />
-          <Route path="/user-dashboard-activity" element={<UserDashboardActivity />} />
+          <Route path="/user-dashboard-skills" element={<UserDashboardSkills />} />
+          <Route path="/user-dashboard-featured" element={<UserDashboardFeatured />} />
+          <Route path="/user-dashboard-experience" element={<UserDashboardExperience />} />
+          <Route path="/user-dashboard-courses" element={<UserDashboardCourses />} />
+          <Route path="/user-dashboard-projects" element={<UserDashboardProjects />} />
 
           <Route path="/freeResource" element={<FreeResource />} />
           <Route path="/login" element={<Login />} />

@@ -1,6 +1,13 @@
 import React from "react";
+import { useForm } from "react-hook-form";
 
 const UserDashboardAbout = () => {
+  const { register, handleSubmit, reset } = useForm();
+
+  const onSubmit = (data) => {
+    console.log(data);
+  };
+
   return (
     <section className="min-h-screen py-8">
       <div className="container">
@@ -10,16 +17,17 @@ const UserDashboardAbout = () => {
           <h3 className="text-3xl font-medium text-[#0b1120] border-b-4 text-center mb-6">
             About
           </h3>
-          <form action="">
+          <form onSubmit={handleSubmit(onSubmit)}>
             {/* state  */}
             <div className="w-full mb-3 ">
               <label
                 for="state"
                 class="block mb-2 text-base font-medium text-gray-900 ml-1"
               >
-                State
+                State<span className="text-red-600 ml-[1px]">*</span>
               </label>
               <input
+                {...register("state")}
                 type="text"
                 id="state"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
@@ -34,9 +42,10 @@ const UserDashboardAbout = () => {
                 for="country"
                 class="block mb-2 text-base font-medium text-gray-900 ml-1"
               >
-                Country
+                Country<span className="text-red-600 ml-[1px]">*</span>
               </label>
               <input
+                {...register("country")}
                 type="text"
                 id="country"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
@@ -58,7 +67,7 @@ const UserDashboardAbout = () => {
                 id="email"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                 placeholder="Your Email"
-                required
+                readOnly
               />
             </div>
 
@@ -68,9 +77,10 @@ const UserDashboardAbout = () => {
                 for="phone"
                 class="block mb-2 text-base font-medium text-gray-900 ml-1"
               >
-                Phone
+                Phone<span className="text-red-600 ml-[1px]">*</span>
               </label>
               <input
+                {...register("phone")}
                 type="text"
                 id="phone"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
@@ -88,6 +98,7 @@ const UserDashboardAbout = () => {
                 Github Link
               </label>
               <input
+                {...register("github")}
                 type="text"
                 id="github"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
@@ -104,6 +115,7 @@ const UserDashboardAbout = () => {
                 Linkedin Link
               </label>
               <input
+                {...register("linkedin")}
                 type="text"
                 id="linkedin"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
@@ -120,6 +132,7 @@ const UserDashboardAbout = () => {
                 Facebook Link
               </label>
               <input
+                {...register("facebook")}
                 type="text"
                 id="facebook"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
@@ -136,6 +149,7 @@ const UserDashboardAbout = () => {
                 Instagram Link
               </label>
               <input
+                {...register("instagram")}
                 type="text"
                 id="instagram"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"

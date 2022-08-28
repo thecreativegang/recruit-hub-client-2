@@ -134,7 +134,7 @@ const Register = () => {
     return (
         <div>
             <div className='min-h-[100vh] py-10 dark:bg-[#0D1425] bg-[#F3F3F3]'>
-                <div className='conatiner container max-w-[1280px] mx-auto'>
+                <div className='conatiner container max-w-[1349px] mx-auto'>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div className=" ">
                             <div className="card flex-shrink-0 w-full order-last md:order-first">
@@ -279,8 +279,12 @@ const Register = () => {
                                         <div className="flex flex-col w-full border-opacity-50">
                                             <div className="divider dark:text-[#8C9BB6]">OR</div>
                                         </div>
-                                        <div className="form-control ">
-                                            <button onClick={() => handleGoogleSignIn()} className=" py-2  flex justify-center items-center input-border dark:border-0 font-semibold  text-[#334155] dark:text-[#8C9BB6] dark:bg-[#1E293B] w-full "> <img src={googleLogo} alt="" /> &nbsp; Continue With Google</button>
+
+                                        <div className="form-control mt-4 ">
+                                            <button onClick={() => signInWithGoogle()} className=" py-2  flex justify-center items-center input-border dark:border-0 font-semibold bg-transparent text-[#334155] dark:text-[#8C9BB6] dark:bg-[#1E293B] w-full ">
+                                                <img src={googleLogo} alt="" />
+                                                <span className='text-[#334155] dark:text-[#8C9BB6]  ml-2'>Continue With Google</span>
+                                            </button>
                                         </div>
                                     </div>
                                 </form>
@@ -300,7 +304,7 @@ const Register = () => {
                         <div className='flex justify-center items-center'>
                             <div className='w-fit mx-auto'>
                                 <div className="overflow-hidden" style={{ "height": "600px", "width": "100%", "overflow": "hidden", "outline": "none", "margin": "0 auto" }} ref={anime}>
-                                </div>;
+                                </div>
                             </div>
                         </div>
                     </div>

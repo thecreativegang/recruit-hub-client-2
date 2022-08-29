@@ -1,18 +1,52 @@
-import React, { useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import "./module.FreeResource.css";
 import { AiOutlineSearch } from "react-icons/ai";
 import ReactPlayer from "react-player";
+import axios from "axios";
+import { serverLink } from "../../../utilities/links";
+import { useNavigate } from "react-router-dom";
+import checkTokenExpired from "../../../utilities/checkTokenExpired";
+import { UserStore } from "../../../stateManagement/UserContext/UserContextStore";
+import Loading from "../../Shared/Loading";
 // import GetThumbnail from "../../../hooks/GetThumbnail";
 
 const FreeResource = () => {
-  const [videoData, setVideoData] = useState([]);
   const [playVideo, setPlayVideo] = useState("");
+  const [search, setSearch] = useState([]);
+  const [searchResult, setSearchResult] = useState([]);
 
   const videoRef = useRef(null);
+  const navigate = useNavigate()
 
-  fetch("http://localhost:3001/resource")
-    .then((res) => res.json())
-    .then((data) => setVideoData(data));
+  const userStore = useContext(UserStore);
+  const videoData = userStore.videoData;
+
+
+
+  // get search resource reasult
+  // http://localhost:3001/resource/search?search=c
+
+  const handelSearch = () => {
+    console.log(search)
+    const fetchChats = async () => {
+      const data = await axios.get(`${serverLink}/resource/search?search=${search}`, {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+        },
+      })
+        .then(function (res) {
+          if (res?.data) setSearchResult(res?.data);
+          else return <Loading></Loading>
+        })
+        .catch(function (err) {
+          checkTokenExpired(err) === true && navigate('/login')
+        })
+
+    }
+
+    fetchChats();
+    setSearchResult("");
+  }
 
   // get YouTube Video Thumbnail function Start
   const getThumbnail = (videoInfo) => {
@@ -41,7 +75,7 @@ const FreeResource = () => {
     );
   };
 
-  // get YouTube Video Thumbnail function End
+  // get YouTube Video Thumbnail function End 
 
   return (
     <div>
@@ -61,13 +95,29 @@ const FreeResource = () => {
             <div className="flex justify-center">
               <div className="flex items-center justify-center px-2 rounded-md w-[28rem] bg-[#ffffff]">
                 <input
+                  onChange={(event) => {
+                    setSearch(event.target.value);
+                  }}
+                  onKeyPress={(event) => {
+                    event.key === "Enter" && handelSearch();
+                  }}
                   type="text"
                   className=" w-full px-3 py-2 bg-transparent border-none outline-none text-xl font-[400] text-gray-700 tracking-wide"
                   placeholder="Search..."
                 />
-                <AiOutlineSearch className="text-4xl text-gray-800 cursor-pointer" />
+                <AiOutlineSearch onClick={() => handelSearch()} className="text-4xl text-gray-800 cursor-pointer" />
               </div>
             </div>
+
+
+
+            <div className="grid grid-cols-4 justify-center items-center gap-10 pt-10 mb-20 mx-3">
+              {
+                searchResult ? searchResult.map((singleData) => getThumbnail(singleData)) : <Loading height={"height:100px"}></Loading>
+              }
+            </div>
+
+
           </div>
         </div>
       </section>
@@ -112,9 +162,11 @@ const FreeResource = () => {
           <div className="one">
             <h1>OUR VIDEO</h1>
           </div>
+
           <div className="grid grid-cols-4 justify-center items-center gap-10 pt-10 mb-20 mx-3">
             {videoData.map((singleData) => getThumbnail(singleData))}
           </div>
+
         </div>
       </section>
     </div>

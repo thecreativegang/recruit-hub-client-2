@@ -1,9 +1,12 @@
 import axios from 'axios';
 import React from 'react';
+import { useState } from 'react';
 import { serverLink } from '../../utilities/links';
 
 const AdminRow = ({ dev, i }) => {
-  const { _id, username, email, accountType, isAdmin } = dev;
+  const [developer, setDeveloper] = useState(dev);
+  const { _id, username, email, accountType, isAdmin } = developer;
+
   const makeAdmin = async () => {
     await axios
       .put(`${serverLink}/user/developer-admin/${_id}`, {
@@ -11,7 +14,7 @@ const AdminRow = ({ dev, i }) => {
           authorization: `Bearer ${localStorage.getItem('accessToken')}`,
         },
       })
-      .then((data) => console.log(data.data));
+      .then(({ data }) => setDeveloper(data.result));
   };
   const removeAdmin = async () => {
     await axios
@@ -20,7 +23,7 @@ const AdminRow = ({ dev, i }) => {
           authorization: `Bearer ${localStorage.getItem('accessToken')}`,
         },
       })
-      .then((data) => console.log(data.data));
+      .then(({ data }) => setDeveloper(data.result));
   };
   return (
     <tr>

@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useContext } from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { io } from 'socket.io-client';
+// import { io } from 'socket.io-client';
 import { UserStore } from '../../../stateManagement/UserContext/UserContextStore';
 import Loading from '../../Shared/Loading';
 import ChatContainer from './ChatContainer';

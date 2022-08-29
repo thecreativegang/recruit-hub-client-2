@@ -22,7 +22,8 @@ const AdminList = () => {
 
   useEffect(() => {
     getAllDevelopers();
-  }, [developers]);
+  }, []);
+
   return (
     <div className="min-h-screen bg-sky-100">
       <h2 className="my-3 md:my-7 text-center font-semibold text-3xl md:text-5xl text-black">

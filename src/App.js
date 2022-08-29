@@ -23,6 +23,8 @@ import AskForUsername from './components/Shared/AskForUsername';
 import ProtectedRout from './components/Shared/ProtectedRout';
 import ForgetPassword from './components/Pages/Login/ForgetPassword';
 import UserProfile from './components/Pages/UserProfile/UserProfile';
+import UserDashboard from './components/Pages/UserDashboard/UserDashboard';
+
 
 import PostResource from './AdminDashboard/PostResource/PostResource';
 import FreeResource from './components/Pages/FreeResource/FreeResource';
@@ -30,19 +32,24 @@ import Developer from './components/Pages/Developer/Developer';
 import ReactTooltip from 'react-tooltip';
 import UserAbout from './components/Pages/UserProfile/UserAbout/UserAbout';
 import UserSkills from './components/Pages/UserProfile/UserSkills/UserSkills';
-import UserDashboard from './components/Pages/UserDashboard/UserDashboard';
 import Featured from './components/Pages/UserProfile/Featured/Featured';
 import Courses from './components/Pages/UserProfile/Courses/Courses';
 import Projects from './components/Pages/UserProfile/Projects/Projects';
 import Experience from './components/Pages/UserProfile/Experience/Experience';
 import PostBlogs from './AdminDashboard/PostBlogs/PostBlogs';
 import AdminList from './AdminDashboard/AdminList/AdminList';
+import UserDashboardAbout from './components/Pages/UserDashboard/UserDashboardAbout/UserDashboardAbout';
+import UserDashboardSkills from './components/Pages/UserDashboard/UserDashboardSkills/UserDashboardSkills';
+import UserDashboardFeatured from './components/Pages/UserDashboard/UserDashboardFeatured/UserDashboardFeatured';
+import UserDashboardExperience from './components/Pages/UserDashboard/UserDashboardExperience/UserDashboardExperience';
+import UserDashboardCourses from './components/Pages/UserDashboard/UserDashboardCourses/UserDashboardCourses';
+import UserDashboardProjects from './components/Pages/UserDashboard/UserDashboardProjects/UserDashboardProjects';
 
 function App() {
   const url = useLocation();
   // console.log('see current location', url)
   return (
-    <div className="transition-all duration-500 bg-[#F3F3F3]">
+    <div className='transition-all duration-500 bg-[#F3F3F3] dark:bg-[#0b1120]'>
       <UserStoreProvider>
         <Navbar />
         <Routes>
@@ -56,6 +63,15 @@ function App() {
           />
 
           <Route path="/home" element={<Home />} />
+
+          <Route path="/user-dashboard" element={<UserDashboard />} />
+          <Route path="/user-dashboard-about" element={<UserDashboardAbout />} />
+          <Route path="/user-dashboard-skills" element={<UserDashboardSkills />} />
+          <Route path="/user-dashboard-featured" element={<UserDashboardFeatured />} />
+          <Route path="/user-dashboard-experience" element={<UserDashboardExperience />} />
+          <Route path="/user-dashboard-courses" element={<UserDashboardCourses />} />
+          <Route path="/user-dashboard-projects" element={<UserDashboardProjects />} />
+
           <Route path="/freeResource" element={<FreeResource />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<AccountTypePage />} />

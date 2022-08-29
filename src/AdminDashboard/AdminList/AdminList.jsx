@@ -16,7 +16,6 @@ const AdminList = () => {
         },
       })
       .then(({ data }) => {
-        console.log(data);
         setDevelopers(data);
       });
 

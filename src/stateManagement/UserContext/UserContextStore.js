@@ -23,7 +23,7 @@ const UserStoreProvider = ({ children }) => {
     const [allUser, setAllUser] = useState([]);
     const [allAdmin, setAllAdmin] = useState([]);
 
-    // Get user data form api
+    // Get single user data form api
     const fetchUser = async () => {
         await axios.get(`${serverLink}/user/email/${userEmail}`, {
             headers: {

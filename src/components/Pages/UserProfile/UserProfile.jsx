@@ -110,7 +110,7 @@ const UserProfile = () => {
                 </Link>
 
                 <Link
-                  to="/userDashboard"
+                  to="/user-dashboard"
                   className="px-5 py-2 rounded-3xl outline-none font-bold bg-[#3a4d6a] text-white ml-3"
                 >
                   Edit

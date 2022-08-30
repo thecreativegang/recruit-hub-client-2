@@ -63,15 +63,6 @@ function App() {
           />
 
           <Route path="/home" element={<Home />} />
-
-          <Route path="/user-dashboard" element={<UserDashboard />} />
-          <Route path="/user-dashboard-about" element={<UserDashboardAbout />} />
-          <Route path="/user-dashboard-skills" element={<UserDashboardSkills />} />
-          <Route path="/user-dashboard-featured" element={<UserDashboardFeatured />} />
-          <Route path="/user-dashboard-experience" element={<UserDashboardExperience />} />
-          <Route path="/user-dashboard-courses" element={<UserDashboardCourses />} />
-          <Route path="/user-dashboard-projects" element={<UserDashboardProjects />} />
-
           <Route path="/freeResource" element={<FreeResource />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<AccountTypePage />} />
@@ -103,6 +94,8 @@ function App() {
             <Route path="admins" element={<AdminList />}></Route>
           </Route>
 
+
+          {/* user profile route */}
           <Route path="/user-profile" element={<UserProfile />}>
             <Route index element={<UserAbout />} />
             <Route path="skills" element={<UserSkills />} />
@@ -112,7 +105,14 @@ function App() {
             <Route path="experience" element={<Experience />} />
           </Route>
 
-          <Route path="userDashboard" element={<UserDashboard />} />
+          {/* user dashboard route  */}
+          <Route path="/user-dashboard" element={<UserDashboard />} />
+          <Route path="/user-dashboard-about" element={<UserDashboardAbout />} />
+          <Route path="/user-dashboard-skills" element={<UserDashboardSkills />} />
+          <Route path="/user-dashboard-featured" element={<UserDashboardFeatured />} />
+          <Route path="/user-dashboard-experience" element={<UserDashboardExperience />} />
+          <Route path="/user-dashboard-courses" element={<UserDashboardCourses />} />
+          <Route path="/user-dashboard-projects" element={<UserDashboardProjects />} />
         </Routes>
 
         <div>{url?.pathname !== '/chat' && <FooterBottomSection />}</div>

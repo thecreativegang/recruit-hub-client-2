@@ -1,6 +1,40 @@
+import axios from "axios";
 import React from "react";
+import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 const UserDashboardSkills = () => {
+  const { register, handleSubmit, reset } = useForm();
+  const navigate = useNavigate();
+
+  const onSubmit = async (formData) => {
+    const skills = [
+      formData?.skills1,
+      formData?.skills2,
+      formData?.skills3,
+      formData?.skills4,
+    ];
+    console.log(formData);
+
+    const data = await axios
+      .put(
+        `http://localhost:3001/user/user-profile/630a45710ca3407dd1462f3b`,
+        { skills },
+        {
+          headers: {
+            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+        }
+      )
+      .then((data) => {
+        if (data?.data?.success) {
+          console.log(data);
+          reset();
+          navigate("/user-dashboard-featured");
+        }
+      });
+  };
+
   return (
     <div className="min-h-screen">
       <div className="max-w-[32rem] mx-auto bg-[#edebeb] px-6 py-4 rounded-md mt-12">
@@ -8,72 +42,75 @@ const UserDashboardSkills = () => {
           Add Skills
         </h2>
         <div>
-          <form>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <div className="w-full mb-3 ">
               <label
-                for="skills"
+                for="skills1"
                 class="block mb-2 text-base font-medium text-gray-900 ml-1"
               >
                 Skills
               </label>
               <div className="flex items-center justify-between">
                 <input
+                  {...register("skills1")}
                   type="text"
-                  id="skills"
+                  id="skills1"
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                   placeholder="Added your Skills"
-                  required
                 />
               </div>
             </div>
+
             <div className="w-full mb-3 ">
               <label
-                for="skills"
+                for="skills2"
                 class="block mb-2 text-base font-medium text-gray-900 ml-1"
               >
                 Skills
               </label>
               <div className="flex items-center justify-between">
                 <input
+                  {...register("skills2")}
                   type="text"
-                  id="skills"
+                  id="skills2"
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                   placeholder="Added your Skills"
-                  required
                 />
               </div>
             </div>
+
             <div className="w-full mb-3 ">
               <label
-                for="skills"
+                for="skills3"
                 class="block mb-2 text-base font-medium text-gray-900 ml-1"
               >
                 Skills
               </label>
               <div className="flex items-center justify-between">
                 <input
+                  {...register("skills3")}
                   type="text"
-                  id="skills"
+                  id="skills3"
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                   placeholder="Added your Skills"
-                  required
                 />
               </div>
             </div>
+
             <div className="w-full mb-3 ">
               <label
-                for="skills"
+                for="skills4"
                 class="block mb-2 text-base font-medium text-gray-900 ml-1"
               >
                 Skills
               </label>
               <div className="flex items-center justify-between">
                 <input
+                  {...register("skills4")}
                   type="text"
-                  id="skills"
+                  id="skills4"
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                   placeholder="Added your Skills"
-                  required
                 />
               </div>
             </div>

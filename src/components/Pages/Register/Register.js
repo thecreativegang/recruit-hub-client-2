@@ -104,17 +104,17 @@ const Register = () => {
   const handleUserNameValidation = async (username) => {
     username !== ''
       ? await axios
-          .post(`${serverLink}/user/check-username/${username}`)
-          .then((data) => {
-            if (data.data.isAvailable) {
-              setUsernameAvailable(true);
-            } else {
-              setUsernameAvailable(false);
-            }
-          })
-          .then(function (error) {
-            toast.error(error?.message);
-          })
+        .post(`${serverLink}/user/check-username/${username}`)
+        .then((data) => {
+          if (data.data.isAvailable) {
+            setUsernameAvailable(true);
+          } else {
+            setUsernameAvailable(false);
+          }
+        })
+        .then(function (error) {
+          toast.error(error?.message);
+        })
       : setUsernameAvailable(null);
   };
   const handleGoogleSignIn = () => {

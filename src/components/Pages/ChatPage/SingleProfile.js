@@ -37,7 +37,7 @@ const SingleProfile = ({ chat, setCurrentChat }) => {
   };
   useEffect(() => {
     asyncFetchDailyData();
-  }, [chat]);
+  }, []);
 
   let lastOne = lastMessage?.slice(-1);
   let lastMsg = lastOne[0]?.message;

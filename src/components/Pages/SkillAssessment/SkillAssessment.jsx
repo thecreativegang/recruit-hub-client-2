@@ -3,8 +3,12 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { serverLink } from './../../../utilities/links';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../../firebase.init';
+import Loading from '../../Shared/Loading';
 
 const SkillAssessment = () => {
+  const [user, userLoading] = useAuthState(auth);
   const [questions, setQuestion] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -21,23 +25,36 @@ const SkillAssessment = () => {
   const handleAnsBtnClick = (selectedOption) => {
     if (selectedOption.isCorrect) setScore(score + 1);
     const nextQuestion = currentQuestion + 1;
-    nextQuestion < questions.length
-      ? setCurrentQuestion(nextQuestion)
-      : setShowScore(true);
+    if (nextQuestion < questions.length) {
+      setCurrentQuestion(nextQuestion);
+    } else {
+      setShowScore(true);
+      setUserScore();
+    }
     setSelectedOption({});
+  };
+
+  const setUserScore = async () => {
+    axios
+      .put(`${serverLink}/user/skilltest-number/${user.email}`, { score })
+      .then((res) => {
+        return res.data;
+      });
   };
 
   useEffect(() => {
     axios.get(`${serverLink}/skillassessment/test`).then((res) => {
       setQuestion(res.data);
-      console.log(res.data);
       setLoading(false);
     });
-  }, []);
+  }, [user?.email]);
+
+  if (userLoading) return <Loading />;
+
   return (
     <>
       <div className="flex flex-col items-center mt-3 md:mt-7 text-black">
-        <div>
+        <div className="dark:text-white">
           Question number: {currentQuestion + 1} / {questions.length}
         </div>
         <progress
@@ -47,7 +64,7 @@ const SkillAssessment = () => {
         ></progress>
       </div>
       <div className="h-[80vh] my-auto">
-        <div className="text-3xl text-center font-sans font-semibold mt-6 text-black">
+        <div className="text-3xl text-center font-sans font-semibold mt-6 text-black dark:text-white">
           Try your skill
         </div>
 
@@ -61,7 +78,7 @@ const SkillAssessment = () => {
             !loading && (
               <>
                 <div className="w-1/2 mx-auto mt-4">
-                  <h3 className="text-xl text-gray-600">
+                  <h3 className="text-xl text-gray-600 dark:text-white">
                     Question {currentQuestion + 1}:{' '}
                     {questions[currentQuestion].question}
                   </h3>

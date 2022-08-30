@@ -51,7 +51,7 @@ const Navbar = () => {
     const deActive = " dark:text-[#8C9BB6]  font-semibold text-[#273272] flex items-center text-[17px]   p-2 "
 
     return (
-        <nav className='sticky py-2 bg-white top-0 left-0 z-50 dark:bg-[#0C1322] nav-shadow nav-border dark:border-1 dark:border-[#ddd'>
+        <nav className='sticky py-2 bg-[#F3F3F3] top-0 left-0 z-50 dark:bg-[#0C1322] nav-shadow nav-border dark:border-1 dark:border-[#ddd'>
             <div className='container max-w-[1349px] mx-auto relative z-50'>
                 <div className='flex justify-between items-center relative'>
                     {/* logo and navbar menu */}
@@ -75,7 +75,7 @@ const Navbar = () => {
                     {/* routes  */}
                     <div className={`routes absolute md:static left-0 z-10 w-full md:w-auto ease-out duration-300 shadow-lg md:shadow-none ${navSwitch ? "navOpen" : "navClosed"}`}>
 
-                        <ul className='md:flex  bg-gradient-to-r from-[#eaeaff] to-[#e4fff9] md:bg-gradient-to-r md:from-[#eaeaff00] md:to-[#e4fff900] pl-3 md:pl-0 py-5 md:py-0 w-full md:w-auto'>
+                        <ul className='md:flex bg-[#F3F3F3] dark:bg-[#0C1322] text-gray-900 dark:text-gray-200 border-x-2 border-b-2 border-gray-200 dark:border-gray-700 pl-3 md:pl-0 py-5 md:py-0 w-full md:w-auto'>
 
                             <li onClick={closedNavbarAll} className='mr-5 mb-4 md:mb-0 dark:text-[#c6c9d8'> <NavLink to="/findJob" className={({ isActive }) => (isActive ? active : deActive)} > <MdOutlineConnectWithoutContact className='md:hidden text-base mr-2' /> Find Job</NavLink> </li>
                             <li onClick={closedNavbarAll} className='mr-5 mb-4 md:mb-0 dark:text-[#c6c9d8'> <NavLink to="/" className={({ isActive }) => (isActive ? active : deActive)} ><AiFillHome className='md:hidden text-base mr-2 ' />Home</NavLink> </li>
@@ -127,7 +127,7 @@ const Navbar = () => {
                                         </div>
 
                                         {/* user details  */}
-                                        <div className={`${userSwitch ? "top-[3.5rem]" : "top-[-20rem]"} z-20 absolute right-0 min-w-[22rem]  bg-gradient-to-t from-[#e6e6ff] to-[#d7fbf1]  p-5 rounded-b-xl duration-300 ease-out `}>
+                                        <div className={`${userSwitch ? "top-[3.9rem]" : "top-[-30rem]"} z-20 absolute right-0 min-w-[22rem] bg-[#F3F3F3] text-gray-900 dark:bg-[#0C1322] dark:text-gray-200 border-x-2 border-b-2 border-gray-200  p-5 rounded-b-xl duration-300 ease-out `}>
                                             <div className='text-center'>
                                                 <h6 className='text-lg md:text-xl font-[600] mb-1 md:mb-1'>{currentUser?.username}</h6>
                                                 <h6 className='text-xs md:text-base font-[500] mb-1 md:mb-1'>{currentUser?.email}</h6>
@@ -138,7 +138,7 @@ const Navbar = () => {
                                             {/* routes  */}
                                             <ul>
                                                 <li onClick={closedNavbarAll} className='mb-4'> <NavLink to="/user-profile" className={({ isActive }) => (isActive ? active : deActive)} > <CgProfile className=' text-base md:text-xl mr-2' />Profile</NavLink> </li>
-                                                <li onClick={closedNavbarAll} className='mb-4'> <NavLink to="/dashboard" className={({ isActive }) => (isActive ? active : deActive)} > <CgProfile className=' text-base md:text-xl mr-2' />Dashboard</NavLink> </li>
+                                                <li onClick={closedNavbarAll} className='mb-4'> <NavLink to="/user-dashboard" className={({ isActive }) => (isActive ? active : deActive)} > <CgProfile className=' text-base md:text-xl mr-2' />Dashboard</NavLink> </li>
                                                 <li onClick={() => handleSignOut()} className='mb-4 cursor-pointer font-semibold text-lg flex items-center'> <ImExit className=' text-base md:text-xl mr-2' />Logout</li>
 
                                             </ul>

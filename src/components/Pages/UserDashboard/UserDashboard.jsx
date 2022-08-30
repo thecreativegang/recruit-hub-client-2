@@ -5,9 +5,12 @@ import axios from "axios";
 import { BiImageAdd } from "react-icons/bi";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
-import Loading from "../../Shared/Loading/Loading";
+import SpinLoading from "../../Shared/SpinLoading/SpinLoading";
+import { useNavigate } from "react-router-dom";
 
 const UserDashboard = () => {
+  const navigate = useNavigate();
+
   const { register, handleSubmit, reset } = useForm();
 
   const [coverPhoto, setCoverPhoto] = useState("");
@@ -16,7 +19,8 @@ const UserDashboard = () => {
   const [loadingCover, setLoadingCover] = useState(false);
   const [loadingProfile, setLoadingProfile] = useState(false);
 
-  const imageBbUrl = `https://api.imgbb.com/1/upload?key=46aaf19b4e516e94653488331a5bff32`; //image bb post url
+  const imageBbUrl =
+    "https://api.imgbb.com/1/upload?key=46aaf19b4e516e94653488331a5bff32"; //image bb post url
 
   // upload cover photo image bb
   const upLodeCoverPhoto = (data) => {
@@ -65,11 +69,11 @@ const UserDashboard = () => {
       dio: formData?.bio,
     };
 
-    console.log("profile data", profileData);
+    // console.log("profile data", profileData);
 
     const data = await axios
       .put(
-        `http://localhost:3000/user/user-profile/630a45710ca3407dd1462f3b`,
+        `http://localhost:3001/user/user-profile/630a45710ca3407dd1462f3b`,
         { profileData },
         {
           headers: {
@@ -77,7 +81,11 @@ const UserDashboard = () => {
           },
         }
       )
-      .then((data) => console.log(" post", data.data));
+      .then((data) => {
+        if (data?.data?.success) {
+          navigate("/user-dashboard-about");
+        }
+      });
   };
 
   return (
@@ -109,7 +117,7 @@ const UserDashboard = () => {
                         required
                         class="max-w-[30rem] mx-auto bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                       />
-                      {loadingCover && <Loading />}
+                      {loadingCover && <SpinLoading />}
                     </div>
                   </div>
 
@@ -141,7 +149,7 @@ const UserDashboard = () => {
                         required
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                       />
-                      {loadingProfile && <Loading />}
+                      {loadingProfile && <SpinLoading />}
                     </div>
                   </div>
 

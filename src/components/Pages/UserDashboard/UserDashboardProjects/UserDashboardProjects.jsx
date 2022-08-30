@@ -1,11 +1,75 @@
-import React from "react";
+import axios from "axios";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import SpinLoading from "../../../Shared/SpinLoading/SpinLoading";
 
 const UserDashboardProjects = () => {
-  const { register, handleSubmit, reset } = useForm();
+  const { register, handleSubmit } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const [projectsPhoto, setProjectsPhoto] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const navigate = useNavigate();
+
+  //image bb post url
+  const imageBbUrl =
+    "https://api.imgbb.com/1/upload?key=46aaf19b4e516e94653488331a5bff32";
+
+  // upload featured photo image bb
+  const upLodeProjectsPhoto = (data) => {
+    setLoading(true);
+    const coverImg = data[0];
+    const coverFormData = new FormData();
+    coverFormData.append("image", coverImg);
+
+    fetch(imageBbUrl, {
+      method: "POST",
+      body: coverFormData,
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        if (result?.success) {
+          setProjectsPhoto(result?.data?.url);
+          setLoading(false);
+        }
+      });
+  };
+
+  const onSubmit = async (formData) => {
+    console.log(formData);
+
+    const projectsData = {
+      projects: [
+        {
+          project_photo: projectsPhoto,
+          project_title: formData?.project_title,
+          project_description: formData?.project_description,
+          projectsLink: {
+            client_link: formData?.client_link,
+            live_link: formData?.live_link,
+            server_link: formData?.server_link,
+          },
+        },
+      ],
+    };
+
+    // put data server
+    await axios
+      .put(
+        `http://localhost:3001/user/user-profile/630a45710ca3407dd1462f3b`,
+        { projectsData },
+        {
+          headers: {
+            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+        }
+      )
+      .then((data) => {
+        if (data?.data?.success) {
+          navigate("/user-profile");
+        }
+      });
   };
   return (
     <div className="min-h-screen ">
@@ -23,12 +87,16 @@ const UserDashboardProjects = () => {
                 >
                   Project Photo<span className="text-red-600 ml-[1px]">*</span>
                 </label>
-                <input
-                  class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                  type="file"
-                  name="project_photo"
-                  id="project_photo"
-                />
+                <div className="flex items-center gap-2">
+                  <input
+                    onChange={(e) => upLodeProjectsPhoto(e.target.files)}
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                    type="file"
+                    name="project_photo"
+                    id="project_photo"
+                  />
+                  {loading && <SpinLoading />}
+                </div>
               </div>
 
               <div className="w-full mb-3 ">

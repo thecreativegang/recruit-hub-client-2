@@ -1,6 +1,6 @@
 import React from "react";
 
-const Loading = () => {
+const SpinLoading = () => {
   return (
     <div className=" cursor-progress  z-50">
       <svg
@@ -23,4 +23,4 @@ const Loading = () => {
   );
 };
 
-export default Loading;
+export default SpinLoading;

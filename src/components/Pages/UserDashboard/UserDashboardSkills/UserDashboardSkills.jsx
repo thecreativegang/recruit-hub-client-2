@@ -1,11 +1,38 @@
+import axios from "axios";
 import React from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 const UserDashboardSkills = () => {
   const { register, handleSubmit, reset } = useForm();
+  const navigate = useNavigate();
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (formData) => {
+    const skills = [
+      formData?.skills1,
+      formData?.skills2,
+      formData?.skills3,
+      formData?.skills4,
+    ];
+    console.log(formData);
+
+    const data = await axios
+      .put(
+        `http://localhost:3001/user/user-profile/630a45710ca3407dd1462f3b`,
+        { skills },
+        {
+          headers: {
+            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+        }
+      )
+      .then((data) => {
+        if (data?.data?.success) {
+          console.log(data);
+          reset();
+          navigate("/user-dashboard-featured");
+        }
+      });
   };
 
   return (

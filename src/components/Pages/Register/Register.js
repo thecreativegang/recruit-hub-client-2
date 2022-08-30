@@ -202,7 +202,7 @@ const Register = () => {
                                             <input type="text" placeholder="Email" className="hidden input input-bordered text-xl"
                                             />
                                             <input
-                                                value={passwordBar}
+                                                // value={passwordBar}
                                                 type={showPassword ? "text" : "password"} placeholder="Input Password"
                                                 name='password'
                                                 className="input-customize dark:border-[#0D1425]  
@@ -217,7 +217,7 @@ const Register = () => {
 
                                             {/*Confirm Password */}
                                             <label className="label">
-                                                <span className="label-text font-semibold dark:text-[#8C9BB6] text-[#334155]">Password</span>
+                                                <span className="label-text font-semibold dark:text-[#8C9BB6] text-[#334155]">Confirm Password</span>
                                             </label>
                                             <input type="text" placeholder="Email" className="hidden input input-bordered text-xl"
                                             />

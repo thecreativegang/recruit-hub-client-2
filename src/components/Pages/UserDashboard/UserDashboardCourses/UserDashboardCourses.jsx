@@ -1,11 +1,70 @@
-import React from "react";
+import axios from "axios";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import SpinLoading from "../../../Shared/SpinLoading/SpinLoading";
 
 const UserDashboardCourses = () => {
-  const { register, handleSubmit, reset } = useForm();
+  const { register, handleSubmit } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const [coursesPhoto, setCoursesPhoto] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const navigate = useNavigate();
+
+  //image bb post url
+  const imageBbUrl =
+    "https://api.imgbb.com/1/upload?key=46aaf19b4e516e94653488331a5bff32";
+
+  // upload featured photo image bb
+  const upLodeCoursesPhoto = (data) => {
+    setLoading(true);
+    const coverImg = data[0];
+    const coverFormData = new FormData();
+    coverFormData.append("image", coverImg);
+
+    fetch(imageBbUrl, {
+      method: "POST",
+      body: coverFormData,
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        if (result?.success) {
+          setCoursesPhoto(result?.data?.url);
+          setLoading(false);
+        }
+      });
+  };
+
+  const onSubmit = async (formData) => {
+    console.log(formData);
+
+    const coursesData = {
+      courses: [
+        {
+          courses_photo: coursesPhoto,
+          courses_title: formData?.courses_title,
+          courses_duration: formData?.courses_description,
+        },
+      ],
+    };
+
+    // put data server
+    await axios
+      .put(
+        `http://localhost:3001/user/user-profile/630a45710ca3407dd1462f3b`,
+        { coursesData },
+        {
+          headers: {
+            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+        }
+      )
+      .then((data) => {
+        if (data?.data?.success) {
+          navigate("/user-dashboard-projects");
+        }
+      });
   };
   return (
     <div className="min-h-screen ">
@@ -23,13 +82,17 @@ const UserDashboardCourses = () => {
                 >
                   Courses Photo<span className="text-red-600 ml-[1px]">*</span>
                 </label>
-                <input
-                  class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                  placeholder="Featured Title"
-                  type="file"
-                  name="courses_photo"
-                  id="courses_photo"
-                />
+                <div className="flex items-center gap-2">
+                  <input
+                    onChange={(e) => upLodeCoursesPhoto(e.target.files)}
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                    placeholder="Featured Title"
+                    type="file"
+                    name="courses_photo"
+                    id="courses_photo"
+                  />
+                  {loading && <SpinLoading />}
+                </div>
               </div>
               <div className="w-full mb-3 ">
                 <label

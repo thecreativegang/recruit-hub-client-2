@@ -8,6 +8,7 @@ import Service from '../Service/Service';
 import Banner from './../Banner/Banner';
 
 import Agency from '../Agency/Agency';
+import Contact from '../Contact/Contact';
 
 
 const Home = () => {
@@ -20,6 +21,7 @@ const Home = () => {
             <Agency />
 
             <OurTeam />
+            <Contact></Contact>
             <Articles />
             <RhubDesign />
             <Footer />

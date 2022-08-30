@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@emailjs/browser": "^3.6.2",
     "@fortawesome/fontawesome-svg-core": "^6.1.2",
     "@fortawesome/free-brands-svg-icons": "^6.1.2",
     "@fortawesome/free-regular-svg-icons": "^6.1.2",
@@ -35,6 +36,7 @@
     "react-toastify": "^9.0.2",
     "react-tooltip": "^4.2.21",
     "recharts": "^2.1.13",
+    "socket.io-client": "^4.5.1",
     "styled-components": "^5.3.5",
     "uuid": "^8.3.2",
     "web-vitals": "^2.1.4"

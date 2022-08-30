@@ -6,9 +6,12 @@ import { serverLink } from './../../../utilities/links';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import Loading from '../../Shared/Loading';
+import { AiFillTrophy } from 'react-icons/ai';
+import { FaRegSadTear } from 'react-icons/fa';
 
 const SkillAssessment = () => {
   const [user, userLoading] = useAuthState(auth);
+  const [userPassed, setUserPassed] = useState(false);
   const [questions, setQuestion] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -18,8 +21,19 @@ const SkillAssessment = () => {
   const optionDesign =
     'text-lg my-4 p-4 cursor-pointer block w-full text-left focus:outline-none text-black';
 
+  const tryAgain = () => {
+    setCurrentQuestion(0);
+    setShowScore(false);
+  };
+
   const currentOption = (option) => {
     setSelectedOption(option);
+  };
+
+  const passedUser = () => {
+    const userScore = Math.ceil((score / questions.length) * 100);
+    console.log(userScore);
+    userScore > 75 ? setUserPassed(true) : setUserPassed(false);
   };
 
   const handleAnsBtnClick = (selectedOption) => {
@@ -29,6 +43,7 @@ const SkillAssessment = () => {
       setCurrentQuestion(nextQuestion);
     } else {
       setShowScore(true);
+      passedUser();
       setUserScore();
     }
     setSelectedOption({});
@@ -53,32 +68,53 @@ const SkillAssessment = () => {
 
   return (
     <>
-      <div className="flex flex-col items-center mt-3 md:mt-7 text-black">
-        <div className="dark:text-white">
-          Question number: {currentQuestion + 1} / {questions.length}
+      {currentQuestion > questions.length - 1 && (
+        <div className="flex flex-col items-center mt-3 md:mt-7 text-black">
+          <div className="dark:text-white">
+            Question number: {currentQuestion + 1} / {questions.length}
+          </div>
+          <progress
+            className="progress progress-primary w-1/2 flex flex-col justify-center"
+            value={currentQuestion + 1}
+            max={questions.length}
+          ></progress>
         </div>
-        <progress
-          className="progress progress-primary w-1/2 flex flex-col justify-center"
-          value={currentQuestion + 1}
-          max={questions.length}
-        ></progress>
-      </div>
+      )}
       <div className="h-[80vh] my-auto">
         <div className="text-3xl text-center font-sans font-semibold mt-6 text-black dark:text-white">
-          Try your skill
+          {!showScore && 'Try your skill'}
         </div>
 
         <div className="flex flex-col justify-center">
           {loading && <progress className="progress w-56"></progress>}
-          {showScore ? (
-            <h1 className="text-4xl font-bold my-6 text-center">
-              Your score is {score}
-            </h1>
+          {showScore && userPassed ? (
+            <>
+              <div className="flex flex-col justify-center items-center text-black dark:text-white mt-7 md:mt-20">
+                <AiFillTrophy className="text" size={100} />
+                <p className="text-3xl md:text-6xl font-semibold mt-6">
+                  Congratulations! You've passed the test with a score of 75%
+                  above.
+                </p>
+              </div>
+            </>
+          ) : showScore && !userPassed ? (
+            <>
+              <div className="flex flex-col justify-center items-center text-black dark:text-white mt-7 md:mt-20">
+                <FaRegSadTear className="text" size={100} />
+                <p className="text-3xl md:text-6xl font-semibold mt-6">
+                  Sorry! You score is less than 75%. Which is unexpected. Please{' '}
+                  <span onClick={tryAgain} className="cursor-pointer underline">
+                    Try again
+                  </span>
+                  .
+                </p>
+              </div>
+            </>
           ) : (
             !loading && (
               <>
                 <div className="w-1/2 mx-auto mt-4">
-                  <h3 className="text-xl text-gray-600 dark:text-white">
+                  <h3 className="text-xl text-black dark:text-white">
                     Question {currentQuestion + 1}:{' '}
                     {questions[currentQuestion].question}
                   </h3>

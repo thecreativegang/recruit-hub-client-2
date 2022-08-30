@@ -127,7 +127,7 @@ const Navbar = () => {
                                         </div>
 
                                         {/* user details  */}
-                                        <div className={`${userSwitch ? "top-[3.9rem]" : "top-[-30rem]"} z-20 absolute right-0 min-w-[22rem] bg-[#F3F3F3] text-gray-900 dark:bg-[#0C1322] dark:text-gray-200 border-x-2 border-b-2 border-gray-200  p-5 rounded-b-xl duration-300 ease-out `}>
+                                        <div className={`${userSwitch ? "top-[3.5rem]" : "top-[-30rem]"} z-20 absolute right-0 min-w-[22rem]  bg-[#F3F3F3] dark:bg-[#0C1322] text-gray-900 dark:text-gray-200 border-x-2 border-b-2 border-gray-200 dark:border-gray-700  p-5 rounded-b-xl duration-300 ease-out `}>
                                             <div className='text-center'>
                                                 <h6 className='text-lg md:text-xl font-[600] mb-1 md:mb-1'>{currentUser?.username}</h6>
                                                 <h6 className='text-xs md:text-base font-[500] mb-1 md:mb-1'>{currentUser?.email}</h6>

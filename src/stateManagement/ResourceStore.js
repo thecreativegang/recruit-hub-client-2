@@ -10,8 +10,8 @@ const ResourceStore = () => {
     const navigate = useNavigate()
 
 
-    const fetchAllResource = async () => {
-        const data = await axios.get(`${serverLink}/resource`, {
+    useEffect(() => {
+        axios.get(`${serverLink}/resource`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`,
             },
@@ -22,11 +22,7 @@ const ResourceStore = () => {
             .catch(function (err) {
                 checkTokenExpired(err) === true && navigate('/login')
             })
-
-    }
-    useEffect(() => {
-        fetchAllResource();
-    }, [videoData])
+    }, [])
 
     return { videoData }
 };

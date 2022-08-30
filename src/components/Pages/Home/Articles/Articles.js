@@ -20,7 +20,7 @@ const Articles = () => {
   };
   useEffect(() => {
     fetchBlogs();
-  }, [blogs]);
+  }, []);
 
   return (
     <div>

@@ -6,58 +6,14 @@ import { serverLink } from './../../../utilities/links';
 import Lottie from 'lottie-web';
 import lottieData from './27649-lets-chat.json';
 import Loading from '../../Shared/Loading';
-// import { io } from 'socket.io-client';
 
-const ChatContainer = ({ currentChat, currentUser }) => {
-  // const socket = io.connect(serverLink);
+const ChatContainer = ({ currentChat, currentUser, socket }) => {
+
 
   const [messages, setMessages] = useState([]);
   const [arrivalMessage, setArrivalMessage] = useState(null);
   const [msgLoading, setMsgLoading] = useState(false);
   const scrollRef = useRef();
-
-  const asyncFetchDailyData = async () => {
-    if (currentChat) {
-      setMsgLoading(true);
-      const response = await axios.post(`${serverLink}/messages/getmsg`, {
-        from: currentUser._id,
-        to: currentChat._id,
-      });
-      setMessages(response?.data);
-      setMsgLoading(false);
-    }
-  };
-  useEffect(() => {
-    asyncFetchDailyData();
-  }, [currentChat]);
-
-  useEffect(() => {
-    arrivalMessage && setMessages((prev) => [...prev, arrivalMessage]);
-  }, []);
-
-  useEffect(() => {
-    scrollRef.current?.scrollIntoView({ behaviour: 'smooth' });
-  }, [messages]);
-
-  const handleSendMsg = async (msg) => {
-    await axios.post(`${serverLink}/messages/addmsg`, {
-      from: currentUser._id,
-      to: currentChat._id,
-      message: msg,
-    });
-
-    // if (currentChat) {
-    //   socket.emit("send-msg", {
-    //     to: currentChat._id,
-    //     from: currentUser._id,
-    //     msg,
-    //   });
-    // }
-
-    const msgs = [...messages];
-    msgs.push({ fromSelf: true, message: msg });
-    setMessages(msgs);
-  };
   // For lottie animation
   const anime = useRef(null);
   useEffect(() => {
@@ -74,16 +30,75 @@ const ChatContainer = ({ currentChat, currentUser }) => {
     // More logic goes here
   }, []);
 
-  // if (socket) {
-  //   socket.on("msg-transfer", (msg) => {
-  //     setArrivalMessage({ fromSelf: false, message: msg.msg });
-  //   });
+  useEffect(() => {
+    arrivalMessage && setMessages((prev) => [...prev, arrivalMessage]);
+  }, [arrivalMessage]);
 
-  //   return () => {
-  //     socket.disconnect();
-  //   }
-  // }
-  // console.log(messages[0]?.message)
+  useEffect(() => {
+    scrollRef.current?.scrollIntoView({ behaviour: 'smooth' });
+  }, [messages]);
+
+  const asyncFetchDailyData = async () => {
+    if (currentChat) {
+      setMsgLoading(true);
+      const response = await axios.post(`${serverLink}/messages/getmsg`, {
+        from: currentUser._id,
+        to: currentChat._id,
+      });
+      setMessages(response?.data);
+      setMsgLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    asyncFetchDailyData();
+  }, []);
+
+
+
+  const handleSendMsg = async (msg) => {
+    await axios.post(`${serverLink}/messages/addmsg`, {
+      from: currentUser._id,
+      to: currentChat._id,
+      message: msg,
+    });
+
+    if (socket) {
+      socket.emit("send-msg", {
+        to: currentChat._id,
+        from: currentUser._id,
+        msg,
+      });
+
+
+      socket.on("msg-transfer", (msg) => {
+        setArrivalMessage({
+          fromSelf: true,
+          message: msg.msg
+        });
+      });
+      return () => {
+        socket.disconnect();
+      }
+    }
+    // if (socket) {
+    //   socket.on("msg-transfer", (msg) => {
+    //     setArrivalMessage({
+    //       fromSelf: true,
+    //       message: msg.msg
+    //     });
+    //   });
+    //   return () => {
+    //     socket.disconnect();
+    //   }
+    // }
+    const msgs = [...messages];
+    msgs.push({ fromSelf: true, message: msg });
+    setMessages(msgs);
+  };
+
+
+
 
   return (
     <div className="w-100">
@@ -114,9 +129,8 @@ const ChatContainer = ({ currentChat, currentUser }) => {
                   return (
                     <div>
                       <div
-                        className={`message ${
-                          message.fromSelf ? 'sended' : 'recieved'
-                        }`}
+                        className={`message ${message.fromSelf ? 'sended' : 'recieved'
+                          }`}
                       >
                         <div className="content ">
                           <p>{message.message}</p>

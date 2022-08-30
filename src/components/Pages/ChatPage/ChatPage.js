@@ -16,14 +16,14 @@ import { serverLink } from './../../../utilities/links';
 
 
 const ChatPage = () => {
-    // const socket = io.connect(serverLink);
+    const socket = io.connect(serverLink);
 
     const navigate = useNavigate()
 
     const userStore = useContext(UserStore);
     const currentUser = userStore.user;
 
-
+    console.log('hi')
 
     const [currentChat, setCurrentChat] = useState('');
     const [search, setSearch] = useState('');
@@ -72,7 +72,7 @@ const ChatPage = () => {
                                 key={currentChat._id}
                                 currentChat={currentChat}
                                 currentUser={currentUser}
-                            // socket={socket}
+                                socket={socket}
                             ></ChatContainer>
                         </div>
                     </div>

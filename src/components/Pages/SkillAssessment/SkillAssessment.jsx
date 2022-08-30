@@ -6,9 +6,11 @@ import { serverLink } from './../../../utilities/links';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import Loading from '../../Shared/Loading';
+import { AiFillTrophy } from 'react-icons/ai';
 
 const SkillAssessment = () => {
   const [user, userLoading] = useAuthState(auth);
+  const [userPassed, setUserPassed] = useState(false);
   const [questions, setQuestion] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -22,6 +24,12 @@ const SkillAssessment = () => {
     setSelectedOption(option);
   };
 
+  const passedUser = () => {
+    const userScore = Math.ceil((score / questions.length) * 100);
+    console.log(userScore);
+    userScore > 75 ? setUserPassed(true) : setUserPassed(false);
+  };
+
   const handleAnsBtnClick = (selectedOption) => {
     if (selectedOption.isCorrect) setScore(score + 1);
     const nextQuestion = currentQuestion + 1;
@@ -29,6 +37,7 @@ const SkillAssessment = () => {
       setCurrentQuestion(nextQuestion);
     } else {
       setShowScore(true);
+      passedUser();
       setUserScore();
     }
     setSelectedOption({});
@@ -53,24 +62,35 @@ const SkillAssessment = () => {
 
   return (
     <>
-      <div className="flex flex-col items-center mt-3 md:mt-7 text-black">
-        <div className="dark:text-white">
-          Question number: {currentQuestion + 1} / {questions.length}
+      {currentQuestion > questions.length - 1 && (
+        <div className="flex flex-col items-center mt-3 md:mt-7 text-black">
+          <div className="dark:text-white">
+            Question number: {currentQuestion + 1} / {questions.length}
+          </div>
+          <progress
+            className="progress progress-primary w-1/2 flex flex-col justify-center"
+            value={currentQuestion + 1}
+            max={questions.length}
+          ></progress>
         </div>
-        <progress
-          className="progress progress-primary w-1/2 flex flex-col justify-center"
-          value={currentQuestion + 1}
-          max={questions.length}
-        ></progress>
-      </div>
+      )}
       <div className="h-[80vh] my-auto">
         <div className="text-3xl text-center font-sans font-semibold mt-6 text-black dark:text-white">
-          Try your skill
+          {userPassed ? 'Congratulations' : 'Try your skill'}
         </div>
 
         <div className="flex flex-col justify-center">
           {loading && <progress className="progress w-56"></progress>}
-          {showScore ? (
+          {userPassed ? (
+            <>
+              <div className="flex flex-col justify-center items-center text-black dark:text-white mt-7 md:mt-20">
+                <AiFillTrophy className="text" size={100} />
+                <p className="text-3xl font-semibold">
+                  You've passed the test with a score of 75% above.
+                </p>
+              </div>
+            </>
+          ) : showScore && !userPassed ? (
             <h1 className="text-4xl font-bold my-6 text-center">
               Your score is {score}
             </h1>

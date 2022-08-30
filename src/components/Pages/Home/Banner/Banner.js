@@ -43,7 +43,7 @@ const Banner = () => {
                     localStorage.setItem('accountType', 'recruiter');
                     navigateRecruiter('/register/recruiter'); //
                   }}
-                  className=" btn-primary-vlue dark:bg-[#0284C7] text-white "
+                  className=" btn-primary-blue dark:bg-[#0284C7] text-white "
                 >
                   Start Hiring{' '}
                   <i className="fa-solid fa-angle-right ml-[6px]"></i>
@@ -54,7 +54,7 @@ const Banner = () => {
                     localStorage.setItem('accountType', 'developer');
                     navigateDeveloper('/register/developer');
                   }}
-                  className="  btn-primary-vlue2 dark:bg-[#0284C7] text-white ml-[25px]"
+                  className="  btn-primary-blue2 dark:bg-[#0284C7] text-white ml-[25px]"
                 >
                   Get a job <i className="fa-solid fa-angle-right ml-[6px]"></i>
                 </button>

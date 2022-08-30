@@ -23,7 +23,7 @@ const Articles = () => {
   }, [blogs]);
 
   return (
-    <div>
+    <div className='py-16 bg-[#f3f3f3] dark:bg-[#0b1120]'>
       <div>
         <div className="text-center">
           <h1 className="text-xl text-primary my-10">Articles News</h1>

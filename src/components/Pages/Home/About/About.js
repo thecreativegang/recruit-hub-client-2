@@ -3,7 +3,7 @@ import aboutimg from '../../../../images/about-1.jpg';
 import './About.css'
 const About = () => {
     return (
-        <div className='  py-[10rem] bg-[#ffff] dark:bg-[#0F172A]'>
+        <div className=' py-[10rem] bg-[#ffff] dark:bg-[#0F172A]'>
             <div className='w-[85%] mx-auto'>
                 <div className='grid grid-cols-1 gap-2 md:grid-cols-2'>
                     <div className='flex justify-center'>

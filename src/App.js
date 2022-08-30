@@ -1,4 +1,4 @@
-import { useLocation } from 'react-router-dom';
+
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import { ToastContainer } from 'react-toastify';
@@ -7,7 +7,6 @@ import Login from './components/Pages/Login/Login';
 import Register from './components/Pages/Register/Register';
 import Home from './components/Pages/Home/Home/Home';
 import Navbar from './components/Shared/Navbar/Navbar';
-import FooterBottomSection from './components/Shared/Footer/FooterBottomSection';
 import AccountTypePage from './components/Pages/Register/AccountTypePage';
 import RequireUsername from './components/Shared/RequireUsername';
 import Loading from './components/Shared/Loading';
@@ -39,7 +38,7 @@ import PostBlogs from './AdminDashboard/PostBlogs/PostBlogs';
 import AdminList from './AdminDashboard/AdminList/AdminList';
 
 function App() {
-  const url = useLocation();
+
   // console.log('see current location', url)
   return (
     <div className="transition-all duration-500 bg-[#F3F3F3]">
@@ -99,7 +98,7 @@ function App() {
           <Route path="userDashboard" element={<UserDashboard />} />
         </Routes>
 
-        <div>{url?.pathname !== '/chat' && <FooterBottomSection />}</div>
+
         <ToastContainer autoClose={1500} />
         <ReactTooltip />
       </UserStoreProvider>

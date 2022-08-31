@@ -23,7 +23,7 @@ const Home = () => {
             <OurTeam></OurTeam>
             <Articles />
 
-            <Footer />
+
         </div>
     );
 };

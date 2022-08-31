@@ -15,7 +15,7 @@ const Service = () => {
 
             <div className='md:w-[80%] w-[95%] mx-auto mt-8'>
                 <div className='grid grid-cols-1 gap-8 md:grid-cols-3'>
-                    <div className='service-item  dark:bg-transparent transition-all duration-500'>
+                    <div className='service-item  dark:bg-[#182133] transition-all duration-500'>
                         <i className="fa-solid mb-[15px] fa-code-compare text-[75px] text-[#061835] dark:text-[#38BDF8]"></i>
                         <div>
                             <h1 className='text-[24px] heading-color font-semibold mb-[15px] dark:text-[#E2E8F0]'>Strategy</h1>
@@ -27,7 +27,7 @@ const Service = () => {
                             <Link to="/" className='text-[#061835] dark:text-[#38BDF8] font-bold text-[18px] underline' href="#">Read More <i className="fa-solid ml-[6px] fa-arrow-right-long"></i></Link>
                         </div>
                     </div>
-                    <div className='service-item dark:bg-transparent transition-all duration-500'>
+                    <div className='service-item dark:bg-[#182133]  transition-all duration-500'>
                         <i className="fa-solid mb-[15px] fa-database text-[75px] text-[#061835] dark:text-[#38BDF8]"></i>
                         <div>
                             <h1 className='text-[24px] heading-color font-semibold mb-[15px] dark:text-[#E2E8F0]'>Product Design</h1>
@@ -39,7 +39,7 @@ const Service = () => {
                             <Link to="/" className='text-[#061835] dark:text-[#38BDF8] font-bold text-[18px] underline' href="#">Read More <i className="fa-solid ml-[6px] fa-arrow-right-long"></i></Link>
                         </div>
                     </div>
-                    <div className='service-item dark:bg-transparent transition-all duration-500'>
+                    <div className='service-item dark:bg-[#182133]  transition-all duration-500'>
                         <i className="fa-solid mb-[15px] fa-code text-[75px] text-[#061835] dark:text-[#38BDF8]"></i>
                         <div>
                             <h1 className='text-[24px] heading-color font-semibold mb-[15px] dark:text-[#E2E8F0]'>Development</h1>

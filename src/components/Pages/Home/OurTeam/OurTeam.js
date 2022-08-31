@@ -14,46 +14,55 @@ const OurTeam = () => {
     const teamData = [
         {
             "id": 2,
-            "image": " https://swiperjs.com/demos/images/nature-1.jpg",
+            "image": "https://i.ibb.co/FzfT6C7/IMG-20220819-WA0030-01.jpg",
 
             "name": "Sumon Bala",
             "role": "Front End Developer"
 
         }, {
             "id": 3,
-            "image": " https://swiperjs.com/demos/images/nature-3jpg",
+            "image": " https://i.ibb.co/Gcdr7Bx/IMG-20220324-WA0007.jpg?fbclid=IwAR0rtRclgfI3FP6pw0-LJA9hque85ifuEOxEetYSk-8K_D1FLZk2lqKQCIA",
 
 
             "name": "Sourav Biswas",
             "role": "Backend Engineer"
 
-        }, {
+        },
+        {
             "id": 4,
-            "image": " https://swiperjs.com/demos/images/nature-4.jpg",
-
-            "name": "Jahid Hasan",
-            "role": "Full Stack Developer"
-
-        }, {
-            "id": 5,
-            "image": " https://swiperjs.com/demos/images/nature-5.jpg",
+            "image": " https://i.ibb.co/0rw6KCf/Screenshot-2022-01-14-092731-1.png",
 
 
             "name": "Tanvir Ahmed",
             "role": "Team Lead"
 
         }, {
+            "id": 5,
+            "image": " https://swiperjs.com/demos/images/nature-4.jpg",
+
+            "name": "Jahid Hasan",
+            "role": "Full Stack Developer"
+
+        }, {
             "id": 6,
             "image": " https://swiperjs.com/demos/images/nature-2.jpg",
 
 
-            "name": "Atiquer Rahman",
+            "name": "Hasib Alam",
             "role": "Node Js Developer"
 
         }
     ]
     return (
         <div className='slider-container py-16 bg-[#f3f3f3] dark:bg-[#0b1120]'>
+            <div className="text-center mb-10">
+
+                <h1 className="text-[#1C2880] dark:text-[#E2E8F0] text-[2rem] md:text-[3.5rem] leading-[3.2rem]  font-semibold mb-2">
+                    Meet Our Amazing Team
+                </h1>
+                <p className='mb-[20px] para-color text-[22px] font-semibold dark:text-[#38BDF8]'>united we stand divided we fall</p>
+
+            </div>
             <Swiper
                 effect={"coverflow"}
                 grabCursor={true}
@@ -87,13 +96,12 @@ const OurTeam = () => {
                     </div> */}
 
                 {
-                    teamData.map(team => <SwiperSlide key={team.id}>
-                        <div className='bg-white h-full'>
+                    teamData.map(team => <SwiperSlide key={team.id} className='p-4 bg-white dark:bg-[#182133]  shadow-lg'>
+                        <div className='bg-red h-full'>
                             <img src={team?.image} />
-                            <div className=''>
-                                <h1>{team?.name}</h1>
-                                <h1>{team?.role}</h1>
-                            </div>
+                            <h1 className='text-[#1C2880] dark:text-[#38BDF8] font-semibold mt-2'>{team?.name}</h1>
+                            <h1 className='dark:text-[#E2E8F0]'>{team?.role}</h1>
+
                         </div>
 
                     </SwiperSlide>)

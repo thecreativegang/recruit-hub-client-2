@@ -36,6 +36,8 @@ import Projects from './components/Pages/UserProfile/Projects/Projects';
 import Experience from './components/Pages/UserProfile/Experience/Experience';
 import PostBlogs from './AdminDashboard/PostBlogs/PostBlogs';
 import AdminList from './AdminDashboard/AdminList/AdminList';
+import NotFound from './components/Pages/NotFound/NotFound';
+import Footer from './components/Shared/Footer/Footer';
 
 function App() {
 
@@ -86,6 +88,7 @@ function App() {
             <Route path="admins" element={<AdminList />}></Route>
           </Route>
 
+
           <Route path="/user-profile" element={<UserProfile />}>
             <Route index element={<UserAbout />} />
             <Route path="skills" element={<UserSkills />} />
@@ -96,9 +99,11 @@ function App() {
           </Route>
 
           <Route path="userDashboard" element={<UserDashboard />} />
+          <Route path="*" element={<NotFound></NotFound>}></Route>
+
         </Routes>
 
-
+        <Footer></Footer>
         <ToastContainer autoClose={1500} />
         <ReactTooltip />
       </UserStoreProvider>

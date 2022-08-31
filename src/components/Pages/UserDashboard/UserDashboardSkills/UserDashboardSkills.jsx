@@ -1,11 +1,17 @@
 import axios from "axios";
-import React from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { UserStore } from "../../../../stateManagement/UserContext/UserContextStore";
+
+import { toast } from 'react-toastify';
+
 
 const UserDashboardSkills = () => {
   const { register, handleSubmit, reset } = useForm();
   const navigate = useNavigate();
+  const userStore = useContext(UserStore);
+  const currentUser = userStore.user;
 
   const onSubmit = async (formData) => {
     const skills = [
@@ -14,21 +20,16 @@ const UserDashboardSkills = () => {
       formData?.skills3,
       formData?.skills4,
     ];
-    console.log(formData);
 
-    const data = await axios
+    console.log(skills)
+
+    await axios
       .put(
-        `http://localhost:3001/user/user-profile/630a45710ca3407dd1462f3b`,
-        { skills },
-        {
-          headers: {
-            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-          },
-        }
+        `http://localhost:3001/user/user-profile/${currentUser._id}`, { skills: skills }
       )
       .then((data) => {
         if (data?.data?.success) {
-          console.log(data);
+          toast.success('Update data successfully');
           reset();
           navigate("/user-dashboard-featured");
         }

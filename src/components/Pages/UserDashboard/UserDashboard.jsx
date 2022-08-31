@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import "./UserDashboard.css";
 import axios from "axios";
 
@@ -7,11 +7,19 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import SpinLoading from "../../Shared/SpinLoading/SpinLoading";
 import { useNavigate } from "react-router-dom";
+import { UserStore } from "../../../stateManagement/UserContext/UserContextStore";
+import { toast } from 'react-toastify';
+
 
 const UserDashboard = () => {
   const navigate = useNavigate();
 
   const { register, handleSubmit, reset } = useForm();
+
+
+  const userStore = useContext(UserStore);
+  const currentUser = userStore.user;
+
 
 
 
@@ -45,6 +53,7 @@ const UserDashboard = () => {
   };
 
   // profile photo uplode
+
   const upLodeProfilePhoto = (data) => {
     setLoadingProfile(true);
     const profileImg = data[0];
@@ -66,20 +75,17 @@ const UserDashboard = () => {
     const profileData = {
       coverPhoto,
       profilePhoto,
-      fastName: formData?.first_name,
-      lestName: formData?.last_name,
+      name: formData?.name,
       dio: formData?.bio,
     };
 
-    // console.log("profile data", profileData);
-
-    const data = await axios
+    await axios
       .put(
-        `http://localhost:3001/user/user-profile/630a45710ca3407dd1462f3b`,
-        { profileData }
+        `http://localhost:3001/user/user-profile/${currentUser._id}`, profileData
       )
       .then((data) => {
         if (data?.data?.success) {
+          toast.success('Update data successfuly');
           navigate("/user-dashboard-about");
         }
       });
@@ -153,37 +159,21 @@ const UserDashboard = () => {
                   {/* fast name  */}
                   <div>
                     <label
-                      for="first_name"
+                      for="name"
                       class="block mb-2 text-base font-medium text-gray-900 ml-1"
                     >
-                      First name
+                      Name
                     </label>
                     <input
-                      {...register("first_name")}
+                      {...register("name")}
                       type="text"
-                      id="first_name"
+                      id="name"
                       class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                      placeholder="Fast Name"
+                      placeholder="Name"
                       required
                     />
                   </div>
-                  {/* last Name  */}
-                  <div>
-                    <label
-                      for="last_name"
-                      class="block mb-2 text-base font-medium text-gray-900 ml-1"
-                    >
-                      Last name
-                    </label>
-                    <input
-                      {...register("last_name")}
-                      type="text"
-                      id="last_name"
-                      class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                      placeholder="Last Name"
-                      required
-                    />
-                  </div>
+
                   {/* Bio  */}
                   <div>
                     <label

@@ -1,15 +1,18 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import SpinLoading from "../../../Shared/SpinLoading/SpinLoading";
+import { UserStore } from "../../../../stateManagement/UserContext/UserContextStore";
+import { toast } from 'react-toastify';
 
 const UserDashboardCourses = () => {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
 
   const [coursesPhoto, setCoursesPhoto] = useState("");
   const [loading, setLoading] = useState(false);
-
+  const userStore = useContext(UserStore);
+  const currentUser = userStore.user;
   const navigate = useNavigate();
 
   //image bb post url
@@ -52,17 +55,13 @@ const UserDashboardCourses = () => {
     // put data server
     await axios
       .put(
-        `http://localhost:3001/user/user-profile/630a45710ca3407dd1462f3b`,
-        { coursesData },
-        {
-          headers: {
-            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-          },
-        }
+        `http://localhost:3001/user/user-profile/${currentUser._id}`, coursesData ,
       )
       .then((data) => {
         if (data?.data?.success) {
-          navigate("/user-dashboard-projects");
+          toast.success('Update data successfully');
+          reset();
+          navigate("/user-dashboard-courses");
         }
       });
   };

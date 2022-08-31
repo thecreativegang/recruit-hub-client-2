@@ -1,15 +1,20 @@
 import axios from "axios";
-import React from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { UserStore } from "../../../../stateManagement/UserContext/UserContextStore";
+import { toast } from 'react-toastify';
+
 
 const UserDashboardAbout = () => {
   const navigate = useNavigate();
+  const userStore = useContext(UserStore);
+  const currentUser = userStore.user;
 
   const { register, handleSubmit } = useForm();
 
   const onSubmit = async (formData) => {
-    console.log(formData);
+
     const userAboutData = {
       state: formData?.state,
       country: formData?.country,
@@ -27,19 +32,15 @@ const UserDashboardAbout = () => {
     // put data server
     await axios
       .put(
-        `http://localhost:3001/user/user-profile/630a45710ca3407dd1462f3b`,
-        { userAboutData },
-        {
-          headers: {
-            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-          },
-        }
+        `http://localhost:3001/user/user-profile/${currentUser._id}`, userAboutData
       )
       .then((data) => {
         if (data?.data?.success) {
+          toast.success('Update data successfully');
           navigate("/user-dashboard-skills");
         }
       });
+
   };
 
   return (
@@ -100,7 +101,7 @@ const UserDashboardAbout = () => {
                 type="text"
                 id="email"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                placeholder="Your Email"
+                placeholder={currentUser?.email}
                 readOnly
               />
             </div>

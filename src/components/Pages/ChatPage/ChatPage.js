@@ -23,7 +23,7 @@ const ChatPage = () => {
     const userStore = useContext(UserStore);
     const currentUser = userStore.user;
 
-    console.log('hi')
+    console.log('hi');
 
     const [currentChat, setCurrentChat] = useState('');
     const [search, setSearch] = useState('');

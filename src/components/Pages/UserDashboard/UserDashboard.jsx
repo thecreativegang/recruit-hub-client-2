@@ -13,6 +13,8 @@ const UserDashboard = () => {
 
   const { register, handleSubmit, reset } = useForm();
 
+
+
   const [coverPhoto, setCoverPhoto] = useState("");
   const [profilePhoto, setProfilePhoto] = useState("");
 
@@ -74,12 +76,7 @@ const UserDashboard = () => {
     const data = await axios
       .put(
         `http://localhost:3001/user/user-profile/630a45710ca3407dd1462f3b`,
-        { profileData },
-        {
-          headers: {
-            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-          },
-        }
+        { profileData }
       )
       .then((data) => {
         if (data?.data?.success) {

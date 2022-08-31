@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import SpinLoading from "../../../Shared/SpinLoading/SpinLoading";
 import { UserStore } from "../../../../stateManagement/UserContext/UserContextStore";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 
 const UserDashboardCourses = () => {
   const { register, handleSubmit, reset } = useForm();
@@ -55,11 +55,12 @@ const UserDashboardCourses = () => {
     // put data server
     await axios
       .put(
-        `http://localhost:3001/user/user-profile/${currentUser._id}`, coursesData ,
+        `https://safe-oasis-01130.herokuapp.com/user/user-profile/${currentUser._id}`,
+        coursesData
       )
       .then((data) => {
         if (data?.data?.success) {
-          toast.success('Update data successfully');
+          toast.success("Update data successfully");
           reset();
           navigate("/user-dashboard-courses");
         }

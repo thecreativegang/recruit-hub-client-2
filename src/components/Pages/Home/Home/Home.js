@@ -1,7 +1,7 @@
 import React from 'react';
 import Articles from '../Articles/Articles';
 
-import Footer from '../../../Shared/Footer/Footer';
+
 import About from '../About/About';
 import Service from '../Service/Service';
 import Banner from './../Banner/Banner';
@@ -25,7 +25,7 @@ const Home = () => {
             <Agency />
 
 
-            <OurTeam></OurTeam>
+
 
             <OurTeam />
             <Contact></Contact>

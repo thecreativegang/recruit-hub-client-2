@@ -44,6 +44,7 @@ import UserDashboardFeatured from './components/Pages/UserDashboard/UserDashboar
 import UserDashboardExperience from './components/Pages/UserDashboard/UserDashboardExperience/UserDashboardExperience';
 import UserDashboardCourses from './components/Pages/UserDashboard/UserDashboardCourses/UserDashboardCourses';
 import UserDashboardProjects from './components/Pages/UserDashboard/UserDashboardProjects/UserDashboardProjects';
+import Contact from './components/Pages/Contact/Contact';
 
 function App() {
   const url = useLocation();
@@ -64,6 +65,7 @@ function App() {
 
           <Route path="/home" element={<Home />} />
           <Route path="/freeResource" element={<FreeResource />} />
+          <Route path="/contactUs" element={<Contact />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<AccountTypePage />} />
           <Route path="/register/:accType" element={<Register />} />

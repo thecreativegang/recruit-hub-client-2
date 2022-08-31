@@ -63,11 +63,9 @@ const Navbar = () => {
                             }
                         </div>
 
+
                         <Link to='/'>
-                            <img className='w-8 h-8' src={navLogo} alt="Logo" />
-                        </Link>
-                        <Link to='/'>
-                            <span className='ml-1 text-[#0D1425] dark:text-white'>RecruitHub</span>
+                            <span className='ml-1 text-[#0D1425] dark:text-white'>Recruit<span className='dark:text-[#38BDF8] text-[#3878DF]'>Hub</span></span>
                         </Link>
 
                     </div>

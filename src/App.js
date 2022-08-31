@@ -1,4 +1,4 @@
-import { useLocation } from 'react-router-dom';
+
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import { ToastContainer } from 'react-toastify';
@@ -7,7 +7,6 @@ import Login from './components/Pages/Login/Login';
 import Register from './components/Pages/Register/Register';
 import Home from './components/Pages/Home/Home/Home';
 import Navbar from './components/Shared/Navbar/Navbar';
-import FooterBottomSection from './components/Shared/Footer/FooterBottomSection';
 import AccountTypePage from './components/Pages/Register/AccountTypePage';
 import RequireUsername from './components/Shared/RequireUsername';
 import Loading from './components/Shared/Loading';
@@ -38,6 +37,10 @@ import Projects from './components/Pages/UserProfile/Projects/Projects';
 import Experience from './components/Pages/UserProfile/Experience/Experience';
 import PostBlogs from './AdminDashboard/PostBlogs/PostBlogs';
 import AdminList from './AdminDashboard/AdminList/AdminList';
+
+import NotFound from './components/Pages/NotFound/NotFound';
+import Footer from './components/Shared/Footer/Footer';
+
 import UserDashboardAbout from './components/Pages/UserDashboard/UserDashboardAbout/UserDashboardAbout';
 import UserDashboardSkills from './components/Pages/UserDashboard/UserDashboardSkills/UserDashboardSkills';
 import UserDashboardFeatured from './components/Pages/UserDashboard/UserDashboardFeatured/UserDashboardFeatured';
@@ -46,8 +49,9 @@ import UserDashboardCourses from './components/Pages/UserDashboard/UserDashboard
 import UserDashboardProjects from './components/Pages/UserDashboard/UserDashboardProjects/UserDashboardProjects';
 import Contact from './components/Pages/Contact/Contact';
 
+
 function App() {
-  const url = useLocation();
+
   // console.log('see current location', url)
   return (
     <div className='transition-all duration-500 bg-[#F3F3F3] dark:bg-[#0b1120]'>
@@ -97,7 +101,9 @@ function App() {
           </Route>
 
 
+
           {/* user profile route */}
+
           <Route path="/user-profile" element={<UserProfile />}>
             <Route index element={<UserAbout />} />
             <Route path="skills" element={<UserSkills />} />
@@ -107,6 +113,11 @@ function App() {
             <Route path="experience" element={<Experience />} />
           </Route>
 
+
+          <Route path="userDashboard" element={<UserDashboard />} />
+          <Route path="*" element={<NotFound></NotFound>}></Route>
+
+
           {/* user dashboard route  */}
           <Route path="/user-dashboard" element={<UserDashboard />} />
           <Route path="/user-dashboard-about" element={<UserDashboardAbout />} />
@@ -115,9 +126,10 @@ function App() {
           <Route path="/user-dashboard-experience" element={<UserDashboardExperience />} />
           <Route path="/user-dashboard-courses" element={<UserDashboardCourses />} />
           <Route path="/user-dashboard-projects" element={<UserDashboardProjects />} />
+
         </Routes>
 
-        <div>{url?.pathname !== '/chat' && <FooterBottomSection />}</div>
+        <Footer></Footer>
         <ToastContainer autoClose={1500} />
         <ReactTooltip />
       </UserStoreProvider>

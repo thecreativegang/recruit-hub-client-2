@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import { serverLink } from './../../utilities/links';
 import DeveloperStore from "../DeveloperStore";
 import Loading from '../../components/Shared/Loading';
+import ResourceStore from '../ResourceStore';
 const UserStore = createContext();
 
 const UserStoreProvider = ({ children }) => {
@@ -23,7 +24,7 @@ const UserStoreProvider = ({ children }) => {
     const [allUser, setAllUser] = useState([]);
     const [allAdmin, setAllAdmin] = useState([]);
 
-    // Get user data form api
+    // Get single user data form api
     const fetchUser = async () => {
         await axios.get(`${serverLink}/user/email/${userEmail}`, {
             headers: {
@@ -60,7 +61,7 @@ const UserStoreProvider = ({ children }) => {
     }
     useEffect(() => {
         fetchAllUser();
-    }, [allUser])
+    }, [])
 
     // fetch all admin data
     const fetchAdmin = async () => {
@@ -79,13 +80,16 @@ const UserStoreProvider = ({ children }) => {
     }
     useEffect(() => {
         fetchAdmin();
-    }, [allAdmin])
+    }, [])
 
 
 
 
     //developer data 
     const { developer } = DeveloperStore()
+    const { videoData } = ResourceStore()
+
+
 
 
     //this state stored user data  //==> Don't move this one !
@@ -95,6 +99,7 @@ const UserStoreProvider = ({ children }) => {
         developer,
         allUser,
         allAdmin,
+        videoData,
 
     };
     //user context provider component //==> Don't move this one !

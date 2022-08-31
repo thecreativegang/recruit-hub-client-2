@@ -22,6 +22,8 @@ import AskForUsername from './components/Shared/AskForUsername';
 import ProtectedRout from './components/Shared/ProtectedRout';
 import ForgetPassword from './components/Pages/Login/ForgetPassword';
 import UserProfile from './components/Pages/UserProfile/UserProfile';
+import UserDashboard from './components/Pages/UserDashboard/UserDashboard';
+
 
 import PostResource from './AdminDashboard/PostResource/PostResource';
 import FreeResource from './components/Pages/FreeResource/FreeResource';
@@ -29,21 +31,30 @@ import Developer from './components/Pages/Developer/Developer';
 import ReactTooltip from 'react-tooltip';
 import UserAbout from './components/Pages/UserProfile/UserAbout/UserAbout';
 import UserSkills from './components/Pages/UserProfile/UserSkills/UserSkills';
-import UserDashboard from './components/Pages/UserDashboard/UserDashboard';
 import Featured from './components/Pages/UserProfile/Featured/Featured';
 import Courses from './components/Pages/UserProfile/Courses/Courses';
 import Projects from './components/Pages/UserProfile/Projects/Projects';
 import Experience from './components/Pages/UserProfile/Experience/Experience';
 import PostBlogs from './AdminDashboard/PostBlogs/PostBlogs';
 import AdminList from './AdminDashboard/AdminList/AdminList';
+
 import NotFound from './components/Pages/NotFound/NotFound';
 import Footer from './components/Shared/Footer/Footer';
+
+import UserDashboardAbout from './components/Pages/UserDashboard/UserDashboardAbout/UserDashboardAbout';
+import UserDashboardSkills from './components/Pages/UserDashboard/UserDashboardSkills/UserDashboardSkills';
+import UserDashboardFeatured from './components/Pages/UserDashboard/UserDashboardFeatured/UserDashboardFeatured';
+import UserDashboardExperience from './components/Pages/UserDashboard/UserDashboardExperience/UserDashboardExperience';
+import UserDashboardCourses from './components/Pages/UserDashboard/UserDashboardCourses/UserDashboardCourses';
+import UserDashboardProjects from './components/Pages/UserDashboard/UserDashboardProjects/UserDashboardProjects';
+import Contact from './components/Pages/Contact/Contact';
+
 
 function App() {
 
   // console.log('see current location', url)
   return (
-    <div className="transition-all duration-500 bg-[#F3F3F3]">
+    <div className='transition-all duration-500 bg-[#F3F3F3] dark:bg-[#0b1120]'>
       <UserStoreProvider>
         <Navbar />
         <Routes>
@@ -58,6 +69,7 @@ function App() {
 
           <Route path="/home" element={<Home />} />
           <Route path="/freeResource" element={<FreeResource />} />
+          <Route path="/contactUs" element={<Contact />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<AccountTypePage />} />
           <Route path="/register/:accType" element={<Register />} />
@@ -89,6 +101,9 @@ function App() {
           </Route>
 
 
+
+          {/* user profile route */}
+
           <Route path="/user-profile" element={<UserProfile />}>
             <Route index element={<UserAbout />} />
             <Route path="skills" element={<UserSkills />} />
@@ -98,8 +113,19 @@ function App() {
             <Route path="experience" element={<Experience />} />
           </Route>
 
+
           <Route path="userDashboard" element={<UserDashboard />} />
           <Route path="*" element={<NotFound></NotFound>}></Route>
+
+
+          {/* user dashboard route  */}
+          <Route path="/user-dashboard" element={<UserDashboard />} />
+          <Route path="/user-dashboard-about" element={<UserDashboardAbout />} />
+          <Route path="/user-dashboard-skills" element={<UserDashboardSkills />} />
+          <Route path="/user-dashboard-featured" element={<UserDashboardFeatured />} />
+          <Route path="/user-dashboard-experience" element={<UserDashboardExperience />} />
+          <Route path="/user-dashboard-courses" element={<UserDashboardCourses />} />
+          <Route path="/user-dashboard-projects" element={<UserDashboardProjects />} />
 
         </Routes>
 

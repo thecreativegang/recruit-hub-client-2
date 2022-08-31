@@ -20,7 +20,7 @@ const Articles = () => {
   };
   useEffect(() => {
     fetchBlogs();
-  }, [blogs]);
+  }, []);
 
   return (
     <div className='py-16 bg-[#f3f3f3] dark:bg-[#0b1120]'>

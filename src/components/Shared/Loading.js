@@ -2,7 +2,7 @@ import Lottie from 'lottie-web';
 import React, { useEffect, useRef } from 'react';
 import loadingData from './Lottiefile/97930-loading.json';
 
-const Loading = ({ imgWidth }) => {
+const Loading = ({ imgWidth, height }) => {
   // For lottie animation
   const anime = useRef(null);
 
@@ -20,7 +20,7 @@ const Loading = ({ imgWidth }) => {
     // More logic goes here
   }, []);
   return (
-    <div className="h-[70vh] flex justify-center items-center ">
+    <div className={`${height ? height : "h-[70vh]"} flex justify-center items-center`}>
       <div>
         {/* <div style={{ borderTopColor: 'transparent' }}
                     className="w-16 h-16 border-8 border-blue-400 border-solid rounded-full animate-spin">

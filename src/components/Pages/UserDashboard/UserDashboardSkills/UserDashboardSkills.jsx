@@ -4,8 +4,8 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { UserStore } from "../../../../stateManagement/UserContext/UserContextStore";
 
-import { toast } from 'react-toastify';
-
+import { toast } from "react-toastify";
+import { serverLink } from "../../../../utilities/links";
 
 const UserDashboardSkills = () => {
   const { register, handleSubmit, reset } = useForm();
@@ -21,15 +21,16 @@ const UserDashboardSkills = () => {
       formData?.skills4,
     ];
 
-    console.log(skills)
+    console.log(skills);
 
     await axios
       .put(
-        `https://safe-oasis-01130.herokuapp.com/user/user-profile/${currentUser._id}`, { skills: skills }
+        `${serverLink}/user/user-profile/${currentUser._id}`,
+        { skills: skills }
       )
       .then((data) => {
         if (data?.data?.success) {
-          toast.success('Update data successfully');
+          toast.success("Update data successfully");
           reset();
           navigate("/user-dashboard-featured");
         }

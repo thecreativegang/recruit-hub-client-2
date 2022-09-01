@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import SpinLoading from "../../../Shared/SpinLoading/SpinLoading";
 import { useNavigate } from "react-router-dom";
+import { serverLink } from "../../../../utilities/links";
 
 const UserDashboardExperience = () => {
   const { register, handleSubmit } = useForm();
@@ -52,7 +53,7 @@ const UserDashboardExperience = () => {
     // put data server
     await axios
       .put(
-        `https://safe-oasis-01130.herokuapp.com/user/user-profile/630a45710ca3407dd1462f3b`,
+        `${serverLink}/user/user-profile/630a45710ca3407dd1462f3b`,
         { experienceData },
         {
           headers: {

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import "./UserDashboard.css";
 import axios from "axios";
 
@@ -9,6 +9,7 @@ import SpinLoading from "../../Shared/SpinLoading/SpinLoading";
 import { useNavigate } from "react-router-dom";
 import { UserStore } from "../../../stateManagement/UserContext/UserContextStore";
 import { toast } from 'react-toastify';
+import { serverLink } from "../../../utilities/links";
 
 
 const UserDashboard = () => {
@@ -47,6 +48,7 @@ const UserDashboard = () => {
       .then((result) => {
         if (result?.success) {
           setCoverPhoto(result?.data?.url);
+          reset()
           setLoadingCover(false);
         }
       });
@@ -81,7 +83,7 @@ const UserDashboard = () => {
 
     await axios
       .put(
-        `https://safe-oasis-01130.herokuapp.com/user/user-profile/${currentUser._id}`, profileData
+        `${serverLink}/user/user-profile/${currentUser._id}`, profileData
       )
       .then((data) => {
         if (data?.data?.success) {

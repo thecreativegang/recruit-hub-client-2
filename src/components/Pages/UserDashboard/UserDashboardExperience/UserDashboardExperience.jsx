@@ -52,7 +52,7 @@ const UserDashboardExperience = () => {
     // put data server
     await axios
       .put(
-        `http://localhost:3001/user/user-profile/630a45710ca3407dd1462f3b`,
+        `https://safe-oasis-01130.herokuapp.com/user/user-profile/630a45710ca3407dd1462f3b`,
         { experienceData },
         {
           headers: {

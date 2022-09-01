@@ -18,7 +18,7 @@ const PostResource = () => {
 
   const onSubmit = async (data, e) => {
     await axios
-      .post(`http://localhost:3001/resource/post`, data, {
+      .post(`https://safe-oasis-01130.herokuapp.com/resource/post`, data, {
         headers: {
           authorization: `Bearer ${localStorage.getItem('accessToken')}`,
         },

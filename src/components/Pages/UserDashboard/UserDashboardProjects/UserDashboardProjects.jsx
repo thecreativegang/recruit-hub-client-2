@@ -61,7 +61,7 @@ const UserDashboardProjects = () => {
     // put data server
     await axios
       .put(
-        `http://localhost:3001/user/user-profile/${currentUser._id}`, projectsData ,
+        `https://safe-oasis-01130.herokuapp.com/user/user-profile/${currentUser._id}`, projectsData ,
       )
       .then((data) => {
         if (data?.data?.success) {

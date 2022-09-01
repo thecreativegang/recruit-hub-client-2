@@ -24,7 +24,7 @@ const FreeResource = () => {
 
 
   // get search resource reasult
-  // http://localhost:3001/resource/search?search=c
+  // https://safe-oasis-01130.herokuapp.com/resource/search?search=c
 
   const handelSearch = () => {
     console.log(search)

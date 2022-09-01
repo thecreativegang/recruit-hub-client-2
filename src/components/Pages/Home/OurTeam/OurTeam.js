@@ -99,7 +99,11 @@ const OurTeam = () => {
         {
           teamData.map(team => <SwiperSlide key={team.id} className='p-4 bg-white dark:bg-[#182133]  shadow-lg'>
             <div className='bg-red h-full'>
-              <img src={team?.image} alt="images" />
+
+              <img src={team?.image} alt='images' />
+
+              
+
               <h1 className='text-[#1C2880] dark:text-[#38BDF8] font-semibold mt-2'>{team?.name}</h1>
               <h1 className='dark:text-[#E2E8F0]'>{team?.role}</h1>
 

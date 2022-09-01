@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { serverLink } from '../utilities/links';
 
 const DeveloperStore = () => {
 
@@ -10,7 +11,7 @@ const DeveloperStore = () => {
 
     // Get developer information form developer api
     useEffect(() => {
-        fetch("https://safe-oasis-01130.herokuapp.com/user/developer/", {
+        fetch(`${serverLink}/user/developer/`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`,
             }

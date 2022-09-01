@@ -63,7 +63,7 @@ const UserStoreProvider = ({ children }) => {
         fetchAllUser();
     }, [])
 
-    // fetch all admin data
+    // fetch all admin DATA
     const fetchAdmin = async () => {
         await axios.get(`${serverLink}/user/admin`, {
             headers: {

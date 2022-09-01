@@ -81,7 +81,7 @@ const UserDashboard = () => {
 
     await axios
       .put(
-        `http://localhost:3001/user/user-profile/${currentUser._id}`, profileData
+        `https://safe-oasis-01130.herokuapp.com/user/user-profile/${currentUser._id}`, profileData
       )
       .then((data) => {
         if (data?.data?.success) {
@@ -93,11 +93,11 @@ const UserDashboard = () => {
 
   return (
     <>
-      <section className=" bg-white py-8 relative">
+      <section className=" bg-[#ffff] dark:bg-[#0F172A]  dark:text-[#8C9BB6] py-8 relative">
         <div className="pb-1">
           {/* User Hero section  */}
           <section className="container pb-5">
-            <h3 className="text-3xl font-semibold text-center text-[#0b1120] mb-8">
+            <h3 className="dark:text-[#38BDF8] text-[#3878DF] text-3xl font-semibold text-center  mb-8">
               Setup your Profile
             </h3>
             {/* user cover photo and profile photo  */}
@@ -107,7 +107,7 @@ const UserDashboard = () => {
             >
               <div className="w-full mb-[6rem]">
                 <div className="w-full h-[15rem] md:h-[20rem] relative">
-                  <div className="w-full h-full object-cover object-center border-4 border-gray-300 rounded-sm flex flex-col justify-center items-center">
+                  <div className="w-full h-full object-cover object-center border-4 border-gray-300 dark:border-gray-100 rounded-sm flex flex-col justify-center items-center">
                     <BiImageAdd className="text-[7rem]" />
                     <p className="text-2xl font-medium">Cover Photo</p>
 
@@ -195,7 +195,7 @@ const UserDashboard = () => {
                   {/* Submit button  */}
                   <button
                     type="submit"
-                    className={`px-3 py-1 btn text-lg text-white font-medium rounded-lg outline-none duration-150 ease-in-out mt-3 `}
+                    className={`btn-primary-blue2 dark:bg-[#0284C7] rounded text-white duration-150 ease-in-out mt-3`}
                   >
                     Next
                   </button>

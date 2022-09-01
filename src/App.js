@@ -48,6 +48,7 @@ import UserDashboardExperience from './components/Pages/UserDashboard/UserDashbo
 import UserDashboardCourses from './components/Pages/UserDashboard/UserDashboardCourses/UserDashboardCourses';
 import UserDashboardProjects from './components/Pages/UserDashboard/UserDashboardProjects/UserDashboardProjects';
 import Contact from './components/Pages/Contact/Contact';
+import UserDashboardMain from './components/Pages/UserDashboard/UserDashboardMain/UserDashboardMain';
 
 
 function App() {
@@ -119,14 +120,16 @@ function App() {
 
 
           {/* user dashboard route  */}
-          <Route path="/user-dashboard" element={<UserDashboard />} />
-          <Route path="/user-dashboard-about" element={<UserDashboardAbout />} />
-          <Route path="/user-dashboard-skills" element={<UserDashboardSkills />} />
-          <Route path="/user-dashboard-featured" element={<UserDashboardFeatured />} />
-          <Route path="/user-dashboard-experience" element={<UserDashboardExperience />} />
-          <Route path="/user-dashboard-courses" element={<UserDashboardCourses />} />
-          <Route path="/user-dashboard-projects" element={<UserDashboardProjects />} />
-
+          <Route path="/user-dashboard" element={<UserDashboardMain />}>
+            <Route index element={<UserDashboard />} />
+            <Route path="profile" element={<UserDashboard />} />
+            <Route path="about" element={<UserDashboardAbout />} />
+            <Route path="skills" element={<UserDashboardSkills />} />
+            <Route path="featured" element={<UserDashboardFeatured />} />
+            <Route path="experience" element={<UserDashboardExperience />} />
+            <Route path="courses" element={<UserDashboardCourses />} />
+            <Route path="projects" element={<UserDashboardProjects />} />
+          </Route>
         </Routes>
 
         <Footer></Footer>

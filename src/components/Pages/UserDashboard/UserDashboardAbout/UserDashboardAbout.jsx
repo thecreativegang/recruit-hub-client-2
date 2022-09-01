@@ -3,8 +3,7 @@ import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { UserStore } from "../../../../stateManagement/UserContext/UserContextStore";
-import { toast } from 'react-toastify';
-
+import { toast } from "react-toastify";
 
 const UserDashboardAbout = () => {
   const navigate = useNavigate();
@@ -14,7 +13,6 @@ const UserDashboardAbout = () => {
   const { register, handleSubmit } = useForm();
 
   const onSubmit = async (formData) => {
-
     const userAboutData = {
       state: formData?.state,
       country: formData?.country,
@@ -32,15 +30,15 @@ const UserDashboardAbout = () => {
     // put data server
     await axios
       .put(
-        `http://localhost:3001/user/user-profile/${currentUser._id}`, userAboutData
+        `https://safe-oasis-01130.herokuapp.com/user/user-profile/${currentUser._id}`,
+        userAboutData
       )
       .then((data) => {
         if (data?.data?.success) {
-          toast.success('Update data successfully');
+          toast.success("Update data successfully");
           navigate("/user-dashboard-skills");
         }
       });
-
   };
 
   return (

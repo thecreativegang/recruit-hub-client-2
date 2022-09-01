@@ -18,7 +18,7 @@ const PostBlogs = () => {
 
   const onSubmit = async (data, e) => {
     await axios
-      .post(`http://localhost:3001/blogs/post`, data, {
+      .post(`https://safe-oasis-01130.herokuapp.com/blogs/post`, data, {
         headers: {
           authorization: `Bearer ${localStorage.getItem('accessToken')}`,
         },

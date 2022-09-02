@@ -55,7 +55,7 @@ const UserDashboardCourses = () => {
     // put data server
     await axios
       .put(
-        `https://safe-oasis-01130.herokuapp.com/user/user-profile/${currentUser._id}`,
+        `http://localhost:3001/user/user-profile/${currentUser._id}`,
         coursesData
       )
       .then((data) => {

@@ -8,7 +8,6 @@ import { checkTokenExpired } from './../../utilities/checkTokenExpired';
 import { useNavigate } from 'react-router-dom';
 import { serverLink } from './../../utilities/links';
 import DeveloperStore from "../DeveloperStore";
-import Loading from '../../components/Shared/Loading';
 import ResourceStore from '../ResourceStore';
 const UserStore = createContext();
 

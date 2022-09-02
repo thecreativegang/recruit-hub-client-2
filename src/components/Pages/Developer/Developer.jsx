@@ -9,6 +9,7 @@ import { MdVerified } from "react-icons/md";
 const Developer = () => {
   const { developer } = useContext(UserStore);
   const [developerData, error, loading] = developer;
+  console.log(developerData);
 
   return (
     <div className="min-h-screen bg-[#F3F3F3] dark:bg-[#0b1120]">

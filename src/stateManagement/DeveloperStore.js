@@ -10,7 +10,7 @@ const DeveloperStore = () => {
 
     // Get developer information form developer api
     useEffect(() => {
-        fetch("https://safe-oasis-01130.herokuapp.com/user/developer/", {
+        fetch("http://localhost:3001/user/developer/", {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`,
             }

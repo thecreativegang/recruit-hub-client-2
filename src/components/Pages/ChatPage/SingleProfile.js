@@ -45,7 +45,7 @@ const SingleProfile = ({ chat, setCurrentChat }) => {
 
   return (
     <div for="my-modal-3" className=" ">
-      <div className="my-2 lg:flex justify-between rounded my-border bg-sky-50 hover:bg-sky-100">
+      <div className="my-2 flex justify-between rounded my-border bg-sky-50 hover:bg-sky-100">
         <div className="flex justify-start">
           <div className="avatar p-2">
             <div className="w-[50px] rounded-full">

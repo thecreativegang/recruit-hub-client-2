@@ -33,9 +33,8 @@ const Banner = () => {
                 Recruiter Hub
               </h1>
               <p className=" para-color dark:text-[#8C9BB6] text-[18px] mb-[45px] md:pr-[7%]  font-semibold">
-                Sit amet consectetur adipiscing elit sed do eiusmod tem
-                porincididunt ut labore et dolore magna aliqua. Quis psum
-                suspendisse ultrices gravida commodo viverra
+                Recruit Hub is a website where a recruiter or a developer can
+                collaborate to find their new way of their career.
               </p>
               <div>
                 <button
@@ -43,7 +42,7 @@ const Banner = () => {
                     localStorage.setItem('accountType', 'recruiter');
                     navigateRecruiter('/register/recruiter'); //
                   }}
-                  className=" btn-primary-blue dark:bg-[#0284C7] text-white "
+                  className="btn-primary-blue dark:bg-[#0284C7] text-white"
                 >
                   Start Hiring{' '}
                   <i className="fa-solid fa-angle-right ml-[6px]"></i>

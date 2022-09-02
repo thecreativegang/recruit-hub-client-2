@@ -323,7 +323,7 @@ const PostAJob = () => {
 
                 {/* Info about Recruiter */}
                 <h3 className="text-md border-b border-zinc-500 mt-10">
-                  Recruiter Information information
+                  Recruiter Information
                 </h3>
 
                 {/* Recruiter Name */}

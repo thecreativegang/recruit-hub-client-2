@@ -68,9 +68,9 @@ const SkillAssessment = () => {
 
   return (
     <>
-      {currentQuestion > questions.length - 1 && (
+      {currentQuestion < questions.length - 1 && (
         <div className="flex flex-col items-center mt-3 md:mt-7 text-black">
-          <div className="dark:text-white">
+          <div className="text-black dark:text-white">
             Question number: {currentQuestion + 1} / {questions.length}
           </div>
           <progress

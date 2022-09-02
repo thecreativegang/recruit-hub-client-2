@@ -1,17 +1,17 @@
-import React, { useContext, useRef, useState } from "react";
-import "./module.FreeResource.css";
-import { AiOutlineSearch } from "react-icons/ai";
-import ReactPlayer from "react-player";
-import axios from "axios";
-import { serverLink } from "../../../utilities/links";
-import { useNavigate } from "react-router-dom";
-import checkTokenExpired from "../../../utilities/checkTokenExpired";
-import { UserStore } from "../../../stateManagement/UserContext/UserContextStore";
-import Loading from "../../Shared/Loading";
+import React, { useContext, useRef, useState } from 'react';
+import './module.FreeResource.css';
+import { AiOutlineSearch } from 'react-icons/ai';
+import ReactPlayer from 'react-player';
+import axios from 'axios';
+import { serverLink } from '../../../utilities/links';
+import { useNavigate } from 'react-router-dom';
+import checkTokenExpired from '../../../utilities/checkTokenExpired';
+import { UserStore } from '../../../stateManagement/UserContext/UserContextStore';
+import Loading from '../../Shared/Loading';
 // import GetThumbnail from "../../../hooks/GetThumbnail";
 
 const FreeResource = () => {
-  const [playVideo, setPlayVideo] = useState("");
+  const [playVideo, setPlayVideo] = useState('');
   const [search, setSearch] = useState([]);
   const [searchResult, setSearchResult] = useState([]);
 
@@ -30,7 +30,7 @@ const FreeResource = () => {
       const data = await axios
         .get(`${serverLink}/resource/search?search=${search}`, {
           headers: {
-            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+            authorization: `Bearer ${localStorage.getItem('accessToken')}`,
           },
         })
         .then(function (res) {
@@ -38,12 +38,12 @@ const FreeResource = () => {
           else return <Loading></Loading>;
         })
         .catch(function (err) {
-          checkTokenExpired(err) === true && navigate("/login");
+          checkTokenExpired(err) === true && navigate('/login');
         });
     };
 
     fetchChats();
-    setSearchResult("");
+    setSearchResult('');
   };
 
   // get YouTube Video Thumbnail function Start
@@ -97,7 +97,7 @@ const FreeResource = () => {
                     setSearch(event.target.value);
                   }}
                   onKeyPress={(event) => {
-                    event.key === "Enter" && handelSearch();
+                    event.key === 'Enter' && handelSearch();
                   }}
                   type="text"
                   className=" w-full px-3 py-2 bg-transparent border-none outline-none text-xl font-[400] text-gray-700 tracking-wide"
@@ -114,7 +114,7 @@ const FreeResource = () => {
               {searchResult ? (
                 searchResult.map((singleData) => getThumbnail(singleData))
               ) : (
-                <Loading height={"height:100px"}></Loading>
+                <Loading height={'height:100px'}></Loading>
               )}
             </div>
           </div>
@@ -125,7 +125,7 @@ const FreeResource = () => {
       <section>
         <div className="container">
           <h2 className="text-center text-gray-700 open-sans font-[600] text-4xl capitalize py-10">
-            programming most complicated topic video
+            The videos which may help you grow your skills
           </h2>
 
           {/* filer button */}

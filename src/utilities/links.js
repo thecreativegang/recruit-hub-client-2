@@ -1,1 +1,1 @@
-export const serverLink = `http://localhost:3001`
+export const serverLink = `http://localhost:3001`;

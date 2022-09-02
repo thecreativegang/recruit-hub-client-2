@@ -81,19 +81,17 @@ const Register = () => {
     };
   }
   const token = useToken(currentUser);
-  // useEffect(() => {
-  //     if (token) {
-
-  //         // navigate('/');
-  //         //Uncomment Below Section to send email on new user creation
-
-  //         // <SendEmail
-  //         //     user={primaryUser}
-  //         //     subject={"Account Registration"}
-  //         //     text={"You account has been successfully registered in Nissan Parts. Thank you."}
-  //         // ></SendEmail>
-  //     }
-  // }, [token, navigate])
+  useEffect(() => {
+    if (token) {
+      navigate('/');
+      //         //Uncomment Below Section to send email on new user creation
+      //         // <SendEmail
+      //         //     user={primaryUser}
+      //         //     subject={"Account Registration"}
+      //         //     text={"You account has been successfully registered in Nissan Parts. Thank you."}
+      //         // ></SendEmail>
+    }
+  }, [token, navigate]);
 
   if (error) {
     console.log(error);
@@ -104,17 +102,17 @@ const Register = () => {
   const handleUserNameValidation = async (username) => {
     username !== ''
       ? await axios
-        .post(`${serverLink}/user/check-username/${username}`)
-        .then((data) => {
-          if (data.data.isAvailable) {
-            setUsernameAvailable(true);
-          } else {
-            setUsernameAvailable(false);
-          }
-        })
-        .then(function (error) {
-          toast.error(error?.message);
-        })
+          .post(`${serverLink}/user/check-username/${username}`)
+          .then((data) => {
+            if (data.data.isAvailable) {
+              setUsernameAvailable(true);
+            } else {
+              setUsernameAvailable(false);
+            }
+          })
+          .then(function (error) {
+            toast.error(error?.message);
+          })
       : setUsernameAvailable(null);
   };
   const handleGoogleSignIn = () => {
@@ -283,7 +281,7 @@ const Register = () => {
                       <PasswordStrengthBar password={passwordBar} />
 
                       <label className="label">
-                        {errors.password?.type == 'pattern' && (
+                        {errors.password?.type === 'pattern' && (
                           <span className="label-text-alt text-red-500 text-lg">
                             Password must be atleast 6 characters containing
                             both capital and small letter, a Number, 1 special

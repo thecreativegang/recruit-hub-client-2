@@ -1,15 +1,15 @@
-import axios from "axios";
-import React, { useContext, useState } from "react";
-import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
-import SpinLoading from "../../../Shared/SpinLoading/SpinLoading";
-import { UserStore } from "../../../../stateManagement/UserContext/UserContextStore";
-import { toast } from "react-toastify";
+import axios from 'axios';
+import React, { useContext, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
+import SpinLoading from '../../../Shared/SpinLoading/SpinLoading';
+import { UserStore } from '../../../../stateManagement/UserContext/UserContextStore';
+import { toast } from 'react-toastify';
 
 const UserDashboardCourses = () => {
   const { register, handleSubmit, reset } = useForm();
 
-  const [coursesPhoto, setCoursesPhoto] = useState("");
+  const [coursesPhoto, setCoursesPhoto] = useState('');
   const [loading, setLoading] = useState(false);
   const userStore = useContext(UserStore);
   const currentUser = userStore.user;
@@ -17,17 +17,17 @@ const UserDashboardCourses = () => {
 
   //image bb post url
   const imageBbUrl =
-    "https://api.imgbb.com/1/upload?key=46aaf19b4e516e94653488331a5bff32";
+    'https://api.imgbb.com/1/upload?key=46aaf19b4e516e94653488331a5bff32';
 
   // upload featured photo image bb
   const upLodeCoursesPhoto = (data) => {
     setLoading(true);
     const coverImg = data[0];
     const coverFormData = new FormData();
-    coverFormData.append("image", coverImg);
+    coverFormData.append('image', coverImg);
 
     fetch(imageBbUrl, {
-      method: "POST",
+      method: 'POST',
       body: coverFormData,
     })
       .then((res) => res.json())
@@ -55,14 +55,14 @@ const UserDashboardCourses = () => {
     // put data server
     await axios
       .put(
-        `https://safe-oasis-01130.herokuapp.com/user/user-profile/${currentUser._id}`,
+        `http://localhost:3001/user/user-profile/${currentUser._id}`,
         coursesData
       )
       .then((data) => {
         if (data?.data?.success) {
-          toast.success("Update data successfully");
+          toast.success('Update data successfully');
           reset();
-          navigate("/user-dashboard-courses");
+          navigate('/user-dashboard-courses');
         }
       });
   };
@@ -70,7 +70,7 @@ const UserDashboardCourses = () => {
     <div className="min-h-screen ">
       <div className="max-w-[32rem] mx-auto bg-[#edebeb] px-6 py-4 rounded-md mt-12">
         <h2 className="text-xl font-semibold text-[#333] py-3 text-center">
-          Add Courses
+          Add Course
         </h2>
         <div>
           <form onSubmit={handleSubmit(onSubmit)}>
@@ -102,7 +102,7 @@ const UserDashboardCourses = () => {
                   Courses Title<span className="text-red-600 ml-[1px]">*</span>
                 </label>
                 <input
-                  {...register("courses_title")}
+                  {...register('courses_title')}
                   type="text"
                   id="courses_title"
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
@@ -115,11 +115,11 @@ const UserDashboardCourses = () => {
                   for="courses_description"
                   class="block mb-2 text-base font-medium text-gray-900 ml-1"
                 >
-                  Courses Description
+                  Course Description
                   <span className="text-red-600 ml-[1px]">*</span>
                 </label>
                 <input
-                  {...register("courses_description")}
+                  {...register('courses_description')}
                   type="text"
                   id="courses_description"
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"

@@ -110,7 +110,7 @@ const Login = () => {
                   Here
                 </h1>
                 <p className="text-[#334155] dark:text-[#8C9BB6] font-semibold text-center  text-[1.25rem]">
-                  Dont share your login information
+                  Don't share your login credentials with others
                 </p>
                 <div className="form-control mt-4">
                   <label className="label">

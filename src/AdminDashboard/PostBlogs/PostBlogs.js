@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 
 import { UserStore } from '../../stateManagement/UserContext/UserContextStore';
+import { serverLink } from '../../utilities/links';
 
 const PostBlogs = () => {
   const userStore = useContext(UserStore);
@@ -18,7 +19,7 @@ const PostBlogs = () => {
 
   const onSubmit = async (data, e) => {
     await axios
-      .post(`https://safe-oasis-01130.herokuapp.com/blogs/post`, data, {
+      .post(`${serverLink}/blogs/post`, data, {
         headers: {
           authorization: `Bearer ${localStorage.getItem('accessToken')}`,
         },
@@ -39,7 +40,7 @@ const PostBlogs = () => {
       <div className="min-h-screen bg-sky-100">
         <div className="lg:w-[40%]  mx-auto flex-col lg:flex-row-reverse">
           <div className="text-center py-3 lg:py-6">
-            <h1 className="text-5xl font-bold">Post a blogs!</h1>
+            <h1 className="text-5xl font-bold">Post a blog!</h1>
           </div>
           <div className="card w-[100%] shadow-2xl bg-base-100">
             <div className="card-body w-[100%]">
@@ -62,7 +63,7 @@ const PostBlogs = () => {
 
                 <div className="form-control">
                   <label className="label">
-                    <span className="label-text font-bold">Blogs Title</span>
+                    <span className="label-text font-bold">Blog Title</span>
                   </label>
                   <input
                     type="text"
@@ -88,7 +89,7 @@ const PostBlogs = () => {
 
                   {errors.subject && (
                     <span className="text-red-500">
-                      Please provide subject, its required
+                      Please provide subject, it is required
                     </span>
                   )}
                 </div>
@@ -98,7 +99,7 @@ const PostBlogs = () => {
                     type="submit"
                     className="btn btn-primary btn-sky-500 "
                   >
-                    upload
+                    Upload
                   </button>
                 </div>
               </form>

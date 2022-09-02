@@ -15,7 +15,7 @@ import Lottie from 'lottie-web';
 import loginLottie from './login2.json';
 // import { AiFillEye } from 'react-icons/ai'
 import './Login.css';
-// import loginLottie from './login-lottie.json'
+
 
 const Login = () => {
   // for lottie

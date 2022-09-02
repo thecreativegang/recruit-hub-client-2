@@ -87,25 +87,6 @@ const AccountTypePage = ({ type }) => {
                     </div>
                 </div>
             </div>
-            {type !== 'googleSignIn' ? (
-                <div className="mt-10">
-                    <button
-                        onClick={() => handleNavigateLogin()}
-                        className=" btn w-full text-white"
-                    >
-                        Next <FontAwesomeIcon icon={faArrowRight} />
-                    </button>
-                </div>
-            ) : (
-                <div className="mt-10">
-                    <button
-                        onClick={() => handleNavigateToRegister()}
-                        className=" btn w-full text-white"
-                    >
-                        Next <FontAwesomeIcon icon={faArrowRight} />
-                    </button>
-                </div>
-            )}
         </div>
 
     );

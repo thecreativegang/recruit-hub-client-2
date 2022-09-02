@@ -49,7 +49,7 @@ const Banner = () => {
                 </button>
 
                 <button
-                  oonClick={() => {
+                  onClick={() => {
                     localStorage.setItem('accountType', 'developer');
                     navigateDeveloper('/register/developer');
                   }}

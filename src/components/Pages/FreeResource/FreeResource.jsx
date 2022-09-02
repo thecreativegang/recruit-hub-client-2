@@ -22,7 +22,7 @@ const FreeResource = () => {
   const videoData = userStore.videoData;
 
   // get search resource reasult
-  // https://safe-oasis-01130.herokuapp.com/resource/search?search=c
+
 
   const handelSearch = () => {
     console.log(search);

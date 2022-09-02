@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { UserStore } from "../../../../stateManagement/UserContext/UserContextStore";
 import { toast } from "react-toastify";
+import { serverLink } from "../../../../utilities/links";
 
 const UserDashboardAbout = () => {
   const navigate = useNavigate();
@@ -30,7 +31,7 @@ const UserDashboardAbout = () => {
     // put data server
     await axios
       .put(
-        `https://safe-oasis-01130.herokuapp.com/user/user-profile/${currentUser._id}`,
+        `${serverLink}/user/user-profile/${currentUser._id}`,
         userAboutData
       )
       .then((data) => {

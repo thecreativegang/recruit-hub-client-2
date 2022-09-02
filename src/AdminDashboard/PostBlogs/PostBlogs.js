@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 
 import { UserStore } from '../../stateManagement/UserContext/UserContextStore';
+import { serverLink } from '../../utilities/links';
 
 const PostBlogs = () => {
   const userStore = useContext(UserStore);
@@ -18,7 +19,7 @@ const PostBlogs = () => {
 
   const onSubmit = async (data, e) => {
     await axios
-      .post(`https://safe-oasis-01130.herokuapp.com/blogs/post`, data, {
+      .post(`${serverLink}/blogs/post`, data, {
         headers: {
           authorization: `Bearer ${localStorage.getItem('accessToken')}`,
         },

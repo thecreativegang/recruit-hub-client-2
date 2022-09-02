@@ -120,9 +120,9 @@ function App() {
             <Route path="courses" element={<UserDashboardCourses />} />
             <Route path="projects" element={<UserDashboardProjects />} />
           </Route>
+          <Route path="*" element={<NotFound />}></Route>
         </Routes>
 
-        <Route path="*" element={<NotFound />}></Route>
         <Footer></Footer>
         <ToastContainer autoClose={1500} />
         <ReactTooltip />

@@ -154,8 +154,8 @@ const ChatContainer = ({ currentChat, currentUser, socket }) => {
           </h2>
 
           <div
-            className="overflow-hidden mx-auto"
-            style={{ height: 400, width: 600 }}
+            className="overflow-hidden mx-auto lg:h-[400px] lg:w-[600px] h-[200px] w-[300px]"
+            // style={{ height: 400, width: 600 }}
             ref={anime}
           ></div>
         </>

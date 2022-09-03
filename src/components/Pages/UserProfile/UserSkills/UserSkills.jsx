@@ -58,12 +58,12 @@ const UserSkills = () => {
               {parseInt(skill?.skillTest) >= 80 ? (
                 <p className="text-base font-medium text-green-600 flex justify-start items-center pt-2">
                   <BsCheckCircle className="mr-2" />
-                  VERIFY BY RECRUIT HUB
+                  VERIFIED BY RECRUIT HUB
                 </p>
               ) : (
                 <>
                   <p className="text-base font-medium text-yellow-500 flex justify-start items-center pt-2 mb-3">
-                    <BiMessageSquareError className="mr-2" /> NO VERIFY
+                    <BiMessageSquareError className="mr-2" /> NO VERIFIED YET
                   </p>
                   <Link
                     to="#"

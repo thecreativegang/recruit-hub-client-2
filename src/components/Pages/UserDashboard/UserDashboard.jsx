@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import "./UserDashboard.css";
 import axios from "axios";
 
@@ -43,6 +43,7 @@ const UserDashboard = () => {
       .then((result) => {
         if (result?.success) {
           setCoverPhoto(result?.data?.url);
+          reset()
           setLoadingCover(false);
         }
       });

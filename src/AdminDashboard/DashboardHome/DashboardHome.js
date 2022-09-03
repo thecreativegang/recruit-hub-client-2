@@ -258,7 +258,7 @@ const DashboardHome = () => {
           <h1 className="text-[#b1b1b5] font-semibold">Meeting Reports</h1>
           <p className="admin-normal-color my-4">
             The total number of sessions within the date range. It is the period
-            time a user is actively engaged with your website, page or app, etc
+            time a user is actively engaged with your website
           </p>
           <div className="mt-8 w-[100%] h-[20rem]">
             <ResponsiveContainer width="100%" height="100%">

@@ -6,6 +6,8 @@ import { ImLocation2 } from 'react-icons/im'
 import { MdEmail } from 'react-icons/md'
 import { FaPhoneAlt } from 'react-icons/fa'
 const Contact = () => {
+
+
     const form = useRef();
     const handelSubmitFrom = (e) => {
         e.preventDefault();
@@ -20,7 +22,7 @@ const Contact = () => {
             });
     }
 
-
+    //lottie
     const anime = useRef(null);
     useEffect(() => {
         Lottie.loadAnimation({

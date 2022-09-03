@@ -60,7 +60,7 @@ const UserDashboardFeatured = () => {
         if (data?.data?.success) {
           toast.success("Update data successfully");
           reset();
-          navigate("/user-dashboard/projects");
+          navigate("/user-dashboard/experience");
         }
       });
   };

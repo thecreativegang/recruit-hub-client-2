@@ -1,4 +1,3 @@
-
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import { ToastContainer } from 'react-toastify';
@@ -23,6 +22,7 @@ import ProtectedRout from './components/Shared/ProtectedRout';
 import ForgetPassword from './components/Pages/Login/ForgetPassword';
 import UserProfile from './components/Pages/UserProfile/UserProfile';
 import UserDashboard from './components/Pages/UserDashboard/UserDashboard';
+
 import PostResource from './AdminDashboard/PostResource/PostResource';
 import FreeResource from './components/Pages/FreeResource/FreeResource';
 import Developer from './components/Pages/Developer/Developer';
@@ -46,12 +46,9 @@ import UserDashboardProjects from './components/Pages/UserDashboard/UserDashboar
 import Contact from './components/Pages/Contact/Contact';
 import UserDashboardMain from './components/Pages/UserDashboard/UserDashboardMain/UserDashboardMain';
 
-
 function App() {
-
-  // console.log('see current location', url)
   return (
-    <div className='transition-all duration-500 bg-[#F3F3F3] dark:bg-[#0b1120]'>
+    <div className="transition-all duration-500 bg-[#F3F3F3] dark:bg-[#0b1120]">
       <UserStoreProvider>
         <Navbar />
         <Routes>
@@ -89,15 +86,13 @@ function App() {
 
           {/* admin dashboard page  */}
           <Route path="/admin" element={<MainAdmin />}>
-            <Route index element={<DashboardHome></DashboardHome>}></Route>
+            <Route index element={<DashboardHome />}></Route>
             <Route path="notifications" element={<Notifications />}></Route>
             <Route path="findJob" element={<FindJob />}></Route>
             <Route path="postResource" element={<PostResource />}></Route>
             <Route path="postBlogs" element={<PostBlogs />}></Route>
             <Route path="admins" element={<AdminList />}></Route>
           </Route>
-
-
 
           {/* user profile route */}
 
@@ -123,6 +118,7 @@ function App() {
             <Route path="courses" element={<UserDashboardCourses />} />
             <Route path="projects" element={<UserDashboardProjects />} />
           </Route>
+          <Route path="*" element={<NotFound />}></Route>
         </Routes>
 
         <Footer></Footer>

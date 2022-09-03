@@ -158,17 +158,6 @@ const UserProfile = () => {
                     Projects
                   </li>
                 </NavLink>
-
-                <NavLink
-                  to="/user-profile/more"
-                  className={({ isActive }) =>
-                    isActive && "border-b-2 border-blue-600"
-                  }
-                >
-                  <li className="text-base font-semibold px-3 py-1 rounded hover:bg-[#e8e8e8] duration-200 ease-in-out cursor-pointer">
-                    More
-                  </li>
-                </NavLink>
               </ul>
             </div>
           </div>

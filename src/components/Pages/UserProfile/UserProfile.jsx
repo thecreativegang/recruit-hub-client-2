@@ -1,18 +1,43 @@
-import React, { useContext } from "react";
+import axios from "axios";
+import React, { useEffect } from "react";
 import { useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { Outlet, NavLink, Link } from "react-router-dom";
-import { UserStore } from "../../../stateManagement/UserContext/UserContextStore";
+import auth from "../../../firebase.init";
+import { serverLink } from "../../../utilities/links";
+import SpinLoading from "../../Shared/SpinLoading/SpinLoading";
 import "./UserProfile.css";
 
 const UserProfile = () => {
-  const [userInfo, serUserInfo] = useState();
+  const [userInfo, serUserInfo] = useState({});
 
-  const userStore = useContext(UserStore);
-  serUserInfo(userStore.user);
+  const [loading, serLoading] = useState(true);
 
-  return (
-    <>
-      <section className=" bg-white">
+  const [user] = useAuthState(auth);
+  const email = user?.email;
+
+  useEffect(() => {
+    axios
+      .get(`${serverLink}/user/email/${email}`, {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      })
+      .then((res) => {
+        if (res?.data) {
+          serUserInfo(res?.data);
+          serLoading(false);
+        }
+      });
+  }, [email]);
+
+  console.log(userInfo);
+
+  return loading ? (
+    <SpinLoading />
+  ) : (
+    <section>
+      <div className=" bg-white">
         <div className="user-profile-shadow pb-1">
           {/* User Hero section  */}
           <section className="container border-b-2 border-gray-200 pb-5">
@@ -21,13 +46,13 @@ const UserProfile = () => {
               <div className="w-full h-[15rem] md:h-[20rem] relative">
                 <img
                   className="w-full h-full object-cover object-center"
-                  src={userInfo?.CoverPhoto}
+                  src={userInfo?.coverPhoto}
                   alt="User-cover-images"
                 />
                 <div className="w-[10rem] h-[10rem] absolute left-[3rem] bottom-0 translate-y-2/4">
                   <img
                     className="w-full h-full object-contain object-center overflow-hidden rounded-full border-[.3rem] border-gray-200"
-                    src={userInfo?.ProfilePhoto}
+                    src={userInfo?.profilePhoto}
                     alt="User-profile-images"
                   />
                 </div>
@@ -42,7 +67,7 @@ const UserProfile = () => {
                 </h2>
 
                 <p className="w-full text-base md:text-lg font-normal mt-3 ">
-                  {userInfo?.Bio}
+                  {userInfo?.bio}
                 </p>
                 <p className="w-full text-base md:text-lg font-normal text-gray-500 mt-3 capitalize ">
                   {userInfo?.state + ", " + userInfo?.country}
@@ -118,7 +143,6 @@ const UserProfile = () => {
                     isActive && "border-b-2 border-blue-600"
                   }
                 >
-                  {" "}
                   <li className="text-base font-semibold px-3 py-1 rounded hover:bg-[#e8e8e8] duration-200 ease-in-out cursor-pointer">
                     Courses
                   </li>
@@ -130,7 +154,6 @@ const UserProfile = () => {
                     isActive && "border-b-2 border-blue-600"
                   }
                 >
-                  {" "}
                   <li className="text-base font-semibold px-3 py-1 rounded hover:bg-[#e8e8e8] duration-200 ease-in-out cursor-pointer">
                     Projects
                   </li>
@@ -150,7 +173,7 @@ const UserProfile = () => {
             </div>
           </div>
         </div>
-      </section>
+      </div>
       <section className="bg-[#F0F2F5] pt-6">
         <div className="container">
           <div className="bg-white rounded-lg">
@@ -158,7 +181,7 @@ const UserProfile = () => {
           </div>
         </div>
       </section>
-    </>
+    </section>
   );
 };
 

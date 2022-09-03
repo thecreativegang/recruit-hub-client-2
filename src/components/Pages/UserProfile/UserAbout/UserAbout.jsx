@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 //react icons link
 import { AiFillHome } from "react-icons/ai";
@@ -11,69 +11,40 @@ import {
   FaFacebook,
   FaInstagram,
 } from "react-icons/fa";
+import auth from "../../../../firebase.init";
+import { useAuthState } from "react-firebase-hooks/auth";
+import axios from "axios";
+import { serverLink } from "../../../../utilities/links";
+import SpinLoading from "../../../Shared/SpinLoading/SpinLoading";
 
 const About = () => {
-  const userInfo = {
-    CoverPhoto:
-      "https://i.pinimg.com/564x/30/5c/5a/305c5a457807ba421ed67495c93198d3.jpg",
-    ProfilePhoto:
-      "https://wac-cdn.atlassian.com/dam/jcr:ba03a215-2f45-40f5-8540-b2015223c918/Max-R_Headshot%20(1).jpg",
-    name: "Tanvir Ahmed",
-    userName: "tkljfld.232",
-    developerType: "Front-End Web Developer",
-    Bio: "Front-End Web Developer | Interested in React Js. and React Native | Passionate about Web Development | Dreaming to be a Professional Full Stack Web Developer",
-    state: "barisal",
-    country: "bangladesh",
-    contactsInfo: { email: "", phone: "" },
-    socialLink: { github: "", linkdin: "", facebook: "", instagram: "" },
-    skills: [
-      { skillName: "", skillTest: 100 },
-      { skillName: "", skillTest: "" },
-      { skillName: "", skillTest: "" },
-    ],
-    featured: [
-      { featuredPhoto: "", featuredTitle: "", featuredDescription: "" },
-      { featuredPhoto: "", featuredTitle: "", featuredDescription: "" },
-      { featuredPhoto: "", featuredTitle: "", featuredDescription: "" },
-    ],
-    experince: [
-      {
-        experinceTitle: "",
-        jobType: "full time",
-        duration: "",
-        skills: ["", "", "", ""],
-      },
-    ],
-    courses: [
-      { coursesPhoto: "", coursesTitle: "", coursesDescription: "" },
-      { coursesPhoto: "", coursesTitle: "", coursesDescription: "" },
-      { coursesPhoto: "", coursesTitle: "", coursesDescription: "" },
-    ],
-    projects: [
-      {
-        projectsPhoto: "",
-        projectsTitle: "",
-        projectsDescription: "",
-        projectsLink: { githubServer: "", githubClint: "", liveSite: "" },
-      },
+  const [userInfo, serUserInfo] = useState({});
 
-      {
-        projectsPhoto: "",
-        projectsTitle: "",
-        projectsDescription: "",
-        projectsLink: { githubServer: "", githubClint: "", liveSite: "" },
-      },
+  const [loading, serLoading] = useState(true);
 
-      {
-        projectsPhoto: "",
-        projectsTitle: "",
-        projectsDescription: "",
-        projectsLink: { githubServer: "", githubClint: "", liveSite: "" },
-      },
-    ],
-  };
+  const [user] = useAuthState(auth);
+  const email = user?.email;
 
-  return (
+  useEffect(() => {
+    axios
+      .get(`${serverLink}/user/email/${email}`, {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      })
+      .then((res) => {
+        if (res?.data) {
+          serUserInfo(res?.data);
+          serLoading(false);
+        }
+      });
+  }, [email]);
+
+  console.log(userInfo);
+
+  return loading ? (
+    <SpinLoading />
+  ) : (
     <section className="">
       {/* Basic info  */}
       <h3 className="user-title">Basic Information</h3>
@@ -81,7 +52,7 @@ const About = () => {
         <p className=" capitalize text-lg text-gray-500 font-medium mb-3 flex justify-start items-center cursor-pointer">
           <AiFillHome className="mr-3" />
           Live In
-          <span className="font-semibold text-gray-800 capitalize">
+          <span className="font-semibold text-gray-800 capitalize ml-1">
             {userInfo?.state}
           </span>
         </p>
@@ -93,7 +64,7 @@ const About = () => {
         </p>
         <p className=" text-lg text-gray-500 font-medium mb-3 flex justify-start items-center hover:text-blue-600 duration-100 ease-in-out cursor-pointer lowercase">
           <FaEnvelope className="mr-3" />
-          {userInfo?.contactsInfo?.email}
+          {userInfo?.email}
         </p>
         <p className=" capitalize text-lg text-gray-500 font-medium mb-3 flex justify-start items-center cursor-pointer">
           <FaPhoneAlt className="mr-3" />

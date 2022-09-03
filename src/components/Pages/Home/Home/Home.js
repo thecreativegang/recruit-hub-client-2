@@ -6,11 +6,13 @@ import Banner from './../Banner/Banner';
 import Agency from '../Agency/Agency';
 import OurTeam from '../OurTeam/OurTeam';
 import Contact from '../../Contact/Contact';
+import GetUserData from '../../UserProfile/GetUserData';
 
 
 
 
 const Home = () => {
+
     return (
         <div>
             <Banner />

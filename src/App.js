@@ -23,8 +23,6 @@ import ProtectedRout from './components/Shared/ProtectedRout';
 import ForgetPassword from './components/Pages/Login/ForgetPassword';
 import UserProfile from './components/Pages/UserProfile/UserProfile';
 import UserDashboard from './components/Pages/UserDashboard/UserDashboard';
-
-
 import PostResource from './AdminDashboard/PostResource/PostResource';
 import FreeResource from './components/Pages/FreeResource/FreeResource';
 import Developer from './components/Pages/Developer/Developer';
@@ -37,10 +35,8 @@ import Projects from './components/Pages/UserProfile/Projects/Projects';
 import Experience from './components/Pages/UserProfile/Experience/Experience';
 import PostBlogs from './AdminDashboard/PostBlogs/PostBlogs';
 import AdminList from './AdminDashboard/AdminList/AdminList';
-
 import NotFound from './components/Pages/NotFound/NotFound';
 import Footer from './components/Shared/Footer/Footer';
-
 import UserDashboardAbout from './components/Pages/UserDashboard/UserDashboardAbout/UserDashboardAbout';
 import UserDashboardSkills from './components/Pages/UserDashboard/UserDashboardSkills/UserDashboardSkills';
 import UserDashboardFeatured from './components/Pages/UserDashboard/UserDashboardFeatured/UserDashboardFeatured';

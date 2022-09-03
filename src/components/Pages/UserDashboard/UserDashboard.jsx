@@ -8,21 +8,16 @@ import { useState } from "react";
 import SpinLoading from "../../Shared/SpinLoading/SpinLoading";
 import { useNavigate } from "react-router-dom";
 import { UserStore } from "../../../stateManagement/UserContext/UserContextStore";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 import { serverLink } from "../../../utilities/links";
-
 
 const UserDashboard = () => {
   const navigate = useNavigate();
 
   const { register, handleSubmit, reset } = useForm();
 
-
   const userStore = useContext(UserStore);
   const currentUser = userStore.user;
-
-
-
 
   const [coverPhoto, setCoverPhoto] = useState("");
   const [profilePhoto, setProfilePhoto] = useState("");
@@ -81,13 +76,11 @@ const UserDashboard = () => {
     };
 
     await axios
-      .put(
-        `${serverLink}/user/user-profile/${currentUser._id}`, profileData
-      )
+      .put(`${serverLink}/user/user-profile/${currentUser._id}`, profileData)
       .then((data) => {
         if (data?.data?.success) {
-          toast.success('Update data successfuly');
-          navigate("/user-dashboard-about");
+          toast.success("Update data successfuly");
+          navigate("/user-dashboard/about");
         }
       });
   };

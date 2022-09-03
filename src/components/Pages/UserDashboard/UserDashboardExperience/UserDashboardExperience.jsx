@@ -63,7 +63,7 @@ const UserDashboardExperience = () => {
       )
       .then((data) => {
         if (data?.data?.success) {
-          navigate("/user-dashboard-courses");
+          navigate("/user-dashboard/courses");
         }
       });
   };

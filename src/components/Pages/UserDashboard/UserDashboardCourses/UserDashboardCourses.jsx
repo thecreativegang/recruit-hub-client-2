@@ -62,7 +62,7 @@ const UserDashboardCourses = () => {
         if (data?.data?.success) {
           toast.success("Update data successfully");
           reset();
-          navigate("/user-dashboard-courses");
+          navigate("/user-dashboard/projects");
         }
       });
   };

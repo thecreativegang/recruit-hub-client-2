@@ -110,10 +110,7 @@ function App() {
             <Route path="experience" element={<Experience />} />
           </Route>
 
-
-          <Route path="userDashboard" element={<UserDashboard />} />
           <Route path="*" element={<NotFound></NotFound>}></Route>
-
 
           {/* user dashboard route  */}
           <Route path="/user-dashboard" element={<UserDashboardMain />}>

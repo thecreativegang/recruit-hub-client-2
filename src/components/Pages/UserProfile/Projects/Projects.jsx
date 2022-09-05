@@ -9,6 +9,7 @@ import { useEffect } from "react";
 import axios from "axios";
 import { serverLink } from "../../../../utilities/links";
 import SpinLoading from "../../../Shared/SpinLoading/SpinLoading";
+import { useParams } from "react-router-dom";
 
 const Projects = () => {
   const [userInfo, serUserInfo] = useState({});
@@ -16,11 +17,12 @@ const Projects = () => {
   const [loading, serLoading] = useState(true);
 
   const [user] = useAuthState(auth);
-  const email = user?.email;
+  const userEmail = user?.email;
+  const { email } = useParams();
 
   useEffect(() => {
     axios
-      .get(`${serverLink}/user/email/${email}`, {
+      .get(`${serverLink}/user/email/${email || userEmail}`, {
         headers: {
           authorization: `Bearer ${localStorage.getItem("accessToken")}`,
         },
@@ -31,7 +33,7 @@ const Projects = () => {
           serLoading(false);
         }
       });
-  }, [email]);
+  }, [email ? email : userEmail]);
 
   console.log(userInfo);
   return loading ? (

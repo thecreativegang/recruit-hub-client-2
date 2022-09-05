@@ -25,7 +25,6 @@ const UserProfile = () => {
   const { email } = useParams();
 
   useEffect(() => {
-    console.log(`${serverLink}/user/email/${email || userEmail}`);
     axios
       .get(`${serverLink}/user/email/${email || userEmail}`, {
         headers: {

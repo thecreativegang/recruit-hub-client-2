@@ -80,7 +80,6 @@ function App() {
           <Route path="/developer" element={<Developer />}></Route>
 
           <Route path='/developer/:email' element={<UserProfile />} >
-            <Route path='profile' index element={<UserAbout />} />
             <Route path=':email/about' element={<UserAbout />} />
             <Route path="skills" element={<UserSkills />} />
             <Route path="featured" element={<Featured />} />

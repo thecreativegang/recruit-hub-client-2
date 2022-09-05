@@ -4,7 +4,7 @@ import "./UserSkills.css";
 import { FaHtml5 } from "react-icons/fa";
 import { BiMessageSquareError } from "react-icons/bi";
 import { BsCheckCircle } from "react-icons/bs";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useState } from "react";
 import auth from "../../../../firebase.init";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -19,11 +19,13 @@ const UserSkills = () => {
   const [loading, serLoading] = useState(true);
 
   const [user] = useAuthState(auth);
-  const email = user?.email;
+  const userEmail = user?.email;
+
+  const { email } = useParams();
 
   useEffect(() => {
     axios
-      .get(`${serverLink}/user/email/${email}`, {
+      .get(`${serverLink}/user/email/${email || userEmail}`, {
         headers: {
           authorization: `Bearer ${localStorage.getItem("accessToken")}`,
         },
@@ -34,7 +36,7 @@ const UserSkills = () => {
           serLoading(false);
         }
       });
-  }, [email]);
+  }, [email ? email : userEmail]);
 
   console.log(userInfo);
 

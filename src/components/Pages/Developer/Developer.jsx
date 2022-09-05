@@ -50,7 +50,7 @@ const Developer = () => {
                   </h6>
                   <p className="capitalize">{singleData?.accountType}</p>
                   <div className="buttons">
-                    <Link to={`${singleData?.email}`}>
+                    <Link to={`${singleData?.email}/profile`}>
                       <button className="card-button-primary">
                         View Profile
                       </button>

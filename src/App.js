@@ -80,7 +80,8 @@ function App() {
           <Route path="/developer" element={<Developer />}></Route>
 
           <Route path='/developer/:email' element={<UserProfile />} >
-            <Route index element={<UserAbout />} />
+            <Route path='profile' index element={<UserAbout />} />
+            <Route path=':email/about' element={<UserAbout />} />
             <Route path="skills" element={<UserSkills />} />
             <Route path="featured" element={<Featured />} />
             <Route path="courses" element={<Courses />} />
@@ -103,10 +104,10 @@ function App() {
             <Route path="admins" element={<AdminList />}></Route>
           </Route>
 
-          {/* user profile route */}
 
+          {/* user profile route */}
           <Route path="/user-profile" element={<UserProfile />}>
-            <Route index element={<UserAbout />} />
+            <Route path="about" index element={<UserAbout />} />
             <Route path="skills" element={<UserSkills />} />
             <Route path="featured" element={<Featured />} />
             <Route path="courses" element={<Courses />} />

@@ -104,7 +104,11 @@ const UserProfile = () => {
             <div className="py-2 ">
               <ul className="flex">
                 <NavLink
-                  to="/user-profile/"
+                  to={
+                    email
+                      ? `/developer/${email}/profile`
+                      : `/user-profile/about`
+                  }
                   className={({ isActive }) =>
                     isActive && "border-b-2 border-blue-600"
                   }
@@ -114,7 +118,11 @@ const UserProfile = () => {
                   </li>
                 </NavLink>
                 <NavLink
-                  to="/user-profile/skills"
+                  to={
+                    email
+                      ? `/developer/${email}/skills`
+                      : `/user-profile/skills`
+                  }
                   className={({ isActive }) =>
                     isActive && "border-b-2 border-blue-600"
                   }
@@ -125,7 +133,11 @@ const UserProfile = () => {
                 </NavLink>
 
                 <NavLink
-                  to="/user-profile/featured"
+                  to={
+                    email
+                      ? `/developer/${email}/featured`
+                      : `/user-profile/featured`
+                  }
                   className={({ isActive }) =>
                     isActive && "border-b-2 border-blue-600"
                   }
@@ -136,7 +148,11 @@ const UserProfile = () => {
                 </NavLink>
 
                 <NavLink
-                  to="/user-profile/experience"
+                  to={
+                    email
+                      ? `/developer/${email}/experience`
+                      : `/user-profile/experience`
+                  }
                   className={({ isActive }) =>
                     isActive && "border-b-2 border-blue-600"
                   }
@@ -147,7 +163,11 @@ const UserProfile = () => {
                 </NavLink>
 
                 <NavLink
-                  to="/user-profile/courses"
+                  to={
+                    email
+                      ? `/developer/${email}/courses`
+                      : `/user-profile/courses`
+                  }
                   className={({ isActive }) =>
                     isActive && "border-b-2 border-blue-600"
                   }
@@ -158,7 +178,11 @@ const UserProfile = () => {
                 </NavLink>
 
                 <NavLink
-                  to="/user-profile/projects"
+                  to={
+                    email
+                      ? `/developer/${email}/projects`
+                      : `/user-profile/projects`
+                  }
                   className={({ isActive }) =>
                     isActive && "border-b-2 border-blue-600"
                   }

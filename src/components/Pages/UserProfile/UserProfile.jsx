@@ -16,12 +16,10 @@ import "./UserProfile.css";
 
 const UserProfile = () => {
   const [userInfo, serUserInfo] = useState({});
-
   const [loading, serLoading] = useState(true);
 
   const [user] = useAuthState(auth);
   const userEmail = user?.email;
-
   const { email } = useParams();
 
   useEffect(() => {
@@ -39,7 +37,10 @@ const UserProfile = () => {
       });
   }, [email ? email : userEmail]);
 
-  console.log(userInfo);
+  const emptyCoverPhoto =
+    "https://frg.berkeley.edu/wp-content/plugins/content-cards/skins/default/content-cards-placeholder.png";
+  const emptyProfilePhoto =
+    "https://www.pngall.com/wp-content/uploads/5/User-Profile-PNG.png";
 
   return loading ? (
     <SpinLoading />
@@ -54,13 +55,21 @@ const UserProfile = () => {
               <div className="w-full h-[15rem] md:h-[20rem] relative">
                 <img
                   className="w-full h-full object-cover object-center"
-                  src={userInfo?.coverPhoto}
+                  src={
+                    userInfo?.coverPhoto
+                      ? userInfo?.coverPhoto
+                      : emptyCoverPhoto
+                  }
                   alt="User-cover-images"
                 />
                 <div className="w-[10rem] h-[10rem] absolute left-[3rem] bottom-0 translate-y-2/4">
                   <img
-                    className="w-full h-full object-contain object-center overflow-hidden rounded-full border-[.3rem] border-gray-200"
-                    src={userInfo?.profilePhoto}
+                    className="w-full h-full object-contain object-center overflow-hidden rounded-full border-[.3rem] border-gray-200 bg-white dark:bg-black"
+                    src={
+                      userInfo?.profilePhoto
+                        ? userInfo?.profilePhoto
+                        : emptyProfilePhoto
+                    }
                     alt="User-profile-images"
                   />
                 </div>
@@ -82,19 +91,21 @@ const UserProfile = () => {
                 </p>
               </div>
               <div className="mr-10">
-                <Link
-                  to="/chat"
-                  className="px-5 py-2 rounded-3xl outline-none font-bold bg-[#287eff] text-white ml-3"
-                >
-                  Message
-                </Link>
-
-                <Link
-                  to="/user-dashboard"
-                  className="px-5 py-2 rounded-3xl outline-none font-bold bg-[#3a4d6a] text-white ml-3"
-                >
-                  Edit
-                </Link>
+                {email ? (
+                  <Link
+                    to="/chat"
+                    className="px-5 py-2 rounded-3xl outline-none font-bold bg-[#287eff] text-white ml-3"
+                  >
+                    Message
+                  </Link>
+                ) : (
+                  <Link
+                    to="/user-dashboard"
+                    className="px-5 py-2 rounded-3xl outline-none font-bold bg-[#3a4d6a] text-white ml-3"
+                  >
+                    Edit
+                  </Link>
+                )}
               </div>
             </div>
           </section>

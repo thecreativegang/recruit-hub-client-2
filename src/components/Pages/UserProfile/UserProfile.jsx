@@ -2,7 +2,13 @@ import axios from "axios";
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { Outlet, NavLink, Link } from "react-router-dom";
+import {
+  Outlet,
+  NavLink,
+  Link,
+  useLocation,
+  useParams,
+} from "react-router-dom";
 import auth from "../../../firebase.init";
 import { serverLink } from "../../../utilities/links";
 import SpinLoading from "../../Shared/SpinLoading/SpinLoading";
@@ -14,11 +20,14 @@ const UserProfile = () => {
   const [loading, serLoading] = useState(true);
 
   const [user] = useAuthState(auth);
-  const email = user?.email;
+  const userEmail = user?.email;
+
+  const { email } = useParams();
 
   useEffect(() => {
+    console.log(`${serverLink}/user/email/${email || userEmail}`);
     axios
-      .get(`${serverLink}/user/email/${email}`, {
+      .get(`${serverLink}/user/email/${email || userEmail}`, {
         headers: {
           authorization: `Bearer ${localStorage.getItem("accessToken")}`,
         },
@@ -29,7 +38,7 @@ const UserProfile = () => {
           serLoading(false);
         }
       });
-  }, [email]);
+  }, [email ? email : userEmail]);
 
   console.log(userInfo);
 

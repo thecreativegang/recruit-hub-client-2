@@ -79,6 +79,15 @@ function App() {
           <Route path="/postJob" element={<PostAJob />}></Route>
           <Route path="/developer" element={<Developer />}></Route>
 
+          <Route path='/developer/:email' element={<UserProfile />} >
+            <Route index element={<UserAbout />} />
+            <Route path="skills" element={<UserSkills />} />
+            <Route path="featured" element={<Featured />} />
+            <Route path="courses" element={<Courses />} />
+            <Route path="projects" element={<Projects />} />
+            <Route path="experience" element={<Experience />} />
+          </Route>
+
           <Route path="/skilltest" element={<SkillAssessment />}></Route>
           <Route path="/findJob" element={<FindJob />}></Route>
           <Route path="/askUsername" element={<AskForUsername />}></Route>

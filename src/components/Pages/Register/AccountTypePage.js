@@ -48,7 +48,7 @@ const AccountTypePage = ({ type }) => {
     };
     const handleNavigateToRegister = () => {
         if (localStorage.getItem('accountType') !== '') {
-            // navigate(`/register/${localStorage.getItem('accountType')}`);
+            navigate(`/register`);
         } else {
             setError('Select an Option');
             setErrorStyle('border-2 border-red-500 p-2  rounded-lg');

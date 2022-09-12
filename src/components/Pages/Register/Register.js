@@ -70,9 +70,11 @@ const Register = () => {
       const password = data.password;
       await createUserWithEmailAndPassword(email, password); // create user
       await updateProfile({ displayName }); //Update Display Name
+      navigate('/')
     } else {
     }
   };
+
   if (globalUser) {
     currentUser = {
       email: globalUser?.email,
@@ -83,7 +85,6 @@ const Register = () => {
   const token = useToken(currentUser);
   useEffect(() => {
     if (token) {
-      navigate('/');
       //         //Uncomment Below Section to send email on new user creation
       //         // <SendEmail
       //         //     user={primaryUser}
@@ -91,7 +92,7 @@ const Register = () => {
       //         //     text={"You account has been successfully registered in Nissan Parts. Thank you."}
       //         // ></SendEmail>
     }
-  }, [token, navigate]);
+  }, [token]);
 
   if (error) {
     console.log(error);
@@ -102,17 +103,17 @@ const Register = () => {
   const handleUserNameValidation = async (username) => {
     username !== ''
       ? await axios
-          .post(`${serverLink}/user/check-username/${username}`)
-          .then((data) => {
-            if (data.data.isAvailable) {
-              setUsernameAvailable(true);
-            } else {
-              setUsernameAvailable(false);
-            }
-          })
-          .then(function (error) {
-            toast.error(error?.message);
-          })
+        .post(`${serverLink}/user/check-username/${username}`)
+        .then((data) => {
+          if (data.data.isAvailable) {
+            setUsernameAvailable(true);
+          } else {
+            setUsernameAvailable(false);
+          }
+        })
+        .then(function (error) {
+          toast.error(error?.message);
+        })
       : setUsernameAvailable(null);
   };
   const handleGoogleSignIn = () => {

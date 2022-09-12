@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import navLogo from '../../../images/logo.png';
 import './Navbar.css'
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
@@ -158,8 +157,6 @@ const Navbar = () => {
                 </div>
             </div>
         </nav>
-
-
 
     )
 };

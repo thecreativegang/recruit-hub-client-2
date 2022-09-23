@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import navLogo from '../../../images/logo.png';
 import './Navbar.css'
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
@@ -135,7 +134,7 @@ const Navbar = () => {
 
                                             {/* routes  */}
                                             <ul>
-                                                <li onClick={closedNavbarAll} className='mb-4'> <NavLink to="/user-profile" className={({ isActive }) => (isActive ? active : deActive)} > <CgProfile className=' text-base md:text-xl mr-2' />Profile</NavLink> </li>
+                                                <li onClick={closedNavbarAll} className='mb-4'> <NavLink to="/user-profile/about" className={({ isActive }) => (isActive ? active : deActive)} > <CgProfile className=' text-base md:text-xl mr-2' />Profile</NavLink> </li>
                                                 <li onClick={closedNavbarAll} className='mb-4'> <NavLink to="/user-dashboard" className={({ isActive }) => (isActive ? active : deActive)} > <CgProfile className=' text-base md:text-xl mr-2' />Dashboard</NavLink> </li>
                                                 <li onClick={() => handleSignOut()} className='mb-4 cursor-pointer font-semibold text-lg flex items-center'> <ImExit className=' text-base md:text-xl mr-2' />Logout</li>
 
@@ -158,8 +157,6 @@ const Navbar = () => {
                 </div>
             </div>
         </nav>
-
-
 
     )
 };

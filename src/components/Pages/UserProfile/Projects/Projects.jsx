@@ -2,81 +2,59 @@ import React from "react";
 
 import { TbWorld } from "react-icons/tb";
 import { FaGithub } from "react-icons/fa";
+import { useState } from "react";
+import auth from "../../../../firebase.init";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { useEffect } from "react";
+import axios from "axios";
+import { serverLink } from "../../../../utilities/links";
+import SpinLoading from "../../../Shared/SpinLoading/SpinLoading";
+import { useParams } from "react-router-dom";
 
 const Projects = () => {
-  const userInfo = {
-    CoverPhoto:
-      "https://i.pinimg.com/564x/30/5c/5a/305c5a457807ba421ed67495c93198d3.jpg",
-    ProfilePhoto:
-      "https://wac-cdn.atlassian.com/dam/jcr:ba03a215-2f45-40f5-8540-b2015223c918/Max-R_Headshot%20(1).jpg",
-    name: "Tanvir Ahmed",
-    userName: "tkljfld.232",
-    developerType: "Front-End Web Developer",
-    Bio: "Front-End Web Developer | Interested in React Js. and React Native | Passionate about Web Development | Dreaming to be a Professional Full Stack Web Developer",
-    state: "barisal",
-    country: "bangladesh",
-    contactsInfo: { email: "", phone: "" },
-    socialLink: { github: "", linkdin: "", facebook: "", instagram: "" },
-    skills: [
-      { skillName: "", skillTest: 100 },
-      { skillName: "", skillTest: "" },
-      { skillName: "", skillTest: "" },
-    ],
-    featured: [
-      { featuredPhoto: "", featuredTitle: "", featuredDescription: "" },
-      { featuredPhoto: "", featuredTitle: "", featuredDescription: "" },
-      { featuredPhoto: "", featuredTitle: "", featuredDescription: "" },
-    ],
-    experince: [
-      {
-        experinceTitle: "",
-        jobType: "full time",
-        duration: "",
-        skills: ["", "", "", ""],
-      },
-    ],
-    courses: [
-      { coursesPhoto: "", coursesTitle: "", coursesDescription: "" },
-      { coursesPhoto: "", coursesTitle: "", coursesDescription: "" },
-      { coursesPhoto: "", coursesTitle: "", coursesDescription: "" },
-    ],
-    projects: [
-      {
-        projectsPhoto: "",
-        projectsTitle: "",
-        projectsDescription: "",
-        projectsLink: { githubServer: "", githubClint: "", liveSite: "" },
-      },
+  const [userInfo, serUserInfo] = useState({});
 
-      {
-        projectsPhoto: "",
-        projectsTitle: "",
-        projectsDescription: "",
-        projectsLink: { githubServer: "", githubClint: "", liveSite: "" },
-      },
+  const [loading, serLoading] = useState(true);
 
-      {
-        projectsPhoto: "",
-        projectsTitle: "",
-        projectsDescription: "",
-        projectsLink: { githubServer: "", githubClint: "", liveSite: "" },
-      },
-    ],
-  };
-  return (
+  const [user] = useAuthState(auth);
+  const userEmail = user?.email;
+  const { email } = useParams();
+
+  useEffect(() => {
+    axios
+      .get(`${serverLink}/user/email/${email || userEmail}`, {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      })
+      .then((res) => {
+        if (res?.data) {
+          serUserInfo(res?.data);
+          serLoading(false);
+        }
+      });
+  }, [email ? email : userEmail]);
+
+  console.log(userInfo);
+  return loading ? (
+    <SpinLoading />
+  ) : (
     <section>
       {/* section title  */}
       <h2 className="user-title">Our Bests Projects</h2>
 
       {/* Section content */}
       <div className="px-5 pb-5">
-        {userInfo?.projects.map((project) => (
-          <div className="md:flex user-card-shadow rounded-lg mb-10">
+        {userInfo?.projects.map((project, index) => (
+          <div
+            key={index}
+            className="md:flex user-card-shadow rounded-lg mb-10"
+          >
             {/* Projects left  */}
             <div className="md:w-1/2 min-w-[18.7rem]">
               <img
                 className="p-5 w-full h-full object-cover object-center rounded-lg overflow-hidden"
-                src={project?.projectsPhoto}
+                src={project?.project_photo}
                 alt="Projects Images"
               />
             </div>
@@ -84,16 +62,16 @@ const Projects = () => {
             {/* Projects right  */}
             <div className="md:w-1/2 min-w-[18.7rem] p-5">
               <h3 className="text-xl text-gray-700 font-medium text-left capitalize">
-                {project?.projectsTitle}
+                {project?.project_title}
               </h3>
               <span className="inline-block text-lg text-gray-600 font-medium text-left mt-2">
                 Description
               </span>
-              <p className="text-justify">{project?.projectsDescription}</p>
+              <p className="text-justify">{project?.project_description}</p>
               {/* Projects link  */}
               <ul className="flex items-center justify-start mt-6">
                 <a
-                  href={project?.projectsLink?.liveSite}
+                  href={project?.projectsLink?.live_link}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -104,7 +82,7 @@ const Projects = () => {
                 </a>
 
                 <a
-                  href={project?.projectsLink?.githubClint}
+                  href={project?.projectsLink?.client_link}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -114,7 +92,7 @@ const Projects = () => {
                   </li>
                 </a>
                 <a
-                  href={project?.projectsLink?.githubServer}
+                  href={project?.projectsLink?.server_link}
                   target="_blank"
                   rel="noopener noreferrer"
                 >

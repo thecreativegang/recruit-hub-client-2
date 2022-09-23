@@ -24,15 +24,14 @@ const UserDashboardSkills = () => {
     console.log(skills);
 
     await axios
-      .put(
-        `${serverLink}/user/user-profile/${currentUser._id}`,
-        { skills: skills }
-      )
+      .put(`${serverLink}/user/user-profile/${currentUser._id}`, {
+        skills: skills,
+      })
       .then((data) => {
         if (data?.data?.success) {
           toast.success("Update data successfully");
           reset();
-          navigate("/user-dashboard-featured");
+          navigate("/user-dashboard/featured");
         }
       });
   };

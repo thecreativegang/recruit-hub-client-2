@@ -12,6 +12,7 @@ import './Ourteam.css'
 
 const OurTeam = () => {
 
+  //data
   const teamData = [
     {
       "id": 2,
@@ -64,6 +65,8 @@ const OurTeam = () => {
         <p className='mb-[20px] para-color text-[22px] font-semibold dark:text-[#38BDF8]'>united we stand divided we fall</p>
 
       </div>
+
+      {/* //swiper js  */}
       <Swiper
         effect={"coverflow"}
         grabCursor={true}
@@ -87,19 +90,16 @@ const OurTeam = () => {
       >
 
 
-        {/* <div className='bg-white p-2'>
 
-                        <img src="https://swiperjs.com/demos/images/nature-6.jpg" />
-                        <div>
-                            <h1>Sumon Bala</h1>
-                            <h1>Front End</h1>
-                        </div>
-                    </div> */}
 
         {
           teamData.map(team => <SwiperSlide key={team.id} className='p-4 bg-white dark:bg-[#182133]  shadow-lg'>
             <div className='bg-red h-full'>
-              <img src={team?.image} alt="images" />
+
+              <img src={team?.image} alt='images' />
+
+
+
               <h1 className='text-[#1C2880] dark:text-[#38BDF8] font-semibold mt-2'>{team?.name}</h1>
               <h1 className='dark:text-[#E2E8F0]'>{team?.role}</h1>
 

@@ -61,15 +61,12 @@ const UserDashboardProjects = () => {
 
     // put data server
     await axios
-      .put(
-        `${serverLink}/user/user-profile/${currentUser._id}`,
-        projectsData
-      )
+      .put(`${serverLink}/user/user-profile/${currentUser._id}`, projectsData)
       .then((data) => {
         if (data?.data?.success) {
           toast.success("Update data successfully");
           reset();
-          navigate("/user-dashboard-courses");
+          navigate("/user-dashboard/courses");
         }
       });
   };

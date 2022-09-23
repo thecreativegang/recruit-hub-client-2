@@ -1,78 +1,42 @@
+import axios from "axios";
 import React from "react";
+import { useEffect } from "react";
+import { useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { useParams } from "react-router-dom";
+import auth from "../../../../firebase.init";
+import { serverLink } from "../../../../utilities/links";
+import SpinLoading from "../../../Shared/SpinLoading/SpinLoading";
 
 const Courses = () => {
-  const userInfo = {
-    CoverPhoto:
-      "https://i.pinimg.com/564x/30/5c/5a/305c5a457807ba421ed67495c93198d3.jpg",
-    ProfilePhoto:
-      "https://wac-cdn.atlassian.com/dam/jcr:ba03a215-2f45-40f5-8540-b2015223c918/Max-R_Headshot%20(1).jpg",
-    name: "Tanvir Ahmed",
-    userName: "tkljfld.232",
-    developerType: "Front-End Web Developer",
-    Bio: "Front-End Web Developer | Interested in React Js. and React Native | Passionate about Web Development | Dreaming to be a Professional Full Stack Web Developer",
-    state: "barisal",
-    country: "bangladesh",
-    contactsInfo: { email: "", phone: "" },
-    socialLink: { github: "", linkdin: "", facebook: "", instagram: "" },
-    skills: [
-      { skillName: "", skillTest: 100 },
-      { skillName: "", skillTest: "" },
-      { skillName: "", skillTest: "" },
-    ],
-    featured: [
-      { featuredPhoto: "", featuredTitle: "", featuredDescription: "" },
-      { featuredPhoto: "", featuredTitle: "", featuredDescription: "" },
-      { featuredPhoto: "", featuredTitle: "", featuredDescription: "" },
-    ],
-    experince: [
-      {
-        experinceTitle: "",
-        jobType: "full time",
-        duration: "",
-        skills: ["", "", "", ""],
-      },
-    ],
-    courses: [
-      {
-        coursesPhoto: "kldsjfjslkfjflkdsj",
-        coursesTitle: "sdfsafsdfs",
-        coursesDescription: "fdsaeqwgsa",
-      },
-      {
-        coursesPhoto: "kldsjfjslkfjflkdsj",
-        coursesTitle: "sdfsafsdfs",
-        coursesDescription: "fdsaeqwgsa",
-      },
-      {
-        coursesPhoto: "kldsjfjslkfjflkdsj",
-        coursesTitle: "sdfsafsdfs",
-        coursesDescription: "fdsaeqwgsa",
-      },
-    ],
-    projects: [
-      {
-        projectsPhoto: "",
-        projectsTitle: "",
-        projectsDescription: "",
-        projectsLink: { githubServer: "", githubClint: "", liveSite: "" },
-      },
+  const [userInfo, serUserInfo] = useState({});
 
-      {
-        projectsPhoto: "",
-        projectsTitle: "",
-        projectsDescription: "",
-        projectsLink: { githubServer: "", githubClint: "", liveSite: "" },
-      },
+  const [loading, serLoading] = useState(true);
 
-      {
-        projectsPhoto: "",
-        projectsTitle: "",
-        projectsDescription: "",
-        projectsLink: { githubServer: "", githubClint: "", liveSite: "" },
-      },
-    ],
-  };
-  return (
+  const [user] = useAuthState(auth);
+  const userEmail = user?.email;
+
+  const { email } = useParams();
+
+  useEffect(() => {
+    axios
+      .get(`${serverLink}/user/email/${email || userEmail}`, {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      })
+      .then((res) => {
+        if (res?.data) {
+          serUserInfo(res?.data);
+          serLoading(false);
+        }
+      });
+  }, [email ? email : userEmail]);
+
+  console.log(userInfo);
+  return loading ? (
+    <SpinLoading />
+  ) : (
     <section className="pb-6">
       {/* section title  */}
       <h2 className="user-title">Courses</h2>
@@ -85,7 +49,7 @@ const Courses = () => {
             <div className="md:w-1/2 min-w-[18.7rem]">
               <img
                 className="p-5 w-full h-full object-cover object-center rounded-lg overflow-hidden"
-                src={course?.coursesPhoto}
+                src={course?.courses_photo}
                 alt="Courses Images"
               />
             </div>
@@ -93,12 +57,12 @@ const Courses = () => {
             {/* Courses right  */}
             <div className="md:w-1/2 min-w-[18.7rem] p-5">
               <h3 className="text-xl text-gray-700 font-medium text-left capitalize">
-                {course?.coursesTitle}
+                {course?.courses_title}
               </h3>
               <span className="inline-block text-lg text-gray-600 font-medium text-left mt-2">
                 Description
               </span>
-              <p className="text-justify">{course?.coursesDescription}</p>
+              <p className="text-justify">{course?.courses_duration}</p>
             </div>
           </div>
         ))}

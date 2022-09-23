@@ -35,6 +35,7 @@ const AccountTypePage = ({ type }) => {
         }
 
     };
+    // 
     const handleNavigateLogin = () => {
         if (localStorage.getItem('accountType') !== '') {
             if (type !== 'googleSignIn') {
@@ -47,7 +48,7 @@ const AccountTypePage = ({ type }) => {
     };
     const handleNavigateToRegister = () => {
         if (localStorage.getItem('accountType') !== '') {
-            navigate(`/register/${localStorage.getItem('accountType')}`);
+            navigate(`/register`);
         } else {
             setError('Select an Option');
             setErrorStyle('border-2 border-red-500 p-2  rounded-lg');
@@ -87,25 +88,6 @@ const AccountTypePage = ({ type }) => {
                     </div>
                 </div>
             </div>
-            {type !== 'googleSignIn' ? (
-                <div className="mt-10">
-                    <button
-                        onClick={() => handleNavigateLogin()}
-                        className=" btn w-full text-white"
-                    >
-                        Next <FontAwesomeIcon icon={faArrowRight} />
-                    </button>
-                </div>
-            ) : (
-                <div className="mt-10">
-                    <button
-                        onClick={() => handleNavigateToRegister()}
-                        className=" btn w-full text-white"
-                    >
-                        Next <FontAwesomeIcon icon={faArrowRight} />
-                    </button>
-                </div>
-            )}
         </div>
 
     );

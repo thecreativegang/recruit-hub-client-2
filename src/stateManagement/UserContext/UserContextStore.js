@@ -15,14 +15,18 @@ const UserStore = createContext();
 const UserStoreProvider = ({ children }) => {
     const navigate = useNavigate();
 
+    const [user, setUser] = useState([]);
+    const [allUser, setAllUser] = useState([]);
+    const [allAdmin, setAllAdmin] = useState([]);
+    const [activeUser, setActiveUser] = useState("");
+
+
     //get user data with auth
     const [globalUser] = useAuthState(auth);
     const userEmail = globalUser?.email;
 
 
-    const [user, setUser] = useState([]);
-    const [allUser, setAllUser] = useState([]);
-    const [allAdmin, setAllAdmin] = useState([]);
+
 
     // Get single user data form api
     const fetchUser = async () => {
@@ -31,7 +35,10 @@ const UserStoreProvider = ({ children }) => {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`,
             },
         })
-            .then((res) => setUser(res.data))
+            .then((res) => {
+                setUser(res.data)
+                setActiveUser(userEmail)
+            })
             .catch(function (err) {
                 checkTokenExpired(err) === true && navigate('/login');
             });
@@ -100,6 +107,7 @@ const UserStoreProvider = ({ children }) => {
         allUser,
         allAdmin,
         videoData,
+        activeUser,
 
     };
     //user context provider component //==> Don't move this one !

@@ -1,4 +1,3 @@
-
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import { ToastContainer } from 'react-toastify';
@@ -24,7 +23,6 @@ import ForgetPassword from './components/Pages/Login/ForgetPassword';
 import UserProfile from './components/Pages/UserProfile/UserProfile';
 import UserDashboard from './components/Pages/UserDashboard/UserDashboard';
 
-
 import PostResource from './AdminDashboard/PostResource/PostResource';
 import FreeResource from './components/Pages/FreeResource/FreeResource';
 import Developer from './components/Pages/Developer/Developer';
@@ -37,10 +35,8 @@ import Projects from './components/Pages/UserProfile/Projects/Projects';
 import Experience from './components/Pages/UserProfile/Experience/Experience';
 import PostBlogs from './AdminDashboard/PostBlogs/PostBlogs';
 import AdminList from './AdminDashboard/AdminList/AdminList';
-
 import NotFound from './components/Pages/NotFound/NotFound';
 import Footer from './components/Shared/Footer/Footer';
-
 import UserDashboardAbout from './components/Pages/UserDashboard/UserDashboardAbout/UserDashboardAbout';
 import UserDashboardSkills from './components/Pages/UserDashboard/UserDashboardSkills/UserDashboardSkills';
 import UserDashboardFeatured from './components/Pages/UserDashboard/UserDashboardFeatured/UserDashboardFeatured';
@@ -50,12 +46,9 @@ import UserDashboardProjects from './components/Pages/UserDashboard/UserDashboar
 import Contact from './components/Pages/Contact/Contact';
 import UserDashboardMain from './components/Pages/UserDashboard/UserDashboardMain/UserDashboardMain';
 
-
 function App() {
-
-  // console.log('see current location', url)
   return (
-    <div className='transition-all duration-500 bg-[#F3F3F3] dark:bg-[#0b1120]'>
+    <div className="transition-all duration-500 bg-[#F3F3F3] dark:bg-[#0b1120]">
       <UserStoreProvider>
         <Navbar />
         <Routes>
@@ -86,6 +79,15 @@ function App() {
           <Route path="/postJob" element={<PostAJob />}></Route>
           <Route path="/developer" element={<Developer />}></Route>
 
+          <Route path='/developer/:email' element={<UserProfile />} >
+            <Route path='about' element={<UserAbout />} />
+            <Route path="skills" element={<UserSkills />} />
+            <Route path="featured" element={<Featured />} />
+            <Route path="courses" element={<Courses />} />
+            <Route path="projects" element={<Projects />} />
+            <Route path="experience" element={<Experience />} />
+          </Route>
+
           <Route path="/skilltest" element={<SkillAssessment />}></Route>
           <Route path="/findJob" element={<FindJob />}></Route>
           <Route path="/askUsername" element={<AskForUsername />}></Route>
@@ -93,7 +95,7 @@ function App() {
 
           {/* admin dashboard page  */}
           <Route path="/admin" element={<MainAdmin />}>
-            <Route index element={<DashboardHome></DashboardHome>}></Route>
+            <Route index element={<DashboardHome />}></Route>
             <Route path="notifications" element={<Notifications />}></Route>
             <Route path="findJob" element={<FindJob />}></Route>
             <Route path="postResource" element={<PostResource />}></Route>
@@ -102,11 +104,9 @@ function App() {
           </Route>
 
 
-
           {/* user profile route */}
-
           <Route path="/user-profile" element={<UserProfile />}>
-            <Route index element={<UserAbout />} />
+            <Route path="about" index element={<UserAbout />} />
             <Route path="skills" element={<UserSkills />} />
             <Route path="featured" element={<Featured />} />
             <Route path="courses" element={<Courses />} />
@@ -114,10 +114,7 @@ function App() {
             <Route path="experience" element={<Experience />} />
           </Route>
 
-
-          <Route path="userDashboard" element={<UserDashboard />} />
           <Route path="*" element={<NotFound></NotFound>}></Route>
-
 
           {/* user dashboard route  */}
           <Route path="/user-dashboard" element={<UserDashboardMain />}>
@@ -130,6 +127,7 @@ function App() {
             <Route path="courses" element={<UserDashboardCourses />} />
             <Route path="projects" element={<UserDashboardProjects />} />
           </Route>
+          <Route path="*" element={<NotFound />}></Route>
         </Routes>
 
         <Footer></Footer>

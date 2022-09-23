@@ -63,7 +63,7 @@ const UserDashboardCourses = () => {
         if (data?.data?.success) {
           toast.success("Update data successfully");
           reset();
-          navigate("/user-dashboard-courses");
+          navigate("/user-dashboard/projects");
         }
       });
   };
@@ -71,7 +71,7 @@ const UserDashboardCourses = () => {
     <div className="min-h-screen ">
       <div className="max-w-[32rem] mx-auto bg-[#edebeb] px-6 py-4 rounded-md mt-12">
         <h2 className="text-xl font-semibold text-[#333] py-3 text-center">
-          Add Courses
+          Add Course
         </h2>
         <div>
           <form onSubmit={handleSubmit(onSubmit)}>
@@ -116,7 +116,7 @@ const UserDashboardCourses = () => {
                   for="courses_description"
                   class="block mb-2 text-base font-medium text-gray-900 ml-1"
                 >
-                  Courses Description
+                  Course Description
                   <span className="text-red-600 ml-[1px]">*</span>
                 </label>
                 <input
